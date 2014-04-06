@@ -127,7 +127,9 @@ body > section > h1 {
   vertical-align: top;
 }
 
-#documentation .repo, #specs .repo {
+#documentation .repo,
+#specs .repo,
+#tests .repo {
   display: block;
   width: auto;
   margin-left: 2em;
@@ -168,7 +170,8 @@ body > section > h1 {
 }
 
 #documentation .repo p,
-#specs .repo p {
+#specs .repo p,
+#tests .repo p {
   margin-top: 0.5em;
   margin-left: 2em;
 }
@@ -179,7 +182,8 @@ body > section > h1 {
 }
 
 #documentation .repo.obsolete p,
-#specs .repo.obsolete p {
+#specs .repo.obsolete p,
+#tests .repo.obsolete p {
   font-size: 90%;
 }
 
@@ -192,4 +196,21 @@ body > section > h1 {
   margin: 1em 4em;
   font-family: monospace;
   font-size: 90%;
+}
+
+@media screen and (max-width: 600px) {
+  body > h1 {
+    padding: 1em;
+    font-size: 100%;
+  }
+
+  body > * {
+    margin: 1em;
+  }
+
+  footer {
+    margin: 0;
+    padding-bottom: 0;
+    padding-left: 1em;
+  }
 }

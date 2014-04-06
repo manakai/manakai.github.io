@@ -2,6 +2,7 @@
 <html lang=en>
 <title>Development - The manakai project</title>
 <link rel=stylesheet href=css/pages.css>
+<meta name=viewport content="width=device-width">
 <link rel=license href=contact#license>
 
 <h1><a href="." rel=top>The manakai project</a></h1>
@@ -12,8 +13,8 @@
     <li><a href=".#perl-modules">Perl modules</a></li>
     <li><a href=".#data">Data</a></li>
     <li><a href="develop#download">Download</a></li>
-    <li><a href="develop#develop">Development</a></li>
     <li><a href="develop#dependency">Dependency</a></li>
+    <li><a href="develop#develop">Development</a></li>
     <li><a href="develop#tests">Test data</a></li>
     <li><a href="docs#documentation">Documentation</a></li>
     <li><a href="docs#specs">Specifications</a></li>
@@ -40,11 +41,26 @@ modules should be added as Git submodules, e.g.:
 <p>You should <code>git pull</code> frequently such that modules are
 always up-to-date, i.e. latest revisions of relevant Web standards are
 supported.
+The <a href="https://gist.github.com/motemen/667573">git-submodule-track</a>
+tool might be useful for updating multiple submodules.
 
 <p>We no longer distribute snapshot versions of modules
 (e.g. tarballs) as it is difficult to maintain snapshot versions and
 ask for users to update their copies of snapshots manually due to
 frequency of updates.
+
+</section>
+
+<section id=deps>
+<h1>Dependency</h1>
+
+<p>Requirements on environment and dependent modules are explicitly
+described in documentations of relevant modules and applications.
+
+<p>As a general rule, <a href=".#modules">Perl modules</a> require
+Perl 5.8 or later.  Applications might request more recent versions.
+Modules do not use non-core modules whenever possible, although tests
+of them might require more modules.
 
 </section>
 
@@ -64,19 +80,6 @@ entire project</a>, or in GitHub issues of relevant repositories.
 and <a href="#tests">-independent</a> tests for modules and
 applications of the project.  <a href="https://travis-ci.org/">Travis
 CI</a> is used to run them.
-
-</section>
-
-<section id=deps>
-<h1>Dependency</h1>
-
-<p>Requirements on environment and dependent modules are explicitly
-described in documentations of relevant modules and applications.
-
-<p>As a general rule, <a href=".#modules">Perl modules</a> require
-Perl 5.8 or later.  Applications might request more recent versions.
-Modules do not use non-core modules whenever possible, although tests
-of them might require more modules.
 
 </section>
 
@@ -112,6 +115,8 @@ tags</a>.</p>
 
 <p>Test cases for URL parsing, resolution, and canonicalization.</p>
 </section>
+
+<p>See also <a href=".#testdataparser">testdataparser</A>.
 
 </section>
 
