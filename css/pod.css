@@ -1,0 +1,68 @@
+@import 'pages.css';
+
+body > nav {
+  position: relative;
+}
+
+.pod-source {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+code, var {
+  font-family: "Courier New", monospace;
+  color: #B75511;
+}
+
+#SPECIFICATIONS dt,
+#SPECIFICATION dt {
+  float: left;
+  font-weight: normal;
+  line-height: 1.3;
+  margin-right: 0.5em;
+  color: gray;
+}
+
+#SPECIFICATIONS dt::before,
+#SPECIFICATION dt::before {
+  content: "[";
+}
+
+#SPECIFICATIONS dt::after,
+#SPECIFICATION dt::after {
+  content: "] ";
+}
+
+#SPECIFICATIONS dt code,
+#SPECIFICATION dt code {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+#SPECIFICATIONS dd,
+#SPECIFICATION dd {
+  margin-left: 0;
+  padding-left: 8em;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+#SPECIFICATIONS dd code.url,
+#SPECIFICATION dd code.url {
+  font-size: 80%;
+  font-style: normal;
+}
+
+#SPECIFICATIONS dd code.url::before,
+#SPECIFICATION dd code.url::before {
+  content: "\A";
+  white-space: pre;
+}
+
+@media screen and (max-width: 600px) {
+  .pod-source {
+    position: static;
+  }
+}
