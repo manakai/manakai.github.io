@@ -208,6 +208,10 @@ body > section > h1 {
     margin: 1em;
   }
 
+  .repo {
+    width: auto;
+  }
+
   footer {
     margin: 0;
     padding-bottom: 0;
