@@ -7,7 +7,7 @@ body > h1 {
   margin: 0 0 1em 0;
   padding: 1.5em 4em;
   font-size: 150%;
-  background-color: #CC0000;
+  background-color: #FF6600;
   color: white;
 }
 
@@ -21,7 +21,7 @@ body > * {
 }
 
 h1 {
-  color: #CC0000;
+  color: #FF6600;
   margin: 0;
 }
 
@@ -127,6 +127,12 @@ body > section > h1 {
   vertical-align: top;
 }
 
+#documentation .repo, #specs .repo {
+  display: block;
+  width: auto;
+  margin-left: 2em;
+}
+
 .repo.obsolete {
   color: #888;
 }
@@ -161,9 +167,20 @@ body > section > h1 {
   font-size: 90%;
 }
 
+#documentation .repo p,
+#specs .repo p {
+  margin-top: 0.5em;
+  margin-left: 2em;
+}
+
 .repo.obsolete p {
   font-size: 80%;
   line-height: 1.2;
+}
+
+#documentation .repo.obsolete p,
+#specs .repo.obsolete p {
+  font-size: 90%;
 }
 
 .repo > *:last-child {

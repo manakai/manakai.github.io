@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang=en>
+<title>Documents - The manakai project</title>
+<link rel=stylesheet href=css/pages.css>
+<link rel=license href=contact#license>
+
+<h1><a href="." rel=top>The manakai project</a></h1>
+
+<nav>
+  <ul>
+    <li><a href=".#applications">Applications</a></li>
+    <li><a href=".#perl-modules">Perl modules</a></li>
+    <li><a href=".#data">Data</a></li>
+    <li><a href="develop#download">Download</a></li>
+    <li><a href="develop#develop">Development</a></li>
+    <li><a href="develop#dependency">Dependency</a></li>
+    <li><a href="develop#tests">Test data</a></li>
+    <li><a href="docs#documentation">Documentation</a></li>
+    <li><a href="docs#specs">Specifications</a></li>
+  </ul>
+</nav>
+
+<section id=documentation>
+<h1>Documentation</h1>
+
+<p><a href=".">Each repository</a> contains "readme" document, which
+describes what it is, usage, required environment, license, and so on.
+Modules also have corresponding POD files or inline POD documentations
+describing usage of them.
+
+<p>In addition, following documents are available:
+
+<section id=manakaidom class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">manakai DOM Extensions</a><!--
+<span class=years>(2007-)</span>--></h1>
+
+<p>Definitions of DOM extensions.
+</section>
+
+<section id=manakaiuserdata class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20Predefined%20User%20Data%20Names">manakai Predefined User Data Names</a></h1>
+
+<p>List and descriptions of predefined DOM user data used by modules
+of the manakai project.
+</section>
+
+<section id=manakaicss class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20CSS%20Extensions$1268">manakai CSS Extensions</a><!--
+<span class=years>(2008-)</span>--></h1>
+
+<p>Definitions of CSS extensions.
+</section>
+
+<section id=manakaiselectors class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20Selectors%20Extensions">manakai's Selectors Extensions</a><!--
+<span class=years>(2007-)</span>--></h1>
+
+<p>Definitions of Selectors extensions.
+</section>
+
+<section id=serialwalker class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/SerialWalker">SerialWalker</a><!--
+<span class=years>(2007)</span>--></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Descriptions for DOM <code>SerialWalker</code> extension.
+</section>
+
+<section id=nsfixup class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/nsfixup">Namespace fixup</a><!--
+<span class=years>(2013)</span>--></h1>
+
+<p class=status>This document was merged into <a href="#domdtdef">DOM
+Document Type Definitions</a> and is no longer maintained.
+
+<p>Description of namespace fixup steps in XML serialization.
+</section>
+
+<section id=selectors-objects class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/html/whatpm/Whatpm/CSS/selectors-object">Selectors Object</a></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Description of Perl data structure for Selectors.
+</section>
+
+<section id=handles class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/html/whatpm/Whatpm/Charset/handles">Handle objects used by Whatpm</a></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Description of requirements on Perl API for handle objects used as
+input to parser modules.
+</section>
+
+<section id=cc-standards class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/gate/2007/html/standards">List of supported standards</a></h1>
+
+<p class=status>This document is no longer maintained.  See
+documentations for relevant modules.
+
+<p>List of supported Web standards and their versions.
+</section>
+
+<section id=manakai-features class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/manakai-core/doc/web/features">Features of manakai</a></h1>
+
+<p class=status>This document is no longer maintained.  See
+documentations for relevant modules.
+
+<p>List of supported Web standards and their versions as of 2006.
+</section>
+
+<section id=manakai-roadmap class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++roadmap">manakai roadmap</a></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Roadmap of the manakai project as of 2006.
+</section>
+
+<section id=manakai-introduction class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/manakai-core/doc/introduction">Introduction to manakai</a></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Introduction to manakai Perl modules for Internet messaging.
+</section>
+
+<section id=manakai-charset class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/manakai-core/doc/charset">Character encodings in Message::* Perl modules</a></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Description for character encoding configurations in manakai Perl
+modules for Internet messaging.
+</section>
+
+</section>
+
+<section id=specs>
+<h1>Specifications</h1>
+
+<p>Modules of the manakai project are intended to conform to relevant
+Web standards.  However, as their primary forcus is interoperability
+of Web browsers and contents, they do not always have requirements
+applicable for non-browser Perl implementation.  These documents
+define processing rules for modules of the manakai project such that
+their behaviors are well-described and consistent with standard Web
+technologies.
+
+<section id=domperl class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai's%20DOM%20Perl%20Binding">manakai's DOM Perl Binding</a>
+<span class=years>(2006-)</span></h1>
+
+<p>Mapping of WebIDL and DOM APIs to Perl concepts.
+</section>
+
+<section id=domdtdef class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">XML processing and DOM Document Type Definitions</a>
+<span class=years>(2007-)</span></h1>
+
+<p>Definitions for parsing of XML DTDs and DOM extensions to expose
+DTD content.
+</section>
+
+<section id=atomdom class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/atomdom">Atom DOM</a>
+<span class=years>(2006-)</span></h1>
+
+<p>Definitions of DOM extension API for Atom documents.
+</section>
+
+<section id=validation-langs class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/validation-langs">Handling of unknown namespaces in conformance checking</a>
+<span class=years>(2013-)</span></h1>
+
+<p>Definitions for handling of unknown namespaces upon conformance
+checking and interaction of conformance checking of various XML
+vocabularies.  <abbr title="Also known
+as">Aka.</abbr> <abbr>VALLANGS</abbr>.
+</section>
+
+<section id=obsvocab class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/html/exts/manakai-obsvocab">manakai's Conformance Checking Guideline for Obsolete HTML Elements and Attributes</a>
+<span class=years>(2010-)</span></h1>
+
+<p>Definitions for validation of obsolete HTML elements and
+attributes.
+</section>
+
+<section id=ssft class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/cssexts/selectors/ssft/ssft">Selectors Serialization Format for Testing (SSFT)</a>
+<span class=years>(2007)</span></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Definition of a Selectors serialization format.
+</section>
+
+<section id=xmlcc class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/xmlcc/xmlcc-work">manakai's XML Conformance Checking</a>
+<span class=years>(2007-2008)</span></h1>
+
+<p class=status>This document was merged into <a href="#domdtdef">DOM
+Document Type Definitions</a> and is no longer maintained.
+
+<p>Definitions for conformance checking of XML documents.
+</section>
+
+<section id=vocabcc class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/vocabcc/vocabcc">manakai's Conformance Checking Guidelines for XML-based Markup Languages</a>
+<span class=years>(2010)</span></h1>
+
+<p class=status>This document is no longer maintained.
+See <a href="#validation-langs">VALLANGS</a> specification.
+
+<p>Definitions for conformance checking of Atom documents.
+</section>
+
+</section>
+
+<footer>
+  <p>The manakai project since 2002
+  <ul>
+    <li><a href="." rel=top>Top</a>
+    <li><a href="contact">Contact</a>
+  </ul>
+</footer>

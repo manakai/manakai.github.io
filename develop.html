@@ -11,9 +11,12 @@
     <li><a href=".#applications">Applications</a></li>
     <li><a href=".#perl-modules">Perl modules</a></li>
     <li><a href=".#data">Data</a></li>
-    <li><a href=".#tests">Tests</a></li>
     <li><a href="develop#download">Download</a></li>
     <li><a href="develop#develop">Development</a></li>
+    <li><a href="develop#dependency">Dependency</a></li>
+    <li><a href="develop#tests">Test data</a></li>
+    <li><a href="docs#documentation">Documentation</a></li>
+    <li><a href="docs#specs">Specifications</a></li>
   </ul>
 </nav>
 
@@ -58,7 +61,7 @@ project</a>.
 entire project</a>, or in GitHub issues of relevant repositories.
 
 <p>There are large number of product-dependent
-and <a href=".#tests">-independent</a> tests for modules and
+and <a href="#tests">-independent</a> tests for modules and
 applications of the project.  <a href="https://travis-ci.org/">Travis
 CI</a> is used to run them.
 
@@ -74,6 +77,41 @@ described in documentations of relevant modules and applications.
 Perl 5.8 or later.  Applications might request more recent versions.
 Modules do not use non-core modules whenever possible, although tests
 of them might require more modules.
+
+</section>
+
+<section id=tests>
+<h1>Test data</h1>
+
+<p><a href=".">Each repository</a> contains tests for applications and
+modules in the repository.  In addition, there are
+implementation-neutral test cases for several aspects of Web
+technologies.  Although they are mainly focusing on testing of
+products of the manakai project, they might also useful for other
+products supporting Web technologies.
+
+<section id=tests-web class=repo>
+<h1><a href="https://github.com/wakaba/tests-web">tests-web</a>
+<span class=years>(2003-)</span></h1>
+
+<p>Test cases for various Web technologies, including parsing
+(<a href="https://github.com/wakaba/tests-web/tree/master/html/parsing">HTML</a>, <a href="https://github.com/wakaba/tests-web/tree/master/xml/parsing/manakai">XML</a>, <a href="https://github.com/wakaba/tests-web/tree/master/css/parsing/manakai">CSS</a>, <a href="https://github.com/wakaba/tests-web/tree/master/css/selectors/parsing/manakai">Selectors</a>, <a href="https://github.com/wakaba/tests-web/tree/master/css/mq/syntax">Media
+Queries</a>, <a href="https://github.com/wakaba/tests-web/tree/master/webvtt/testsuite">WebVTT</a>),
+validation
+(<a href="https://github.com/wakaba/tests-web/tree/master/html/validation">HTML</a>, <a href="https://github.com/wakaba/tests-web/tree/master/svg/validation">SVG</a>, <a href="https://github.com/wakaba/tests-web/tree/master/atom/validation">Atom</a>, <a href="https://github.com/wakaba/tests-web/tree/master/xml/validation">XML</a>),
+<a href="https://github.com/wakaba/tests-web/tree/master/xpath/evaluation">XPath
+evaluation</a>,
+and <a href="https://github.com/wakaba/tests-web/tree/master/langtags">language
+tags</a>.</p>
+
+</section>
+
+<section id=tests-web-url class=repo>
+<h1><a href="https://github.com/wakaba/tests-web-url">tests-web-url</a>
+<span class=years>(2011-)</span></h1>
+
+<p>Test cases for URL parsing, resolution, and canonicalization.</p>
+</section>
 
 </section>
 
