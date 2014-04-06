@@ -14,6 +14,8 @@ technologies including HTML, CSS, and DOM.
   <ul>
     <li><a href=".#applications">Applications</a></li>
     <li><a href=".#perl-modules">Perl modules</a></li>
+    <li><a href=".#data">Data</a></li>
+    <li><a href=".#tests">Tests</a></li>
     <li><a href="develop#download">Download</a></li>
     <li><a href="develop#develop">Development</a></li>
   </ul>
@@ -23,10 +25,23 @@ technologies including HTML, CSS, and DOM.
 <h1>Applications</h1>
 
 <section id=webhacc-cli class=repo>
-<h1><a href="https://github.com/manakai/webhacc-cli">WebHACC (CLI version)</a></h1>
+<h1><a href="https://github.com/manakai/webhacc-cli">WebHACC (CLI version)</a>
+<span class=years>(2013-)</span></h1>
 
 <p>A command-line application to check conformance of HTML and XML
 documents (i.e. a validator) for Unix-based environments.
+</section>
+
+<section id=webhacc-classic class="repo obsolete">
+<h1><a href="https://github.com/wakaba/webhacc">WebHACC (CGI version)</a>
+<span class=years>(2008-2012)</span></h1>
+
+<p class=status>This application is no longer maintained.  A new Web
+application version of checker is to be developed in future.  Until
+then the <a href="#webhacc-cli">CLI version</a> should be used.
+
+<p>A Web application (CGI script) to check conformance of HTML and XML
+documents (i.e. a validator).
 </section>
 
 </section>
@@ -35,14 +50,16 @@ documents (i.e. a validator) for Unix-based environments.
 <h1>Perl modules</h1>
 
 <section id=perl-web-dom class=repo>
-<h1><a href="https://github.com/manakai/perl-web-dom">perl-web-dom</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-dom">perl-web-dom</a>
+<span class=years>(2012-)</span></h1>
 
 <p>A pure-Perl implementation of DOM APIs, including DOM Core,
 Traversal, Parsing and Serialization, Events, and HTML.
 </section>
 
 <section id=perl-web-markup class=repo>
-<h1><a href="https://github.com/manakai/perl-web-markup">perl-web-markup</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-markup">perl-web-markup</a>
+<span class=years>(2013-)</span></h1>
 
 <p>A pure-Perl implementation of HTML parser and serializer, XML
 parser and serializer, HTML, Atom, and XML conformance checker
@@ -50,46 +67,301 @@ parser and serializer, HTML, Atom, and XML conformance checker
 </section>
 
 <section id=perl-web-css class=repo>
-<h1><a href="https://github.com/manakai/perl-web-css">perl-web-css</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-css">perl-web-css</a>
+<span class=years>(2013-)</span></h1>
 
 <p>A pure-Perl implementation of CSS parser and serializer, Selectors
 querying, and Media Queries.
 </section>
 
 <section id=perl-web-url class=repo>
-<h1><a href="https://github.com/manakai/perl-web-url">perl-web-url</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-url">perl-web-url</a>
+<span class=years>(2011-)</span></h1>
 
 <p>A URL parser and serializer.
 </section>
 
 <section id=perl-web-resource class=repo>
-<h1><a href="https://github.com/manakai/perl-web-resource">perl-web-resource</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-resource">perl-web-resource</a>
+<span class=years>(2013-)</span></h1>
 
 <p>A MIME type parser and serializer.
 </section>
 
 <section id=perl-web-langtag class=repo>
-<h1><a href="https://github.com/manakai/perl-web-langtag">perl-web-langtag</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-langtag">perl-web-langtag</a>
+<span class=years>(2013-)</span></h1>
 
 <p>A language tag parser.
 </section>
 
 <section id=perl-web-datetime class=repo>
-<h1><a href="https://github.com/manakai/perl-web-datetime">perl-web-datetime</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-datetime">perl-web-datetime</a>
+<span class=years>(2013-)</span></h1>
 
 <p>A date and time parser and serializer for Web.
 </section>
 
 <section id=perl-web-js class=repo>
-<h1><a href="https://github.com/manakai/perl-web-js">perl-web-js</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-js">perl-web-js</a>
+<span class=years>(2014-)</span></h1>
 
 <p>A placeholder for JavaScript implementation.
 </section>
 
 <section id=perl-web-encodings class=repo>
-<h1><a href="https://github.com/manakai/perl-web-encodings">perl-web-encodings</a></h1>
+<h1><a href="https://github.com/manakai/perl-web-encodings">perl-web-encodings</a>
+<span class=years>(2012-)</span></h1>
 
 <p>A placeholder for Encoding implementation.
+</section>
+
+<section id=manakai-core class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/manakai-core/doc/web/">manakai-core</a>
+<span class=years>(2002-2013)</span></h1>
+
+<p class=status>This set of modules are no longer maintained.  Many of
+modules are now part of <code>perl-web-*</code> repositories with new
+names.
+
+<p>Perl modules for Internet Messages and XML, including support for
+RFC 822 e-mails, HTML, XML, DOM, URL, and so on.
+</section>
+
+<section id=manakai-charlib class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/manakai-charlib/readme">manakai charlib</a>
+<span class=years>(2007-2010)</span></h1>
+
+<p class=status>This set of modules are no longer maintained.  Similar
+features are provided by
+<a href="#perl-web-encodings">perl-web-encodings</a>.
+
+<p>Supplemental Perl modules to support character encodings in the
+wild, used by some <a href="#manakai-core">manakai-core</a> modules to
+interpret XML documents.
+</section>
+
+<section id=whatpm class="repo obsolete">
+<h1><a href="http://suika.fam.cx/www/markup/html/whatpm/readme">Whatpm</a>
+<span class=years>(2007-2012)</span></h1>
+
+<p class=status>This set of modules is merged into
+the <a href="#manakai-core">manakai-core</a> package but it is no
+longer maintained either.  Most of modules are now part
+of <code>perl-web-*</code> repositories with new names.
+
+<p>An implementation of Web standard technologies, including HTML,
+XML, CSS, and URL.
+</section>
+
+</section>
+
+<section id=data>
+<h1>Data</h1>
+
+<p>There are repositories of implementation-independent data files
+containing definitions and properties extracted from Web standard
+specifications and enumerations of known open-ended components used in
+the wild, which might also be useful for other products.
+
+<section id=data-web-defs class=repo>
+<h1><a href="https://github.com/manakai/data-web-defs">data-web-defs</a>
+<span class=years>(2013-)</span></h1>
+
+<p>Machine-readable data files for various definitions and lists in
+Web technologies, such as
+<a href="https://github.com/manakai/data-web-defs/tree/master/data/elements.json">HTML/XML
+element
+properties</a>, <a href="https://github.com/manakai/data-web-defs/tree/master/data/url-schemes.json">known
+URL schemes</a>,
+and <a href="https://github.com/manakai/data-web-defs/blob/master/data/http-status-codes.json">HTTP
+status codes</a>.
+</section>
+
+<section id=data-chars class=repo>
+<h1><a href="https://github.com/manakai/data-chars">data-chars</a>
+<span class=years>(2014-)</span></h1>
+
+<p>Data files for various character classes, properties, and mappings
+specified in or referenced by Web standards.
+</section>
+
+<section id=data-errors class=repo>
+<h1><a href="https://github.com/manakai/data-errors">data-errors</a>
+<span class=years>(2007-)</span></h1>
+
+<p>Lists and descriptions for error types used by Perl modules of the
+manakai project.</p>
+</section>
+
+<section id=data-locale class=repo>
+<h1><a href="https://github.com/manakai/data-locale">data-locale</a>
+<span class=years>(2014-)</span></h1>
+
+<p>A placeholder for locale-related data used in Web.
+</section>
+
+</section>
+
+<section id=specs>
+<h1>Specifications</h1>
+
+<p>Modules of the manakai project are intended to conform to relevant
+Web standards.  However, as their primary forcus is interoperability
+of Web browsers and contents, they do not always have requirements
+applicable for non-browser Perl implementation.  These documents
+define processing rules for modules of the manakai project such that
+their behaviors are well-described and consistent with standard Web
+technologies.
+
+<section id=domperl class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai's%20DOM%20Perl%20Binding">manakai's DOM Perl Binding</a>
+<span class=years>(2006-)</span></h1>
+
+<p>Mapping of WebIDL and DOM APIs to Perl concepts.
+</section>
+
+<section id=domdtdef class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">XML processing and DOM Document Type Definitions</a>
+<span class=years>(2007-)</span></h1>
+
+<p>Definitions for parsing of XML DTDs and DOM extensions to expose
+DTD content.
+</section>
+
+<section id=atomdom class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/atomdom">Atom DOM</a>
+<span class=years>(2006-)</span></h1>
+
+<p>Definitions of DOM extension API for Atom documents.
+</section>
+
+<section id=manakaidom class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">manakai DOM Extensions</a>
+<span class=years>(2007-)</span></h1>
+
+<p>Definitions of DOM extensions.
+</section>
+
+<section id=manakaicss class=repo>
+<h1><a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20CSS%20Extensions$1268">manakai CSS Extensions</a>
+<span class=years>(2008-)</span></h1>
+
+<p>Definitions of CSS extensions.
+</section>
+
+<section id=manakaiselectors class=repo>
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20Selectors%20Extensions">manakai's Selectors Extensions</a>
+<span class=years>(2007-)</span></h1>
+
+<p>Definitions of Selectors extensions.
+</section>
+
+<section id=validation-langs class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/validation-langs">Handling of unknown namespaces in conformance checking</a>
+<span class=years>(2013-)</span></h1>
+
+<p>Definitions for handling of unknown namespaces upon conformance
+checking and interaction of conformance checking of various XML
+vocabularies.
+</section>
+
+<section id=obsvocab class=repo>
+<h1><a href="http://suika.suikawiki.org/www/markup/html/exts/manakai-obsvocab">manakai's Conformance Checking Guideline for Obsolete HTML Elements and Attributes</a>
+<span class=years>(2010-)</span></h1>
+
+<p>Definitions for validation of obsolete HTML elements and
+attributes.
+</section>
+
+<section id=serialwalker class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/SerialWalker">SerialWalker</a>
+<span class=years>(2007)</span></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Descriptions for DOM <code>SerialWalker</code> extension.
+</section>
+
+<section id=ssft class="repo obsolete">
+<h1><a href="http://suika.fam.cx/www/markup/cssexts/selectors/ssft/ssft">Selectors Serialization Format for Testing (SSFT)</a>
+<span class=years>(2007)</span></h1>
+
+<p class=status>This document is no longer maintained.
+
+<p>Definition of a Selectors serialization format.
+</section>
+
+<section id=xmlcc class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/xmlcc/xmlcc-work">manakai's XML Conformance Checking</a>
+<span class=years>(2007-2008)</span></h1>
+
+<p class=status>This document was merged into <a href="#domdtdef">DOM
+Document Type Definitions</a> and is no longer maintained.
+
+<p>Definitions for conformance checking of XML documents.
+</section>
+
+<section id=nsfixup class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/nsfixup">Namespace fixup</a>
+<span class=years>(2013)</span></h1>
+
+<p class=status>This document was merged into <a href="#domdtdef">DOM
+Document Type Definitions</a> and is no longer maintained.
+
+<p>Description of namespace fixup steps in XML serialization.
+</section>
+
+<section id=vocabcc class="repo obsolete">
+<h1><a href="http://suika.suikawiki.org/www/markup/xml/vocabcc/vocabcc">manakai's Conformance Checking Guidelines for XML-based Markup Languages</a>
+<span class=years>(2010)</span></h1>
+
+<p class=status>This document is no longer maintained.
+See <a href="#validation-langs">VALLANGS</a> specification.
+
+<p>Definitions for conformance checking of Atom documents.
+</section>
+
+</section>
+
+<section id=tests>
+<h1>Tests</h1>
+
+<p>Each repository contains tests for applications and modules in the
+repository.  In addition, there are implementation-neutral test cases
+for several aspects of Web technologies.  Although they are mainly
+focusing on testing of products of the manakai project, they might
+also useful for other products supporting Web technologies.
+
+<section id=tests-web class=repo>
+<h1><a href="https://github.com/wakaba/tests-web">tests-web</a>
+<span class=years>(2003-)</span></h1>
+
+<p>Test cases for various Web technologies, including parsing
+(<a href="https://github.com/wakaba/tests-web/tree/master/html/parsing">HTML</a>, <a href="https://github.com/wakaba/tests-web/tree/master/xml/parsing/manakai">XML</a>, <a href="https://github.com/wakaba/tests-web/tree/master/css/parsing/manakai">CSS</a>, <a href="https://github.com/wakaba/tests-web/tree/master/css/selectors/parsing/manakai">Selectors</a>, <a href="https://github.com/wakaba/tests-web/tree/master/css/mq/syntax">Media
+Queries</a>, <a href="https://github.com/wakaba/tests-web/tree/master/webvtt/testsuite">WebVTT</a>),
+validation
+(<a href="https://github.com/wakaba/tests-web/tree/master/html/validation">HTML</a>, <a href="https://github.com/wakaba/tests-web/tree/master/svg/validation">SVG</a>, <a href="https://github.com/wakaba/tests-web/tree/master/atom/validation">Atom</a>, <a href="https://github.com/wakaba/tests-web/tree/master/xml/validation">XML</a>),
+<a href="https://github.com/wakaba/tests-web/tree/master/xpath/evaluation">XPath
+evaluation</a>,
+and <a href="https://github.com/wakaba/tests-web/tree/master/langtags">language
+tags</a>.</p>
+
+</section>
+
+<section id=tests-web-url class=repo>
+<h1><a href="https://github.com/wakaba/tests-web-url">tests-web-url</a>
+<span class=years>(2011-)</span></h1>
+
+<p>Test cases for URL parsing, resolution, and canonicalization.</p>
+</section>
+
+<section id=testdataparser class=repo>
+<h1><a href="https://github.com/wakaba/testdataparser">testdataparser</a>
+<span class=years>(2011-)</span></h1>
+
+<p>A Perl parser implementation for html5lib's HTML Parser Tree
+Construction Tests.
 </section>
 
 </section>

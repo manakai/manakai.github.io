@@ -116,6 +116,10 @@ body > section > h1 {
   border-bottom: 0.2em solid;
 }
 
+#applications, #perl-modules {
+  margin-bottom: 0;
+}
+
 .repo {
   display: inline-block;
   margin: 1em;
@@ -123,13 +127,43 @@ body > section > h1 {
   vertical-align: top;
 }
 
+.repo.obsolete {
+  color: #888;
+}
+
 .repo h1 {
   font-size: 100%;
+  color: inherit;
+  line-height: 1.2;
+}
+
+.years {
+  font-weight: normal;
+  font-size: 80%;
+}
+
+.repo.obsolete h1 {
+  color: inherit;
+}
+
+.repo.obsolete a {
+  color: inherit;
+}
+
+.repo .status {
+  font-style: italic;
+  color: #333;
+  line-height: 1.5;
 }
 
 .repo p {
   margin: 1em;
-  font-weight: 90%;
+  font-size: 90%;
+}
+
+.repo.obsolete p {
+  font-size: 80%;
+  line-height: 1.2;
 }
 
 .repo > *:last-child {

@@ -10,6 +10,8 @@
   <ul>
     <li><a href=".#applications">Applications</a></li>
     <li><a href=".#perl-modules">Perl modules</a></li>
+    <li><a href=".#data">Data</a></li>
+    <li><a href=".#tests">Tests</a></li>
     <li><a href="develop#download">Download</a></li>
     <li><a href="develop#develop">Development</a></li>
   </ul>
@@ -54,6 +56,24 @@ project</a>.
 <p>Known issues and future development candidates are listed in
 <a href="http://manakai.g.hatena.ne.jp/task/">the task tracker of the
 entire project</a>, or in GitHub issues of relevant repositories.
+
+<p>There are large number of product-dependent
+and <a href=".#tests">-independent</a> tests for modules and
+applications of the project.  <a href="https://travis-ci.org/">Travis
+CI</a> is used to run them.
+
+</section>
+
+<section id=deps>
+<h1>Dependency</h1>
+
+<p>Requirements on environment and dependent modules are explicitly
+described in documentations of relevant modules and applications.
+
+<p>As a general rule, <a href=".#modules">Perl modules</a> require
+Perl 5.8 or later.  Applications might request more recent versions.
+Modules do not use non-core modules whenever possible, although tests
+of them might require more modules.
 
 </section>
 
