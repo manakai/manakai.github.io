@@ -300,7 +300,7 @@ sub pod2html ($$%) {
                   $src_node->first_child->local_name eq 'a') {
                 my $dt = $doc->create_element ('dt');
                 $dt->inner_html ('<code></code>')
-                    if $src_node->text_content =~ /\$|->/;
+                    if $src_node->text_content =~ /\$|->|=>/;
                 $dt->id ($src_node->first_child->name);
                 my $code = $dt->first_child || $dt;
                 if ($src_node->first_child->child_nodes->length == 1 and
