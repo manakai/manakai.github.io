@@ -15,6 +15,14 @@ code, var {
   color: #B75511;
 }
 
+article > section > h1 {
+  text-transform: lowercase;
+}
+
+article > section > h1::first-letter {
+  text-transform: none;
+}
+
 #NAME h1 {
   display: none;
 }
@@ -23,6 +31,10 @@ code, var {
   margin: 0;
   font-size: 200%;
   color: #FF6600;
+}
+
+#SYNOPSIS pre {
+  margin-left: 0;
 }
 
 #SPECIFICATIONS dt,
