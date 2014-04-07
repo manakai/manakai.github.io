@@ -8,3 +8,7 @@ generate-docs:
 	    --install-module Pod::Simple~3.28 \
 	    --create-perl-command-shortcut perl
 	./perl _generate_perldocs.pl
+
+updatenightly: generate-docs
+	git add pod
+	git add --update pod

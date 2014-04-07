@@ -21,7 +21,7 @@ body > * {
   margin: 1em 6em;
 }
 
-h1 {
+h1, h2 {
   color: #FF6600;
   margin: 0;
 }
@@ -34,6 +34,11 @@ section section h1 {
 
 p, li, dt {
   line-height: 1.5;
+}
+
+section > section {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 section > p,
@@ -70,7 +75,6 @@ cite.ref a {
   color: inherit;
 }
 
-
 nav {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -102,6 +106,12 @@ nav.breadcrumb ul li {
 
 nav.breadcrumb ul li + li::before {
   content: " > ";
+}
+
+.breadcrumb [rel=bookmark] {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bolder;
 }
 
 footer {
@@ -143,18 +153,30 @@ footer a {
   font-style: italic;
 }
 
-body > nav + section {
+body > nav + section,
+body > nav + article {
   margin-top: 2em;
 }
 
-body > section {
+body > section,
+article > section {
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
 
-body > section > h1 {
+body > section > h1,
+article > section > h1 {
   padding-bottom: 0.2em;
   border-bottom: 0.2em solid;
+  font-size: 1.5em;
+}
+
+hgroup h1 {
+  font-size: 200%;
+}
+
+hgroup h2 {
+  font-size: 120%;
 }
 
 #applications, #perl-modules {
