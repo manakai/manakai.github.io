@@ -12,3 +12,8 @@ generate-docs:
 updatenightly: generate-docs
 	git add pod
 	git add --update pod
+
+test:
+	ls pod/index.html > /dev/null && \
+	ls pod/Web/DOM/Document.html > /dev/null && \
+	ls pod/webhacc.html > /dev/null
