@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Parser</code></h1><h2>The DOM <code>DOMParser</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Parser</code> class implements the DOM <code>DOMParser</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The class has following methods:</p>
+
+<dl>
+<dt id="$parser_=_new_Web::DOM::Parser"><code>$parser = <strong id="member-new">new Web::DOM::Parser</strong></code></dt>
+
+<dd>
+<p>Create a new <code>DOMParser</code> object. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite></p>
+
+</dd><dt id="$doc_=_$parser->parse_from_string_($string,_$type)"><code>$doc = $parser-&gt;<strong id="member-parse_from_string">parse_from_string</strong> ($string,
+$type)</code></dt>
+
+<dd>
+<p>Parse the given character string as an HTML or XML document and return the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> object for the document.
+The second argument must specify the MIME type of the document,
+which is one of followings: <code>text/html</code>,
+<code>text/xml</code>,
+<code>application/xml</code>,
+<code>application/xhtml+xml</code>,
+or <code>images/svg+xml</code>.
+If the document is an XML document and is not well-formed,
+a short document containing the error message is returned instead. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="DOMPARSING">DOMPARSING</dt>
+
+<dd>
+<p>DOM Parsing and Serialization Standard <code class="url">&lt;<a href="http://domparsing.spec.whatwg.org/">http://domparsing.spec.whatwg.org/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

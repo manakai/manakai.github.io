@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::HTML::Validator</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::HTML::Validator</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/HTML/Validator.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::HTML::Validator</code></h1><h2>DOM Conformance Checker</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::HTML::Validator;
+  my $val = Web::HTML::Validator-&gt;new;
+  $val-&gt;onerror (sub {
+    my %arg = @_;
+    warn get_node_path ($arg{node}), ": ",
+        ($arg{level} || "Error"), ": ",
+        $arg{type}, "\n";
+  });
+  $val-&gt;check_node ($doc);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The Perl module <code>Web::HTML::Validator</code> contains methods for conformance checking (or validation) of DOM tree with regard to relevant Web standards such as HTML and CSS. Although the module name contains "HTML", it can also be used to check the conformance of non-HTML XML documents. See also <a href="#SPECIFICATIONS" class="podlinkpod">"SPECIFICATIONS"</a>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>This module has following methods:</p>
+
+<dl>
+<dt id="$val_=_Web::HTML::Validator->new"><code>$val = Web::HTML::Validator-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the validator.</p>
+
+</dd><dt id="$val->check_node_($node)"><code>$val-&gt;<strong id="member-check_node">check_node</strong> ($node)</code></dt>
+
+<dd>
+<p>Validate the specified node. If the node is not a document node, the node is validated as if it were an orphaned node, i.e. a node with no parent or owner. The node can be an attribute, but element- or attribute-specific validation is not performed in that case.</p>
+
+<p>Errors and warnings are reported through the <code>onerror</code> handler.</p>
+
+</dd><dt id="$code_=_$val->onerror"><code>$code = $val-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$val->onerror_($code)"><code>$val-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Get or set the error handler for the validator. Any conformance error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
+
+<p>The value should not be set during the validation. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$boolean_=_$val->scripting"><code>$boolean = $val-&gt;<strong id="member-scripting">scripting</strong></code></dt>
+
+<dt id="$val->scripting_($boolean)"><code>$val-&gt;<strong>scripting</strong> ($boolean)</code></dt>
+
+<dd>
+<p>Get or set scripting is enabled (true) or disabled (false) for the purpose of validation. By default, scripting is disabled. It affects validation of the HTML <code>noscript</code> element.</p>
+
+<p>The value should not be set during the validation. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$boolean_=_$val->image_viewable"><code>$boolean = $val-&gt;<strong id="member-image_viewable">image_viewable</strong></code></dt>
+
+<dt id="$val->image_viewable_($boolean)"><code>$val-&gt;<strong>image_viewable</strong> ($boolean)</code></dt>
+
+<dd>
+<p>Get or set whether the intended user is known to be able to view images or not. Its default is false (<var>not known</var>). This affects whether missing of the <code>alt</code> attribute of the <code>img</code> element is conforming or not.</p>
+
+<p>The value should not be set during the validation. If the value is changed, the result is undefined.</p>
+</dd>
+</dl>
+
+<p>Since the input to the validator is a DOM, not a string, syntax-level conformance errors can't be checked. For detecting any conformance error, you have to parse the string using appropriate parser (<a href="../../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> for HTML, or <a href="../../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a> for XML), and then invoke the validator with the result DOM as the input. For XML, you might also want to invoke DTD validator between invocations of parser and validator, as this validator does not perform any DTD-based validation.</p>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>In addition to the dependency described in the README file <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup/blob/master/README.pod#dependency">https://github.com/manakai/perl-web-markup/blob/master/README.pod#dependency</a>&gt;</code>, following modules (and modules required by them) are required by this module:</p>
+
+<dl>
+<dt id="perl-web-css_<https://github.com/manakai/perl-web-css>">perl-web-css &lt;https://github.com/manakai/perl-web-css&gt;</dt>
+
+<dt id="perl-web-datetime_<https://github.com/manakai/perl-web-datetime>">perl-web-datetime &lt;https://github.com/manakai/perl-web-datetime&gt;</dt>
+
+<dt id="perl-web-langtag_<https://github.com/manakai/perl-web-langtag>">perl-web-langtag &lt;https://github.com/manakai/perl-web-langtag&gt;</dt>
+
+<dt id="perl-web-resource_<https://github.com/manakai/perl-web-resource>">perl-web-resource &lt;https://github.com/manakai/perl-web-resource&gt;</dt>
+
+<dt id="perl-web-url_<https://github.com/manakai/perl-web-url>">perl-web-url &lt;https://github.com/manakai/perl-web-url&gt;</dt>
+
+<dt id="perl-regexp-utils_<https://github.com/wakaba/perl-regexp-utils>">perl-regexp-utils &lt;https://github.com/wakaba/perl-regexp-utils&gt;</dt>
+
+<dt id="perl-web-js_<https://github.com/manakai/perl-web-js>">perl-web-js &lt;https://github.com/manakai/perl-web-js&gt;</dt>
+
+<dd>
+<p>In addition, <a href="http://search.cpan.org/dist/JE/lib/JE.pm" class="podlinkpod">JE</a> is required.</p>
+</dd>
+</dl>
+
+<p>Also, see <a href="../../../../pod/Web/RDF/XML/Parser" class="podlinkpod">Web::RDF::XML::Parser</a>'s dependency section.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="XML">XML</dt>
+
+<dd>
+<p>Extensible Markup Language (XML) 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xml/">http://www.w3.org/TR/xml/</a>&gt;</code>.</p>
+
+<p>XML 1.0 Fifth Edition Specification Errata <code class="url">&lt;<a href="http://www.w3.org/XML/xml-V10-5e-errata">http://www.w3.org/XML/xml-V10-5e-errata</a>&gt;</code>.</p>
+
+<p>The <code>xml:lang</code> attribute MUST be interpreted as the <code>lang</code> attribute in the XML namespace. The <code>xml:space</code> attribute MUST be interpreted as the <code>space</code> attribute in the XML namespace. In other words, the <code>xml:lang</code> or <code>xml:space</code> attribute in no namespace is different from the attributes defined in the XML specification.</p>
+
+<p>The <code>xml:space</code> attribute MUST NOT be in error.</p>
+
+<p>The description for the <code>xml:lang</code> attribute value in the XML specification is interpreted as a MUST-level requirement.</p>
+
+<p>Reserved element names, attribute names, and target names MUST NOT be used unless allowed by an applicable specification.</p>
+
+</dd><dt id="XMLNS">XMLNS</dt>
+
+<dd>
+<p>Namespaces in XML 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xml-names/">http://www.w3.org/TR/xml-names/</a>&gt;</code>.</p>
+
+<p>Namespaces in XML 1.0 (Third Edition) Errata <code class="url">&lt;<a href="http://www.w3.org/XML/2009/xml-names-errata">http://www.w3.org/XML/2009/xml-names-errata</a>&gt;</code>.</p>
+
+<p>Requirements on the namespace name is updated as follows:</p>
+
+<pre>
+<code>  A namespace name MUST be a valid non-empty URL
+  &lt;http://www.whatwg.org/specs/web-apps/current-work/#valid-non-empty-url&gt;.
+  It should be an absolute URL
+  &lt;http://url.spec.whatwg.org/#concept-absolute-url&gt;.  For the purpose
+  of conformance of the HTML |base| element, attributes declaring XML
+  namespaces are not defined as taking URLs.</code></pre>
+
+</dd><dt id="XMLBASE">XMLBASE</dt>
+
+<dd>
+<p>XML Base <code class="url">&lt;<a href="http://www.w3.org/TR/xmlbase/">http://www.w3.org/TR/xmlbase/</a>&gt;</code>.</p>
+
+<p>XML Base Specification Errata <code class="url">&lt;<a href="http://www.w3.org/2009/01/xmlbase-errata">http://www.w3.org/2009/01/xmlbase-errata</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://c.whatwg.org/">http://c.whatwg.org/</a>&gt;</code>.</p>
+
+<p>The <code>html</code> element in the HTML namespace MAY be used as the root element.</p>
+
+<p>A <code>DocumentFragment</code> MAY contain any child element and text node.</p>
+
+<p>The children of a <code>template</code> element in the HTML namespace (which is different from the template content of the element) MUST be empty.</p>
+
+<p>Contents of the <code>noscript</code> element when scripting is enabled and the <code>iframe</code> element MUST be validated as follows:</p>
+
+<pre>
+<code>  Let /context/ be the element in question.
+
+  Let /container/ be a new HTML element whose node document is same as
+  the node document of /context/.  The local name of the element is
+  the return value of the following substeps:
+
+    If /context/ is an HTML |iframe| element, return |span|.
+
+    Otherwise, if /context/ is a descendant of a |head| element or a
+    descendant of a template content whose content model is metadata
+    content, return |head|.
+
+    Otherwise, if /context/ has a parent element and the content model
+    of the parent element would require the content model of /context/
+    be phrasing content given that /context/ were transparent, return
+    |span|.
+
+    Otherwise, return |div|.
+
+  Invoke the HTML fragment parsing algorithm with /container/ as the
+  /context/ element and the |textContent| attribute value of /context/
+  as the /input/.  Append the returned list of nodes to /container/ in
+  order.  If this step results in one or more parse errors, /context/
+  is not conforming.
+
+  Let /disallowed/ be an empty list.
+
+  Add elements disallowed by content model of inclusive ancestors of
+  /context/ to /disallowed/, if any.
+
+  If /context/ is an HTML |iframe| element, add HTML |script| element
+  to /disallowed/.
+
+  If /context/ is an HTML |noscript| element, add HTML |noscript| and
+  |script| elements to /disallowed/.
+
+  Check the conformance of /container/ and its descendants, with the
+  following exceptions:
+
+    Elements in /disallowed/ MUST NOT be used.
+
+    If /container/ is an HTML |head| element, it MUST contain only
+    HTML |link|, |style|, and |meta| elements.  The |head| element
+    does not require any |title| element.</code></pre>
+
+<p>Note that this is a willful violation to the HTML Standard to simplify the validation process, as the spec's requirements are too complex to implement nevertheless that complexity would not help authors as much. The set of the validation errors detected by these steps is not exactly same as that of the HTML Standard.</p>
+
+<p>Unless otherwise specified, for the purpose of validation of HTML documents or fragments (serialized in the HTML syntax and then) embedded within other DOM attribute or node, such as the <code>srcdoc</code> attribute of the HTML <code>iframe</code> element, and Atom or RSS elements, whether scripting is enabled or disabled for the document associated with the HTML parser used to parse the document or fragment, as well as whether scripting is enabled or disabled for the nodes returned by the HTML parser, is same as whether scripting is enabled or disabled for the node document of the node.</p>
+
+</dd><dt id="OBSVOCAB">OBSVOCAB</dt>
+
+<dd>
+<p>manakai's Conformance Checking Guideline for Obsolete HTML Elements and Attributes <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/html/exts/manakai-obsvocab">http://suika.suikawiki.org/www/markup/html/exts/manakai-obsvocab</a>&gt;</code>.</p>
+
+</dd><dt id="XSLT">XSLT</dt>
+
+<dd>
+<p>XSL Transformations (XSLT) Version 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xslt">http://www.w3.org/TR/xslt</a>&gt;</code>.</p>
+
+<p>XSL Transformations (XSLT) Version 1.0 Specification Errata <code class="url">&lt;<a href="http://www.w3.org/1999/11/REC-xslt-19991116-errata/">http://www.w3.org/1999/11/REC-xslt-19991116-errata/</a>&gt;</code>.</p>
+
+<p>Key words "must" and "should" are to be interpreted as described in RFC 2119.</p>
+
+</dd><dt id="RDFXML">RDFXML</dt>
+
+<dd>
+<p>RDF/XML Syntax Specification (Revised) <code class="url">&lt;<a href="http://www.w3.org/TR/rdf-syntax-grammar/">http://www.w3.org/TR/rdf-syntax-grammar/</a>&gt;</code>.</p>
+
+<p>RDF Errata <code class="url">&lt;<a href="http://www.w3.org/2001/sw/RDFCore/errata#rdf-syntax-grammar">http://www.w3.org/2001/sw/RDFCore/errata#rdf-syntax-grammar</a>&gt;</code>.</p>
+
+<p>The <code>RDF</code> element in the RDF namespace is metadata content.</p>
+
+</dd><dt id="ATOM">ATOM</dt>
+
+<dd>
+<p>The Atom Syndication Format <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc4287">http://tools.ietf.org/html/rfc4287</a>&gt;</code>, <code class="url">&lt;<a href="http://www.rfc-editor.org/errata_search.php?rfc=4287">http://www.rfc-editor.org/errata_search.php?rfc=4287</a>&gt;</code>.</p>
+
+</dd><dt id="ATOM03">ATOM03</dt>
+
+<dd>
+<p>The Atom Syndication Format 0.3 (PRE-DRAFT) <code class="url">&lt;<a href="https://github.com/mnot/I-D/blob/master/Published/atom-format/draft-nottingham-atom-format-02.xml">https://github.com/mnot/I-D/blob/master/Published/atom-format/draft-nottingham-atom-format-02.xml</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMTHREADS">ATOMTHREADS</dt>
+
+<dd>
+<p>Atom Threading Extension <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc4685">http://tools.ietf.org/html/rfc4685</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMHISTORY">ATOMHISTORY</dt>
+
+<dd>
+<p>Feed Paging and Archiving <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5005">https://tools.ietf.org/html/rfc5005</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMPUB">ATOMPUB</dt>
+
+<dd>
+<p>The Atom Publishing Protocol <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5023">https://tools.ietf.org/html/rfc5023</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMDELETED">ATOMDELETED</dt>
+
+<dd>
+<p>The Atom "deleted-entry" Element <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc6721">http://tools.ietf.org/html/rfc6721</a>&gt;</code>.</p>
+
+</dd><dt id="CSSSTYLEATTR">CSSSTYLEATTR</dt>
+
+<dd>
+<p>CSS Style Attributes <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-style-attr/">http://dev.w3.org/csswg/css-style-attr/</a>&gt;</code>.</p>
+
+<p>CSS Syntax <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-syntax/#parse-a-list-of-declarations">http://dev.w3.org/csswg/css-syntax/#parse-a-list-of-declarations</a>&gt;</code>.</p>
+
+</dd><dt id="SCHEMAORG">SCHEMAORG</dt>
+
+<dd>
+<p>Schema.org <code class="url">&lt;<a href="http://schema.org/">http://schema.org/</a>&gt;</code>.</p>
+
+<p>Definitions are clarified as follows: An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Integer">http://schema.org/Integer</a>&gt;</code> MUST be a valid integer. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/DateTime">http://schema.org/DateTime</a>&gt;</code> MUST be a valid global date and time string or a valid local date and time string. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Date">http://schema.org/Date</a>&gt;</code> MUST be a valid date string. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Time">http://schema.org/Time</a>&gt;</code> MUST be a valid time string. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/URL">http://schema.org/URL</a>&gt;</code> MUST be an absolute URL.</p>
+
+</dd><dt id="DATAVOCAB">DATAVOCAB</dt>
+
+<dd>
+<p>data-vocabulary.org <code class="url">&lt;<a href="http://www.data-vocabulary.org/">http://www.data-vocabulary.org/</a>&gt;</code>.</p>
+
+<p>Structured data <code class="url">&lt;<a href="https://support.google.com/webmasters/topic/2643152?ref_topic=30163">https://support.google.com/webmasters/topic/2643152?ref_topic=30163</a>&gt;</code>.</p>
+
+<p>Definitions are clarified as follows: If the value is defined as an "ISO date", it MUST be a valid date string or a valid global date and time string. If the value is defined as an "ISO duration", it MUST be a valid vevent duration string. If the value is defined as a URL, image, or link, it MUST be an absolute URL.</p>
+
+</dd><dt id="ARIA">ARIA</dt>
+
+<dd>
+<p>Accessible Rich Internet Applications (WAI-ARIA) 1.0 <code class="url">&lt;<a href="http://www.w3.org/WAI/PF/aria/complete">http://www.w3.org/WAI/PF/aria/complete</a>&gt;</code>.</p>
+
+<p>When an attribute value is defined as "token list", the value MUST be a valid unordered set of unique space-separated tokens.</p>
+
+<p>When an attribute value is defined as "ID reference list", the value MUST be a valid ordered set of unique space-separated tokens.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+
+<p>Any node MAY be used as orphan node.</p>
+
+</dd><dt id="MIMESNIFF">MIMESNIFF</dt>
+
+<dd>
+<p>MIME Sniffing <code class="url">&lt;<a href="http://mimesniff.spec.whatwg.org/">http://mimesniff.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="URL">URL</dt>
+
+<dd>
+<p>URL <code class="url">&lt;<a href="http://url.spec.whatwg.org/">http://url.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="VALIDLANGS">VALIDLANGS</dt>
+
+<dd>
+<p>Handling of unknown namespaces in conformance checking <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/validation-langs">http://suika.suikawiki.org/www/markup/xml/validation-langs</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+<p>The validator also supports much more Web standards (indirectly via required modules), including but not limited to CSS, URL Standard, IETF BCP 47 language tags, and Encoding Standard.</p>
+
+<p>Note that HTML 3.2, HTML4, XML 1.1, Namespaces in XML 1.1, <code>xml:id</code>, XLink, XInclude, XHTML1, XHTML Modularization, Ruby Annotations, RDFa, XForms, and XHTML2 are not considered as applicable specifications. The module does not support ARIA attributes in its own namespace. Also, the module does not support historical HTML features no longer part of the language, except for those explicitly listed in the OBSVOCAB specification. See the specification for details.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

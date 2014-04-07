@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::ParentNode</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::ParentNode</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/ParentNode.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::ParentNode</code></h1><h2>The DOM <code>ParentNode</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::ParentNode</code> class implements the DOM <code>ParentNode</code> interface.
+The <code>Web::DOM::ParentNode</code> class is an abstract class.
+It is used as subclasses such as <code>Web::DOM::Element</code> and <code>Web::DOM::Document</code>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<dl>
+<dt id="$col_=_$node->children"><code>$col = $node-&gt;<strong id="member-children">children</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containg the child elements of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$node->get_elements_by_class_name_($class_names)"><code>$col = $node-&gt;<strong id="member-get_elements_by_class_name">get_elements_by_class_name</strong> ($class_names)</code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the descendant elements which have all classes specified as the argument.
+The argument must be a space-separated list of class names. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$col_=_$node->get_elements_by_tag_name_($local_name)"><code>$col = $node-&gt;<strong id="member-get_elements_by_tag_name">get_elements_by_tag_name</strong> ($local_name)</code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the descendant elements whose local name is equal to the argument.
+If the argument is <code>*</code>,
+all descendant elements are contained. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$col_=_$node->get_elements_by_tag_name_ns_($nsurl,_$local_name)"><code>$col = $node-&gt;<strong id="member-get_elements_by_tag_name_ns">get_elements_by_tag_name_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the descendant elements whose namespace URL and local name matching to the specified values.
+Both namespace URL and local name arguments can be <code>*</code>,
+which represents the wildcard. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$node_list_=_$node->get_items_($types)"><code>$node_list = $node-&gt;<strong id="member-get_items">get_items</strong> ($types)</code></dt>
+
+<dd>
+<p>Return a <a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a> containing the elements creating top-level microdata items in the subtree rooted by the context object.
+If the argument is specified,
+only the elements creating items with specified types are returned. <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$number_=_$node->child_element_count"><code>$number = $node-&gt;<strong id="member-child_element_count">child_element_count</strong></code></dt>
+
+<dd>
+<p>Return the number of child elements. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$child_=_$node->first_element_child"><code>$child = $node-&gt;<strong id="member-first_element_child">first_element_child</strong></code></dt>
+
+<dd>
+<p>Return the first element child of the node.
+If there is no such node,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node->inner_html_($string)"><code>$node-&gt;<strong id="member-inner_html">inner_html</strong> ($string)</code></dt>
+
+<dt id="$string_=_$node->inner_html"><code>$string = $node-&gt;<strong>inner_html</strong></code></dt>
+
+<dd>
+<p>Return or set the markup representation of the content of the node. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#DOCUMENTINNERHTML">DOCUMENTINNERHTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>If the document is an XML document and the given string is not well-formed,
+the method throws an exception.</p>
+
+<p>However,
+even if the document is an XML document and the node can't be serialized into the well-formed XML fragment,
+the method does not throw and does return an ill-formed XML fragment instead.
+This is a willful violation to the HTML Living Standard,
+to match current browsers' behavior.
+Future version of the module might throw an exception if browsers start to throw an exception.</p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$child_=_$node->last_element_child"><code>$child = $node-&gt;<strong id="member-last_element_child">last_element_child</strong></code></dt>
+
+<dd>
+<p>Return the last element child of the node.
+If there is no such node,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$element_=_$node->query_selector_($selectors,_$resolver)"><code>$element = $node-&gt;<strong id="member-query_selector">query_selector</strong> ($selectors,
+$resolver)</code></dt>
+
+<dd>
+<p>Return the first element identified by the group of selectors specified as the argument,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#SELECTORSAPI">SELECTORSAPI</a>]</cite></p>
+
+<p>The optional second argument can specify the namespace resolver,
+i.e.
+a code reference or a <a href="../../../pod/Web/DOM/XPathNSResolver" class="podlinkpod">Web::DOM::XPathNSResolver</a> object. <cite class="ref">[<a href="#NSRESOLVER">NSRESOLVER</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>For the list of supported Selectors features,
+see the documentation of the <a href="../../../pod/Web/CSS/Selectors/API" class="podlinkpod">Web::CSS::Selectors::API</a> module.</p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$nodelist_=_$node->query_selector_all_($selectors,_$resolver)"><code>$nodelist = $node-&gt;<strong id="member-query_selector_all">query_selector_all</strong> ($selectors,
+$resolver)</code></dt>
+
+<dd>
+<p>Return a static <a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a> containing the elements identified by the group of selectors specified as the argument. <cite class="ref">[<a href="#SELECTORSAPI">SELECTORSAPI</a>]</cite></p>
+
+<p>The optional second argument can specify the namespace resolver,
+i.e.
+a code reference or a <a href="../../../pod/Web/DOM/XPathNSResolver" class="podlinkpod">Web::DOM::XPathNSResolver</a> object. <cite class="ref">[<a href="#NSRESOLVER">NSRESOLVER</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>For the list of supported Selectors features,
+see the documentation of the <a href="../../../pod/Web/CSS/Selectors/API" class="podlinkpod">Web::CSS::Selectors::API</a> module.</p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-parentnode">http://dom.spec.whatwg.org/#interface-parentnode</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPARSING">DOMPARSING</dt>
+
+<dd>
+<p>DOM Parsing and Serialization <code class="url">&lt;<a href="http://domparsing.spec.whatwg.org/">http://domparsing.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>If the <code>innerHTML</code> attribute would mutate the children of the context object and the context object is an HTML <code>template</code> element,
+it must mutate the template content of the element instead.</p>
+
+</dd><dt id="DOCUMENTINNERHTML">DOCUMENTINNERHTML</dt>
+
+<dd>
+<p>Document innerHTML <code class="url">&lt;<a href="http://html5.org/tools/web-apps-tracker?from=6531&amp;to=6532">http://html5.org/tools/web-apps-tracker?from=6531&amp;to=6532</a>&gt;</code>.</p>
+
+</dd><dt id="SELECTORSAPI">SELECTORSAPI</dt>
+
+<dd>
+<p>DOM Standard - Selectors API <code class="url">&lt;<a href="https://github.com/whatwg/dom/pull/4/files">https://github.com/whatwg/dom/pull/4/files</a>&gt;</code>.</p>
+
+<p>Selectors API Level 2 <code class="url">&lt;<a href="http://dev.w3.org/2006/webapi/selectors-api2/">http://dev.w3.org/2006/webapi/selectors-api2/</a>&gt;</code>.</p>
+
+</dd><dt id="NSRESOLVER">NSRESOLVER</dt>
+
+<dd>
+<p>Selectors API Editor's Draft 29 August 2007 <code class="url">&lt;<a href="http://dev.w3.org/cvsweb/~checkout~/2006/webapi/selectors-api/Overview.html?rev=1.28&amp;content-type=text/html;%20charset=utf-8">http://dev.w3.org/cvsweb/~checkout~/2006/webapi/selectors-api/Overview.html?rev=1.28&amp;content-type=text/html;%20charset=utf-8</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai's DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>,
+<a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>,
+<a href="../../../pod/Web/DOM/DocumentFragment" class="podlinkpod">Web::DOM::DocumentFragment</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

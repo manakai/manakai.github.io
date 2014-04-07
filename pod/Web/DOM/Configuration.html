@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Configuration</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Configuration</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Configuration.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Configuration</code></h1><h2>The DOM <code>DOMConfiguration</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Configuration</code> class implements the DOM <code>DOMConfiguration</code> interface.
+The <code>DOMConfiguration</code> object of the document can be obtained by the <code>dom_config</code> method of the document.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$value_=_$config->{$perl_param_name}"><code>$value = $config-&gt;<strong id="member-{$perl_param_name}">{$perl_param_name}</strong></code></dt>
+
+<dt id="$config->{$perl_param_name}_=_$value"><code>$config-&gt;<strong>{$perl_param_name}</strong> = $value</code></dt>
+
+<dd>
+<p>Return or set the parameter value,
+using the Perl-style parameter name (underscored_parameter_name). <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="delete_$config->{$perl_param_name}"><code>delete $config-&gt;<strong>{$perl_param_name}</strong></code></dt>
+
+<dd>
+<p>Reset the parameter value to the default. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="@list_=_keys_%$config"><code>@list = keys %$config</code></dt>
+
+<dd>
+<p>Return the list of Perl-style parameter names (underscored_parameter_names). <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$value_=_$config->get_parameter_($dom_param_name)"><code>$value = $config-&gt;<strong id="member-get_parameter">get_parameter</strong> ($dom_param_name)</code></dt>
+
+<dd>
+<p>Return the parameter value,
+using the DOM-style parameter name (hyphened-parameter-name). <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$config->set_parameter_($dom_param_name,_$value)"><code>$config-&gt;<strong id="member-set_parameter">set_parameter</strong> ($dom_param_name,
+$value)</code></dt>
+
+<dd>
+<p>Set the parameter value,
+using the DOM-style parameter name (hyphened-parameter-name).
+If the value is <code>undef</code>,
+the parameter is unset such that the default value is set. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$config->can_set_parameter_($dom_param_name,_$value)"><code>$config-&gt;<strong id="member-can_set_parameter">can_set_parameter</strong> ($dom_param_name,
+$value)</code></dt>
+
+<dd>
+<p>Return whether the specified parameter name/value pair can be set or not,
+using the DOM-style parameter name (hyphened-parameter-name). <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$list_=_keys_$config->parameter_names"><code>$list = keys $config-&gt;<strong id="member-parameter_names">parameter_names</strong></code></dt>
+
+<dd>
+<p>Return the array reference of DOM-style parameter names (hyphened-parameter-names). <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The object also supports the other Perl standard operations for hash references,
+e.g.
+<code>exists $config-&gt;{$perl_param_name}</code>. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</section><section id="PARAMETERS"><h1>PARAMETERS</h1>
+
+<p>Following parameters are supported:</p>
+
+<dl>
+<dt id="manakai_allow_doctype_children_(DOM:_manakai-allow-doctype-children)">manakai_allow_doctype_children (DOM: manakai-allow-doctype-children)</dt>
+
+<dd>
+<p>Specifies whether the document type node can contain processing instruction children or not.
+The default value is false. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="manakai_create_child_element_(DOM:_manakai-create-child-element)">manakai_create_child_element (DOM: manakai-create-child-element)</dt>
+
+<dd>
+<p>Specifies whether "element reflecting" methods of the Atom DOM objects should create child elements if not found.
+The default value is false. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite> <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="manakai_strict_document_children_(DOM:_manakai-strict-document-children)">manakai_strict_document_children (DOM: manakai-strict-document-children)</dt>
+
+<dd>
+<p>Specifies whether the strict rules for document chidlren's node types apply or not for the document.
+The default value is true.
+If the value is true,
+the rules defined by the DOM Standard is strictly followed.
+Otherwise,
+any combination of <code>Element</code>,
+<code>DocumentType</code>,
+<code>Text</code>,
+<code>Comment</code>,
+and <code>ProcessingInstruction</code> nodes are allowed as children of the <code>Document</code>. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM3CORE">DOM3CORE</dt>
+
+<dd>
+<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMDOM">ATOMDOM</dt>
+
+<dd>
+<p>Atom DOM <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/Atom%20DOM">http://suika.fam.cx/~wakaba/wiki/sw/n/Atom%20DOM</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

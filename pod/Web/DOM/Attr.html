@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Attr</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Attr</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Attr.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Attr</code></h1><h2>The DOM <code>Attr</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Attr</code> class implements the DOM <code>Attr</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> and <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> are available,
+as well as following methods:</p>
+
+<dl>
+<dt id="$code_=_$attr->manakai_attribute_type"><code>$code = $attr-&gt;<strong id="member-manakai_attribute_type">manakai_attribute_type</strong></code></dt>
+
+<dt id="$attr->manakai_attribute_type_($code)"><code>$attr-&gt;<strong>manakai_attribute_type</strong> ($code)</code></dt>
+
+<dd>
+<p>Return or set the DTD attribute type for the attribute. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$attr->is_id"><code>$bool = $attr-&gt;<strong id="member-is_id">is_id</strong></code></dt>
+
+<dd>
+<p>Return whether the attribute is <code>id</code> or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$name_=_$attr->local_name"><code>$name = $attr-&gt;<strong id="member-local_name">local_name</strong></code></dt>
+
+<dt id="$name_=_$attr->manakai_local_name_[DEPRECATED]"><code>$name = $attr-&gt;<strong id="member-manakai_local_name">manakai_local_name</strong> [DEPRECATED]</code></dt>
+
+<dd>
+<p>Return the local name of the attribute. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$url_=_$attr->namespace_uri"><code>$url = $attr-&gt;<strong id="member-namespace_uri">namespace_uri</strong></code></dt>
+
+<dd>
+<p>Return the namespace URL of the attribute.
+If the attribute does not belong to any namespace,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$el_=_$attr->owner_element"><code>$el = $attr-&gt;<strong id="member-owner_element">owner_element</strong></code></dt>
+
+<dd>
+<p>Return the element to which the attribute is set.
+If there is no such an element,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$name_=_$attr->name"><code>$name = $attr-&gt;<strong id="member-name">name</strong></code></dt>
+
+<dt id="$name_=_$attr->manakai_name_[DEPRECATED]"><code>$name = $attr-&gt;<strong id="member-manakai_name">manakai_name</strong> [DEPRECATED]</code></dt>
+
+<dd>
+<p>Return the attribute name. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$prefix_=_$attr->prefix"><code>$prefix = $attr-&gt;<strong id="member-prefix">prefix</strong></code></dt>
+
+<dt id="$attr->prefix_($prefix)"><code>$attr-&gt;<strong>prefix</strong> ($prefix)</code></dt>
+
+<dd>
+<p>If no argument is specified,
+return the namespace prefix of the element,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>If the argument is specified,
+the value is set as the namespace prefix of the element.
+If the value is <code>undef</code>,
+the namespace prefix is removed. <cite class="ref">[<a href="#DOMNODEEXODUS">DOMNODEEXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$attr->specified"><code>$bool = $attr-&gt;<strong id="member-specified">specified</strong></code></dt>
+
+<dd>
+<p>Return true. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$value_=_$attr->value"><code>$value = $attr-&gt;<strong id="member-value">value</strong></code></dt>
+
+<dt id="$attr->value_($value)"><code>$attr-&gt;<strong>value</strong> ($value)</code></dt>
+
+<dd>
+<p>Return or set the attribute value. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> module by default.
+In addition,
+they are accessible as methods of <code>Attr</code> objects.</p>
+
+<p>Following declared type constants used by the <code>manakai_attribute_type</code> attribute are exported [DOMDTDEF]:</p>
+
+<p>NO_TYPE_ATTR CDATA_ATTR ID_ATTR IDREF_ATTR IDREFS_ATTR ENTITY_ATTR ENTITIES_ATTR NMTOKEN_ATTR NMTOKENS_ATTR NOTATION_ATTR ENUMERATION_ATTR UNKNOWN_ATTR</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-attr">http://dom.spec.whatwg.org/#interface-attr</a>&gt;</code>.</p>
+
+</dd><dt id="DOMATTREXODUS,_DOMNODEEXODUS">DOMATTREXODUS,
+DOMNODEEXODUS</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.org/">view-source:http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef">http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

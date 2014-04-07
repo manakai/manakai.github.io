@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Entity</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Entity</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Entity.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Entity</code></h1><h2>The DOM <code>Entity</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Entity</code> class implements the DOM <code>Entity</code> interface.
+It represents a general entity.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> and <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$string_=_$ent->declaration_base_uri"><code>$string = $ent-&gt;<strong id="member-declaration_base_uri">declaration_base_uri</strong></code></dt>
+
+<dt id="$string_=_$ent->manakai_declaration_base_uri"><code>$string = $ent-&gt;<strong id="member-manakai_declaration_base_uri">manakai_declaration_base_uri</strong></code></dt>
+
+<dt id="$ent->declaration_base_uri_($string)"><code>$ent-&gt;<strong>declaration_base_uri</strong> ($string)</code></dt>
+
+<dt id="$ent->manakai_declaration_base_uri_($string)"><code>$ent-&gt;<strong>manakai_declaration_base_uri</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the base URL of the entity declaration. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$string_=_$ent->manakai_entity_base_uri"><code>$string = $ent-&gt;<strong id="member-manakai_entity_base_uri">manakai_entity_base_uri</strong></code></dt>
+
+<dt id="$ent->manakai_entity_base_uri_($string)"><code>$ent-&gt;<strong>manakai_entity_base_uri</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the base URL of the entity (not of the entity declaration). <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$string_=_$ent->manakai_entity_uri"><code>$string = $ent-&gt;<strong id="member-manakai_entity_uri">manakai_entity_uri</strong></code></dt>
+
+<dt id="$ent->manakai_entity_uri_($string)"><code>$ent-&gt;<strong>manakai_entity_uri</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the URL of the entity. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="false_=_$ent->has_replacement_tree"><code>false = $ent-&gt;<strong id="member-has_replacement_tree">has_replacement_tree</strong></code></dt>
+
+<dd>
+<p>Return whether the entity has the replacement tree or not.
+It always returns false. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$string_=_$ent->input_encoding"><code>$string = $ent-&gt;<strong id="member-input_encoding">input_encoding</strong></code></dt>
+
+<dt id="$ent->input_encoding_($string)"><code>$ent-&gt;<strong>input_encoding</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the encoding of the entity. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ent->is_externally_declared"><code>$boolean = $ent-&gt;<strong id="member-is_externally_declared">is_externally_declared</strong></code></dt>
+
+<dt id="$ent->is_externally_declared_($boolean)"><code>$ent-&gt;<strong>is_externally_declared</strong> ($boolean)</code></dt>
+
+<dd>
+<p>Return or set whether the entity has been externally declared or not. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$name_=_$ent->notation_name"><code>$name = $ent-&gt;<strong id="member-notation_name">notation_name</strong></code></dt>
+
+<dt id="$ent->notation_name_=_$name"><code>$ent-&gt;<strong>notation_name</strong> = $name</code></dt>
+
+<dd>
+<p>Return or set the notation name of the entity,
+if specified,
+or <code>undef</code>. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$dt_=_$ent->owner_document_type_definition"><code>$dt = $ent-&gt;<strong id="member-owner_document_type_definition">owner_document_type_definition</strong></code></dt>
+
+<dd>
+<p>Return the document type (<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>) to which the entity belongs,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$string_=_$ent->public_id"><code>$string = $ent-&gt;<strong id="member-public_id">public_id</strong></code></dt>
+
+<dt id="$ent->public_id_=_$string"><code>$ent-&gt;<strong>public_id</strong> = $string</code></dt>
+
+<dd>
+<p>Return or set the public ID of the entity. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$string_=_$ent->system_id"><code>$string = $ent-&gt;<strong id="member-system_id">system_id</strong></code></dt>
+
+<dt id="$ent->system_id_=_$string"><code>$ent-&gt;<strong>system_id</strong> = $string</code></dt>
+
+<dd>
+<p>Return or set the system ID of the entity. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$string_=_$ent->xml_encoding"><code>$string = $ent-&gt;<strong id="member-xml_encoding">xml_encoding</strong></code></dt>
+
+<dt id="$ent->xml_encoding_($string)"><code>$ent-&gt;<strong>xml_encoding</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the value of the <code>encoding</code> pseudo-attribute of the text declaration of the entity,
+if it is an external parsed entity and has been read,
+or <code>undef</code>. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$string_=_$ent->xml_version"><code>$string = $ent-&gt;<strong id="member-xml_version">xml_version</strong></code></dt>
+
+<dt id="$ent->xml_version_($string)"><code>$ent-&gt;<strong>xml_version</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the value of the <code>version</code> pseudo-attribute of the text declaration of the entity,
+if it is an external parsed entity and has been read,
+or <code>undef</code>. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The entity name can be accessed by the <code>$ent-&gt;node_name</code> method.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM3CORE">DOM3CORE</dt>
+
+<dd>
+<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

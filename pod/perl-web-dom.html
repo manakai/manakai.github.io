@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>perl-web-dom</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../docs" rel="up up">Documents</a></li>
+        <li><a href="../pod/#modules" rel="up">Perl modules</a></li>
+        <li><a href="" rel="bookmark">perl-web-dom</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/README.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM</code></h1><h2>A Perl DOM implementation</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DOM::Document;
+  
+  my $doc = new Web::DOM::Document;
+  my $el = $doc-&gt;create_element ('a');
+  $el-&gt;set_attribute (href =&gt; 'http://www.whatwg.org/');
+  $doc-&gt;append_child ($el);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM</code> modules is a pure-Perl DOM implementation. It implements various Web standard specifications, including DOM Living Standard and HTML Living Standard.</p>
+
+</section><section id="USAGE"><h1>USAGE</h1>
+
+<p>The <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> module provides the <code>new</code> method returning a new document object, which corresponds to the <code>new Document ()</code> constructor in JavaScript Web browser environment.</p>
+
+<pre>
+<code>  my $doc = new Web::DOM::Document;</code></pre>
+
+<p>Using the document object, the application can create various DOM object, using standard DOM methods:</p>
+
+<pre>
+<code>  my $el = $doc-&gt;create_element ('p'); # HTML element
+  my $el = $doc-&gt;create_element_ns ($nsurl, $qname);
+  $el-&gt;set_attribute (class =&gt; 'hoge fuga');
+  my $text = $doc-&gt;create_text_node ('text');
+  my $comment = $doc-&gt;create_comment ('data');</code></pre>
+
+<p>Please note that DOM attributes and methods are available in perllish_underscored_name rather than domSpecificationsCamelCaseName.</p>
+
+<p>Alternatively, you can instantiate the document object from an HTML or XML string, using the <code>DOMParser</code> interface:</p>
+
+<pre>
+<code>  my $parser = new Web::DOM::Parser;
+  my $doc = $parser-&gt;parse_from_string ($string, 'text/html');
+  my $doc = $parser-&gt;parse_from_string ($string, 'application/xhtml+xml');</code></pre>
+
+<p>Your favorite query methods are also available:</p>
+
+<pre>
+<code>  $el = $doc-&gt;get_element_by_id ('site-logo');
+  $el = $doc-&gt;query_selector ('article &gt; p:first-child');
+  $el = $doc-&gt;evaluate ('//div[child::p]', $doc)-&gt;iterate_next;
+  $col = $doc-&gt;get_elements_by_tag_name ('p');
+  $col = $doc-&gt;get_elements_by_class_name ('blog-entry');
+  $col = $doc-&gt;images;</code></pre>
+
+<p>For more information, see documentation of relevant modules. For example, methods available on the document object is listed in the <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> documentation. Frequently used modules include:</p>
+
+<dl>
+<dt><a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a></dt>
+
+<dd>
+<p>The <code>Document</code> interface.</p>
+
+</dd><dt><a href="../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a></dt>
+
+<dd>
+<p>The <code>Element</code> interface.</p>
+
+</dd><dt><a href="../pod/Web/DOM/Exception" class="podlinkpod">Web::DOM::Exception</a></dt>
+
+<dd>
+<p>The <code>DOMException</code> interface.</p>
+
+</dd><dt><a href="../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a></dt>
+
+<dd>
+<p>The <code>HTMLCollection</code> interface.</p>
+
+</dd><dt><a href="../pod/Web/DOM/Parser" class="podlinkpod">Web::DOM::Parser</a></dt>
+
+<dd>
+<p>The <code>DOMParser</code> interface.</p>
+</dd>
+</dl>
+
+</section><section id="DOM_MAPPING"><h1>DOM MAPPING</h1>
+
+<p>The modules implement the manakai's DOM Perl Binding specification <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>, which defines the mapping between WebIDL/DOM and Perl.</p>
+
+<p>As a general rule, the object implementing the DOM interface <var>I</var> is an instance of the class (or the class that is a subclass of the class) <code>Web::DOM::I</code>. However, applications should not rely on this, as the class inheritance hierarchy could be different from the interface's one, and could be changed in future revision of the module implementation. In particular, applications should not test whether the object is an instance of the interface that is defined with the <code>[NoInterfaceObject]</code> extended attribute. For example, the <code>ParentNode</code> interface is defined with the extended attribute. The <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> class inherits the <a href="../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a> class, as the <code>Document</code> interface implements the <code>ParentNode</code> interface according to the DOM Standard, but applications should not test <code>$node-&gt;isa ('Web::DOM::ParentNode')</code>.</p>
+
+<p>The constructor of a DOM interface, if any, is implemented as the <code>new</code> class method. For example, the constructor of the <code>Document</code> interface can be invoked by <code>Web::DOM::Document-&gt;new</code>.</p>
+
+<p>Attributes, methods, and constants of a DOM interface can be accessible as methods of the object implementing the interface. For example, the <code>innerHTML</code> attribute of the <code>Element</code> interface is accessible as the <code>inner_html</code> method of the element objects. If a method corresponding to the attribute is invoked with no argument, it acts as the getter of the attribute. If the method is invoked with an argument, it acts as the setter of the attribute.</p>
+
+<pre>
+<code>  $string_returned_by_getter = $el-&gt;inner_html;
+  $el-&gt;inner_html ($string_received_by_setter);
+  
+  $string_returned_by_method = $el-&gt;get_attribute ($string);
+  
+  $el-&gt;node_type == $el-&gt;ELEMENT_NODE;</code></pre>
+
+<p>Some objects accept array operations:</p>
+
+<pre>
+<code>  @children = @{$el-&gt;child_nodes};
+  $length = @{$el-&gt;child_nodes};
+  
+  $first_child = $el-&gt;child_nodes-&gt;[0];
+  $second_child = $el-&gt;child_nodes-&gt;[1];
+  $second_last_child = $el-&gt;child_nodes-&gt;[-2];</code></pre>
+
+</section><section id="CONSTRUCTORS"><h1>CONSTRUCTORS</h1>
+
+<p>Following classes have the constructor (i.e. the <code>new</code> method):</p>
+
+<ul>
+<li><a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a></li>
+
+<li><a href="../pod/Web/DOM/DOMError" class="podlinkpod">Web::DOM::DOMError</a></li>
+
+<li><a href="../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and its subclasses</li>
+
+<li><a href="../pod/Web/DOM/Implementation" class="podlinkpod">Web::DOM::Implementation</a></li>
+
+<li><a href="../pod/Web/DOM/Parser" class="podlinkpod">Web::DOM::Parser</a></li>
+
+<li><a href="../pod/Web/DOM/XMLSerializer" class="podlinkpod">Web::DOM::XMLSerializer</a></li>
+
+<li><a href="../pod/Web/DOM/XPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a></li>
+</ul>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Following modules export constants (by loading them using the <code>use</code> statement):</p>
+
+<ul>
+<li><a href="../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a></li>
+
+<li><a href="../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a></li>
+
+<li><a href="../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a></li>
+
+<li><a href="../pod/Web/DOM/Exception" class="podlinkpod">Web::DOM::Exception</a></li>
+
+<li><a href="../pod/Web/DOM/HTMLTrackElement" class="podlinkpod">Web::DOM::HTMLTrackElement</a></li>
+
+<li><a href="../pod/Web/DOM/KeyboardEvent" class="podlinkpod">Web::DOM::KeyboardEvent</a></li>
+
+<li><a href="../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a></li>
+
+<li><a href="../pod/Web/DOM/NodeFilter" class="podlinkpod">Web::DOM::NodeFilter</a></li>
+
+<li><a href="../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a></li>
+
+<li><a href="../pod/Web/DOM/WheelEvent" class="podlinkpod">Web::DOM::WheelEvent</a></li>
+</ul>
+
+</section><section id="NOTE_ON_PRIVATE_METHODS"><h1>NOTE ON PRIVATE METHODS</h1>
+
+<p>Some classes contain private methods and variables. Applications must not invoke or use them. As a general rule methods with name starting by <code>_</code> is private, although there might be exceptions (e.g. <code>_manakai_border_spacing_x</code> method, reflecting CSS <code>-manakai-border-spacing-x</code> property, is not a private method). Anything EXCEPT for followings are private and should not be used:</p>
+
+<dl>
+<dt id="DOM_APIs_as_documented_in_relevant_pod_documentation">DOM APIs as documented in relevant pod documentation</dt>
+
+<dd>
+<p>For example, <code>Web::DOM::Node::child_nodes</code>, <code>Web::DOM::Implementation::create_document</code>, <code>Web::DOM::Event::new</code>, and <code>Web::DOM::Node::ELEMENT_NODE</code> are explicitly mentioned in their pod section.</p>
+
+</dd><dt id="Perl_standard_operations">Perl standard operations</dt>
+
+<dd>
+<p>For example, <code>can</code> and <code>isa</code> methods of any object, <code>""</code> and <code>0+</code> operation of any object, <code>$Web::DOM::Document::VERSION</code> variable, <code>use Web::DOM::Node</code> operation (which implicitly invokes the <code>Web::DOM::Node::import</code> method).</p>
+
+<p>Applications can also rely on <code>isa</code> method with class name derived from DOM interface name whose definition does not contain <code>[NoInterfaceObject]</code>. For example, <code>$object-&gt;isa ('Web::DOM::Node')</code> does (and will) work as intended, while <code>$object-&gt;isa ('Web::DOM::CanvasPathMethod')</code> (defined with <code>[NoInterfaceObject]</code>) or <code>$object-&gt;isa ('Web::DOM::StringArray')</code> (not derived from a DOM interface name) might not. However, it is not considered a good practice to compare objects by its class name in sophiscated object-oriented programs.</p>
+</dd>
+</dl>
+
+<p>Public APIs are not intended to be changed backward incompatibly in later stage of the development of these modules unless it is really necessary for some significant reasons (e.g. security concerns, or to resolve spec compatibility issues). Anything else could be changed, including package/file mapping of classes which do not provide constructors or constants.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<p>Specifications defining features supported by the modules include:</p>
+
+<dl>
+<dt id="DOM_and_Selectors_API">DOM and Selectors API</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/">http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>DOM Standard - Selectors API <code class="url">&lt;<a href="https://github.com/whatwg/dom/pull/4/files">https://github.com/whatwg/dom/pull/4/files</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPARSING">DOMPARSING</dt>
+
+<dd>
+<p>DOM Parsing and Serialization Standard <code class="url">&lt;<a href="http://domparsing.spec.whatwg.org/">http://domparsing.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="DOM3CORE">DOM3CORE</dt>
+
+<dd>
+<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html</a>&gt;</code>.</p>
+
+</dd><dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+<p>For the complete list of relevant specifications, see documentations of the modules.</p>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>The modules require Perl 5.8 or later.</p>
+
+<p>The only fatal dependency is <a href="../pod/perl-charclass">the perl-charclass package</a> <code class="url">&lt;<a href="https://github.com/wakaba/perl-charclass">https://github.com/wakaba/perl-charclass</a>&gt;</code>, which is the submodule of the Git repository.</p>
+
+<p>Following features require <a href="../pod/perl-web-markup">the perl-web-markup package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup">https://github.com/manakai/perl-web-markup</a>&gt;</code> (<a href="../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> and its family): <code>inner_html</code>, <code>outer_html</code>, <code>insert_adjacent_html</code>, <code>DOMParser</code>, and <code>XMLSerializer</code>; (<a href="../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a> and related modules): <code>XPathEvaluator</code> and <code>XPathExpression</code>; (<a href="../pod/Web/HTML/Microdata" class="podlinkpod">Web::HTML::Microdata</a>: <code>manakai_get_properties</code>).</p>
+
+<p>Following features require <a href="../pod/perl-web-css">the perl-web-css package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-css">https://github.com/manakai/perl-web-css</a>&gt;</code>: <code>query_selector</code>, <code>query_selector_all</code>, <a href="../pod/CSSStyleSheet" class="podlinkpod">CSSStyleSheet</a>, <a href="../pod/CSSRule" class="podlinkpod">CSSRule</a> and its subclasses, and <a href="../pod/CSSStyleDeclaration" class="podlinkpod">CSSStyleDeclaration</a>.</p>
+
+<p>Following features require <a href="../pod/perl-web-encodings">the perl-web-encodings package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-encodings">https://github.com/manakai/perl-web-encodings</a>&gt;</code>: setter of <code>input_encoding</code> method of <code>Document</code> and <code>Entity</code>.</p>
+
+<p>Features performing URL-related operations require <a href="../pod/perl-web-url">the perl-web-url package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>, which depends on <a href="../pod/perl-web-encodings">the perl-web-encodings package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-encodings">https://github.com/manakai/perl-web-encodings</a>&gt;</code>. Such features include: <code>base_uri</code>, <code>manakai_set_url</code>, <code>manakai_entity_uri</code>, <code>manakai_entity_base_uri</code>, <code>declaration_base_uri</code>, <code>manakai_declaration_base_uri</code>, <code>action</code>, <code>cite</code>, <code>codebase</code>, <code>data</code>, <code>formaction</code>, <code>href</code>, <code>longdesc</code>, <code>object</code>, <code>ping</code>, <code>poster</code>, and <code>src</code>.</p>
+
+<p>Following features require the XXX module: <code>value</code> of <a href="../pod/Web/DOM/AtomDateConstruct" class="podlinkpod">Web::DOM::AtomDateConstruct</a>.</p>
+
+<section id="Using_CSS,_Selectors,_and_Media_Queries"><h1>Using CSS, Selectors, and Media Queries</h1>
+
+<p>How CSS style sheets are parsed and how CSSOM tree structure looks like depend on how much of CSS features are supported by the user agent. Since the web-dom module set by itself is not a rendering engine, most CSS features are considered as "not supported", therefore by default parsing discards most of CSS declarations. If you'd like to construct a CSS-based application on the top of the web-dom module set, you should turn on features you are supporting, through <a href="../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> module in the web-css package. The <a href="../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> object for a document's CSS parser can be accessed like this:</p>
+
+<pre>
+<code>  use Web::CSS::Parser;
+  my $parser = Web::CSS::Parser-&gt;get_parser_for_document ($doc);
+  $resolver = $parser-&gt;media_resolver;</code></pre>
+
+<p>... where $doc is the document node with which the CSS style sheet in question will be associated. Then, you can set the "supported" flag of features you are supporting, like this:</p>
+
+<pre>
+<code>  $resolver-&gt;{prop}-&gt;{display} = 1;
+  $resolver-&gt;{prop_value}-&gt;{display}-&gt;{block} = 1;</code></pre>
+
+<p>For more information on usage of the resolver, see <a href="../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> in the web-css package.</p>
+
+</section></section><section id="DEVELOPMENT"><h1>DEVELOPMENT</h1>
+
+<p>Latest version of the modules is available from the GitHub repository: <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code>.</p>
+
+<p>Test results can be reviewed at: <code class="url">&lt;<a href="https://travis-ci.org/manakai/perl-web-dom">https://travis-ci.org/manakai/perl-web-dom</a>&gt;</code>.</p>
+
+</section><section id="HISTORY"><h1>HISTORY</h1>
+
+<p>The manakai project has been developed several generations of DOM implementation. The current DOM3 implementation <code class="url">&lt;<a href="https://github.com/wakaba/manakai/tree/master/lib/Message/DOM">https://github.com/wakaba/manakai/tree/master/lib/Message/DOM</a>&gt;</code> had been worked since 2007.</p>
+
+<p>The <code>Web::DOM</code> modules has been developed as replacement for those modules, supporting the current DOM Standard. It does not reuse most of the code of the older implementation, and many useless DOM3 features are not implemented. However, it does implement some DOM3 features that is really necessary for backward compatibility, as well as non-standard manakai extensions. It should be possible for applications using the old implementation to migrate to the new implementation by just replacing class name and as such.</p>
+
+<section id="Obsolete_features"><h1>Obsolete features</h1>
+
+<p>Following features fully or partially implemented in previous versions of manakai DOM implementations are considered obsolete and will not be implemented by these modules unless they are reintroduced by some DOM specification or found to be necessary for backward compatibility:</p>
+
+<p>DOMImplementationRegistry, DOMImplementationSource, DOMImplementationList, DOM features, DOMStringList, StringExtended, read-only nodes, EntityReference, CDATASection, replaceWholeText, isElementContentWhitespace, specified setter, hasReplacementTree setter, DOM3 configuration parameters, configuration parameters for DOM3 spec compatible DTD-based node operations, DOM3 DOMError, DOMErrorHandler, UserDataHandler, DOMLocator, isId and family, internalSubset, TypeInfo and schemaTypeInfo, DOM3 LS, namespaces for DOM3 events, EventException, MutationEvent, MutationNameEvent, TextEvent, DocumentEvent-&gt;canDispatch, DocumentType-&gt;implementation, Document-&gt;createXHTMLDocument, URIReference, InternetMediaType, MANAKAI_FILTER_OPAQUE, Document-&gt;manakaiCreateSerialWalker, SerialWalker. HTMLElement-&gt;irrelevant, HTMLAnchorElement-&gt;media, HTMLAreaElement-&gt;media, HTMLCommandElement, HTMLDataGridElement, HTMLEventSourceElement, HTMLIsIndexElement, HTMLLegendElement-&gt;form, HTMLMenuElement-&gt;autosubmit, HTMLBlockquoteElement, HTMLStrictlyInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLSectioningElementExtended, HTMLListElementExtended, HTMLDListElementExtended, CSSStyleDeclaration-&gt;styleFloat. Overloaded operators <code>==</code>, <code>!=</code>, and <code>.=</code>, write operations through overloaded <code>@{}</code> and <code>%{}</code> operators for NodeList, NamedNodeMap, and HTMLCollection. Attr, Entity, and AttributeDefinition nodes can no longer contain Text nodes.</p>
+
+<p>By default the <code>DocumentType</code> node can no longer contain <code>ProcessingInstruction</code> nodes as children. The old behavior can be restored by setting a true value to the <code>manakai-allow-doctype-children</code> configuration parameter (See <a href="../pod/Web/DOM/Configuration" class="podlinkpod">Web::DOM::Configuration</a>).</p>
+
+<p>The <code>strict_error_checking</code> attribute no longer disables random exceptions as defined in DOM3 specification; its scope is formally defined in the manakai DOM Extensions specification [MANAKAI].</p>
+
+</section></section><section id="TODO"><h1>TODO</h1>
+
+<p>The initial milestone of the project is reimplementing the subset of DOM supported by the original manakai's DOM implementation <code class="url">&lt;<a href="https://github.com/wakaba/manakai/tree/master/lib/Message/DOM">https://github.com/wakaba/manakai/tree/master/lib/Message/DOM</a>&gt;</code>, except for obsolete features. Following features will be (re)implemented in due course:</p>
+
+<dl>
+<dt id="CSSOM_Cascading_API">CSSOM Cascading API</dt>
+
+<dd>
+<p>getComputedStyle [CSSOM], Element.prototype.manakaiComputedStyle, Window.prototype.manakaiGetComputedStyle, Window.prototype.setDocument <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="WebVTT_DOM_[HTML]_[WEBVTT]">WebVTT DOM [HTML] [WEBVTT]</dt>
+</dl>
+
+<p>More features not supported by previous versions of manakai DOM implementation are expected to be implemented as well, including but not limited to:</p>
+
+<dl>
+<dt id="HTMLFormControlsCollection,_HTMLOptionsCollection_[HTML]">HTMLFormControlsCollection, HTMLOptionsCollection [HTML]</dt>
+
+<dt id="Mutation_observers_[DOM]">Mutation observers [DOM]</dt>
+
+<dt id="Selectors_API_Level_2_features">Selectors API Level 2 features</dt>
+
+<dt id="DocumentStyle_API_[CSSOM]">DocumentStyle API [CSSOM]</dt>
+
+<dt id="<?xml-stylesheet?>_API_[CSSOM]">&lt;?xml-stylesheet?&gt; API [CSSOM]</dt>
+
+<dt id="@font-face,_@page_[CSSOM]">@font-face, @page [CSSOM]</dt>
+
+<dt id="SVGElement->style_[CSSOM]"><code>SVGElement-&gt;<strong id="member-style">style</strong> [CSSOM]</code></dt>
+
+<dt id="GetStyleUtils,_PseudoElement_[CSSOM]">GetStyleUtils, PseudoElement [CSSOM]</dt>
+
+<dt id="New_mutation_methods_[DOM]">New mutation methods [DOM]</dt>
+
+<dd>
+<p>prepend, append, before, after, replace, remove</p>
+
+</dd><dt id="DOM_Ranges">DOM Ranges</dt>
+
+<dd>
+<p>DOM Ranges interfaces and methods [DOM]; Ranges support in DOM Core methods and attributes [DOM]; Range.prototype.createContextualFragment [DOMPARSING].</p>
+
+</dd><dt id="DOM_Promise">DOM Promise</dt>
+</dl>
+
+<p>In addition, source codes of the modules include many "XXX" markers, indicating TODO items.</p>
+
+<p>Middle priority: URL; Encoding.</p>
+
+<p>Lower priority: Form API; HTMLMediaElement and related interfaces; Canvas; The ImageBitmap interface; The Screen interface; SVG; DnD; The RelatedEvent interface; The Window interface and related interfaces; The History interface and related interfaces; The Location interface; The Navigator interface and related interfaces; Scripting; Workers; Console; XHR; EventSource; WebSocket; postMessage and related interfaces; Storage; IndexedDB; Fullscreen; Notifications; Zip; XSLT 1.0.</p>
+
+<p>At the time of writing, there is no plan to implement the <code>properties</code> attribute of the <code>HTMLElement</code> interface (Instead, the <code>manakaiGetProperties</code> method is implemented).</p>
+
+</section><section id="LIMITATIONS"><h1>LIMITATIONS</h1>
+
+<p>Methods returning the index or position in some list or string, whose IDL type is a number type, do not convert the value as specified by the WebIDL specification and the DOM Perl Binding specification. This should not be a problem as it is not realistic to have lists of items whose length is greater than, or nearly equal to 2**31 in both Perl's runtime environment and realworld use cases.</p>
+
+<p>Although the modules implement APIs as used in the Web platform, they does not support the Web's security model, i.e. the same-origin policy. It does not make sense for Perl applications.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

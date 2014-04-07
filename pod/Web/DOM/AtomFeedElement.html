@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::AtomFeedElement</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::AtomFeedElement</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/AtomFeedElement.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::AtomFeedElement</code></h1><h2>The DOM <code>AtomFeedElement</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::AtomFeedElement</code> class implements the DOM <code>AtomFeedElement</code> interface.
+The class is used by the Atom <code>feed</code> element.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods for classes <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> and <a href="../../../pod/Web/DOM/AtomElement" class="podlinkpod">Web::DOM::AtomElement</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$entry_=_$el->add_new_entry_($id,_$title,_$lang)"><code>$entry = $el-&gt;<strong id="member-add_new_entry">add_new_entry</strong> ($id,
+$title,
+$lang)</code></dt>
+
+<dd>
+<p>Create a new entry element with specified <code>atom:id</code>,
+<code>atom:title</code>,
+and <code>xml:lang</code> values and return the element. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->atom_id"><code>$string = $el-&gt;<strong id="member-atom_id">atom_id</strong></code></dt>
+
+<dt id="$el->atom_id_($string)"><code>$el-&gt;<strong>atom_id</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the value of the <code>atom:id</code> child element. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->author_elements"><code>$col = $el-&gt;<strong id="member-author_elements">author_elements</strong></code></dt>
+
+<dd>
+<p>Return a <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the <code>atom:author</code> element childs. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->category_elements"><code>$col = $el-&gt;<strong id="member-category_elements">category_elements</strong></code></dt>
+
+<dd>
+<p>Return a <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the <code>atom:category</code> element childs. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->contributor_elements"><code>$col = $el-&gt;<strong id="member-contributor_elements">contributor_elements</strong></code></dt>
+
+<dd>
+<p>Return a <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the <code>atom:contributor</code> element childs. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->entry_elements"><code>$col = $el-&gt;<strong id="member-entry_elements">entry_elements</strong></code></dt>
+
+<dd>
+<p>Return a <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the <code>atom:entry</code> element childs. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$el2_=_$el->generator_element"><code>$el2 = $el-&gt;<strong id="member-generator_element">generator_element</strong></code></dt>
+
+<dd>
+<p>Return the <code>atom:generator</code> element child,
+if any. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+<p>If the <code>manakai-create-child-element</code> configuration parameter is set to true and there is no <code>atom:generator</code> element child,
+a new element is created and returned.
+Otherwise,
+no element is created and <code>undef</code> is returned.</p>
+
+</dd><dt id="$el2_=_$el->get_entry_element_by_id_($id)"><code>$el2 = $el-&gt;<strong id="member-get_entry_element_by_id">get_entry_element_by_id</strong> ($id)</code></dt>
+
+<dd>
+<p>Return the <code>atom:entry</code> child element whose <code>atom:id</code> is equal to the argument. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$url_=_$el->icon"><code>$url = $el-&gt;<strong id="member-icon">icon</strong></code></dt>
+
+<dt id="$el->icon_($url)"><code>$el-&gt;<strong>icon</strong> ($url)</code></dt>
+
+<dd>
+<p>Return or set the value of the <code>atom:icon</code> child element.
+The method returns the resoloved absolute URL if the value is a relative URL. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->link_elements"><code>$col = $el-&gt;<strong id="member-link_elements">link_elements</strong></code></dt>
+
+<dd>
+<p>Return a <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the <code>atom:link</code> element childs. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$url_=_$el->logo"><code>$url = $el-&gt;<strong id="member-logo">logo</strong></code></dt>
+
+<dt id="$el->logo_($url)"><code>$el-&gt;<strong>logo</strong> ($url)</code></dt>
+
+<dd>
+<p>Return or set the value of the <code>atom:logo</code> child element.
+The method returns the resoloved absolute URL if the value is a relative URL. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$el2_=_$el->rights_element"><code>$el2 = $el-&gt;<strong id="member-rights_element">rights_element</strong></code></dt>
+
+<dd>
+<p>Return the <code>atom:rights</code> element child,
+if any. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+<p>If the <code>manakai-create-child-element</code> configuration parameter is set to true and there is no <code>atom:rights</code> element child,
+a new element is created and returned.
+Otherwise,
+no element is created and <code>undef</code> is returned.</p>
+
+</dd><dt id="$el2_=_$el->subtitle_element"><code>$el2 = $el-&gt;<strong id="member-subtitle_element">subtitle_element</strong></code></dt>
+
+<dd>
+<p>Return the <code>atom:subtitle</code> element child,
+if any. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+<p>If the <code>manakai-create-child-element</code> configuration parameter is set to true and there is no <code>atom:subtitle</code> element child,
+a new element is created and returned.
+Otherwise,
+no element is created and <code>undef</code> is returned.</p>
+
+</dd><dt id="$el2_=_$el->title_element"><code>$el2 = $el-&gt;<strong id="member-title_element">title_element</strong></code></dt>
+
+<dd>
+<p>Return the <code>atom:title</code> element child,
+if any. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+<p>If the <code>manakai-create-child-element</code> configuration parameter is set to true and there is no <code>atom:title</code> element child,
+a new element is created and returned.
+Otherwise,
+no element is created and <code>undef</code> is returned.</p>
+
+</dd><dt id="$el2_=_$el->updated_element"><code>$el2 = $el-&gt;<strong id="member-updated_element">updated_element</strong></code></dt>
+
+<dd>
+<p>Return the <code>atom:updated</code> element child,
+if any. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+<p>If the <code>manakai-create-child-element</code> configuration parameter is set to true and there is no <code>atom:updated</code> element child,
+a new element is created and returned.
+Otherwise,
+no element is created and <code>undef</code> is returned.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="ATOMDOM">ATOMDOM</dt>
+
+<dd>
+<p>Atom DOM <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/atomdom">http://suika.suikawiki.org/www/markup/xml/atomdom</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/AtomElement" class="podlinkpod">Web::DOM::AtomElement</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

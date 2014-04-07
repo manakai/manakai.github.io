@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::XPath::FunctionLibrary</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::XPath::FunctionLibrary</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/XPath/FunctionLibrary.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::XPath::FunctionLibrary</code></h1><h2>XPath 1.0 Core Function Library</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::XPath::FunctionLibrary</code> module contains an implementation of the XPath 1.0 Core Function Library.
+It can be used directly,
+or by subclassing and adding more functions.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The module that can be used as the function library in parsing or evaluating of expressions must implement the following class methods:</p>
+
+<dl>
+<dt id="[$min,_$max]_=_Web::XPath::FunctionLibrary->get_argument_number_($nsurl,_$ln)"><code>[$min,
+$max] = Web::XPath::FunctionLibrary-&gt;<strong id="member-get_argument_number">get_argument_number</strong> ($nsurl,
+$ln)</code></dt>
+
+<dd>
+<p>Return whether the specified function is defined or not,
+and if defined,
+the minimum and maximum numbers of the arguments for the function.</p>
+
+<p>This method is invoked with two character string arguments: namespace URL and local name.
+If the namespace URL is <code>undef</code>,
+it represents the null namespace.
+Note that the empty string is different from <code>undef</code>.
+If the function identified by the namespace URL and local name is not defined,
+the method must return <code>undef</code>.</p>
+
+<p>If the function is defined,
+the method must return an array reference with two non-negative integers.
+The first number represents the minimum number of arguments.
+The second number represents the maximum number of arguments.
+The first number must be less than or equal to the second number.</p>
+
+<p>The method must not throw any exception.
+It must always return consistent result.</p>
+
+</dd><dt id="$code_=_Web::XPath::FunctionLibrary->get_code_($nsurl,_$ln)"><code>$code = Web::XPath::FunctionLibrary-&gt;<strong id="member-get_code">get_code</strong> ($nsurl,
+$ln)</code></dt>
+
+<dd>
+<p>Return the implementation of the specified function.</p>
+
+<p>This method is invoked with two character string arguments: namespace URL and local name.
+If the namespace URL is <code>undef</code>,
+it represents the null namespace.
+Note that the empty string is different from <code>undef</code>.
+If the function identified by the namespace URL and local name is not defined,
+the method must return <code>undef</code>.</p>
+
+<p>If the function is defined,
+the method must return a code reference.
+The code reference will be invoked with three arguments: <var>$self</var>,
+<var>$args</var>,
+and <var>$context</var>.</p>
+
+<p>The <var>$self</var> argument is the <a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a> object on which the XPath expression is evaluated.
+The code may invoke (non-private) methods on the object,
+and it may report any error by invoking the <code>$self-&gt;onerror</code> code reference.</p>
+
+<p>The <var>$args</var> argument is an array reference,
+containing the XPath values obtained by evaluating the argument expressions of the function,
+in order.
+The code must not modify them.</p>
+
+<p>The <var>$context</var> argument is a hash reference,
+containing the following key/value pairs: <code>node</code> is the context node; <code>size</code> is the context size,
+represented as a Perl number; <code>position</code> is the context position,
+represented as a Perl number.
+The code must not modify them.</p>
+
+<p>If the code reports a must-level error,
+it may return the <code>undef</code> value.
+If the <code>undef</code> value is returned,
+the evaluation is immediately terminated.
+Otherwise,
+the code must return an XPath value.
+The value is used as the return value of the function.</p>
+
+<p>See <a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a> for details on how XPath values are represented.</p>
+
+<p>The method and the code reference returned by the method must not throw any exception.
+They must always return consistent result.</p>
+</dd>
+</dl>
+
+<p>These methods must return consistent result.</p>
+
+</section><section id="FUNCTIONS"><h1>FUNCTIONS</h1>
+
+<p>This module implements the following XPath functions from the XPath 1.0 Core Function Library: <code>boolean()</code>,
+<code>ceiling()</code>,
+<code>concat()</code>,
+<code>contains()</code>,
+<code>false()</code>,
+<code>floor()</code>,
+<code>lang()</code>,
+<code>normalize-space()</code>,
+<code>not()</code>,
+<code>number()</code>,
+<code>round()</code>,
+<code>starts-with()</code>,
+<code>string()</code>,
+<code>string-length()</code>,
+<code>substring()</code>,
+<code>substring-after()</code>,
+<code>substring-before()</code>,
+<code>sum()</code>,
+<code>translate()</code>,
+and <code>true()</code>.</p>
+
+<section id="Handling_of_surrogate_characters"><h1>Handling of surrogate characters</h1>
+
+<p>Web browsers use UTF-16 as its internal character code,
+while Perl uses UTF-8.
+This difference affects behavior of some functions when arguments or relevant values contain one or more surrogate code points and/or characters that are represented by surrogate code points in UTF-16 (i.e.
+U+D800-DFFF and U+10000-U+10FFFF).</p>
+
+<p>Following functions are implemented in terms of characters: <code>concat()</code>,
+<code>string()</code>,
+and <code>translate()</code>,
+and string match operations (including the <code>=</code> operation,
+the <code>substring-before()</code> function and so on).
+In other words,
+they are implemented in the same way as XPath implementations strictly conforming to the XPath 1.0 specification and their result can be different from those in Web browsers.</p>
+
+<p>Following functions are implemented in terms of code points: <code>string-length()</code> and <code>substring()</code>.
+That is,
+their results are same as Web browsers and can be different from strict XPath 1.0 implementations.</p>
+
+<p>For more information on handling of surrogates,
+see manakai's DOM Perl Binding specification [MANAKAI].</p>
+
+</section></section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a>,
+<a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="XPATH">XPATH</dt>
+
+<dd>
+<p>XML Path Language (XPath) Version 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xpath/">http://www.w3.org/TR/xpath/</a>&gt;</code>.</p>
+
+<p>XML Path Language (XPath) Version 1.0 Specification Errata <code class="url">&lt;<a href="http://www.w3.org/1999/11/REC-xpath-19991116-errata/">http://www.w3.org/1999/11/REC-xpath-19991116-errata/</a>&gt;</code>.</p>
+
+<p>For the purpose of the <code>number()</code> function,
+whitespace is defined as the production rule <code>S</code> [XML].</p>
+
+<p>It is an error if the argument to the <code>number()</code>,
+<code>boolean()</code>,
+or <code>string()</code> function is not of a supported type.</p>
+
+<p>For the purpose of the <code>lang()</code> function,
+the <code>xml:lang</code> attribute value MUST be compared ASCII case-insensitively.</p>
+
+<p>For the purpose of the <code>sum()</code> function,
+convertion of a string to a number MUST be done by the same way as the <code>number()</code> function,
+and the calculation of the sum MUST be done by adding the numbers to positive zero in the same way as the <code>+</code> operator.</p>
+
+<p>For the purpose of the <code>id()</code> function,
+the element whose unique ID is <var>i</var> MUST be obtained by the following steps:</p>
+
+<pre>
+<code>  1. If I&lt;i&gt; is the empty string, return null and abort these steps.
+
+  2. Otherwise, evaluate C&lt;/descendant-or-self::*[dom:id () = $i][1]&gt;
+     where C&lt;dom:id()&gt; is a function that returns the unique
+     identifier (ID) of the element [DOM] and I&lt;$i&gt; is string I&lt;i&gt;.
+
+  3. If the previous step results in an empty node-set, return null.
+     Otherwise, return the node in the node-set.</code></pre>
+
+<p>For the purpose of the <code>substring()</code> function and the <code>string-length()</code> function, UTF-16 code units MUST be considered as characters.</p>
+
+<p>For a node whose type is not defined by XPath 1.0 specification, the string-value of the node is the empty string. It has no expanded-name.</p>
+
+</dd><dt id="XML">XML</dt>
+
+<dd>
+<p>Extensible Markup Language (XML) 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xml/">http://www.w3.org/TR/xml/</a>&gt;</code>.</p>
+
+</dd><dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/">http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai's%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai's%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

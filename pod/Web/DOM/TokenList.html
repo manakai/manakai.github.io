@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::TokenList</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::TokenList</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/TokenList.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::TokenList</code></h1><h2>The DOM <code>DOMTokenList</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::TokenList</code> class implements the DOM <code>DOMTokenList</code> interface.</p>
+
+<p>The <code>DOMTokenList</code> object is used by the <code>class_list</code> method of the elements and the <code>rel_list</code> method of the HTML hyperlink elements.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="push_@$tokens,_$token1,_$token2,_..."><code>push @$tokens,
+$token1,
+$token2,
+...</code></dt>
+
+<dt id="$tokens->add_($token1,_$token2,_...)"><code>$tokens-&gt;<strong id="member-add">add</strong> ($token1,
+$token2,
+...)</code></dt>
+
+<dd>
+<p>Append specified tokens to the list. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$tokens->contains_($token)"><code>$boolean = $tokens-&gt;<strong id="member-contains">contains</strong> ($token)</code></dt>
+
+<dd>
+<p>Return whether the list contains the specified token or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$tokens->[$index]"><code>$string = $tokens-&gt;<strong id="member-[$index]">[$index]</strong></code></dt>
+
+<dt id="$string_=_$tokens->item_($index)"><code>$string = $tokens-&gt;<strong id="member-item">item</strong> ($index)</code></dt>
+
+<dd>
+<p>Return the token in the list,
+specified by its index. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>Use of the <code>item</code> method is discouraged as it doesn't support Perl-ish ways to access items,
+such as negative indexing,
+while <code>$node_list-&gt;[-1]</code> works as intended.</p>
+
+</dd><dt id="$number_=_@$tokens"><code>$number = @$tokens</code></dt>
+
+<dt id="$number_=_$tokens->length"><code>$number = $tokens-&gt;<strong id="member-length">length</strong></code></dt>
+
+<dd>
+<p>Return the number of the tokens in the list. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$tokens->remove_($token1,_$token2,_...)"><code>$tokens-&gt;<strong id="member-remove">remove</strong> ($token1,
+$token2,
+...)</code></dt>
+
+<dd>
+<p>Remove the specified tokens from the list. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$tokens->toggle_($token)"><code>$bool = $tokens-&gt;<strong id="member-toggle">toggle</strong> ($token)</code></dt>
+
+<dt id="$bool_=_$tokens->toggle_($token,_$bool)"><code>$bool = $tokens-&gt;<strong>toggle</strong> ($token,
+$bool)</code></dt>
+
+<dd>
+<p>Change whether the token appears in the list or not.
+If the second argument is specified,
+the status is set to match that value.
+Otherwise,
+the status is changed to not equal to the current status.
+The method returns the new status. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_''_._$tokens"><code>$string = '' .
+$tokens</code></dt>
+
+<dd>
+<p>Return the serialized representation of the tokens,
+joined by the space character. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The object supports Perl standard operations for array references,
+e.g.
+<code>pop @$tokens</code>. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/">http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

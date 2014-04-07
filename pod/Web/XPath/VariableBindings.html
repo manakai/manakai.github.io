@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::XPath::VariableBindings</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::XPath::VariableBindings</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/XPath/VariableBindings.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::XPath::VariableBindings</code></h1><h2>Set of XPath variable bindings</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::XPath::VariableBindings</code> module is a set of variable bindings used to parse and evaluate XPath 1.0 expressions.
+This class,
+its subclass,
+or any class that implements the required methods as described in later section can be used as the variable bindings for the <a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a> and <a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a> modules.</p>
+
+<p>In many cases the <code>Web::XPath::VariableBindings</code> module is useful enough.
+However,
+it sometimes desired to implement a custom variable bindings module,
+e.g.
+for sharing XSLT variable bindings among XPath and XSLT implementations.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The <code>Web::XPath::VariableBindings</code> module has the <code>new</code> class method,
+which returns a new instance of the empty variable bindings.</p>
+
+<p>The module that can be used as the set of variable bindings in parsing or evaluating of expressions must implement the following instance methods:</p>
+
+<dl>
+<dt id="$boolean_=_$vars->has_variable_($nsurl,_$ln)"><code>$boolean = $vars-&gt;<strong id="member-has_variable">has_variable</strong> ($nsurl,
+$ln)</code></dt>
+
+<dd>
+<p>Return whether the specified variable is defined or not.
+It is invoked with two Perl character string arguments: namespace URL and local name.
+If the namespace URL is <code>undef</code>,
+it represents the null namespace.
+Note that the empty string is different from <code>undef</code>.
+It must return whether the variable identified by the namespace URL and local name is defined or not,
+as a Perl boolean value.
+It must not throw an exception.
+It must return consistent result.</p>
+
+</dd><dt id="$value_=_$vars->get_variable_($nsurl,_$ln)"><code>$value = $vars-&gt;<strong id="member-get_variable">get_variable</strong> ($nsurl,
+$ln)</code></dt>
+
+<dd>
+<p>Return the value bound to the specified variable,
+if any.
+It is invoked with two Perl character string arguments: namespace URL and local name.
+If the namespace URL is <code>undef</code>,
+it represents the null namespace.
+Note that the empty string is different from <code>undef</code>.
+It must return the XPath value bound to the variable identified by the namespace URL and local name,
+if any.
+If the variable is not bound to any value,
+it must return <code>undef</code>.
+It must not throw an exception.
+It must return consistent result.</p>
+
+</dd><dt id="$vars->set_variable_($nsurl,_$ln,_$value)"><code>$vars-&gt;<strong id="member-set_variable">set_variable</strong> ($nsurl,
+$ln,
+$value)</code></dt>
+
+<dd>
+<p>Add a variable binding.
+The first and second arguments must be a Perl character string representing the namespace URL and the local name of the variable.
+If the namespace URL is <code>undef</code>,
+it represents the null namespace.
+The third argument must be an XPath value.
+It must not throw an exception.
+It must return consistent result.</p>
+
+<p>If the variable is already bound to another value,
+the old binding is removed.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a>,
+<a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a>.</p>
+
+<p>See <a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a> for XPath value data structures.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="XPATH">XPATH</dt>
+
+<dd>
+<p>XML Path Language (XPath) Version 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xpath/">http://www.w3.org/TR/xpath/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

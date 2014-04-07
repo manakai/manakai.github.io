@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Selectors::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Selectors::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Selectors/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Selectors::Parser</code></h1><h2>A Selectors parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::CSS::Selectors::Parser;
+  my $parser = Web::CSS::Selectors::Parser-&gt;new;
+  $parsed_selectors = $parser-&gt;parse_char_string ($selectors);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::Selectors::Parser</code> is a parser for Selectors, the element pattern language used in CSS. It parses a Selectors string into parsed data structure, if the input is valid, or reports a parse error, otherwise. In addition, it provides a method to compute the specificity of a parsed selector.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<dl>
+<dt id="$parser_=_Web::CSS::Selectors::Parser->new"><code>$parser = Web::CSS::Selectors::Parser-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Creates a new instance of the Selectors parser.</p>
+
+</dd><dt id="$parser->context_($context)"><code>$parser-&gt;<strong id="member-context">context</strong> ($context)</code></dt>
+
+<dt id="$context_=_$parser->context"><code>$context = $parser-&gt;<strong>context</strong></code></dt>
+
+<dd>
+<p>Return or specify the <a href="../../../../pod/Web/CSS/Context" class="podlinkpod">Web::CSS::Context</a> object used to resolve namespaces in Selectors.</p>
+
+</dd><dt id="$code_=_$parser->onerror"><code>$code = $parser-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$parser->onerror_($code)"><code>$parser-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Return or specify the code reference to which any errors and warnings during the parsing is reported. The code would receive the following name-value pairs:</p>
+
+<dl>
+<dt><a name="type_(string,_always_specified)">type (string, always specified)</a></dt>
+
+<dd>
+<p>A short string describing the kind of the error. Descriptions of error types are available at &lt;http://suika.suikawiki.org/gate/2007/html/error-description#{type}&gt;, where <i>{type}</i> is an error type string.</p>
+
+<p>For the list of error types, see &lt;http://suika.suikawiki.org/gate/2007/html/error-description&gt;.</p>
+
+</dd><dt><a name="level_(string,_always_specified)">level (string, always specified)</a></dt>
+
+<dd>
+<p>A character representing the level or severity of the error, which is one of the following characters: <code>m</code> (violation to a MUST-level requirement), <code>s</code> (violation to a SHOULD-level requirement), <code>w</code> (a warning), and <code>i</code> (an informational notification).</p>
+
+</dd><dt><a name="token_(always_specified)">token (always specified)</a></dt>
+
+<dd>
+<p>A <a href="http://search.cpan.org/perldoc?Web%3A%3ACSS%3A%3ATokenizer" class="podlinkpod">Web::CSS::Tokenizer</a> token where the error is detected.</p>
+
+</dd><dt><a name="uri_(a_reference_to_string)">uri (a reference to string)</a></dt>
+
+<dd>
+<p>The URL in which the input selectors string is found.</p>
+
+</dd><dt><a name="value_(string,_possibly_missing)">value (string, possibly missing)</a></dt>
+
+<dd>
+<p>A part of the input, in which an error is detected.</p>
+</dd>
+</dl>
+
+</dd><dt id="$parsed_=_$parser->parse_char_string_as_selectors_($selectors)"><code>$parsed = $parser-&gt;<strong id="member-parse_char_string_as_selectors">parse_char_string_as_selectors</strong> ($selectors)</code></dt>
+
+<dd>
+<p>Parses a character string. If it is a valid list of selectors, the method returns the parsed list of selectors data structure. Otherwise, it returns <code>undef</code>.</p>
+
+</dd><dt id="$specificity_=_$parser->get_selector_specificity_($parsed_selector)"><code>$specificity = $parser-&gt;<strong id="member-get_selector_specificity">get_selector_specificity</strong> ($parsed_selector)</code></dt>
+
+<dd>
+<p>XXX</p>
+
+<p>Returns the specificity of a parsed selector data structure. Note that the input has to be a <var>selector</var>, not a <var>group of selectors</var>.</p>
+
+<p>The return value is an array reference with four values: The <code>style</code> attribute flag (always <code>0</code>), <var>a</var>, <var>b</var>, and <var>c</var>.</p>
+</dd>
+</dl>
+
+</section><section id="DATA_STRUCTURES"><h1>DATA STRUCTURES</h1>
+
+<p>This section describes the "list of selectors" data structure.</p>
+
+<section id="A_list_of_selectors"><h1>A list of selectors</h1>
+
+<p>An array reference, which contains one or more selector data structures. They corresponds to selectors in the original group of selectors string, in order.</p>
+
+</section><section id="A_selector"><h1>A selector</h1>
+
+<p>A selector is represented as an array reference, which contains pairs of a combinator constant and a sequence of simple selector data structure. They corresponds to sequences of simple selector and combinators appears in the original selector string, in order. Note that the first (index 0) item is always the descendant combinator constant.</p>
+
+<p>The constants below represent the types of combinators.</p>
+
+<dl>
+<dt id="DESCENDANT_COMBINATOR">DESCENDANT_COMBINATOR</dt>
+
+<dd>
+<p>A descendant combinator.</p>
+
+</dd><dt id="CHILD_COMBINATOR">CHILD_COMBINATOR</dt>
+
+<dd>
+<p>A child combinator.</p>
+
+</dd><dt id="ADJACENT_SIBLING_COMBINATOR">ADJACENT_SIBLING_COMBINATOR</dt>
+
+<dd>
+<p>An adjacent sibling combinator.</p>
+
+</dd><dt id="GENERAL_SIBLING_COMBINATOR">GENERAL_SIBLING_COMBINATOR</dt>
+
+<dd>
+<p>A general sibling combinator.</p>
+</dd>
+</dl>
+
+</section><section id="A_sequence_of_simple_selectors"><h1>A sequence of simple selectors</h1>
+
+<p>A sequence of simple selector is represented as an array reference, which contains simple selector data strucutures. They corresponds to simple selectors in the original sequence of simple selectors string, in order.</p>
+
+</section><section id="A_simple_selector"><h1>A simple selector</h1>
+
+<p>A simple selector is represented as an array reference whose first (index 0) item is the type of simple selector and the following items are arguments to the simple selector.</p>
+
+<p>The constants below represent the types of simple selectors (or parts of simple selectors).</p>
+
+<dl>
+<dt id="ELEMENT_SELECTOR">ELEMENT_SELECTOR</dt>
+
+<dd>
+<p>The "element selector" simple selector data structure takes the following form:</p>
+
+<pre>
+<code>  [ELEMENT_SELECTOR, $nsurl, $local_name, $prefix, $wc_prefix, $wc_type]</code></pre>
+
+<p>The item with index 1 is the namespace URL of the selector. If it is <code>undef</code>, any namespace (including the null namespace) matches. If it is the empty string, only the null namespace matches. Otherwise, the specified namespace URL is compared literally with the target element's (non-null) namespace URL.</p>
+
+<p>The item with index 2 is the local name of the selector. If it is <code>undef</code>, any local name matches. Otherwise, the specified local name is compared literally with the target element's local name (In HTML, it might be compared ASCII case-insensitively, however).</p>
+
+<p>The item with index 3 is the namespace prefix of the selector. If it is the empty string, the selector has no prefix (and separator '|'). Otherwise, if it is non-<code>undef</code> value, it is the namespace prefix. Otherwise, the value is <code>undef</code> and the item has no effect (Either the null namespace notation ('|' without prefix) or wildcard prefix ('*|') is used).</p>
+
+<p>The item with index 4 is the namespace wildcard flag of the selector. It is a boolean value representing whether the wildcard prefix ('*|') is explicitly used or not.</p>
+
+<p>The item with index 5 is the local name wildcard flag of the selector. It is a boolean value representing whether the type selector is explicitly used or not.</p>
+
+<p>A sequence of simple selectors always contains a simple selector whose type is <code>ELEMENT_SELECTOR</code> as its first component. There are following patterns of "element selector" simple selector:</p>
+
+<pre>
+<code>  [ELEMENT_SELECTOR, undef, 'a'  , ''   , 0, 0]   a
+  [ELEMENT_SELECTOR, undef, undef, ''   , 0, 1]   *
+  [ELEMENT_SELECTOR, ''   , 'a'  , undef, 0, 0]  |a
+  [ELEMENT_SELECTOR, ''   , undef, undef, 0, 1]  |*
+  [ELEMENT_SELECTOR, undef, 'a'  , undef, 1, 0] *|a
+  [ELEMENT_SELECTOR, undef, undef, undef, 1, 1] *|*
+  [ELEMENT_SELECTOR, undef, undef, ''   , 0, 0] .b (= *.b)
+
+  @namespace '';
+  [ELEMENT_SELECTOR, ''   , 'a'  , ''   , 0, 0]   a
+  [ELEMENT_SELECTOR, ''   , undef, ''   , 0, 1]   *
+  [ELEMENT_SELECTOR, ''   , 'a'  , undef, 0, 0]  |a
+  [ELEMENT_SELECTOR, ''   , undef, undef, 0, 1]  |*
+  [ELEMENT_SELECTOR, undef, 'a'  , undef, 1, 0] *|a
+  [ELEMENT_SELECTOR, undef, undef, undef, 1, 1] *|*
+  [ELEMENT_SELECTOR, ''   , undef, ''   , 0, 0] .b (= *.b)
+
+  @namespace 'ns';
+  [ELEMENT_SELECTOR, 'ns' , 'a'  , ''   , 0, 0]   a
+  [ELEMENT_SELECTOR, 'ns' , undef, ''   , 0, 1]   *
+  [ELEMENT_SELECTOR, ''   , 'a'  , undef, 0, 0]  |a
+  [ELEMENT_SELECTOR, ''   , undef, undef, 0, 1]  |*
+  [ELEMENT_SELECTOR, undef, 'a'  , undef, 1, 0] *|a
+  [ELEMENT_SELECTOR, undef, undef, undef, 1, 1] *|*
+  [ELEMENT_SELECTOR, 'ns' , undef, ''   , 0, 0] .b (= *.b)
+
+  @namespace p '';
+  [ELEMENT_SELECTOR, ''   , 'a'  , 'p'  , 0, 0] p|a
+  [ELEMENT_SELECTOR, ''   , undef, 'p'  , 0, 1] p|*
+
+  @namespace p 'ns';
+  [ELEMENT_SELECTOR, 'ns' , 'a'  , 'p'  , 0, 0] p|a
+  [ELEMENT_SELECTOR, 'ns' , undef, 'p'  , 0, 1] p|*
+
+  In :not() or :match()
+  [ELEMENT_SELECTOR, undef, undef, ''   , 0, 0] .b (= *|*.b)</code></pre>
+
+</dd><dt id="ID_SELECTOR">ID_SELECTOR</dt>
+
+<dd>
+<p>An ID selector. The first argument (item of index 1) is the ID.</p>
+
+</dd><dt id="CLASS_SELECTOR">CLASS_SELECTOR</dt>
+
+<dd>
+<p>A class selector. The first argument (item of index 1) is the class.</p>
+
+</dd><dt id="PSEUDO_CLASS_SELECTOR">PSEUDO_CLASS_SELECTOR</dt>
+
+<dd>
+<p>A pseudo-class selector. The first argument (item of index 1) is the pseudo-class name in lowercase. If the pseudo-class takes a string or identifier argument (e.g. <code>:lang()</code> or <code>:contains()</code>), the second argument (item of index 2) is the argument (with no case folding). Otherwise, if the pseudo-class takes a <code>an+b</code> argument (e.g. <code>:nth-child()</code>), the second argument (item of index 2) represents the <var>a</var> value and the third argument (item of index 3) represents the <var>b</var> value (Even an incomplete argument is normalized to this form). If the pseudo-class takes a list of selectors (e.g. <code>:not()</code>), the item with index 2 is the list of selectors data structure, representing the selectors within the functional notation.</p>
+
+</dd><dt id="PSEUDO_ELEMENT_SELECTOR">PSEUDO_ELEMENT_SELECTOR</dt>
+
+<dd>
+<p>A pseudo-element specification. The first argument (item of index 1) is the pseudo-element name in lowercase. If the pseudo-element takes a list of selectors (e.g. <code>::cue()</code>), the item with index 2 is the list of selectors data structure, representing the selectors within the functional notation.</p>
+
+</dd><dt id="ATTRIBUTE_SELECTOR">ATTRIBUTE_SELECTOR</dt>
+
+<dd>
+<p>An attribute selector. The first argument (item of index 1) is the attribute name. The second argument (item of index 2) is the type of matching. The third argument (item of index 3) depends on the type of matching. The fourth argument (item of index 4) is the namespace prefix, if exists and is not the empty string, or <code>undef</code> otherwise.</p>
+
+<p>The constants below represent the types of matches used in attribute selectors.</p>
+
+<dl>
+<dt><a name="EXISTS_MATCH">EXISTS_MATCH</a></dt>
+
+<dd>
+<p>Match by the existence of an attribute. The third argument (item of index 3) is <code>undef</code>.</p>
+
+</dd><dt><a name="EQUALS_MATCH">EQUALS_MATCH</a></dt>
+
+<dd>
+<p>Exact match. The third argument (item of index 3) is the expected value.</p>
+
+</dd><dt><a name="INCLUDES_MATCH">INCLUDES_MATCH</a></dt>
+
+<dd>
+<p>Includes match (typically used for class attributes). The third argument (item of index 3) is the expected value.</p>
+
+</dd><dt><a name="DASH_MATCH">DASH_MATCH</a></dt>
+
+<dd>
+<p>Dash match (typically used for language tag attributes). The third argument (item of index 3) is the expected value.</p>
+
+</dd><dt><a name="PREFIX_MATCH">PREFIX_MATCH</a></dt>
+
+<dd>
+<p>Prefix match. The third argument (item of index 3) is the expected value.</p>
+
+</dd><dt><a name="SUFFIX_MATCH">SUFFIX_MATCH</a></dt>
+
+<dd>
+<p>Suffix match. The third argument (item of index 3) is the expected value.</p>
+
+</dd><dt><a name="SUBSTRING_MATCH">SUBSTRING_MATCH</a></dt>
+
+<dd>
+<p>Substring match. The third argument (item of index 3) is the expected value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<p>The constants mentioned in this section can be exported by <code>use</code>ing the module:</p>
+
+<pre>
+<code>  use Web::CSS::Selectors::Parser;</code></pre>
+
+</section></section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<p>Selectors Level 4 <code class="url">&lt;<a href="http://dev.w3.org/csswg/selectors4/">http://dev.w3.org/csswg/selectors4/</a>&gt;</code>.</p>
+
+<p>CSSOM <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/">http://dev.w3.org/csswg/cssom/</a>&gt;</code>.</p>
+
+<p>The CSS syntax <code class="url">&lt;<a href="http://www.w3.org/TR/CSS21/syndata.html">http://www.w3.org/TR/CSS21/syndata.html</a>&gt;</code>.</p>
+
+<p>The <code>style</code> attribute specificity <code class="url">&lt;<a href="http://www.w3.org/TR/CSS21/cascade.html#specificity">http://www.w3.org/TR/CSS21/cascade.html#specificity</a>&gt;</code>.</p>
+
+<p>manakai Selectors Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/gate/2005/sw/manakai/Selectors%20Extensions">http://suika.suikawiki.org/gate/2005/sw/manakai/Selectors%20Extensions</a>&gt;</code>.</p>
+
+<p>Supported standards - Selectors <code class="url">&lt;<a href="http://suika.suikawiki.org/gate/2007/html/standards#selectors">http://suika.suikawiki.org/gate/2007/html/standards#selectors</a>&gt;</code>.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../../pod/Web/CSS/Selectors/API" class="podlinkpod">Web::CSS::Selectors::API</a>, <a href="../../../../pod/Web/CSS/Selectors/Serializer" class="podlinkpod">Web::CSS::Selectors::Serializer</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

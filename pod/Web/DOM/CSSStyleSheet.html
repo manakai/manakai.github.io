@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::CSSStyleSheet</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::CSSStyleSheet</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/CSSStyleSheet.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::CSSStyleSheet</code></h1><h2>The DOM <code>CSSStyleSheet</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::CSSStyleSheet</code> class implements the DOM <code>CSSStyleSheet</code> interface.
+It represents a CSS style sheet.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$list_=_$ss->css_rules"><code>$list = $ss-&gt;<strong id="member-css_rules">css_rules</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/CSSRuleList" class="podlinkpod">Web::DOM::CSSRuleList</a> object containing the CSS rules in the style sheet. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$ss->css_text"><code>$string = $ss-&gt;<strong id="member-css_text">css_text</strong></code></dt>
+
+<dd>
+<p>Return the serialized style sheet. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$ss->delete_rule_($index)"><code>$ss-&gt;<strong id="member-delete_rule">delete_rule</strong> ($index)</code></dt>
+
+<dd>
+<p>Return a rule from the list of rules contained by the style sheet. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ss->disabled"><code>$boolean = $ss-&gt;<strong id="member-disabled">disabled</strong></code></dt>
+
+<dt id="$ss->disabled_($boolean)"><code>$ss-&gt;<strong>disabled</strong> ($boolean)</code></dt>
+
+<dd>
+<p>Return or set the disable flag of the style sheet. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$ss->href"><code>$string = $ss-&gt;<strong id="member-href">href</strong></code></dt>
+
+<dd>
+<p>Return the URL of the style sheet.
+If the style sheet is embedded in other document,
+return <code>undef</code>. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$index_=_$ss->insert_rule_($string,_$index)"><code>$index = $ss-&gt;<strong id="member-insert_rule">insert_rule</strong> ($string,
+$index)</code></dt>
+
+<dd>
+<p>Parse the string as a CSS rule and insert into the specified index of the list of rules contained by the style sheet. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$url_=_$ss->manakai_base_url"><code>$url = $ss-&gt;<strong id="member-manakai_base_url">manakai_base_url</strong></code></dt>
+
+<dd>
+<p>Return the base URL of the style sheet. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$charset_=_$ss->manakai_input_encoding"><code>$charset = $ss-&gt;<strong id="member-manakai_input_encoding">manakai_input_encoding</strong></code></dt>
+
+<dd>
+<p>Return the encoding name used to parse the style sheet.
+If the style sheet is embedded in other document,
+return <code>utf-8</code>. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ss->manakai_is_default_namespace_($url)"><code>$boolean = $ss-&gt;<strong id="member-manakai_is_default_namespace">manakai_is_default_namespace</strong> ($url)</code></dt>
+
+<dd>
+<p>Return whether the specified namespace URL is the default namespace or not.
+If the namespace URL is <code>undef</code> or the empty string,
+it represents the null namespace. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$prefix_=_$ss->manakai_lookup_namespace_prefix_($url)"><code>$prefix = $ss-&gt;<strong id="member-manakai_lookup_namespace_prefix">manakai_lookup_namespace_prefix</strong> ($url)</code></dt>
+
+<dd>
+<p>Return the namespace prefix for the specified namespace URL,
+if declared.
+If the namespace URL is <code>undef</code> or the empty string,
+it represents the null namespace.
+If no prefix is declared for the namespace URL,
+<code>undef</code> is returned. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$url_=_$ss->manakai_lookup_namespace_uri_($prefix)"><code>$url = $ss-&gt;<strong id="member-manakai_lookup_namespace_uri">manakai_lookup_namespace_uri</strong> ($prefix)</code></dt>
+
+<dd>
+<p>Return the namespace URL for the specified namespace prefix,
+if declared.
+If the prefix is <code>undef</code> or the empty string,
+it represents the default namespace (i.e.
+the namespace for the prefixless type selectors).
+If no namespace URL is declared for the prefix,
+<code>undef</code> is returned.
+If the prefix is bound to the null namespace,
+the empty string is returned. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$media_list_=_$ss->media"><code>$media_list = $ss-&gt;<strong id="member-media">media</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/MediaList" class="podlinkpod">Web::DOM::MediaList</a> representing the list of media queries of the style sheet. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$ss->media_($string)"><code>$ss-&gt;<strong>media</strong> ($string)</code></dt>
+
+<dd>
+<p>Set the specified string as the list of media queries of the style sheet. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$ss->owner_node"><code>$node = $ss-&gt;<strong id="member-owner_node">owner_node</strong></code></dt>
+
+<dd>
+<p>Return the owner node of the style sheet,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$rule_=_$ss->owner_rule"><code>$rule = $ss-&gt;<strong id="member-owner_rule">owner_rule</strong></code></dt>
+
+<dd>
+<p>Return the owner CSS rule of the style sheet,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$ss->parent_style_sheet"><code>$node = $ss-&gt;<strong id="member-parent_style_sheet">parent_style_sheet</strong></code></dt>
+
+<dd>
+<p>Return the parent style sheet of the style sheet,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$ss->title"><code>$string = $ss-&gt;<strong id="member-title">title</strong></code></dt>
+
+<dd>
+<p>Return the title of the alternative style sheet set,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$ss->type"><code>$string = $ss-&gt;<strong id="member-type">type</strong></code></dt>
+
+<dd>
+<p>Return the MIME type of the style sheet,
+i.e.
+<code>text/css</code>. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>See <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSS Object Model (CSSOM) <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/">http://dev.w3.org/csswg/cssom/</a>&gt;</code>.</p>
+
+<p>The <code>deleteRule</code> method MUST set the "parent CSS style sheet" of the rules contained by the /old rule/ to null.</p>
+
+<p>The <code>insertRule</code> method MUST use the <code>@namespace</code> at-rules in the style sheet to resolve namespaces,
+if necessary.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#styling">http://www.whatwg.org/specs/web-apps/current-work/#styling</a>&gt;</code>.</p>
+
+<p>When a CSS style sheet is created from an HTML <code>style</code> element,
+the owner node of the style sheet MUST be set to the element.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/CSSRule" class="podlinkpod">Web::DOM::CSSRule</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::HTML::Microdata</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::HTML::Microdata</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/HTML/Microdata.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::HTML::Microdata</code></h1><h2>HTML microdata</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::HTML::Microdata;
+  
+  $doc-&gt;inner_html (q{
+    &lt;p itemscope&gt;
+      &lt;span itemprop=a&gt;bb&lt;/span&gt;
+      &lt;img itemprop=b src="http://www.example.com/" alt=Logo&gt;
+  });
+  
+  $md = Web::HTML::Microdata-&gt;new;
+  $items = $md-&gt;get_top_level_items ($doc);
+      # [
+      #   {type =&gt; 'item', node =&gt; $doc-&gt;query_selector ('p'),
+      #    props =&gt; {
+      #      a =&gt; [{type =&gt; 'string', text =&gt; 'bb',
+      #             node =&gt; $doc-&gt;query_selector ('span')}],
+      #      b =&gt; [{type =&gt; 'url', text =&gt; 'http://www.example.com/',
+      #             node =&gt; $doc-&gt;query_selector ('img')}],
+      #    },
+      #    types =&gt; {}, id =&gt; undef},
+      # ]</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::HTML::Microdata</code> module provides access to microdata items in the document.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$md_=_Web::HTML::Microdata->new"><code>$md = Web::HTML::Microdata-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the microdata implementation.</p>
+
+</dd><dt id="$code_=_$md->onerror"><code>$code = $md-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$md->onerror_($code)"><code>$md-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Get or set the error handler for the implementation. Any microdata error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
+
+<p>The value should not be set while the implementation is running. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$items_=_$md->get_top_level_items_($node)"><code>$items = $md-&gt;<strong id="member-get_top_level_items">get_top_level_items</strong> ($node)</code></dt>
+
+<dd>
+<p>Return an array reference of top-level microdata items in the subtree rooted by the specified node. The argument must be a DOM <code>Element</code>, <code>Document</code>, or <code>DocumentFragment</code>.</p>
+
+<p>Items of the returned array reference are "item" data described in the later section.</p>
+
+</dd><dt id="$item_=_$md->get_item_of_element_($element)"><code>$item = $md-&gt;<strong id="member-get_item_of_element">get_item_of_element</strong> ($element)</code></dt>
+
+<dd>
+<p>Return a top-level microdata item created by the specified node. The argument must be a DOM <code>Element</code>.</p>
+
+<p>The element must be an element that creates an item (i.e. an HTML element with the <code>itemscope</code> attribute specified). If the element specified does not create an item according to the spec, the result could be somewhat stupid.</p>
+
+<p>The method returns an "item" data described in the later section.</p>
+</dd>
+</dl>
+
+</section><section id="DATA_STRUCTURES"><h1>DATA STRUCTURES</h1>
+
+<section id="Item"><h1>Item</h1>
+
+<p>An "item" data is a hash reference, containing following name/value pairs:</p>
+
+<dl>
+<dt id="type">type</dt>
+
+<dd>
+<p>Always the string <code>item</code>.</p>
+
+</dd><dt id="node">node</dt>
+
+<dd>
+<p>The <code>Element</code> that created the microdata item.</p>
+
+</dd><dt id="props">props</dt>
+
+<dd>
+<p>The hash reference containing properties of the microdata item. The hash names are property names in the item. The hash values are corresponding property values, represented as array references of zero or more values. Property values are represented as "value" data. Property values are sorted in tree order of elements in which values are contained.</p>
+
+</dd><dt id="types">types</dt>
+
+<dd>
+<p>The hash reference containing types of the microdata item. Note that this is different member from <code>type</code>. The hash names are item types. The hash values are whether the item has the item type or not.</p>
+
+</dd><dt id="id">id</dt>
+
+<dd>
+<p>The global identifier of the microdata item, if any.</p>
+</dd>
+</dl>
+
+</section><section id="Value"><h1>Value</h1>
+
+<p>The "value" data is a hash reference, in one of following structure:</p>
+
+<dl>
+<dt id="An_&quot;item&quot;_data">An "item" data</dt>
+
+<dd>
+<p>The value is a microdata item.</p>
+
+</dd><dt id="{type_=>_'error',_node_=>_$node}"><code>{type =&gt; 'error', node =&gt; $node}</code></dt>
+
+<dd>
+<p>The value is a microdata item, but it is not expanded to full "item" data to avoid the entire data structure for containing a loop. There is another full "item" data created from the same element. This is non-conforming.</p>
+
+<p>The "value" data is always a DAG.</p>
+
+</dd><dt id="{type_=>_'string',_text_=>_$text,_node_=>_$node}"><code>{type =&gt; 'string', text =&gt; $text, node =&gt; $node}</code></dt>
+
+<dd>
+<p>The value is a string <var>$text</var>. The value is contained in the element <var>$node</var>.</p>
+
+</dd><dt id="{type_=>_'url',_text_=>_$text,_node_=>_$node}"><code>{type =&gt; 'url', text =&gt; $text, node =&gt; $node}</code></dt>
+
+<dd>
+<p>The value is a string <var>$text</var>, obtained from an attribute whose value is a URL. The owner of the attribute is <var>$node</var>.</p>
+</dd>
+</dl>
+
+</section></section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard - Microdata <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#microdata">http://www.whatwg.org/specs/web-apps/current-work/#microdata</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

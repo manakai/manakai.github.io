@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Tokenizer</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Tokenizer</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Tokenizer.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Tokenizer</code></h1><h2>A CSS tokenizer</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::Tokenizer</code> module provides a CSS syntax tokenizer.
+It can be used to tokenize strings written in languages using the CSS syntax,
+including CSS,
+Selectors,
+and Media Queries.</p>
+
+<p>This module is intended to be used by a CSS-based language parser as its base class.
+It does not intended for applications directly invoking methods or accessing data structure of the module.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>By <code>use</code>ing the module,
+a number of token type constants are exported to your package.</p>
+
+</section><section id="DATA_STRUCTURES"><h1>DATA STRUCTURES</h1>
+
+<p>See the comment in the module for the data structure of tokens emitted by the module's methods.</p>
+
+<p>Applications should not try to directly access to the data contained in the token,
+except for two fields below:</p>
+
+<p>The field <code>$token-&gt;{line}</code> contains the line number of the first character of the token.</p>
+
+<p>The field <code>$token-&gt;{column}</code> contains the column number of the first character of the token.
+It can be zero if the first character is the newline character between the current line and the previous line.
+The column number of the "end-of-file" pseudo-character is greater than the column number of the last character in the last line.</p>
+
+</section><section id="METHOD"><h1>METHOD</h1>
+
+<p>The <code>Web::CSS::Tokenizer-&gt;serialize_token</code> method is the only public method directly exposed by the module.
+The method can be used to serialize the token as a character string for the purpose of debugging or error reporting.
+It must not be used to generate original or canonical representation of the token.
+The string returned by the method might or might not be reparsable.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>CSS Syntax <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>&gt;</code>.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/CSS/Builder" class="podlinkpod">Web::CSS::Builder</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

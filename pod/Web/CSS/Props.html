@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Props</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Props</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Props.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Props</code></h1><h2>CSS property definitions</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>XXX</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSSYNTAX">CSSSYNTAX</dt>
+
+<dd>
+<p>CSS Syntax <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-syntax/#integer">http://dev.w3.org/csswg/css-syntax/#integer</a>&gt;</code>.</p>
+
+</dd><dt id="QUIRKS">QUIRKS</dt>
+
+<dd>
+<p>Quirks Mode <code class="url">&lt;<a href="http://quirks.spec.whatwg.org/">http://quirks.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSS Object Model (CSSOM) <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/">http://dev.w3.org/csswg/cssom/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSCASCADE">CSSCASCADE</dt>
+
+<dd>
+<p>CSS Cascading and Inheritance <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-cascade/">http://dev.w3.org/csswg/css-cascade/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSVALUES">CSSVALUES</dt>
+
+<dd>
+<p>CSS Values and Units <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-values/">http://dev.w3.org/csswg/css-values/</a>&gt;</code>.</p>
+
+<p>To serialize the 'attr()' function,
+whether the namespace prefix is specified or not and which namespace prefix is used,
+MUST be preserved.</p>
+
+</dd><dt id="CSSCOLOR">CSSCOLOR</dt>
+
+<dd>
+<p>CSS Color <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-color/">http://dev.w3.org/csswg/css-color/</a>&gt;</code>.</p>
+
+<p>The '-webkit-opacity' property MUST be parsed as if it were the 'opacity' property.</p>
+
+</dd><dt id="CSSBACKGROUNDS">CSSBACKGROUNDS</dt>
+
+<dd>
+<p>CSS Background and Borders <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-backgrounds/">http://dev.w3.org/csswg/css-backgrounds/</a>&gt;</code>.</p>
+
+<p>To serialize the 'border-color' property value,
+follow the steps to serialize four edge values with 'border-top-color',
+'border-right-color',
+'border-bottom-color',
+and 'border-left-color' values and return the result.</p>
+
+<p>To serialize the 'border-style' property value,
+follow the steps to serialize four edge values with 'border-top-style',
+'border-right-style',
+'border-bottom-style',
+and 'border-left-style' values and return the result.</p>
+
+<p>To serialize the 'border-width' property value,
+follow the steps to serialize four edge values with 'border-top-width',
+'border-right-width',
+'border-bottom-width',
+and 'border-left-width' values and return the result.</p>
+
+<p>To serialize 'border',
+'border-top',
+'border-right',
+'border-bottom',
+'border-left',
+or 'outline' property value,
+follow these steps:</p>
+
+<pre>
+<code>  1. If one of &lt;line-width&gt;, &lt;line-style&gt;, and &lt;color&gt; values is
+     missing, it can't be serialized.  Return null and abort these
+     steps.
+
+  2. Otherwise, if one of these values are CSS-wide keyword or
+     function:
+
+    1. If they are equal, return one of them and abort these steps.
+
+    2. Otherwise, it can't be serialized.  Abort these steps.
+
+  3. Otherwise, if &lt;color&gt; is the initial value of the corresponding
+     longhand property, return the result of invoking serialize a
+     whitespace-separated list with serializations of &lt;line-width&gt; and
+     &lt;line-style&gt; values.
+
+  4. Otherwise, return the result of invoking serialize a
+     whitespace-separated list with serializations of &lt;line-width&gt;,
+     &lt;line-style&gt;, and &lt;color&gt; values.</code></pre>
+
+<p>To serialzie four edge values /top/, /right/, /bottom/, and /left/, follow these steps:</p>
+
+<pre>
+<code>  1. If one of four values is missing, it is not serializable.  Return
+     null and abort these steps.
+
+  2. Otheriwse, if one of four values is CSS-wide keyword or function:
+
+    1. If serializations of four values are same, return one of them
+       and abort these steps.
+
+    2. Otherwise, it is not serializable.  Return null and abort these
+       steps.
+
+  3. Otherwise, if serializations of four values are same, return one
+     of them and abort these steps.
+
+  4. Otherwise, if serializations of /top/ and /bottom/ are same and
+     serialization of /left/ and /right/ are same, return the result
+     of invoking serialize a whitespace-separated list with values
+     /top/ and /right/ and abort these steps.
+
+  5. Otherwise, if serialization of /left/ and /right/ are same,
+     return the result of invoking serialize a whitespace-separated
+     list with values /top/, /right/, and /bottom/ and abort these
+     steps.
+
+  6. Otherwise, return the result of invoking serialize a
+     whitespace-separated list with values /top/, /right/, /bottom/,
+     and /left/ and abort these steps.</code></pre>
+
+<p>The 'background-position-x' property is defined as follows:</p>
+
+<pre>
+<code>  Name:           background-position-x
+  Value:          &lt;length&gt; | &lt;percentage&gt; | left | center | right
+  Initial:        0%
+  Applies to:     Same as 'background-position'
+  Inherited:      Same as 'background-position'
+  Percentages:    Same as 'background-position' (horizontal)
+  Media:          Same as 'background-position'
+  Computed value: Same as 'background-position' (horizontal)
+  Animatable:     Same as 'background-position' (horizontal)</code></pre>
+
+<p>The 'background-position-y' property is defined as follows:</p>
+
+<pre>
+<code>  Name:           background-position-y
+  Value:          &lt;length&gt; | &lt;percentage&gt; | top | center | bottom
+  Initial:        0%
+  Applies to:     Same as 'background-position'
+  Inherited:      Same as 'background-position'
+  Percentages:    Same as 'background-position' (horizontal)
+  Media:          Same as 'background-position'
+  Computed value: Same as 'background-position' (horizontal)
+  Animatable:     Same as 'background-position' (horizontal)</code></pre>
+
+<p>The 'background-position' property is redefined as a shorthand of 'background-position-x' and 'background-position-y' properties, where the horizontal and vertical values are corresponding to them, respectively. To serialize the 'background-position' property value, follow these steps:</p>
+
+<pre>
+<code>  1. If 'background-position-x' or 'background-position-y' property
+     value is missing, it is not serializable.  Return null.
+
+  2. Otherwise, if one of serializations of 'background-position-x'
+     and 'background-position-y' property values is CSS-wide keyword
+     or function:
+
+    1. If their values are equal, return one of them and abort these
+       steps.
+
+    2. Otherwise, it is not serializable.  Return null.
+
+  3. Otherwise, return the result of invoking serialize a
+     whitespace-separated list with serializations of
+     'background-position-x' and 'background-position-y' property
+     values.</code></pre>
+
+<p>The canonical order of the longhand sub-properties for the 'background' property is: 'background-image', 'background-repeat', 'background-attachment', 'background-position-x' 'background-position_y', and then 'background-color'. For the purpose of serialization of the 'background' property value, they have no initial value.</p>
+
+</dd><dt id="CSSDISPLAY">CSSDISPLAY</dt>
+
+<dd>
+<p>CSS Diaplay <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-display/">http://dev.w3.org/csswg/css-display/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSBOX">CSSBOX</dt>
+
+<dd>
+<p>CSS Basic Box Model <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-box/">http://dev.w3.org/csswg/css-box/</a>&gt;</code>.</p>
+
+<p>In 'width', 'min-width', and 'max-width' properties, keywords '-moz-available', '-moz-fit-content', '-moz-min-content', and '-moz-max-content' MUST be replaced by corresponding keywords without "-moz-" prefix at parse time.</p>
+
+<p>In 'width', 'min-width', 'max-width', 'height', 'min-height', and 'max-height' properties, keywords '-webkit-fit-content', '-webkit-min-content', and '-webkit-max-content' MUST be replaced by corresponding keywords without "-webkit-" prefix at parse time.</p>
+
+<p>To serialize the 'margin' property value, follow the steps to serialize four edge values with 'margin-top', 'margin-right', 'margin-bottom', and 'margin-left' values and return the result.</p>
+
+<p>To serialize the 'padding' property value, follow the steps to serialize four edge values with 'padding-top', 'padding-right', 'padding-bottom', and 'padding-left' values and return the result.</p>
+
+</dd><dt id="CSSPOSITION">CSSPOSITION</dt>
+
+<dd>
+<p>CSS Positioned Layout <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-position/">http://dev.w3.org/csswg/css-position/</a>&gt;</code>.</p>
+
+<p>If the comma character is not used within the 'rect()' functional notation, any sequence of zero or more &lt;whitespace&gt; tokens between other tokens within the function's argument MUST be considered as a separator. For the purpose of serialization of the functional notation, the separator MUST be considered as a comma.</p>
+
+</dd><dt id="CSSOVERFLOW">CSSOVERFLOW</dt>
+
+<dd>
+<p>CSS Overflow <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-overflow/">http://dev.w3.org/csswg/css-overflow/</a>&gt;</code>.</p>
+
+<p>To serialize the 'overflow' property value, follow these steps:</p>
+
+<pre>
+<code>  1. If 'overflow-x' or 'overflow-y' is missing, it is not
+     serializable.  Return null and abort these steps.
+
+  2. Otherwise, if serialization of 'overflow-x' is equal to
+     serialization of 'overflow-y', return one of them.
+
+  3. Otherwise, it is not serializable.  Return null.</code></pre>
+
+</dd><dt id="CSSPAGE">CSSPAGE</dt>
+
+<dd>
+<p>CSS Paged Media <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-page/">http://dev.w3.org/csswg/css-page/</a>&gt;</code>.</p>
+
+<p>If the 'size' property contains two &lt;length&gt;s and their serializations are equal, it MUST be serialized as a &lt;length&gt; whose value is equal to them.</p>
+
+</dd><dt id="CSSBREAK">CSSBREAK</dt>
+
+<dd>
+<p>CSS Fragmentation <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-break/">http://dev.w3.org/csswg/css-break/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSWRITINGMODES">CSSWRITINGMODES</dt>
+
+<dd>
+<p>CSS Writing Modes <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-writing-modes/">http://dev.w3.org/csswg/css-writing-modes/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSLISTS">CSSLISTS</dt>
+
+<dd>
+<p>CSS Lists and Counters <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-lists/">http://dev.w3.org/csswg/css-lists/</a>&gt;</code>.</p>
+
+<p>The canonical order of the longhand sub-properties for the 'list-style' property is: 'list-style-type', 'list-style-position', and then 'list-style-image'. For the purpose of serialization of the 'list-style' property, they have no initial value.</p>
+
+<p>To serialize the 'counter()' or 'counters()' function, &lt;counter-style&gt; MUST NOT be omitted.</p>
+
+</dd><dt id="CSSCOUNTERSTYLES">CSSCOUNTERSTYLES</dt>
+
+<dd>
+<p>CSS Counter Styles <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-counter-styles/">http://dev.w3.org/csswg/css-counter-styles/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSUI">CSSUI</dt>
+
+<dd>
+<p>CSS Basic User Interface <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-ui/">http://dev.w3.org/csswg/css-ui/</a>&gt;</code>.</p>
+
+<p>The vendor prefix of '-moz-grab', '-webkit-grab', '-moz-grabbing', '-webkit-grabbing', '-moz-zoom-in', '-webkit-zoom-in', '-moz-zoom-out', and '-webkit-zoom-out' MUST be dropped at parse time.</p>
+
+<p>The 'hand' keyword in the 'cursor' property MUST be replaced by 'pointer' at parse time.</p>
+
+<p>Keywords 'grab' and 'grabbing' MUST be allowed as a keyword in the 'cursor' property.</p>
+
+</dd><dt id="CSSGCPM">CSSGCPM</dt>
+
+<dd>
+<p>CSS Generated Content for Paged Media <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-gcpm/">http://dev.w3.org/csswg/css-gcpm/</a>&gt;</code>.</p>
+
+<p>When serialized, keywords in the 'marks' propery MUST be sorted in order: 'crop' and then 'cross'.</p>
+
+</dd><dt id="CSSINLINE">CSSINLINE</dt>
+
+<dd>
+<p>CSS Line Layout <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-inline/">http://dev.w3.org/csswg/css-inline/</a>&gt;</code>.</p>
+
+<p>If the 'line-height' property value is a &lt;number&gt; token (with optional surrounding &lt;whitespace&gt; tokens), it MUST be interpreted as &lt;number&gt; (rather than &lt;length&gt;).</p>
+
+</dd><dt id="CSSTEXT">CSSTEXT</dt>
+
+<dd>
+<p>CSS Text <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-text/">http://dev.w3.org/csswg/css-text/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSTEXTDECOR">CSSTEXTDECOR</dt>
+
+<dd>
+<p>CSS Text Decoration <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-text-decor/">http://dev.w3.org/csswg/css-text-decor/</a>&gt;</code>.</p>
+
+<p>When serialized, keywords in the 'text-decoration' MUST be sorted in the order: 'blink', 'underline', 'overline', and then 'line-through'.</p>
+
+</dd><dt id="CSSFONTS">CSSFONTS</dt>
+
+<dd>
+<p>CSS Fonts <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-fonts/">http://dev.w3.org/csswg/css-fonts/</a>&gt;</code>.</p>
+
+<p>The '-webkit-xxx-large' keyword can be used as &lt;absolute-size&gt;.</p>
+
+<p>For the 'font-weight' property, number keywords ('100' ... '900') in the grammer represent &lt;integer&gt; tokens whose value is equal to one of them.</p>
+
+<p>A CSS-wide keyword or the keyword 'default' can't be used as the first token of &lt;family-name&gt;.</p>
+
+<p>Each longhand sub-property of the 'font' property MUST also allow the keyword '-moz-use-system-font' as the value.</p>
+
+<p>The '-x-system-font' property is defined as follows:</p>
+
+<pre>
+<code>  Name:           -x-system-font
+  Value:          none | caption | icon | menu | message-box |
+                  small-caption | status-bar
+  Initial:        none
+  Applies to:     Same as 'font'
+  Inherited:      Same as 'font'
+  Percentages:    Same as 'font'
+  Media:          Same as 'font'
+  Computed value: Same as 'font'
+  Animatable:     Same as 'font'</code></pre>
+
+<p>The '-x-system-font' property is a longhand sub-property of the 'font' property. If the 'font' property's value is a system font keyword, it MUST be interpreted as setting the '-x-system-font' property to that value and the other sub-properties to '-moz-use-system-font'. Otherwise, the 'font' property MUST be interpreted as setting '-x-system-font' property to 'none'.</p>
+
+<p>The canonical order of the longhand sub-properties for the 'font' property is: 'font-style', 'font-variant', 'font-weight', 'font-stretch', 'font-size', 'line-height', 'font-family', '-x-system-font', and then 'font-size-adjust'.</p>
+
+</dd><dt id="SVG">SVG</dt>
+
+<dd>
+<p>SVG <code class="url">&lt;<a href="https://svgwg.org/svg2-draft/text.html">https://svgwg.org/svg2-draft/text.html</a>&gt;</code>.</p>
+
+</dd><dt id="CSS21">CSS21</dt>
+
+<dd>
+<p>CSS 2.1 <code class="url">&lt;<a href="http://www.w3.org/TR/CSS21/tables.html">http://www.w3.org/TR/CSS21/tables.html</a>&gt;</code>.</p>
+
+</dd><dt id="CSS20">CSS20</dt>
+
+<dd>
+<p>CSS 2 <code class="url">&lt;<a href="http://www.w3.org/TR/1998/REC-CSS2-19980512/">http://www.w3.org/TR/1998/REC-CSS2-19980512/</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAICSS">MANAKAICSS</dt>
+
+<dd>
+<p>manakai CSS Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20CSS%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20CSS%20Extensions</a>&gt;</code>.</p>
+
+<p>The '-webkit-border-horizontal-spacing' and '-webkit-border-vertical-spacing' properties are defined as follows:</p>
+
+<pre>
+<code>  Value:          &lt;length&gt;
+  Initial:        0px
+  Applies to:     Same as 'border-spacing'
+  Inherited:      Same as 'border-spacing'
+  Percentage:     Same as 'border-spacing'
+  Media:          Same as 'border-spacing'
+  Computed value: Absolute length
+  Animatable:     Same as 'border-spacing'</code></pre>
+
+<p>The 'border-spacing' property is redefined as the shorthand of these two properties. To serialize the 'border-spacing' property values, run following steps:</p>
+
+<pre>
+<code>  1. If one of '-webkit-border-horizontal-spacing' and
+     '-webkit-border-vertical-spacing' is missing, it is not
+     serializable.  Return null.
+
+  2. Otherwise, if serialization of
+     '-webkit-border-horizontal-spacing' and
+     '-webkit-border-vertical-spacing' are equal, return one of them.
+
+  3. Otherwise, if one of '-webkit-border-horizontal-spacing' and
+     '-webkit-border-vertical-spacing' is a CSS-wide keyword or
+     function, it is not serializable.  Return null.
+
+  4. Otherwise, return the result of invoking serialize a
+     whitespace-separated list with serializations of
+     '-webkit-border-horizontal-spacing' and
+     '-webkit-border-vertical-spacing',</code></pre>
+</dd>
+</dl>
+
+</section><section id="OBSOLETE_FEATURES"><h1>OBSOLETE FEATURES</h1>
+
+<p>Support for following feature has been removed: Keywords '-moz-pre-wrap', '-moz-use-text-color', '-o-pre-wrap', '-webkit-marquee', '-manakai-caption', '-manakai-icon', '-manakai-menu', '-manakai-message-box'. '-manakai-small-caption', and '-manakai-status-bar', and property '-moz-opacity'.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/CSS/Values" class="podlinkpod">Web::CSS::Values</a>.</p>
+
+<p><a href="../../../pod/Web/CSS/Parser" class="podlinkpod">Web::CSS::Parser</a>, <a href="../../../pod/Web/CSS/Serializer" class="podlinkpod">Web::CSS::Serializer</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

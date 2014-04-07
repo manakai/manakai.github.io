@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::XPathResult</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::XPathResult</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/XPathResult.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::XPathResult</code></h1><h2>The DOM <code>XPathResult</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::XPathResult</code> class implements the DOM <code>XPathResult</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$boolean_=_$result->boolean_value"><code>$boolean = $result-&gt;<strong id="member-boolean_value">boolean_value</strong></code></dt>
+
+<dd>
+<p>Return the result boolean value. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$result->invalid_iterator_state"><code>$boolean = $result-&gt;<strong id="member-invalid_iterator_state">invalid_iterator_state</strong></code></dt>
+
+<dd>
+<p>Return whether the result iterator is invalid or not. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$node_=_$result->iterate_next"><code>$node = $result-&gt;<strong id="member-iterate_next">iterate_next</strong></code></dt>
+
+<dd>
+<p>Return the next <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> of the result iterator,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$number_=_$result->number_value"><code>$number = $result-&gt;<strong id="member-number_value">number_value</strong></code></dt>
+
+<dd>
+<p>Return the result number value. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$type_=_$result->result_type"><code>$type = $result-&gt;<strong id="member-result_type">result_type</strong></code></dt>
+
+<dd>
+<p>Return the result type,
+i.e.
+one of constants listed in the <a href="#CONSTANTS" class="podlinkpod">"CONSTANTS"</a>. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$node_=_$result->single_node_value"><code>$node = $result-&gt;<strong id="member-single_node_value">single_node_value</strong></code></dt>
+
+<dd>
+<p>Return the result node value,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$node_=_$result->snapshot_item_($index)"><code>$node = $result-&gt;<strong id="member-snapshot_item">snapshot_item</strong> ($index)</code></dt>
+
+<dd>
+<p>Return the node at the specified index in the result snapshot,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$number_=_$result->snapshot_length"><code>$number = $result-&gt;<strong id="member-snapshot_length">snapshot_length</strong></code></dt>
+
+<dd>
+<p>Return the number of nodes in the result snapshot. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$string_=_$result->string_value"><code>$string = $result-&gt;<strong id="member-string_value">string_value</strong></code></dt>
+
+<dd>
+<p>Return the result string value. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Following result type constants are exported from the <a href="../../../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a> module by default.
+In addition,
+they are accessible as methods of <code>XPathResult</code> objects.</p>
+
+<pre>
+<code>  ANY_TYPE NUMBER_TYPE STRING_TYPE BOOLEAN_TYPE
+  UNORDERED_NODE_ITERATOR_TYPE ORDERED_NODE_ITERATOR_TYPE
+  UNORDERED_NODE_SNAPSHOT_TYPE ORDERED_NODE_SNAPSHOT_TYPE
+  ANY_UNORDERED_NODE_TYPE FIRST_ORDERED_NODE_TYPE</code></pre>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathResult">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathResult</a>&gt;</code>.</p>
+
+<p>DOM XPath <code class="url">&lt;<a href="http://wiki.whatwg.org/wiki/DOM_XPath">http://wiki.whatwg.org/wiki/DOM_XPath</a>&gt;</code>.</p>
+
+<p>743888 - Replace SVGException and XPathException with DOMException <code class="url">&lt;<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=743888#c1">https://bugzilla.mozilla.org/show_bug.cgi?id=743888#c1</a>&gt;</code>.</p>
+
+<p>The IDL definition MUST be modified as follows:</p>
+
+<pre>
+<code>  partial interface XPathResult {
+    readonly attribute (Node or Attr)? singleNodeValue;
+  };</code></pre>
+
+<p>Instead of the <code>TYPE_ERR</code> exception, the <code>TypeError</code> MUST be thrown.</p>
+
+<p>If the <code>resultType</code> attribute is <code>ORDERED_NODE_ITERATOR_TYPE</code> or <code>UNORDERED_NODE_ITERATOR_TYPE</code>, any mutation of the nodes whose node document is the document of the context node of the evaluation that results in the <code>XPathResult</code> object MUST set the <code>invalidIteratorState</code> attribute to <code>true</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/XPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a>, <a href="../../../pod/Web/DOM/XPathExpression" class="podlinkpod">Web::DOM::XPathExpression</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

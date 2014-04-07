@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::HTML::ParserData</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::HTML::ParserData</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/HTML/ParserData.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::HTML::ParserData</code></h1><h2>Data for HTML parser</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::HTML::ParserData</code> module contains data for HTML parser,
+extracted from the HTML Living Standard.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Following constants for namespace URLs are defined (but not exported): <code>HTML_NS</code> (HTML namespace),
+<code>SVG_NS</code> (SVG namespace),
+<code>MML_NS</code> (MathML namespace),
+<code>XML_NS</code> (XML namespace),
+<code>XMLNS_NS</code> (XML Namespace namespace),
+and <code>XLINK_NS</code> (XLink namespace).</p>
+
+</section><section id="VARIABLES"><h1>VARIABLES</h1>
+
+<p>Following data from the HTML specification are included:</p>
+
+<dl>
+<dt id="$AllVoidElements"><code>$AllVoidElements</code></dt>
+
+<dd>
+<p>A hash reference,
+whose keys are HTML void element names (conforming or non-conforming) and values are true.
+This list is equal to the list of HTML elements whose "syntax_category" is "void" or "obsolete void" in the JSON data file <code class="url">&lt;<a href="https://github.com/manakai/data-web-defs/blob/master/doc/elements.txt">https://github.com/manakai/data-web-defs/blob/master/doc/elements.txt</a>&gt;</code>.</p>
+
+</dd><dt id="$MathMLTextIntegrationPoints"><code>$MathMLTextIntegrationPoints</code></dt>
+
+<dt id="$MathMLHTMLIntegrationPoints"><code>$MathMLHTMLIntegrationPoints</code></dt>
+
+<dt id="$SVGHTMLIntegrationPoints"><code>$SVGHTMLIntegrationPoints</code></dt>
+
+<dt id="$ForeignContentBreakers"><code>$ForeignContentBreakers</code></dt>
+
+<dt id="$MathMLAttrNameFixup"><code>$MathMLAttrNameFixup</code></dt>
+
+<dd>
+<p>Table in adjust MathML attributes <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#adjust-mathml-attributes">http://www.whatwg.org/specs/web-apps/current-work/#adjust-mathml-attributes</a>&gt;</code>.</p>
+
+</dd><dt id="$SVGAttrNameFixup"><code>$SVGAttrNameFixup</code></dt>
+
+<dd>
+<p>Table in adjust SVG attributes <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#adjust-svg-attributes">http://www.whatwg.org/specs/web-apps/current-work/#adjust-svg-attributes</a>&gt;</code>.</p>
+
+</dd><dt id="$ForeignAttrNamespaceFixup"><code>$ForeignAttrNamespaceFixup</code></dt>
+
+<dd>
+<p>Table in adjust foreign attributes <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#adjust-foreign-attributes">http://www.whatwg.org/specs/web-apps/current-work/#adjust-foreign-attributes</a>&gt;</code>.</p>
+
+</dd><dt id="$SVGElementNameFixup"><code>$SVGElementNameFixup</code></dt>
+
+<dd>
+<p>Table in the rules for parsing tokens in foreign content,
+any other start tag,
+an element in the SVG namespace <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#parsing-main-inforeign">http://www.whatwg.org/specs/web-apps/current-work/#parsing-main-inforeign</a>&gt;</code>.</p>
+
+</dd><dt id="$NamedCharRefs"><code>$NamedCharRefs</code></dt>
+
+<dt id="$CharRefReplacements"><code>$CharRefReplacements</code></dt>
+
+<dt id="$NoncharacterCodePoints"><code>$NoncharacterCodePoints</code></dt>
+
+<dt id="$ObsoletePermittedDoctypes"><code>$ObsoletePermittedDoctypes</code></dt>
+
+<dt id="$QuirkyPublicIDPrefixes"><code>$QuirkyPublicIDPrefixes</code></dt>
+
+<dt id="$QuirkyPublicIDs"><code>$QuirkyPublicIDs</code></dt>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+
+<p>data-web-defs <code class="url">&lt;<a href="https://github.com/manakai/data-web-defs/">https://github.com/manakai/data-web-defs/</a>&gt;</code>.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2004-2011 Apple Computer,
+Inc.,
+Mozilla Foundation,
+and Opera Software ASA.</p>
+
+<p>You are granted a license to use,
+reproduce and create derivative works of this document.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

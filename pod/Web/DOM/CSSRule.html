@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::CSSRule</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::CSSRule</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/CSSRule.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::CSSRule</code></h1><h2>The DOM <code>CSSRule</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::CSSRule</code> class implements the DOM <code>CSSRule</code> interface.
+The <code>Web::DOM::CSSRule</code> class is an abstract class.
+It is used as subclasses such as <code>Web::DOM::CSSStyleRule</code> and <code>Web::DOM::CSSMediaRule</code>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$string_=_$rule->css_text"><code>$string = $rule-&gt;<strong id="member-css_text">css_text</strong></code></dt>
+
+<dd>
+<p>Return the serialized rule. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$rule_=_$rule->parent_rule"><code>$rule = $rule-&gt;<strong id="member-parent_rule">parent_rule</strong></code></dt>
+
+<dd>
+<p>Return the parent rule,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$rule_=_$rule->parent_style_sheet"><code>$rule = $rule-&gt;<strong id="member-parent_style_sheet">parent_style_sheet</strong></code></dt>
+
+<dd>
+<p>Return the owner style sheet,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$type_=_$rule->type"><code>$type = $rule-&gt;<strong id="member-type">type</strong></code></dt>
+
+<dd>
+<p>Return the type of the rule,
+as one of the <a href="#CONSTANTS" class="podlinkpod">"CONSTANTS"</a> exported by the module. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+</dd>
+</dl>
+
+<p>Any <code>CSSRule</code> object is an instance of one of its subclasses.
+For example,
+a <code>CSSRule</code> object whose <code>type</code> is <code>STYLE_RULE</code> is an instance of <a href="../../../pod/Web/DOM/CSSStyleRule" class="podlinkpod">Web::DOM::CSSStyleRule</a>.
+There are following subclasses:</p>
+
+<p><a href="../../../pod/Web/DOM/CSSStyleRule" class="podlinkpod">Web::DOM::CSSStyleRule</a>,
+<a href="../../../pod/Web/DOM/CSSCharsetRule" class="podlinkpod">Web::DOM::CSSCharsetRule</a>,
+<a href="../../../pod/Web/DOM/CSSImportRule" class="podlinkpod">Web::DOM::CSSImportRule</a>,
+<a href="../../../pod/Web/DOM/CSSMediaRule" class="podlinkpod">Web::DOM::CSSMediaRule</a>,
+<a href="../../../pod/Web/DOM/CSSFontFaceRule" class="podlinkpod">Web::DOM::CSSFontFaceRule</a>,
+<a href="../../../pod/Web/DOM/CSSPageRule" class="podlinkpod">Web::DOM::CSSPageRule</a>,
+and <a href="../../../pod/Web/DOM/CSSNamespaceRule" class="podlinkpod">Web::DOM::CSSNamespaceRule</a>.</p>
+
+<p>In addition,
+there is <code>Web::DOM::CSSUnknownRule</code> subclass,
+which implements the obsolete <code>CSSUnknownRule</code> interface [DOM2CSS].
+The subclass has no additional method.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/CSSRule" class="podlinkpod">Web::DOM::CSSRule</a> module by default.
+In addition,
+they are accessible as methods of <code>CSSRule</code> objects.</p>
+
+<p>Following constants are defined for the <code>type</code> attribute [CSSOM]:</p>
+
+<p>STYLE_RULE CHARSET_RULE IMPORT_RULE MEDIA_RULE FONT_FACE_RULE PAGE_RULE NAMESPACE_RULE</p>
+
+<p>In addition,
+obsolete constant <code>UNKNOWN_RULE</code> [DOM2CSS] is also defined.</p>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>See <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSSOM <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/">http://dev.w3.org/csswg/cssom/</a>&gt;</code>.</p>
+
+<p>The <code>insertRule</code> method and the <code>selectorText</code> attribute MUST use the <code>@namespace</code> at-rules in the parent style sheet to resolve namespaces,
+if necessary.
+If there is no parent style sheet,
+there is no <code>@namespace</code> at-rule applicable.</p>
+
+</dd><dt id="DOM2CSS">DOM2CSS</dt>
+
+<dd>
+<p>Document Object Model CSS <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSRule">http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSRule</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/CSSStyleSheet" class="podlinkpod">Web::DOM::CSSStyleSheet</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Char::Transliterate::Kana</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-charclass" rel="up">perl-charclass</a></li>
+        <li><a href="" rel="bookmark">Char::Transliterate::Kana</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/wakaba/perl-charclass/tree/master/lib/Char/Transliterate/Kana.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Char::Transliterate::Kana</code></h1><h2>Hiragana/Katanaka convertions</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Char::Transliterate::Kana;
+  
+  $s = 'ねむいデス';
+  katakana_to_hiragana $s;
+  warn $s; # ねむいです
+  hiragana_to_katakana $s;
+  warn $s; # ネムイデス</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Char::Transliterate::Kana</code> module defines two functions to convert hiragana and katakana characters in text.</p>
+
+</section><section id="FUNCTIONS"><h1>FUNCTIONS</h1>
+
+<p>By default, these functions are exported:</p>
+
+<dl>
+<dt id="hiragana_to_katakana_$string"><code>hiragana_to_katakana $string</code></dt>
+
+<dd>
+<p>Destructively replace hiragana letters in the specified string into katakana.</p>
+
+<p>=itemkatakana_to_hiragana $string</p>
+
+<p>Destructively replace katakana letters in the specified string into hiragana.</p>
+</dd>
+</dl>
+
+</section><section id="LIMITATIONS"><h1>LIMITATIONS</h1>
+
+<p>Halfwidth katakana letters are intentionally not supported. They should be first converted to fullwidth letters by <a href="../../../pod/Char/Normalize/FullwidthHalfwidth" class="podlinkpod">Char::Normalize::FullwidthHalfwidth</a>.</p>
+
+<p>Kana digraphs and additional small katakana letters are not converted, as their corresponding Hiragana or Katakana characters are not included in Unicode. Likewise, circled, squared, or other decorated kana characters are not converted.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakabatan@hatena.ne.jp&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2014 Hatena <code class="url">&lt;<a href="http://hatenacorp.jp/">http://hatenacorp.jp/</a>&gt;</code>.</p>
+
+<p>This library is free software; you can redistribute them and/or modify them under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

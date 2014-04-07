@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Colors</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Colors</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Colors.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Colors</code></h1><h2>CSS Color Definitions</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::CSS::Colors;
+  my $rgb = $Web::CSS::Colors::X11Colors-&gt;{yellow};
+  my $found = $Web::CSS::Colors::SystemColors-&gt;{activeborder};</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::Colors</code> module contains definitions for CSS color names.</p>
+
+</section><section id="VARIABLES"><h1>VARIABLES</h1>
+
+<dl>
+<dt id="$Web::CSS::Colors::X11Colors_=_{$name_=>_[$r,_$g,_$b],_...}"><code>$Web::CSS::Colors::X11Colors = {$name =&gt; [$r, $g, $b], ...}</code></dt>
+
+<dd>
+<p>A hash reference, which contains so-called X11 color keywords and their RGB definitions as described in the CSS Color specification. Color keywords and RGBs are represented as hash keys and values, where values are array references representing red-, green-, and blue-component of the RGB. Keywords are in the lowercase canonical form. Note that HTML's 12 color keywords, as well as CSS 2.1's <code>orange</code> keyword, are subset of the X11 color keyword set.</p>
+
+</dd><dt id="$Web::CSS::Colors::SystemColors_=_{$name_=>_true}"><code>$Web::CSS::Colors::SystemColors = {$name =&gt; true}</code></dt>
+
+<dd>
+<p>A hash reference, which contains CSS system color keywords as defined in the CSS Color specification. Color keywords are represented as hash keys, where values are always true. Keywords are in the lowercase canonical form.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="CSSCOLOR">CSSCOLOR</dt>
+
+<dd>
+<p>CSS Color <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-color/">http://dev.w3.org/csswg/css-color/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/CSS/Values" class="podlinkpod">Web::CSS::Values</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

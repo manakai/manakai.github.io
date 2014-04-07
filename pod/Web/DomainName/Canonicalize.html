@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DomainName::Canonicalize</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-url" rel="up">perl-web-url</a></li>
+        <li><a href="" rel="bookmark">Web::DomainName::Canonicalize</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-url/tree/master/lib/Web/DomainName/Canonicalize.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DomainName::Canonicalize</code></h1><h2>Domain name canonicalization</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DomainName::Canonicalize;
+  $out = canonicalize_domain_name $in;
+  $out = canonicalize_url_host $in;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DomainName::Canonicalize</code> module provides functions to convert domain names into their canonical representations, as Web browsers do.</p>
+
+</section><section id="FUNCTIONS"><h1>FUNCTIONS</h1>
+
+<p>This module exports two functions:</p>
+
+<dl>
+<dt id="$out_=_canonicalize_domain_name_$in"><code>$out = canonicalize_domain_name $in</code></dt>
+
+<dd>
+<p>Canonicalize a domain name, i.e. dotted labels. The input might contain non-ASCII characters; they would be Punycode-encoded by the function. If the input has no canonical representation (i.e. the input contains a character that cannot be used in domain names) the function returns <code>undef</code>. Note that the function might still return a non-<code>undef</code> value when the domain name is invalid but it has a canonical representation.</p>
+
+<p>Input is considered as a domain name; no IP address canonicalization is performed.</p>
+
+</dd><dt id="$out_=_canonicalize_url_host_$in"><code>$out = canonicalize_url_host $in</code></dt>
+
+<dd>
+<p>Canonicalize the <code>host</code> component of a URL. In addition to <code>canonicalize_domain_name</code>, percent-encoding and -decoding, IP address canonicalization, and detection of some additional invalid characters are performed. If the input has no canonical representation (such that the URL is invalid), the function returns <code>undef</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p>Tentative spec for URL canonicalization <code class="url">&lt;<a href="https://github.com/wakaba/tests-web-url/blob/master/spec.txt">https://github.com/wakaba/tests-web-url/blob/master/spec.txt</a>&gt;</code>.</p>
+
+<p><a href="../../../pod/Web/IPAddr/Canonicalize" class="podlinkpod">Web::IPAddr::Canonicalize</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;w@suika.fam.cx&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2011 Wakaba &lt;w@suika.fam.cx&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

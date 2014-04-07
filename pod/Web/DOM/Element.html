@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Element</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Element</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Element.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Element</code></h1><h2>The DOM <code>Element</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Element</code> class implements the DOM <code>Element</code> interface.
+It represents an element in the document.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a>,
+<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a>,
+and <a href="../../../pod/Web/DOM/ChildNode" class="podlinkpod">Web::DOM::ChildNode</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$map_=_$el->attributes"><code>$map = $el-&gt;<strong id="member-attributes">attributes</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a> object containing the content attributes for the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$tokens_=_$el->class_list"><code>$tokens = $el-&gt;<strong id="member-class_list">class_list</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/TokenList" class="podlinkpod">Web::DOM::TokenList</a> object for the <code>class</code> attribute. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->class_name"><code>$string = $el-&gt;<strong id="member-class_name">class_name</strong></code></dt>
+
+<dt id="$el->class_name_($string)"><code>$el-&gt;<strong>class_name</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>class</code> attribute. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$el->manakai_element_type_match_($nsurl,_$local_name)"><code>$bool = $el-&gt;<strong id="member-manakai_element_type_match">manakai_element_type_match</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return whether the namespace URL and local name are equal to the specified values or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$value_=_$el->get_attribute_($name)"><code>$value = $el-&gt;<strong id="member-get_attribute">get_attribute</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the value of the specified attribute.
+If there is no attribute with the specified name,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$value_=_$el->get_attribute_ns_($nsurl,_$local_name)"><code>$value = $el-&gt;<strong id="member-get_attribute_ns">get_attribute_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return the value of the attribute with the specified namespace URL and local name.
+If there is no attribute with the specified name,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$attr_=_$el->get_attribute_node_($name)"><code>$attr = $el-&gt;<strong id="member-get_attribute_node">get_attribute_node</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the specified attribute.
+If there is no attribute with the specified name,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$attr_=_$el->get_attribute_node_ns_($nsurl,_$local_name)"><code>$attr = $el-&gt;<strong id="member-get_attribute_node_ns">get_attribute_node_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the attribute with the specified namespace URL and local name.
+If there is no attribute with the specified name,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$bool_=_$el->has_attribute_($name)"><code>$bool = $el-&gt;<strong id="member-has_attribute">has_attribute</strong> ($name)</code></dt>
+
+<dd>
+<p>Return whether there is the specified attribute or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$el->has_attribute_ns_($nsurl,_$local_name)"><code>$bool = $el-&gt;<strong id="member-has_attribute_ns">has_attribute_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return whether there is the attribute with the specified namespace URL and local name or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->id"><code>$string = $el-&gt;<strong id="member-id">id</strong></code></dt>
+
+<dt id="$el->id_($string)"><code>$el-&gt;<strong>id</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>id</code> attribute. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$arrayref_=_$el->manakai_ids"><code>$arrayref = $el-&gt;<strong id="member-manakai_ids">manakai_ids</strong></code></dt>
+
+<dd>
+<p>Return the array reference containing the ID of the element,
+if any,
+or the empty array reference,
+otherwise. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el->insert_adjacent_html_($position,_$markup)"><code>$el-&gt;<strong id="member-insert_adjacent_html">insert_adjacent_html</strong> ($position,
+$markup)</code></dt>
+
+<dd>
+<p>Parse the specified string and insert somewhere near the element.
+The first argument must be one of followings: <code>beforebegin</code> (before the start tag of the element),
+<code>afterbegin</code> (after the start tag of the element),
+<code>beforeend</code> (before the end tag of the element),
+or <code>afterend</code> (after the end tag of the element).
+The markup must be a character string in HTML or XML,
+depending on the type of the document. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite></p>
+
+<p>If the document is an XML document and the given string is not well-formed,
+the method throws an exception.</p>
+
+<p>However,
+even if the document is an XML document and the node can't be serialized into the well-formed XML fragment,
+the method does not throw and does return an ill-formed XML fragment instead.
+This is a willful violation to the HTML Living Standard,
+to match current browsers' behavior.
+Future version of the module might throw an exception if browsers start to throw an exception.</p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$name_=_$el->local_name"><code>$name = $el-&gt;<strong id="member-local_name">local_name</strong></code></dt>
+
+<dt id="$name_=_$el->manakai_local_name_[DEPRECATED]"><code>$name = $el-&gt;<strong id="member-manakai_local_name">manakai_local_name</strong> [DEPRECATED]</code></dt>
+
+<dd>
+<p>Return the local name of the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$url_=_$el->namespace_uri"><code>$url = $el-&gt;<strong id="member-namespace_uri">namespace_uri</strong></code></dt>
+
+<dd>
+<p>Return the namespace URL of the element.
+If the element does not belong to any namespace,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->outer_html"><code>$string = $el-&gt;<strong id="member-outer_html">outer_html</strong></code></dt>
+
+<dt id="$el->outer_html_($string)"><code>$el-&gt;<strong>outer_html</strong> ($string)</code></dt>
+
+<dd>
+<p>Replace the element by the specified fragment of the markup.
+The markup must be a character string in HTML or XML,
+depending on the type of the document. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite></p>
+
+<p>If the document is an XML document and the given string is not well-formed,
+the method throws an exception.</p>
+
+<p>However,
+even if the document is an XML document and the node can't be serialized into the well-formed XML fragment,
+the method does not throw and does return an ill-formed XML fragment instead.
+This is a willful violation to the HTML Living Standard,
+to match current browsers' behavior.
+Future version of the module might throw an exception if browsers start to throw an exception.</p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$prefix_=_$el->prefix"><code>$prefix = $el-&gt;<strong id="member-prefix">prefix</strong></code></dt>
+
+<dt id="$el->prefix_($prefix)"><code>$el-&gt;<strong>prefix</strong> ($prefix)</code></dt>
+
+<dd>
+<p>If no argument is specified,
+return the namespace prefix of the element,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>If the argument is specified,
+the value is set as the namespace prefix of the element.
+If the value is <code>undef</code>,
+the namespace prefix is removed. <cite class="ref">[<a href="#DOMNODEEXODUS">DOMNODEEXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el->remove_attribute_($name)"><code>$el-&gt;<strong id="member-remove_attribute">remove_attribute</strong> ($name)</code></dt>
+
+<dd>
+<p>Remove the attribute with the specified name.
+If no attribute is found,
+the method does nothing. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$el->remove_attribute_ns_($nsurl,_$local_name)"><code>$el-&gt;<strong id="member-remove_attribute_ns">remove_attribute_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Remove the attribute with the specified namespace URL and local name.
+If no attribute is found,
+the method does nothing. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$attr_=_$el->remove_attribute_node_($attr)"><code>$attr = $el-&gt;<strong id="member-remove_attribute_node">remove_attribute_node</strong> ($attr)</code></dt>
+
+<dd>
+<p>Remove the specified attribute from the element.
+The removed attribute is returned. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el->set_attribute_($name_=>_$value)"><code>$el-&gt;<strong id="member-set_attribute">set_attribute</strong> ($name =&gt; $value)</code></dt>
+
+<dd>
+<p>Set the attribute with the specified name and value.
+If there is already the attribute with the same name,
+its value is replaced by the new one. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$el->set_attribute_ns_($nsurl,_$qname_=>_$value)"><code>$el-&gt;<strong id="member-set_attribute_ns">set_attribute_ns</strong> ($nsurl,
+$qname =&gt; $value)</code></dt>
+
+<dt id="$el->set_attribute_ns_($nsurl,_[$prefix,_$local_name]_=>_$value)"><code>$el-&gt;<strong>set_attribute_ns</strong> ($nsurl,
+[$prefix,
+$local_name] =&gt; $value)</code></dt>
+
+<dd>
+<p>Set the attribute with the specified namespace URL,
+qualified name,
+and value.
+If there is already the attribute with the same namespace URL / local name pair,
+its value is replaced by the new one. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>The qualified name can be represented as an array reference,
+where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$old_attr_=_$el->set_attribute_node_($new_attr)"><code>$old_attr = $el-&gt;<strong id="member-set_attribute_node">set_attribute_node</strong> ($new_attr)</code></dt>
+
+<dt id="$old_attr_=_$el->set_attribute_node_ns_($new_attr)"><code>$old_attr = $el-&gt;<strong id="member-set_attribute_node_ns">set_attribute_node_ns</strong> ($new_attr)</code></dt>
+
+<dd>
+<p>Append (or replace,
+if exists) the attribute node to the list of attributes for the element.
+If there is already the attribute with same namespace URL / local name pair,
+the attribute is removed from the list and is returned by the method. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$name_=_$el->tag_name"><code>$name = $el-&gt;<strong id="member-tag_name">tag_name</strong></code></dt>
+
+<dd>
+<p>Return the tag name of the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$name_=_$el->manakai_tag_name"><code>$name = $el-&gt;<strong id="member-manakai_tag_name">manakai_tag_name</strong></code></dt>
+
+<dd>
+<p>Return the tag name of the element.
+Even when the element is an HTML element in the HTML document,
+this method returns the "real" tag name,
+without case folding. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+</dd>
+</dl>
+
+<p>Any HTML element uses <a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>,
+a subclass of this class.
+Most HTML elements have more specific subclasses.
+See <a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a> for details.
+Likewise,
+Atom elements use <a href="../../../pod/Web/DOM/AtomElement" class="podlinkpod">Web::DOM::AtomElement</a>.</p>
+
+<p>In addition,
+the obsolete <code>manakai_base_uri</code> method is available. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-element">http://dom.spec.whatwg.org/#interface-element</a>&gt;</code>.</p>
+
+</dd><dt id="DOMNODEEXODUS">DOMNODEEXODUS</dt>
+
+<dd>
+<p>DOM Living Standard,
+commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.org/">view-source:http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPARSING">DOMPARSING</dt>
+
+<dd>
+<p>DOM Parsing and Serialization <code class="url">&lt;<a href="http://domparsing.spec.whatwg.org/">http://domparsing.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#htmlelement">http://www.whatwg.org/specs/web-apps/current-work/#htmlelement</a>&gt;</code>.</p>
+
+</dd><dt id="DOM3CORE">DOM3CORE</dt>
+
+<dd>
+<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-745549614">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-745549614</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

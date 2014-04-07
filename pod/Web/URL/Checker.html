@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::URL::Checker</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-url" rel="up">perl-web-url</a></li>
+        <li><a href="" rel="bookmark">Web::URL::Checker</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-url/tree/master/lib/Web/URL/Checker.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::URL::Checker</code></h1><h2>URL validator</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::URL::Checker;
+  my $checker = Web::URL::Checker-&gt;new_from_string ($url);
+  warn $checker-&gt;is_iri_reference;</code></pre>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$checker_=_Web::URL::Checker->new_from_string_($url)"><code>$checker = Web::URL::Checker-&gt;<strong id="member-new_from_string">new_from_string</strong> ($url)</code></dt>
+
+<dd>
+<p>Create a new checker from the specified URL. The argument must be a character string.</p>
+
+</dd><dt id="$code_=_$checker->onerror"><code>$code = $checker-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$checker->onerror_($code)"><code>$checker-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Return or specify the code reference to which any errors and warnings during the parsing is reported.</p>
+</dd>
+</dl>
+
+<section id="Syntax_testers"><h1>Syntax testers</h1>
+
+<p>Following method returns whether the URL is syntactically conformant or not. There are versioned and unversioned methods. In most cases, only unversioned methods, which tests against the latest relevant standard, should be used.</p>
+
+<dl>
+<dt id="$boolean_=_$checker->is_absolute_uri"><code>$boolean = $checker-&gt;<strong id="member-is_absolute_uri">is_absolute_uri</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_absolute_uri_3986"><code>$boolean = $checker-&gt;<strong id="member-is_absolute_uri_3986">is_absolute_uri_3986</strong></code></dt>
+
+<dd>
+<p>Return whether it is an absolute URI or not. According to RFC 3986, an absolute URI is an ASCII absolute URL without fragment identifier. <cite class="ref">[<a href="#RFC3986">RFC3986</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$checker->is_empty_reference"><code>$boolean = $checker-&gt;<strong id="member-is_empty_reference">is_empty_reference</strong></code></dt>
+
+<dd>
+<p>Return whether it is a relative URL that is the empty string or not.</p>
+
+</dd><dt id="$boolean_=_$checker->is_iri"><code>$boolean = $checker-&gt;<strong id="member-is_iri">is_iri</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_iri_3987"><code>$boolean = $checker-&gt;<strong id="member-is_iri_3987">is_iri_3987</strong></code></dt>
+
+<dd>
+<p>Return whether it is an IRI or not. According to RFC 3987, IRIs are a subset of absolute URL with or without fragment identifier. <cite class="ref">[<a href="#RFC3987">RFC3987</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$checker->is_iri_reference"><code>$boolean = $checker-&gt;<strong id="member-is_iri_reference">is_iri_reference</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_iri_reference_3987"><code>$boolean = $checker-&gt;<strong id="member-is_iri_reference_3987">is_iri_reference_3987</strong></code></dt>
+
+<dd>
+<p>Return whether it is an IRI reference or not. According to RFC 3987, IRI references are a subset of URL, absolute or relative, with or without fragment identifier. <cite class="ref">[<a href="#RFC3987">RFC3987</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$checker->is_relative_iri_reference"><code>$boolean = $checker-&gt;<strong id="member-is_relative_iri_reference">is_relative_iri_reference</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_relative_iri_reference_3987"><code>$boolean = $checker-&gt;<strong id="member-is_relative_iri_reference_3987">is_relative_iri_reference_3987</strong></code></dt>
+
+<dd>
+<p>Return whether is is a relative IRI reference or not. According to RFC 3987, relative IRI references are a subset of relative URL with or without fragment identifier. <cite class="ref">[<a href="#RFC3987">RFC3987</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$checker->is_relative_reference"><code>$boolean = $checker-&gt;<strong id="member-is_relative_reference">is_relative_reference</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_relative_reference_3986"><code>$boolean = $checker-&gt;<strong id="member-is_relative_reference_3986">is_relative_reference_3986</strong></code></dt>
+
+<dd>
+<p>Return whether it is a relative reference or not. According to RFC 3986, a relative reference is an ASCII relative URL with or without fragment identifier. <cite class="ref">[<a href="#RFC3986">RFC3986</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$checker->is_uri"><code>$boolean = $checker-&gt;<strong id="member-is_uri">is_uri</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_uri_3986"><code>$boolean = $checker-&gt;<strong id="member-is_uri_3986">is_uri_3986</strong></code></dt>
+
+<dd>
+<p>Return whether it is a URI or not. According to RFC 3986, a URI is an ASCII absolute URL with or without fragment identifier. <cite class="ref">[<a href="#RFC3986">RFC3986</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$checker->is_uri_reference"><code>$boolean = $checker-&gt;<strong id="member-is_uri_reference">is_uri_reference</strong></code></dt>
+
+<dt id="$boolean_=_$checker->is_uri_reference_3986"><code>$boolean = $checker-&gt;<strong id="member-is_uri_reference_3986">is_uri_reference_3986</strong></code></dt>
+
+<dd>
+<p>Return whether it is a URI reference or not. According to RFC 3986, a URI reference is an ASCII URL, absolute or relative, with or without fragment identifier. <cite class="ref">[<a href="#RFC3986">RFC3986</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="Conformance_checkers"><h1>Conformance checkers</h1>
+
+<p>Following methods check whether the URL is conforming or not. Any conformance error, as well as warnings, are reported through the <code>onerror</code> handler. There are versioned and unversioned methods. In most cases, only unversioned methods, which tests against the latest relevant standard, should be used.</p>
+
+<dl>
+<dt id="$checker->check_iri"><code>$checker-&gt;<strong id="member-check_iri">check_iri</strong></code></dt>
+
+<dt id="$checker->check_iri_3987"><code>$checker-&gt;<strong id="member-check_iri_3987">check_iri_3987</strong></code></dt>
+
+<dd>
+<p>Check whether it is a conforming IRI or not. <cite class="ref">[<a href="#RFC3987">RFC3987</a>]</cite></p>
+
+<p>XXX This method is incomplete.</p>
+
+</dd><dt id="$checker->check_iri_reference"><code>$checker-&gt;<strong id="member-check_iri_reference">check_iri_reference</strong></code></dt>
+
+<dt id="$checker->check_iri_reference_3987"><code>$checker-&gt;<strong id="member-check_iri_reference_3987">check_iri_reference_3987</strong></code></dt>
+
+<dd>
+<p>Check whether it is a conforming IRI reference or not. <cite class="ref">[<a href="#RFC3987">RFC3987</a>]</cite></p>
+
+<p>XXX This method is incomplete.</p>
+
+</dd><dt id="$checker->check_rdf_uri_reference"><code>$checker-&gt;<strong id="member-check_rdf_uri_reference">check_rdf_uri_reference</strong></code></dt>
+
+<dd>
+<p>Check whether it is a conforming RDF URI reference or not. <cite class="ref">[<a href="#RDF">RDF</a>]</cite></p>
+
+<p>XXX This method is incomplete.</p>
+</dd>
+</dl>
+
+</section></section><section id="BUGS"><h1>BUGS</h1>
+
+<p>The module does not support the URL Standard yet.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="RDF">RDF</dt>
+
+<dd>
+<p>Resource Description Framework (RDF): Concepts and Abstract Syntax <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210/#section-Graph-URIref">http://www.w3.org/TR/2004/REC-rdf-concepts-20040210/#section-Graph-URIref</a>&gt;</code>.</p>
+
+</dd><dt id="RFC3986">RFC3986</dt>
+
+<dd>
+<p>Uniform Resource Identifier (URI): Generic Syntax <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;</code>.</p>
+
+</dd><dt id="RFC3987">RFC3987</dt>
+
+<dd>
+<p>Internationalized Resource Identifiers (IRIs) <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc3987">http://tools.ietf.org/html/rfc3987</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="HISTORY"><h1>HISTORY</h1>
+
+<p>This module derived from <a href="../../../pod/Message/URI/URIReference" class="podlinkpod">Message::URI::URIReference</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Message/URI/URIReference.pm">https://github.com/wakaba/manakai/blob/master/lib/Message/URI/URIReference.pm</a>&gt;</code> and <a href="../../../pod/Whatpm/URIChecker" class="podlinkpod">Whatpm::URIChecker</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/URIChecker.pm">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/URIChecker.pm</a>&gt;</code>, the former derived from <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Message/URI/Generic.dis">https://github.com/wakaba/manakai/blob/master/lib/Message/URI/Generic.dis</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2006-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>Portions of this module are derived from the example parser (April 7, 2004) available at <code class="url">&lt;<a href="http://www.gbiv.com/protocols/uri/rev-2002/uri_test.pl">http://www.gbiv.com/protocols/uri/rev-2002/uri_test.pl</a>&gt;</code> that is placed in the Public Domain by Roy T. Fielding and Day Software, Inc.</p>
+
+</section><section id="POD_ERRORS"><h1>POD ERRORS</h1>
+
+<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
+
+<dl>
+<dt id="Around_line_184:">Around line 184:</dt>
+
+<dd>
+<p>=back without =over</p>
+</dd>
+</dl>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

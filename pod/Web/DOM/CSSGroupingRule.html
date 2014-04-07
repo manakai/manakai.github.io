@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::CSSGroupingRule</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::CSSGroupingRule</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/CSSGroupingRule.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::CSSGroupingRule</code></h1><h2>The DOM <code>CSSGroupingRule</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::CSSGroupingRule</code> class implements the DOM <code>CSSGroupingRule</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM/CSSRule" class="podlinkpod">Web::DOM::CSSRule</a> class,
+following methods are available:</p>
+
+<dl>
+<dt id="$list_=_$rule->css_rules"><code>$list = $rule-&gt;<strong id="member-css_rules">css_rules</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/CSSRuleList" class="podlinkpod">Web::DOM::CSSRuleList</a> object containing the CSS rules in the rule. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$rule->delete_rule_($index)"><code>$rule-&gt;<strong id="member-delete_rule">delete_rule</strong> ($index)</code></dt>
+
+<dd>
+<p>Return a rule from the list of rules contained by the rule. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$index_=_$rule->insert_rule_($string,_$index)"><code>$index = $rule-&gt;<strong id="member-insert_rule">insert_rule</strong> ($string,
+$index)</code></dt>
+
+<dd>
+<p>Parse the string as a CSS rule and insert into the specified index of the list of rules contained by the rule. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+</dd>
+</dl>
+
+<p>Any <code>CSSGroupingRule</code> object is an instance of one of its subclasses.
+For example,
+a <code>CSSGroupingRule</code> object whose <code>type</code> is <code>MEDIA_RULE</code> is an instance of <a href="../../../pod/Web/DOM/CSSMediaRule" class="podlinkpod">Web::DOM::CSSMediaRule</a>.
+There is the following subclass:</p>
+
+<p><a href="../../../pod/Web/DOM/CSSMediaRule" class="podlinkpod">Web::DOM::CSSMediaRule</a>.</p>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>See <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSSOM <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/">http://dev.w3.org/csswg/cssom/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/CSSRule" class="podlinkpod">Web::DOM::CSSRule</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

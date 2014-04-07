@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::AttributeDefinition</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::AttributeDefinition</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/AttributeDefinition.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::AttributeDefinition</code></h1><h2>The DOM <code>AttributeDefinition</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::AttributeDefinition</code> class implements the DOM <code>AttributeDefinition</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> and <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$arrayref_=_$def->allowed_tokens"><code>$arrayref = $def-&gt;<strong id="member-allowed_tokens">allowed_tokens</strong></code></dt>
+
+<dd>
+<p>Return the array reference containing the allowed tokens of the attribute definitions.
+The array reference can be modified by the application. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$def->allowed_tokens_([$string1,_$string2,_...])"><code>$def-&gt;<strong>allowed_tokens</strong> ([$string1,
+$string2,
+...])</code></dt>
+
+<dd>
+<p>Clear the list of allowed tokens and add the strings contained in the array reference specified as the argument. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$type_=_$adef->declared_type"><code>$type = $adef-&gt;<strong id="member-declared_type">declared_type</strong></code></dt>
+
+<dt id="$adef->declared_type_($type)"><code>$adef-&gt;<strong>declared_type</strong> ($type)</code></dt>
+
+<dd>
+<p>Return or set the declared type of the attribute definition,
+using one of the constants for the declared type as described in the later section. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$type_=_$adef->default_type"><code>$type = $adef-&gt;<strong id="member-default_type">default_type</strong></code></dt>
+
+<dt id="$adef->default_type_($type)"><code>$adef-&gt;<strong>default_type</strong> ($type)</code></dt>
+
+<dd>
+<p>Return or set the default type of the attribute definition,
+using one of the constants for the default type as described in the later section. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$dt_=_$adef->owner_element_type_definition"><code>$dt = $adef-&gt;<strong id="member-owner_element_type_definition">owner_element_type_definition</strong></code></dt>
+
+<dd>
+<p>Return the element type (<a href="../../../pod/Web/DOM/ElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>) to which the attribute definition belongs,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The attribute definition name can be accessed by the <code>$adef-&gt;node_name</code> method.
+The default value can be returned or set by the <code>$adef-&gt;node_value</code> method.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a> module by default.
+In addition,
+they are accessible as methods of <code>AttributeDefinition</code> objects.</p>
+
+<p>Following declared type constants used by the <code>declared_type</code> attribute are exported [DOMDTDEF]:</p>
+
+<p>NO_TYPE_ATTR CDATA_ATTR ID_ATTR IDREF_ATTR IDREFS_ATTR ENTITY_ATTR ENTITIES_ATTR NMTOKEN_ATTR NMTOKENS_ATTR NOTATION_ATTR ENUMERATION_ATTR UNKNOWN_ATTR</p>
+
+<p>Following default type constants used by the <code>default_type</code> attribute are exported [DOMDTDEF]:</p>
+
+<p>UNKNOWN_DEFAULT FIXED_DEFAULT REQUIRED_DEFAULT IMPLIED_DEFAULT EXPLICIT_DEFAULT</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef">http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/ElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

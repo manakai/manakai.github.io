@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::XMLSerializer</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::XMLSerializer</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/XMLSerializer.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::XMLSerializer</code></h1><h2>The DOM <code>XMLSerializer</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::XMLSerializer</code> class implements the DOM <code>XMLSerializer</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The class has following methods:</p>
+
+<dl>
+<dt id="$serializer_=_new_Web::DOM::XMLSerializer"><code>$serializer = <strong id="member-new">new Web::DOM::XMLSerializer</strong></code></dt>
+
+<dd>
+<p>Create a new <code>XMLSerializer</code> object. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite></p>
+
+</dd><dt id="$string_=_$serializer->serialize_to_string_($node)"><code>$string = $serializer-&gt;<strong id="member-serialize_to_string">serialize_to_string</strong> ($node)</code></dt>
+
+<dd>
+<p>Serialize the specified node into a character string (HTML or XML fragment,
+depending on the type of the document). <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>If the document is an XML document and the node can't be serialized into the well-formed XML fragment,
+the method does not throw and does return an ill-formed XML fragment instead.
+This is a willful violation to the HTML Living Standard,
+to match current browsers' behavior.
+Future version of the module might throw an exception if browsers start to throw an exception.</p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOMPARSING">DOMPARSING</dt>
+
+<dd>
+<p>DOM Parsing and Serialization Standard <code class="url">&lt;<a href="http://domparsing.spec.whatwg.org/">http://domparsing.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

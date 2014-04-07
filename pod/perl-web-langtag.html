@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>perl-web-langtag</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../docs" rel="up up">Documents</a></li>
+        <li><a href="../pod/#modules" rel="up">Perl modules</a></li>
+        <li><a href="" rel="bookmark">perl-web-langtag</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-langtag/tree/master/README.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::LangTag</code></h1><h2>Language Tag Parsing,
+Conformance Checking,
+and Normalization</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::LangTag;
+  
+  my $lt = Web::LangTag-&gt;new;
+  $lt-&gt;onerror ($code);
+  $parsed = $lt-&gt;parse_tag ($tag);
+  $result = $lt-&gt;check_parsed_tag ($parsed);
+  $tag = $lt-&gt;normalize_tag ($tag);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::LangTag</code> module contains methods to handle language tags as defined by BCP 47. It can be used to parse, validate, or normalize language tags according to relevant standard.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>For the following methods, if an input or output is a language tag or a language range, it is interpreted as a character string (or possibly utf8 flagged string of characters), not a byte string. Note that although language tags and ranges are specified as a string of ASCII characters, illegal tags and ranges can always contain any non-ASCII characters.</p>
+
+<p>Since relevant standards have been incompatibly changed, a language tag comformant to old standard can be non-conforming according to the latest standard. For this reason, the module provides parsing, validating, and normalizing methods for every versions of standards. However, in general, you should simply use <b>non-versioned</b> methods.</p>
+
+<dl>
+<dt id="$lt_=_Web::LangTag->new"><code>$lt = Web::LangTag-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new language tag processor.</p>
+
+</dd><dt id="$lt->onerror_($code)"><code>$lt-&gt;<strong id="member-onerror">onerror</strong> ($code)</code></dt>
+
+<dt id="$code_=_$lt->onerror"><code>$code = $lt-&gt;<strong>onerror</strong></code></dt>
+
+<dd>
+<p>Get or set the error handler for the processor. Any parse error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
+
+<p>The value should not be set while the processor is running. If the value is changed, the result is undefined.</p>
+</dd>
+</dl>
+
+<section id="Parsing"><h1>Parsing</h1>
+
+<dl>
+<dt id="$parsed_=_$lt->parse_tag_($tag)"><code>$parsed = $lt-&gt;<strong id="member-parse_tag">parse_tag</strong> ($tag)</code></dt>
+
+<dd>
+<p>Parses a language tag into subtags. This method interprets the language tag using the latest version of the language tag specification. At the time of writing, the latest version is RFC 5646.</p>
+
+</dd><dt id="$parsed_=_$lt->parse_rfc5646_tag_($tag)"><code>$parsed = $lt-&gt;<strong id="member-parse_rfc5646_tag">parse_rfc5646_tag</strong> ($tag)</code></dt>
+
+<dd>
+<p>Parses a language tag into subtags. This method interprets the language tag using the definition in RFC 5646.</p>
+
+</dd><dt id="$parsed_=_$lt->parse_rfc4646_tag_($tag)"><code>$parsed = $lt-&gt;<strong id="member-parse_rfc4646_tag">parse_rfc4646_tag</strong> ($tag)</code></dt>
+
+<dd>
+<p>Parses a language tag into subtags. This method interprets the language tag using the definition in RFC 4646.</p>
+</dd>
+</dl>
+
+<p>These methods return a hash reference, which contains one or more key-value pairs from the following list:</p>
+
+<dl>
+<dt id="language_(string)">language (string)</dt>
+
+<dd>
+<p>The language subtag. There is always a language subtag, even if the input is illegal, unless there is <code>grandfathered</code> tag. E.g. <code>'ja'</code> for input <code>ja-JP</code>.</p>
+
+</dd><dt id="extlang_(arrayref_of_strings)">extlang (arrayref of strings)</dt>
+
+<dd>
+<p>The extlang subtags. E.g. <code>'yue'</code> for input <code>zh-yue</code>.</p>
+
+</dd><dt id="script_(string_or_undef)">script (string or <code>undef</code>)</dt>
+
+<dd>
+<p>The script subtag. E.g. <code>'Latn'</code> for input <code>ja-Latn-JP</code>.</p>
+
+</dd><dt id="region_(string_or_undef)">region (string or <code>undef</code>)</dt>
+
+<dd>
+<p>The region subtag. E.g. <code>'JP'</code> for input <code>en-JP</code>.</p>
+
+</dd><dt id="variant_(arrayref_of_strings)">variant (arrayref of strings)</dt>
+
+<dd>
+<p>The variant subtags. E.g. <code>['fonipa']</code> for input <code>en-JP-fonipa</code>.</p>
+
+</dd><dt id="extension_(arrayref_of_arrayrefs_of_strings)">extension (arrayref of arrayrefs of strings)</dt>
+
+<dd>
+<p>The extension subtags. E.g. <code>[['u', 'islamCal']]</code> for input <code>en-US-u-islamCal</code>.</p>
+
+</dd><dt id="privateuse_(arrayref_of_strings)">privateuse (arrayref of strings)</dt>
+
+<dd>
+<p>The privateuse subtags. E.g. <code>['x', 'pig', 'latin']</code> for input <code>x-pig-latin</code>.</p>
+
+</dd><dt id="illegal_(arrayref_of_strings)">illegal (arrayref of strings)</dt>
+
+<dd>
+<p>Illegal (syntactically non-conforming) string fragments. E.g. <code>['1234', 'xyz', 'abc']</code> for input <code>1234-xyz-abc</code>.</p>
+
+</dd><dt id="grandfathered_(string_or_undef)">grandfathered (string or <code>undef</code>)</dt>
+
+<dd>
+<p>"Grandfathered" language tag. E.g. <code>'i-default'</code> for input <code>i-default</code>.</p>
+
+</dd><dt id="u">u</dt>
+
+<dd>
+<p>If the tag contains a <code>u</code> extension, parse result of the extension is contained here. The value is an array reference of array references of strings. The first inner array reference contains the attributes in the extension. The remaining inner array references, if any, represent the keywords (i.e. the key-type pairs) in the extension in original order. E.g. <code>[[], ['ca', 'japanese'], ['va', '0061', '0061']]</code> for input <code>ja-u-ca-japanese-va-0061-0061</code>.</p>
+
+</dd><dt id="t">t</dt>
+
+<dd>
+<p>If the tag contains a <code>t</code> extension, parse result of the extension is contained here. The value is an array reference of parsed language tag and array references of strings. The first (zeroth) item in the outer array reference is the embedded language tag, if any, or the <code>undef</code> value. The remaining items, if any, represent fields in the extension as array references of subtags, in original order. E.g. <code>[{language =</code> 'de', region =&gt; 'JP'}, ['m0', 'und'], ['x0', 'medical']]&gt; for input <code>ja-Latn-t-de-JP-m0-und-x0-medical</code>.</p>
+</dd>
+</dl>
+
+<p>Note that original cases (lower- or upper-case) is preserved in the output.</p>
+
+</section><section id="Serialization"><h1>Serialization</h1>
+
+<dl>
+<dt id="$tag_=_$lt->serialize_parsed_tag_($parsed_tag)"><code>$tag = $lt-&gt;<strong id="member-serialize_parsed_tag">serialize_parsed_tag</strong> ($parsed_tag)</code></dt>
+
+<dd>
+<p>Convert a parsed language tag into a language tag string. The argument must be a parsed tag as defined in the previous section; a broken value would not be processed properly.</p>
+
+<p>If the given parsed tag does not represent a well-formed language tag, the result string would not be a well-formed language tag.</p>
+</dd>
+</dl>
+
+</section><section id="Conformance_checking_(validation)"><h1>Conformance checking (validation)</h1>
+
+<dl>
+<dt id="$result_=_$lt->check_parsed_tag_($parsed)"><code>$result = $lt-&gt;<strong id="member-check_parsed_tag">check_parsed_tag</strong> ($parsed)</code></dt>
+
+<dd>
+<p>Checks for conformance errors in the parsed language tag, against the latest version of the language tag specification. At the time of writing, the latest version is RFC 5646.</p>
+
+</dd><dt id="$result_=_$lt->check_rfc5646_parsed_tag_($parsed)"><code>$result = $lt-&gt;<strong id="member-check_rfc5646_parsed_tag">check_rfc5646_parsed_tag</strong> ($parsed)</code></dt>
+
+<dd>
+<p>Checks for conformance errors in the parsed language tag, against RFC 5646.</p>
+
+<p>This method does not report any parse errors, as this method receives a <b>parsed</b> language tag.</p>
+
+<p>The method returns a hash reference with two keys: <code>well-formed</code> and <code>valid</code>. They represent whether the given language tag is well-formed or valid or not as per RFC 5646.</p>
+
+</dd><dt id="$result_=_$lt->check_rfc4646_parsed_tag_($parsed)"><code>$result = $lt-&gt;<strong id="member-check_rfc4646_parsed_tag">check_rfc4646_parsed_tag</strong> ($parsed)</code></dt>
+
+<dd>
+<p>Checks for conformance errors in the parsed language tag, against RFC 4646.</p>
+
+<p>This method does not report any parse erros, as this method receives a <b>parsed</b> language tag.</p>
+
+<p>The method returns a hash reference with two keys: <code>well-formed</code> and <code>valid</code>. They represent whether the given language tag is well-formed or valid or not as per RFC 4646.</p>
+
+</dd><dt id="$result_=_$lt->check_rfc3066_tag_($tag)"><code>$result = $lt-&gt;<strong id="member-check_rfc3066_tag">check_rfc3066_tag</strong> ($tag)</code></dt>
+
+<dd>
+<p>Parses and checks for conformance errors in the parsed language tag, against RFC 3066.</p>
+
+<p>The method returns an empty hash reference.</p>
+
+</dd><dt id="$result_=_$lt->check_rfc1766_tag_($tag)"><code>$result = $lt-&gt;<strong id="member-check_rfc1766_tag">check_rfc1766_tag</strong> ($tag)</code></dt>
+
+<dd>
+<p>Parses and checks for conformance errors in the parsed language tag, against RFC 1766.</p>
+
+<p>The method returns an empty hash reference.</p>
+</dd>
+</dl>
+
+<p>Note that specs sometimes contain semantic or contextual conformance rules, such as: "strongly RECOMMENDED that users not define their own rules for language tag choice" (RFC 4646 4.1.), "Subtags SHOULD only be used where they add useful distinguishing information" (RFC 4646 4.1.), and "Use as precise a tag as possible, but no more specific than is justified" (RFC 4646 4.1. 1.). These kinds of requirements cannot be tested without human interpretation, and therefore the methods in this module do not (or in fact cannot) try to detect violation to these rules.</p>
+
+</section><section id="Normalization"><h1>Normalization</h1>
+
+<dl>
+<dt id="$tag_=_$lt->normalize_tag_($tag_orig)"><code>$tag = $lt-&gt;<strong id="member-normalize_tag">normalize_tag</strong> ($tag_orig)</code></dt>
+
+<dd>
+<p>Normalize the language tag by folding cases, following the latest version of the language tag specification. At the time of writing, the latest version is RFC 5646.</p>
+
+</dd><dt id="$tag_=_$lt->normalize_rfc5646_tag_($tag_orig)"><code>$tag = $lt-&gt;<strong id="member-normalize_rfc5646_tag">normalize_rfc5646_tag</strong> ($tag_orig)</code></dt>
+
+<dd>
+<p>Normalize the language tag by folding cases, following RFC 5646 2.1. and 2.2.6. Note that this method does not replace any subtag into its preferred alternative; this method does not rearrange ordering of subtags.</p>
+
+<p>Although this method does not completely convert language tags into their canonical form, its result will be good enough for comparison in most usual situations.</p>
+
+</dd><dt id="$tag_=_$lt->canonicalize_tag_($tag_orig)"><code>$tag = $lt-&gt;<strong id="member-canonicalize_tag">canonicalize_tag</strong> ($tag_orig)</code></dt>
+
+<dd>
+<p>Normalize the language tag into its canonicalized form, as per the latest version of the language tag specification. At the time of writing, the latest version is RFC 5646.</p>
+
+</dd><dt id="$tag_=_$lt->canonicalize_rfc5646_tag_($tag_orig)"><code>$tag = $lt-&gt;<strong id="member-canonicalize_rfc5646_tag">canonicalize_rfc5646_tag</strong> ($tag_orig)</code></dt>
+
+<dd>
+<p>Normalize the language tag into its canonicalized form, as per RFC 5646 4.5. That is, replace any subtag into its Preferred-Value form if possible and sort any extension subtags. Note that this method does NOT do any case folding. In addition, the "canonicalized form" of a langauge tag is not necessary a fully canonicalized form at all - for example, variant subtags might not be in the recommended order. Also, it does not canonicalize extension subtags.</p>
+
+<p>Note that if the input is not a well-formed language tag according to RFC 5646, the result string might not be a well-formed language tag as well. Sometimes the canonicalization would turn a valid langauge tag into an invalid language tag.</p>
+
+</dd><dt id="$tag_=_$lt->to_extlang_form_tag_($tag_orig)"><code>$tag = $lt-&gt;<strong id="member-to_extlang_form_tag">to_extlang_form_tag</strong> ($tag_orig)</code></dt>
+
+<dd>
+<p>Normalize the language tag into its extlang form, as per the latest version of the language tag specification. At the time of writing, the latest version is RFC 5646.</p>
+
+</dd><dt id="$tag_=_$lt->to_extlang_form_rfc5646_tag_($tag_orig)"><code>$tag = $lt-&gt;<strong id="member-to_extlang_form_rfc5646_tag">to_extlang_form_rfc5646_tag</strong> ($tag_orig)</code></dt>
+
+<dd>
+<p>Normalize the language tag into its extlang form, as per RFC 5646 4.5. The extlang form is same as the canonicalized form, except that use of extlang subtags is preferred to language-only (or extlang-free) representation.</p>
+
+<p>Note that if the input is not a well-formed language tag according to RFC 5646, the result string might not be a well-formed language tag as well. Sometimes the canonicalization would turn a valid langauge tag into an invalid language tag.</p>
+</dd>
+</dl>
+
+</section><section id="Comparison"><h1>Comparison</h1>
+
+<dl>
+<dt id="$boolean_=_$lt->basic_filtering_range_($range,_$tag)"><code>$boolean = $lt-&gt;<strong id="member-basic_filtering_range">basic_filtering_range</strong> ($range, $tag)</code></dt>
+
+<dd>
+<p>Compares a basic language range to a language tag, according to the latest version of the language range specification. At the time of writing, the latest version is RFC 4645.</p>
+
+</dd><dt id="$boolean_=_$lt->basic_filtering_rfc4647_range_($range,_$tag)"><code>$boolean = $lt-&gt;<strong id="member-basic_filtering_rfc4647_range">basic_filtering_rfc4647_range</strong> ($range, $tag)</code></dt>
+
+<dd>
+<p>Compares a basic language range to a language tag, according to RFC 4647 Section 3.3.1. This method returns whether the range matches to the tag or not.</p>
+
+<p>A basic language range is either a language tag or <code>*</code>. (For more information, see RFC 4647 Section 2.1.).</p>
+
+</dd><dt id="$boolean_=_$lt->match_rfc3066_range_($range,_$tag)"><code>$boolean = $lt-&gt;<strong id="member-match_rfc3066_range">match_rfc3066_range</strong> ($range, $tag)</code></dt>
+
+<dd>
+<p>Compares a language-range to a language tag according to RFC 3066 Section 2.5. This method returns whether the range matches to the tag or not. Note that RFC 3066 is obsoleted by RFC 4647.</p>
+
+<p>A language range is either a language tag or <code>*</code>. (For more information, see RFC 3066 2.5).</p>
+
+<p>Note that this method is equivalent to <code>basic_filtering_rfc4647_range</code> by definition.</p>
+
+</dd><dt id="$boolean_=_$lt->extended_filtering_range_($range,_$tag)"><code>$boolean = $lt-&gt;<strong id="member-extended_filtering_range">extended_filtering_range</strong> ($range, $tag)</code></dt>
+
+<dd>
+<p>Compares an extended language range to a language tag, according to the latest version of the language range specification. At the time of writing, the latest version is RFC 4647.</p>
+
+</dd><dt id="$boolean_=_$lt->extended_filtering_rfc4647_range_($range,_$tag)"><code>$boolean = $lt-&gt;<strong id="member-extended_filtering_rfc4647_range">extended_filtering_rfc4647_range</strong> ($range, $tag)</code></dt>
+
+<dd>
+<p>Compares an extended language range to a language tag, according to RFC 4647 Section 3.3.2. This method returns whether the range matches to the tag or not.</p>
+
+<p>An extended language range is a language tag whose subtags can be <code>*</code>s. (For more information, see RFC 4647 Section 2.2.).</p>
+</dd>
+</dl>
+
+</section></section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="RFC1766">RFC1766</dt>
+
+<dd>
+<p>RFC 1766: Tags for the Identification of Languages <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc1766">http://tools.ietf.org/html/rfc1766</a>&gt;</code>. (Obsolete)</p>
+
+</dd><dt id="RFC3066">RFC3066</dt>
+
+<dd>
+<p>RFC 3066: Tags for the Identification of Languages <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc3066">http://tools.ietf.org/html/rfc3066</a>&gt;</code>. (Obsolete)</p>
+
+</dd><dt id="RFC4646">RFC4646</dt>
+
+<dd>
+<p>RFC 4646: Tags for Identifying Languages <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc4646">http://tools.ietf.org/html/rfc4646</a>&gt;</code>. (Obsolete)</p>
+
+</dd><dt id="RFC4647">RFC4647</dt>
+
+<dd>
+<p>RFC 4647: Matching of Language Tags <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc4647">http://tools.ietf.org/html/rfc4647</a>&gt;</code>.</p>
+
+</dd><dt id="RFC5646">RFC5646</dt>
+
+<dd>
+<p>RFC 5646: Tags for Identifying Languages <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc5646">http://tools.ietf.org/html/rfc5646</a>&gt;</code>.</p>
+
+</dd><dt id="RFC6067">RFC6067</dt>
+
+<dd>
+<p>RFC 6067: BCP 47 Extension U <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc6067">http://tools.ietf.org/html/rfc6067</a>&gt;</code>.</p>
+
+</dd><dt id="RFC6497">RFC6497</dt>
+
+<dd>
+<p>RFC 6497: BCP 47 Extension T - Transformed Content <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc6497">http://tools.ietf.org/html/rfc6497</a>&gt;</code>.</p>
+
+</dd><dt id="LANGSUBTAGREG">LANGSUBTAGREG</dt>
+
+<dd>
+<p>IANA Language Subtag Registry <code class="url">&lt;<a href="http://www.iana.org/assignments/language-subtag-registry">http://www.iana.org/assignments/language-subtag-registry</a>&gt;</code>.</p>
+
+</dd><dt id="LANGEXTREG">LANGEXTREG</dt>
+
+<dd>
+<p>Language Tag Extensions Registry <code class="url">&lt;<a href="http://www.iana.org/assignments/language-tag-extensions-registry">http://www.iana.org/assignments/language-tag-extensions-registry</a>&gt;</code>.</p>
+
+</dd><dt id="LDML">LDML</dt>
+
+<dd>
+<p>UTS #35: Unicode Locale Data Markup Language <code class="url">&lt;<a href="http://unicode.org/reports/tr35/">http://unicode.org/reports/tr35/</a>&gt;</code>.</p>
+
+</dd><dt id="UNICODELOCALEREG">UNICODELOCALEREG</dt>
+
+<dd>
+<p>Unicode Locale Extensions for BCP 47 <code class="url">&lt;<a href="http://cldr.unicode.org/index/bcp47-extension">http://cldr.unicode.org/index/bcp47-extension</a>&gt;</code>, <code class="url">&lt;<a href="http://unicode.org/repos/cldr/trunk/common/bcp47/">http://unicode.org/repos/cldr/trunk/common/bcp47/</a>&gt;</code>.</p>
+
+</dd><dt id="WEBLANGTAG">WEBLANGTAG</dt>
+
+<dd>
+<p>Comments in the <code>lib/Web/LangTag.pm</code>.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>The module requires Perl 5.8 or later.</p>
+
+</section><section id="DEVELOPMENT"><h1>DEVELOPMENT</h1>
+
+<p>Latest version of the module is available at GitHub <code class="url">&lt;<a href="https://github.com/manakai/perl-web-langtag">https://github.com/manakai/perl-web-langtag</a>&gt;</code>.</p>
+
+<p>Tests are run at Travis CI: <code class="url">&lt;<a href="https://travis-ci.org/manakai/perl-web-langtag">https://travis-ci.org/manakai/perl-web-langtag</a>&gt;</code>.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p>SuikaWiki:Language Tags <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/language%20tags">http://suika.suikawiki.org/~wakaba/wiki/sw/n/language%20tags</a>&gt;</code></p>
+
+<p>Language tags <code class="url">&lt;<a href="https://github.com/manakai/data-web-defs/blob/master/data/langtags.json">https://github.com/manakai/data-web-defs/blob/master/data/langtags.json</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::UIEvent</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::UIEvent</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/UIEvent.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::UIEvent</code></h1><h2>The DOM <code>UIEvent</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::UIEvent</code> class implements the DOM <code>UIEvent</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> class,
+following methods are available:</p>
+
+<dl>
+<dt id="$value_=_$ev->detail"><code>$value = $ev-&gt;<strong id="member-detail">detail</strong></code></dt>
+
+<dd>
+<p>Return the additional data specified for the event. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+
+</dd><dt id="$window_=_$ev->view"><code>$window = $ev-&gt;<strong id="member-view">view</strong></code></dt>
+
+<dd>
+<p>Return the window object associated with the event. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+</dd>
+</dl>
+
+<p>In addition,
+it also supports deprecated <code>init_ui_event</code> method. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+
+<p>The <code>new</code> method of the <a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a> class accepts the <code>detail</code> and <code>view</code> name/value pairs in its second arguments,
+in addition to the name/value pairs for <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> objects in general. <cite class="ref">[<a href="#UIEVENTS">UIEVENTS</a>]</cite></p>
+
+</section><section id="SUBCLASSES"><h1>SUBCLASSES</h1>
+
+<p>There are subclasses of the class,
+representing subinterfaces of the <code>Event</code> interface,
+containing: <a href="../../../pod/Web/DOM/FocusEvent" class="podlinkpod">Web::DOM::FocusEvent</a>,
+<a href="../../../pod/Web/DOM/MouseEvent" class="podlinkpod">Web::DOM::MouseEvent</a>,
+<a href="../../../pod/Web/DOM/KeyboardEvent" class="podlinkpod">Web::DOM::KeyboardEvent</a>,
+<a href="../../../pod/Web/DOM/CompositionEvent" class="podlinkpod">Web::DOM::CompositionEvent</a>,
+and <a href="../../../pod/Web/DOM/TouchEvent" class="podlinkpod">Web::DOM::TouchEvent</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM3EVENTS">DOM3EVENTS</dt>
+
+<dd>
+<p>DOM Level 3 Events <code class="url">&lt;<a href="http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#events-uievents">http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#events-uievents</a>&gt;</code>.</p>
+
+</dd><dt id="UIEVENTS">UIEVENTS</dt>
+
+<dd>
+<p>UI Events <code class="url">&lt;<a href="https://dvcs.w3.org/hg/d4e/raw-file/tip/source_respec.htm#constructor-uievent">https://dvcs.w3.org/hg/d4e/raw-file/tip/source_respec.htm#constructor-uievent</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

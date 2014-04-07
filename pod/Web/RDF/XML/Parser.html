@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::RDF::XML::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::RDF::XML::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/RDF/XML/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::RDF::XML::Parser</code></h1><h2>An RDF/XML parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::RDF::XML::Parser;
+  $rdf = Web::RDF::XML::Parser-&gt;new;
+  $rdf-&gt;ontriple (sub {
+    push @result, {@_};
+  });
+  $rdf-&gt;convert_document ($doc);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::RDF::XML::Parser</code> module is an implementation of RDF/XML. With the module, the RDF triples embedded in the RDF/XML document can be extracted.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$rdf_=_Web::RDF::XML::Parser->new"><code>$rdf = Web::RDF::XML::Parser-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of RDF/XML parser.</p>
+
+</dd><dt id="$rdf->ontriple_($code)"><code>$rdf-&gt;<strong id="member-ontriple">ontriple</strong> ($code)</code></dt>
+
+<dt id="$code_=_$rdf->ontriple"><code>$code = $rdf-&gt;<strong>ontriple</strong></code></dt>
+
+<dd>
+<p>Get or set the callback function which is invoked for each triple extracted from the document.</p>
+
+<p>The callback is invoked with following name/value pairs as arguments: <code>subject</code>, <code>predicate</code>, <code>object</code>, <code>id</code>, and <code>node</code>. First three values represent node (or literal) in the triple. They are hash references, containing one or more of followings: <code>uri</code> (URL for the node), <code>bnodeid</code> (graph-local ID for the bnode), <code>value</code> (literal value), <code>language</code> (language tag), and <code>datatype</code> (data type URL). Optional <code>id</code> value represents the ID of the triple. The node from which the triple is extracted is given as <code>node</code>. The callback is not expected to throw any exception.</p>
+
+</dd><dt id="$code_=_$rdf->onerror"><code>$code = $rdf-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$rdf->onerror_($code)"><code>$rdf-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Get or set the error handler for the parser. Any parse error, as well as warning and information, is reported to the handler. See <a href="../../../../pod/Whatpm/Errors" class="podlinkpod">Whatpm::Errors</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod</a>&gt;</code> for more information.</p>
+
+</dd><dt id="$rdf->convert_document_($doc)"><code>$rdf-&gt;<strong id="member-convert_document">convert_document</strong> ($doc)</code></dt>
+
+<dd>
+<p>Extract the triples from a document. The argument must be a DOM <code>Document</code> (e.g. a <a href="../../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> object). Extracted triples are reported through the <code>ontriple</code> callback.</p>
+
+</dd><dt id="$rdf->convert_rdf_element_($doc)"><code>$rdf-&gt;<strong id="member-convert_rdf_element">convert_rdf_element</strong> ($doc)</code></dt>
+
+<dd>
+<p>Extract the triples from an element. The argument must be a DOM <code>element</code> containing the triples, e.g. an <code>rdf:RDF</code> element. Extracted triples are reported through the <code>ontriple</code> callback.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>Perl 5.8 or later is required.</p>
+
+<p>This module requires <a href="../../../../pod/Char/Class/XML" class="podlinkpod">Char::Class::XML</a> from <code class="url">&lt;<a href="https://github.com/wakaba/perl-charclass">https://github.com/wakaba/perl-charclass</a>&gt;</code> and <a href="../../../../pod/Web/URL/Canonicalize" class="podlinkpod">Web::URL::Canonicalize</a> from <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>.</p>
+
+<p>In addition, it expects DOM objects (e.g. <a href="../../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> and <a href="../../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> from <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code>) as input, although there is no direct dependency.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="RDFXML">RDFXML</dt>
+
+<dd>
+<p>RDF/XML Syntax Specification (Revised), W3C, <code class="url">&lt;<a href="http://www.w3.org/TR/REC-rdf-syntax/">http://www.w3.org/TR/REC-rdf-syntax/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="TODO"><h1>TODO</h1>
+
+<p>The RDF/XML specification does not fully define error handling rule. This implementation is trying to copy what W3C RDF Validator does, although the attempt is far from complete.</p>
+
+<p>Need to provide hooks for validation of e.g. langauge tags, URLs, and non-RDF contents.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::DocumentType</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::DocumentType</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/DocumentType.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::DocumentType</code></h1><h2>The DOM <code>DocumentType</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::DocumentType</code> class implements the DOM <code>DocumentType</code> interface.
+It represents a document type.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a>,
+<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+and <a href="../../../pod/Web/DOM/ChildNode" class="podlinkpod">Web::DOM::ChildNode</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$string_=_$ent->declaration_base_uri"><code>$string = $ent-&gt;<strong id="member-declaration_base_uri">declaration_base_uri</strong></code></dt>
+
+<dt id="$string_=_$ent->manakai_declaration_base_uri"><code>$string = $ent-&gt;<strong id="member-manakai_declaration_base_uri">manakai_declaration_base_uri</strong></code></dt>
+
+<dd>
+<p>Return the base URL of the document type declaration. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$col_=_$dt->element_types"><code>$col = $dt-&gt;<strong id="member-element_types">element_types</strong></code></dt>
+
+<dd>
+<p>Return the collection (<a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>) of element types. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$col_=_$dt->general_entities"><code>$col = $dt-&gt;<strong id="member-general_entities">general_entities</strong></code></dt>
+
+<dt id="$col_=_$dt->entities"><code>$col = $dt-&gt;<strong id="member-entities">entities</strong></code></dt>
+
+<dd>
+<p>Return the collection (<a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>) of general entities. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$et_=_$dt->get_element_type_definition_node_($name)"><code>$et = $dt-&gt;<strong id="member-get_element_type_definition_node">get_element_type_definition_node</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the element type (<a href="../../../pod/Web/DOM/ElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>) with the specified name,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$entity_=_$dt->get_general_entity_node_($name)"><code>$entity = $dt-&gt;<strong id="member-get_general_entity_node">get_general_entity_node</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the general entity (<a href="../../../pod/Web/DOM/Entity" class="podlinkpod">Web::DOM::Entity</a>) with the specified name,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$notation_=_$dt->get_notation_node_($name)"><code>$notation = $dt-&gt;<strong id="member-get_notation_node">get_notation_node</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the notation (<a href="../../../pod/Web/DOM/Notation" class="podlinkpod">Web::DOM::Notation</a>) with the specified name,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$name_=_$dt->name"><code>$name = $dt-&gt;<strong id="member-name">name</strong></code></dt>
+
+<dd>
+<p>Return the name of the document type. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$dt->notations"><code>$col = $dt-&gt;<strong id="member-notations">notations</strong></code></dt>
+
+<dd>
+<p>Return the collection (<a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>) of notations. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$id_=_$dt->public_id"><code>$id = $dt-&gt;<strong id="member-public_id">public_id</strong></code></dt>
+
+<dt id="$dt->public_id_($id)"><code>$dt-&gt;<strong>public_id</strong> ($id)</code></dt>
+
+<dd>
+<p>Return or set the public identifier of the document type. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$node_=_$dt->remove_element_type_definition_node_($node)"><code>$node = $dt-&gt;<strong id="member-remove_element_type_definition_node">remove_element_type_definition_node</strong> ($node)</code></dt>
+
+<dd>
+<p>Remove the specified element type from the document type.
+The removed node is returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$node_=_$dt->remove_general_entity_node_($node)"><code>$node = $dt-&gt;<strong id="member-remove_general_entity_node">remove_general_entity_node</strong> ($node)</code></dt>
+
+<dd>
+<p>Remove the specified general entity from the document type.
+The removed node is returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$node_=_$dt->remove_notation_node_($node)"><code>$node = $dt-&gt;<strong id="member-remove_notation_node">remove_notation_node</strong> ($node)</code></dt>
+
+<dd>
+<p>Remove the specified notation from the document type.
+The removed node is returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$old_=_$dt->set_element_type_definition_node_($new)"><code>$old = $dt-&gt;<strong id="member-set_element_type_definition_node">set_element_type_definition_node</strong> ($new)</code></dt>
+
+<dd>
+<p>Set the specified element type to the document type.
+If there is already an element type with the same name,
+it is removed from the document type and returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$old_=_$dt->set_general_entity_node_($new)"><code>$old = $dt-&gt;<strong id="member-set_general_entity_node">set_general_entity_node</strong> ($new)</code></dt>
+
+<dd>
+<p>Set the specified general entity node to the document type.
+If there is already a general entity with the same name,
+it is removed from the document type and returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$old_=_$dt->set_notation_node_($new)"><code>$old = $dt-&gt;<strong id="member-set_notation_node">set_notation_node</strong> ($new)</code></dt>
+
+<dd>
+<p>Set the specified notation node to the document type.
+If there is already a notation with the same name,
+it is removed from the document type and returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$id_=_$dt->system_id"><code>$id = $dt-&gt;<strong id="member-system_id">system_id</strong></code></dt>
+
+<dt id="$dt->system_id_($id)"><code>$dt-&gt;<strong>system_id</strong> ($id)</code></dt>
+
+<dd>
+<p>Return or set the system identifier of the document type. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-documenttype">http://dom.spec.whatwg.org/#interface-documenttype</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

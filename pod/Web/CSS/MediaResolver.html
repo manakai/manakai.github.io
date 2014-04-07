@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::MediaResolver</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::MediaResolver</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/MediaResolver.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::MediaResolver</code></h1><h2>Default for media-dependent CSS processing</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::MediaResolver</code> class can be used as an implementation of the media-dependent CSS and/or Media Queries processing adaptor for the <code>Web::CSS</code> modules.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<dl>
+<dt id="$mr_=_Web::CSS::MediaResolver->new"><code>$mr = Web::CSS::MediaResolver-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the media resolver.</p>
+
+</dd><dt id="$mr->set_supported_(%args)"><code>$mr-&gt;<strong id="member-set_supported">set_supported</strong> (%args)</code></dt>
+
+<dd>
+<p>Set the "supported" flag to true value.</p>
+
+<dl>
+<dt><a name="all_=>_1">all =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known constructs.</p>
+
+</dd><dt><a name="all_functions_=>_1">all_functions =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known CSS functional notations.</p>
+
+</dd><dt><a name="all_props_=>_1">all_props =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known CSS properties.</p>
+
+</dd><dt><a name="all_prop_values_=>_1">all_prop_values =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known CSS property values.</p>
+
+</dd><dt><a name="all_pseudo_classes_=>_1">all_pseudo_classes =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known pseudo-classes.</p>
+
+</dd><dt><a name="all_pseudo_elements_=>_1">all_pseudo_elements =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known pseudo-elements.</p>
+
+</dd><dt><a name="all_media_features_=>_1">all_media_features =&gt; 1</a></dt>
+
+<dd>
+<p>Set the "supported" flag of all known media features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+</section><section id="REQUIRED_FEATURES"><h1>REQUIRED FEATURES</h1>
+
+<p>The media resolver enables the CSS implementation build on top of the parser to control whether features are supported or not.
+However,
+features listed in this section cannot be disabled by the media resolver so that they must be supported.</p>
+
+<p>Selectors: Type,
+universal,
+attribute,
+class,
+and ID selectors.
+Descendant and child selectors.
+Direct or indirect adjacent selectors.</p>
+
+<p>Media queries: Media types.</p>
+
+<p>At-rules: '@charset',
+'@namespace' (Handled by the parser).
+'@import',
+'@media'.</p>
+
+<p>Style rules: '!important'.
+'inherit',
+'initial',
+'unset'.</p>
+
+<p>Units: Relative and absolute length units.
+Angle units.
+Resolution units.
+Time units.
+Frequency units.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/CSS/Parser" class="podlinkpod">Web::CSS::Parser</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+</section><section id="POD_ERRORS"><h1>POD ERRORS</h1>
+
+<p>Hey!
+<b>The above document had some coding errors,
+which are explained below:</b></p>
+
+<dl>
+<dt id="Around_line_55:">Around line 55:</dt>
+
+<dd>
+<p>You forgot a '=back' before '=head1'</p>
+</dd>
+</dl>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

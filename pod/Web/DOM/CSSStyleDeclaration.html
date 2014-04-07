@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::CSSStyleDeclaration</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::CSSStyleDeclaration</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/CSSStyleDeclaration.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::CSSStyleDeclaration</code></h1><h2>The DOM <code>CSSStyleDeclaration</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::CSSStyleDeclaration</code> class implements the DOM <code>CSSStyleDeclaration</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$string_=_$style->css_text"><code>$string = $style-&gt;<strong id="member-css_text">css_text</strong></code></dt>
+
+<dt id="$style->css_text_($string)"><code>$style-&gt;<strong>css_text</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the list of declarations contained by the <code>CSSStyleDeclaration</code> object. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$style->get_property_priorty_($prop_name)"><code>$string = $style-&gt;<strong id="member-get_property_priorty">get_property_priorty</strong> ($prop_name)</code></dt>
+
+<dd>
+<p>Return the string <code>important</code> if the declaration for the specified property contains the <code>!important</code> keyword. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$style->get_property_value_($prop_name)"><code>$string = $style-&gt;<strong id="member-get_property_value">get_property_value</strong> ($prop_name)</code></dt>
+
+<dd>
+<p>Return the character string serialization of the property value with the specified name,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$prop_name_=_$style->[$index]"><code>$prop_name = $style-&gt;<strong id="member-[$index]">[$index]</strong></code></dt>
+
+<dt id="$prop_name_=_$style->item_($index)"><code>$prop_name = $style-&gt;<strong id="member-item">item</strong> ($index)</code></dt>
+
+<dd>
+<p>Return the property name at the specified index,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>Use of the <code>item</code> method is discouraged as it doesn't support Perl-ish ways to access items,
+such as negative indexing,
+while <code>$style-&gt;[-1]</code> works as intended.</p>
+
+</dd><dt id="$length_=_$style->length"><code>$length = $style-&gt;<strong id="member-length">length</strong></code></dt>
+
+<dt id="$length_=_scalar_@$style"><code>$length = scalar @$style</code></dt>
+
+<dd>
+<p>Return the number of declarations. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$style_=_$style->parent_rule"><code>$style = $style-&gt;<strong id="member-parent_rule">parent_rule</strong></code></dt>
+
+<dd>
+<p>Return the parent rule,
+if any. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$old_value_=_$style->remove_property_($prop_name)"><code>$old_value = $style-&gt;<strong id="member-remove_property">remove_property</strong> ($prop_name)</code></dt>
+
+<dd>
+<p>Remove the specified property and return the old value. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$style->set_property_($prop_name,_$value,_$priority)"><code>$style-&gt;<strong id="member-set_property">set_property</strong> ($prop_name,
+$value,
+$priority)</code></dt>
+
+<dd>
+<p>Set the specified property's value and priority (<code>"important"</code> or <code>undef</code>). <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+</dd>
+</dl>
+
+<p>In addition,
+there are methods reflecting CSS properties.
+For example,
+the <code>display</code> method reflects the <code>display</code> CSS property.
+The <code>list_style_type</code> method reflects the <code>list-style-type</code> CSS property.
+Note that both <code>float</code> and <code>css_float</code> methods reflect the <code>float</code> CSS property.</p>
+
+<pre>
+<code>  $style-&gt;display ('block');
+  $string = $style-&gt;display; # 'block'</code></pre>
+
+<p>For the list of CSS properties, see <a href="../../../pod/Web/CSS/Props" class="podlinkpod">Web::CSS::Props</a> in the web-css package.</p>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>See <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSSOM <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/">http://dev.w3.org/csswg/cssom/</a>&gt;</code>.</p>
+
+<p>The <code>item</code> method MUST return the empty string if there is no item at the specified index.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding#anchor-86">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding#anchor-86</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/CSSStyleRule" class="podlinkpod">Web::DOM::CSSStyleRule</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

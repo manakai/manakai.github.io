@@ -1,0 +1,532 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Document</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Document</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Document.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Document</code></h1><h2>The DOM <code>Document</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Document</code> class implements the DOM <code>Document</code> interface,
+which represents the document (either HTML or XML).</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a>,
+<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a>,
+and <a href="../../../pod/Web/DOM/XPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$doc_=_new_Web::DOM::Document"><code>$doc = <strong id="member-new">new Web::DOM::Document</strong></code></dt>
+
+<dd>
+<p>Create a new document object. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$doc->adopt_node_($node)"><code>$node = $doc-&gt;<strong id="member-adopt_node">adopt_node</strong> ($node)</code></dt>
+
+<dd>
+<p>Change the node document (i.e.
+the <code>owner_document</code> attribute value) of the specified node and its descendant nodes to the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$bool_=_$doc->all_declarations_processed"><code>$bool = $doc-&gt;<strong id="member-all_declarations_processed">all_declarations_processed</strong></code></dt>
+
+<dt id="$doc->all_declarations_processed_($bool)"><code>$doc-&gt;<strong>all_declarations_processed</strong> ($bool)</code></dt>
+
+<dd>
+<p>Return or set the [all declarations processed] property value of the document. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->atom_feed_element"><code>$el = $doc-&gt;<strong id="member-atom_feed_element">atom_feed_element</strong></code></dt>
+
+<dd>
+<p>Return the document element,
+if it is the <code>atom:feed</code> element. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->body"><code>$el = $doc-&gt;<strong id="member-body">body</strong></code></dt>
+
+<dt id="$doc->body_($el)"><code>$doc-&gt;<strong>body</strong> ($el)</code></dt>
+
+<dd>
+<p>Return or set the body element of the document (i.e.
+the <code>body</code> element or the <code>frameset</code> element). <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->character_set"><code>$string = $doc-&gt;<strong id="member-character_set">character_set</strong></code></dt>
+
+<dt id="$string_=_$doc->charset"><code>$string = $doc-&gt;<strong id="member-charset">charset</strong></code></dt>
+
+<dt id="$string_=_$doc->input_encoding"><code>$string = $doc-&gt;<strong id="member-input_encoding">input_encoding</strong></code></dt>
+
+<dt id="$doc->input_encoding_($string)"><code>$doc-&gt;<strong>input_encoding</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the encoding of the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->manakai_charset"><code>$string = $doc-&gt;<strong id="member-manakai_charset">manakai_charset</strong></code></dt>
+
+<dt id="$doc->manakai_charset_($string)"><code>$doc-&gt;<strong>manakai_charset</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>charset</code> parameter value of the <code>Content-Type</code> metadata. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->compat_mode"><code>$string = $doc-&gt;<strong id="member-compat_mode">compat_mode</strong></code></dt>
+
+<dd>
+<p>Return <code>BackComat</code> if the document is in the quirks mode,
+or <code>CSS1Compat</code> otherwise. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->manakai_compat_mode"><code>$string = $doc-&gt;<strong id="member-manakai_compat_mode">manakai_compat_mode</strong></code></dt>
+
+<dt id="$doc->manakai_compat_mode_($string)"><code>$doc-&gt;<strong>manakai_compat_mode</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set the mode of the document.
+The value can be one of: <code>no quirks</code>,
+<code>limited quirks</code>,
+and <code>quirks</code>. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->content_type"><code>$string = $doc-&gt;<strong id="member-content_type">content_type</strong></code></dt>
+
+<dd>
+<p>Return the MIME type of the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$attr_=_$doc->create_attribute_($local_name)"><code>$attr = $doc-&gt;<strong id="member-create_attribute">create_attribute</strong> ($local_name)</code></dt>
+
+<dd>
+<p>Create a new attribute (<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>) with the specified name and empty value. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$attr_=_$doc->create_attribute_ns_($nsurl,_$qname)"><code>$attr = $doc-&gt;<strong id="member-create_attribute_ns">create_attribute_ns</strong> ($nsurl,
+$qname)</code></dt>
+
+<dt id="$attr_=_$doc->create_attribute_ns_($nsurl,_[$prefix,_$local_name])"><code>$attr = $doc-&gt;<strong>create_attribute_ns</strong> ($nsurl,
+[$prefix,
+$local_name])</code></dt>
+
+<dd>
+<p>Create a new attribute (<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>) with the specified namespace URL and qualified name. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>The qualified name can be represented as an array reference,
+where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$adef_=_$doc->create_attribute_definition_($name)"><code>$adef = $doc-&gt;<strong id="member-create_attribute_definition">create_attribute_definition</strong> ($name)</code></dt>
+
+<dd>
+<p>Create an attribute definition (<a href="../../../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a>) with the specified name. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$doc->create_cdata_section_($text)"><code>$doc-&gt;<strong id="member-create_cdata_section">create_cdata_section</strong> ($text)</code></dt>
+
+<dd>
+<p>Throw a "NotSupportedError" exception.
+The <code>CDATASection</code> interface is obsolete. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$comment_=_$doc->create_comment_($data)"><code>$comment = $doc-&gt;<strong id="member-create_comment">create_comment</strong> ($data)</code></dt>
+
+<dt id="$comment_=_$doc->create_comment_(\$data)"><code>$comment = $doc-&gt;<strong>create_comment</strong> (\$data)</code></dt>
+
+<dd>
+<p>Create a new comment (<a href="../../../pod/Web/DOM/Comment" class="podlinkpod">Web::DOM::Comment</a>) with the specified data. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$dt_=_$doc->create_document_type_definition_($name)"><code>$dt = $doc-&gt;<strong id="member-create_document_type_definition">create_document_type_definition</strong> ($name)</code></dt>
+
+<dd>
+<p>Create a new document type (<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>) with the specified name. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->create_element_($local_name)"><code>$el = $doc-&gt;<strong id="member-create_element">create_element</strong> ($local_name)</code></dt>
+
+<dd>
+<p>Create a new element (<a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>) with the specified local name in the HTML namespace. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->create_element_ns_($nsurl,_$qname)"><code>$el = $doc-&gt;<strong id="member-create_element_ns">create_element_ns</strong> ($nsurl,
+$qname)</code></dt>
+
+<dt id="$el_=_$doc->create_element_ns_($nsurl,_[$prefix,_$local_name])"><code>$el = $doc-&gt;<strong>create_element_ns</strong> ($nsurl,
+[$prefix,
+$local_name])</code></dt>
+
+<dd>
+<p>Create a new element (<a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>) with specified namespace URL and qualified name. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>The qualified name can be represented as an array reference,
+where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$et_=_$doc->create_element_type_definition_($name)"><code>$et = $doc-&gt;<strong id="member-create_element_type_definition">create_element_type_definition</strong> ($name)</code></dt>
+
+<dd>
+<p>Create a new element type definition (<a href="../../../pod/Web/DOM/ElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>) with the specified name. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$doc->create_entity_reference_($name)"><code>$doc-&gt;<strong id="member-create_entity_reference">create_entity_reference</strong> ($name)</code></dt>
+
+<dd>
+<p>Throw a "NotSupportedError" exception.
+The <code>EntityReference</code> interface is obsolete. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$ev_=_$doc->create_event_($interface)"><code>$ev = $doc-&gt;<strong id="member-create_event">create_event</strong> ($interface)</code></dt>
+
+<dd>
+<p>Create an event object.
+The argument specifies the kind of the object,
+e.g.
+<code>Event</code>,
+<code>CustomEvent</code>,
+or <code>MouseEvent</code>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>Use <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>'s (or its subclass'es) <code>new</code> method instead.</p>
+
+</dd><dt id="$ent_=_$doc->create_general_entity_($name)"><code>$ent = $doc-&gt;<strong id="member-create_general_entity">create_general_entity</strong> ($name)</code></dt>
+
+<dd>
+<p>Create a general entity (<a href="../../../pod/Web/DOM/Entity" class="podlinkpod">Web::DOM::Entity</a>) with the specified name. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$ni_=_$doc->create_node_iterator_($root,_$what_to_show,_$filter)"><code>$ni = $doc-&gt;<strong id="member-create_node_iterator">create_node_iterator</strong> ($root,
+$what_to_show,
+$filter)</code></dt>
+
+<dd>
+<p>Create a new node iterator (<a href="../../../pod/Web/DOM/NodeIterator" class="podlinkpod">Web::DOM::NodeIterator</a>). <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>The first argument is required,
+specifying the root node of the iterator.
+Second and third arguments are optional,
+representing bit vector of node types and code reference,
+both used to filter candidate nodes.
+For the bit vector,
+see <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.
+The code reference would be invoked with an argument (<code>$_[1]</code>) which is the node in question.
+The code is expected to return whether the node is accepted or not,
+using one of constants from <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.</p>
+
+</dd><dt id="$notation_=_$doc->create_notation_($name)"><code>$notation = $doc-&gt;<strong id="member-create_notation">create_notation</strong> ($name)</code></dt>
+
+<dd>
+<p>Create a notatioon (<a href="../../../pod/Web/DOM/Notation" class="podlinkpod">Web::DOM::Notation</a>) with the specified name. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$text_=_$doc->create_text_node_($data)"><code>$text = $doc-&gt;<strong id="member-create_text_node">create_text_node</strong> ($data)</code></dt>
+
+<dt id="$text_=_$doc->create_text_node_(\$data)"><code>$text = $doc-&gt;<strong>create_text_node</strong> (\$data)</code></dt>
+
+<dd>
+<p>Create a new text node (<a href="../../../pod/Web/DOM/Text" class="podlinkpod">Web::DOM::Text</a>) with the given character string. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$touch_=_$doc->create_touch_($view,_$target,_$identifier,_$page_x,_$page_y,_$screen_x,_$screen_y)"><code>$touch = $doc-&gt;<strong id="member-create_touch">create_touch</strong> ($view,
+$target,
+$identifier,
+$page_x,
+$page_y,
+$screen_x,
+$screen_y)</code></dt>
+
+<dd>
+<p>Create a new <a href="../../../pod/Web/DOM/Touch" class="podlinkpod">Web::DOM::Touch</a> with the specified arguments. <cite class="ref">[<a href="#TOUCH">TOUCH</a>]</cite></p>
+
+</dd><dt id="$list_=_$doc->create_touch_list_($touch1,_$touch2,_...)"><code>$list = $doc-&gt;<strong id="member-create_touch_list">create_touch_list</strong> ($touch1,
+$touch2,
+...)</code></dt>
+
+<dd>
+<p>Create a new <a href="../../../pod/Web/DOM/TouchList" class="podlinkpod">Web::DOM::TouchList</a> with the specified <a href="../../../pod/Web/DOM/Touch" class="podlinkpod">Web::DOM::Touch</a>es. <cite class="ref">[<a href="#TOUCH">TOUCH</a>]</cite></p>
+
+</dd><dt id="$tw_=_$doc->create_tree_walker_($root,_$what_to_show,_$filter)"><code>$tw = $doc-&gt;<strong id="member-create_tree_walker">create_tree_walker</strong> ($root,
+$what_to_show,
+$filter)</code></dt>
+
+<dd>
+<p>Create a new tree walker (<a href="../../../pod/Web/DOM/TreeWalker" class="podlinkpod">Web::DOM::TreeWalker</a>). <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>The first argument is required,
+specifying the root node of the tree walker.
+Second and third arguments are optional,
+representing bit vector of node types and code reference,
+both used to filter candidate nodes.
+For the bit vector,
+see <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.
+The code reference would be invoked with an argument (<code>$_[1]</code>) which is the node in question.
+The code is expected to return whether the node is accepted,
+rejected,
+or skipped,
+using one of constants from <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.</p>
+
+</dd><dt id="$pi_=_$doc->create_processing_instruction_($target,_$data)"><code>$pi = $doc-&gt;<strong id="member-create_processing_instruction">create_processing_instruction</strong> ($target,
+$data)</code></dt>
+
+<dd>
+<p>Create a new processing instruction node (<a href="../../../pod/Web/DOM/ProcessingInstruction" class="podlinkpod">Web::DOM::ProcessingInstruction</a>) with the specified target and data. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$text_=_$doc->dir"><code>$text = $doc-&gt;<strong id="member-dir">dir</strong></code></dt>
+
+<dt id="$doc->dir_($text)"><code>$doc-&gt;<strong>dir</strong> ($text)</code></dt>
+
+<dd>
+<p>Return or set the <code>dir</code> attribute of the <code>html</code> element,
+if any. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$dt_=_$doc->doctype"><code>$dt = $doc-&gt;<strong id="member-doctype">doctype</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a> node of the document,
+if any. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->document_element"><code>$el = $doc-&gt;<strong id="member-document_element">document_element</strong></code></dt>
+
+<dd>
+<p>Return the document element of the document,
+if any. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$config_=_$doc->dom_config"><code>$config = $doc-&gt;<strong id="member-dom_config">dom_config</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/Configuration" class="podlinkpod">Web::DOM::Configuration</a> object for the document. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$col_=_$doc->embeds"><code>$col = $doc-&gt;<strong id="member-embeds">embeds</strong></code></dt>
+
+<dt id="$col_=_$doc->plugins"><code>$col = $doc-&gt;<strong id="member-plugins">plugins</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>embed</code> elements in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->manakai_entity_base_uri"><code>$string = $doc-&gt;<strong id="member-manakai_entity_base_uri">manakai_entity_base_uri</strong></code></dt>
+
+<dt id="$doc->manakai_entity_base_uri_($string)"><code>$doc-&gt;<strong>manakai_entity_base_uri</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the base URL of the document entity (not of the document). <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$col_=_$doc->forms"><code>$col = $doc-&gt;<strong id="member-forms">forms</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>form</code> elements in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->get_element_by_id_($id)"><code>$el = $doc-&gt;<strong id="member-get_element_by_id">get_element_by_id</strong> ($id)</code></dt>
+
+<dd>
+<p>Return the element whose ID is equal to the argument,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$col_=_$doc->get_elements_by_name_($name)"><code>$col = $doc-&gt;<strong id="member-get_elements_by_name">get_elements_by_name</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a> containing the elements whose <code>name</code> is equal to the specified value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$doc->manakai_has_bom"><code>$bool = $doc-&gt;<strong id="member-manakai_has_bom">manakai_has_bom</strong></code></dt>
+
+<dt id="$doc->manakai_has_bom_($bool)"><code>$doc-&gt;<strong>manakai_has_bom</strong> ($bool)</code></dt>
+
+<dd>
+<p>Return or set whether the byte representation of the document has the BOM or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->head"><code>$el = $doc-&gt;<strong id="member-head">head</strong></code></dt>
+
+<dt id="$el_=_$doc->manakai_head_[DEPRECATED]"><code>$el = $doc-&gt;<strong id="member-manakai_head">manakai_head</strong> [DEPRECATED]</code></dt>
+
+<dd>
+<p>Return the <code>head</code> element of the document,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$el_=_$doc->manakai_html"><code>$el = $doc-&gt;<strong id="member-manakai_html">manakai_html</strong></code></dt>
+
+<dd>
+<p>Return the <code>html</code> element of the document,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$col_=_$doc->images"><code>$col = $doc-&gt;<strong id="member-images">images</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>img</code> elements in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$impl_=_$doc->implementation"><code>$impl = $doc-&gt;<strong id="member-implementation">implementation</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/Implementation" class="podlinkpod">Web::DOM::Implementation</a> object associated to the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node2_=_$doc->import_node_($node1,_$deep)"><code>$node2 = $doc-&gt;<strong id="member-import_node">import_node</strong> ($node1,
+$deep)</code></dt>
+
+<dd>
+<p>Return the newly-created clone of the specified node,
+belonging to the document.
+If the second argument is set to the true value,
+any descendant nodes are also cloned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$doc->manakai_is_html"><code>$bool = $doc-&gt;<strong id="member-manakai_is_html">manakai_is_html</strong></code></dt>
+
+<dt id="$doc->manakai_is_html_($bool)"><code>$doc-&gt;<strong>manakai_is_html</strong> ($bool)</code></dt>
+
+<dd>
+<p>Return or set whether the document is an HTML document or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$doc->manakai_is_srcdoc"><code>$bool = $doc-&gt;<strong id="member-manakai_is_srcdoc">manakai_is_srcdoc</strong></code></dt>
+
+<dt id="$doc->manakai_is_srcdoc_($bool)"><code>$doc-&gt;<strong>manakai_is_srcdoc</strong> ($bool)</code></dt>
+
+<dd>
+<p>Return or set whether the document is an <code>iframe</code> <code>srcdoc</code> document or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$doc->manakai_set_url_($string)"><code>$doc-&gt;<strong id="member-manakai_set_url">manakai_set_url</strong> ($string)</code></dt>
+
+<dd>
+<p>Set the document's address. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$col_=_$doc->links"><code>$col = $doc-&gt;<strong id="member-links">links</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>a</code> or <code>area</code> elements with the <code>href</code> attribute in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$col_=_$doc->scripts"><code>$col = $doc-&gt;<strong id="member-scripts">scripts</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>script</code> elements in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$bool_=_$doc->strict_error_checking"><code>$bool = $doc-&gt;<strong id="member-strict_error_checking">strict_error_checking</strong></code></dt>
+
+<dt id="$doc->strict_error_checking_($bool)"><code>$doc-&gt;<strong>strict_error_checking</strong> ($bool)</code></dt>
+
+<dd>
+<p>Return or set whether some error checks should be skipped or not. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->title"><code>$string = $doc-&gt;<strong id="member-title">title</strong></code></dt>
+
+<dt id="$doc->title_($string)"><code>$doc-&gt;<strong>title</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the title of the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#SVG">SVG</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->url"><code>$string = $doc-&gt;<strong id="member-url">url</strong></code></dt>
+
+<dt id="$string_=_$doc->document_uri"><code>$string = $doc-&gt;<strong id="member-document_uri">document_uri</strong></code></dt>
+
+<dd>
+<p>Return the URL of the document (or the document's address). <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->xml_encoding"><code>$string = $doc-&gt;<strong id="member-xml_encoding">xml_encoding</strong></code></dt>
+
+<dt id="$doc->xml_encoding_($string)"><code>$doc-&gt;<strong>xml_encoding</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>encoding</code> pseudo-attribute value of the XML declaration of the document,
+if it is an XML document.
+The <code>undef</code> value represents omission of the pseudo-attribute. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$doc->xml_standalone"><code>$bool = $doc-&gt;<strong id="member-xml_standalone">xml_standalone</strong></code></dt>
+
+<dt id="$doc->xml_standalone_($bool)"><code>$doc-&gt;<strong>xml_standalone</strong> ($bool)</code></dt>
+
+<dd>
+<p>Return or set the <code>standalone</code> pseudo-attribute value of the XML declaration of the document,
+if it is an XML document.
+The true value represents the <code>true</code> attribute value,
+while the false value represents the <code>false</code> attribute value. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$string_=_$doc->xml_version"><code>$string = $doc-&gt;<strong id="member-xml_version">xml_version</strong></code></dt>
+
+<dt id="$doc->xml_version_($string)"><code>$doc-&gt;<strong>xml_version</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the XML version of the document.
+The value must be <code>1.0</code> or <code>1.1</code>.
+This is the value of the <code>version</code> pseudo-attribute of the XML declaration of the document,
+if it is an XML document. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+</dd>
+</dl>
+
+<p>Additionally,
+the following obsolete methods are available: <code>all</code>,
+<code>anchors</code>,
+<code>applets</code>,
+and <code>clear</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-document">http://dom.spec.whatwg.org/#interface-document</a>&gt;</code>.</p>
+
+</dd><dt id="DOM3CORE">DOM3CORE</dt>
+
+<dd>
+<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+
+</dd><dt id="SVG">SVG</dt>
+
+<dd>
+<p>SVG <code class="url">&lt;<a href="https://svgwg.org/svg2-draft/single-page.html#struct-InterfaceSVGDocument">https://svgwg.org/svg2-draft/single-page.html#struct-InterfaceSVGDocument</a>&gt;</code>.</p>
+
+</dd><dt id="TOUCH">TOUCH</dt>
+
+<dd>
+<p>Touch Events <code class="url">&lt;<a href="https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html">https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMDOM">ATOMDOM</dt>
+
+<dd>
+<p>Atom DOM <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/atomdom">http://suika.suikawiki.org/www/markup/xml/atomdom</a>&gt;</code>.</p>
+
+</dd><dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathEvaluator">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathEvaluator</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

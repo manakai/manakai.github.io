@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Builder</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Builder</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Builder.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Builder</code></h1><h2>A CSS tree structure builder</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::Builder</code> class,
+which is a subclass of the <a href="../../../pod/Web/CSS/Tokenizer" class="podlinkpod">Web::CSS::Tokenizer</a>,
+parses text in the CSS-based syntax and construct tree data structure,
+which then can be used as input to the rule grammer aware parsing stage (e.g.
+<a href="../../../pod/Web/CSS/Parser" class="podlinkpod">Web::CSS::Parser</a>).</p>
+
+<p>This module is intended to be used by a CSS-based language parser as its base class.
+It does not intended for applications directly invoking methods or accessing data structure of the module.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>By <code>use</code>ing the module,
+a number of construct type constants,
+as well as token type constants of <a href="../../../pod/Web/CSS/Tokenizer" class="podlinkpod">Web::CSS::Tokenizer</a>,
+are exported to your package.</p>
+
+</section><section id="DATA_STRUCTURES"><h1>DATA STRUCTURES</h1>
+
+<p>See the comment in the module for the data structure of constructs emitted by the module's methods,
+and the comment in <a href="../../../pod/Web/CSS/Tokenizer" class="podlinkpod">Web::CSS::Tokenizer</a> module for the data structure of tokens.</p>
+
+<p>Constructs emitted by the module also have <code>line</code> and <code>column</code> fields.
+Any other field should not be directly accessed by the application.
+See <a href="../../../pod/Web/CSS/Tokenizer" class="podlinkpod">Web::CSS::Tokenizer</a> documentation for more information.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>CSS Syntax <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>&gt;</code>.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/CSS/Tokenizer" class="podlinkpod">Web::CSS::Tokenizer</a>.</p>
+
+<p><a href="../../../pod/Web/CSS/Parser" class="podlinkpod">Web::CSS::Parser</a>,
+<a href="../../../pod/Web/CSS/Selectors/Parser" class="podlinkpod">Web::CSS::Selectors::Parser</a>,
+<a href="../../../pod/Web/CSS/MediaQueries/Parser" class="podlinkpod">Web::CSS::MediaQueries::Parser</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::XPathExpression</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::XPathExpression</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/XPathExpression.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::XPathExpression</code></h1><h2>The DOM <code>XPathExpression</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::XPathExpression</code> class implements the DOM <code>XPathExpression</code> interface.
+It represents a compiled XPath 1.0 expression.</p>
+
+</section><section id="METHOD"><h1>METHOD</h1>
+
+<p>The following method is available:</p>
+
+<dl>
+<dt id="$result_=_$expr->evaluate_($node,_$result_type,_$result)"><code>$result = $expr-&gt;<strong id="member-evaluate">evaluate</strong> ($node,
+$result_type,
+$result)</code></dt>
+
+<dd>
+<p>Evaluate the XPath 1.0 expression.
+The first argument is the context node (<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> object) used to evaluate the expression.
+The other arguments are optional.
+The second argument is the namespace prefix resolver,
+specified as either a code reference or the <a href="../../../pod/Web/DOM/XPathResolver" class="podlinkpod">Web::DOM::XPathResolver</a> object.
+The third argument is ignored.
+The method returns the <a href="../../../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a> object containing the evaluation result. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathExpression">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathExpression</a>&gt;</code>.</p>
+
+<p>DOM XPath <code class="url">&lt;<a href="http://wiki.whatwg.org/wiki/DOM_XPath">http://wiki.whatwg.org/wiki/DOM_XPath</a>&gt;</code>.</p>
+
+<p>Improving DOM Traversal and DOM XPath <code class="url">&lt;<a href="http://lists.w3.org/Archives/Public/public-webapps/2011AprJun/0310.html">http://lists.w3.org/Archives/Public/public-webapps/2011AprJun/0310.html</a>&gt;</code>.</p>
+
+<p>743888 - Replace SVGException and XPathException with DOMException <code class="url">&lt;<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=743888#c1">https://bugzilla.mozilla.org/show_bug.cgi?id=743888#c1</a>&gt;</code>.</p>
+
+<p><a href="../../../pod/Web/DOM/XPathEvaluation#SPECIFICATIONS" class="podlinkpod">"SPECIFICATIONS" in Web::DOM::XPathEvaluation</a>.</p>
+
+<p>The IDL definition MUST be modified as follows:</p>
+
+<pre>
+<code>  interface XPathExpression {
+    XPathResult evaluate((Node or Attr) contextNode,
+                         optional unsigned short type = 0,
+                         optional object? result = null);
+  };</code></pre>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/XPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a>, <a href="../../../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

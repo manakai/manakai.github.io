@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::HTMLTableElement</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::HTMLTableElement</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/HTMLTableElement.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::HTMLTableElement</code></h1><h2>The DOM <code>HTMLTableElement</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::HTMLTableElement</code> class implements the DOM <code>HTMLTableElement</code> interface.
+The class is used by the HTML <code>table</code> element.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods available for classes <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> and <a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>,
+the following methods are available:</p>
+
+<dl>
+<dt id="$caption_=_$el->caption"><code>$caption = $el-&gt;<strong id="member-caption">caption</strong></code></dt>
+
+<dt id="$el->caption_($caption)"><code>$el-&gt;<strong>caption</strong> ($caption)</code></dt>
+
+<dd>
+<p>Return or set the <code>caption</code> element for the table. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$caption_=_$el->create_caption"><code>$caption = $el-&gt;<strong id="member-create_caption">create_caption</strong></code></dt>
+
+<dd>
+<p>Return the <code>caption</code> element for the table.
+If the table does not contain the <code>caption</code> element,
+a new element is created and returned. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$tbody_=_$el->create_tbody"><code>$tbody = $el-&gt;<strong id="member-create_tbody">create_tbody</strong></code></dt>
+
+<dd>
+<p>Create a new <code>tbody</code> element,
+insert it after the last <code>tbody</code> element (or the end of the table),
+and return it. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$thead_=_$el->create_tfoot"><code>$thead = $el-&gt;<strong id="member-create_tfoot">create_tfoot</strong></code></dt>
+
+<dd>
+<p>Return the <code>tfoot</code> element for the table.
+If the table does not contain the <code>tfoot</code> element,
+a new element is created and returned. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$thead_=_$el->create_thead"><code>$thead = $el-&gt;<strong id="member-create_thead">create_thead</strong></code></dt>
+
+<dd>
+<p>Return the <code>thead</code> element for the table.
+If the table does not contain the <code>thead</code> element,
+a new element is created and returned. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$el->delete_caption"><code>$el-&gt;<strong id="member-delete_caption">delete_caption</strong></code></dt>
+
+<dd>
+<p>Remove the <code>caption</code> element from the table,
+if any. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$el->delete_row_($index)"><code>$el-&gt;<strong id="member-delete_row">delete_row</strong> ($index)</code></dt>
+
+<dd>
+<p>Return the table row (<code>tr</code> element) with the specified index in the table. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$el->delete_tfoot"><code>$el-&gt;<strong id="member-delete_tfoot">delete_tfoot</strong></code></dt>
+
+<dd>
+<p>Remove the <code>tfoot</code> element from the table,
+if any. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$el->delete_thead"><code>$el-&gt;<strong id="member-delete_thead">delete_thead</strong></code></dt>
+
+<dd>
+<p>Remove the <code>thead</code> element from the table,
+if any. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$tr_=_$el->insert_row_($index)"><code>$tr = $el-&gt;<strong id="member-insert_row">insert_row</strong> ($index)</code></dt>
+
+<dd>
+<p>Insert a table row (<code>tr</code> element) at the specified postion in the table and return the element. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->rows"><code>$col = $el-&gt;<strong id="member-rows">rows</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the rows (<code>tr</code> elements) of the table. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$el->sortable"><code>$boolean = $el-&gt;<strong id="member-sortable">sortable</strong></code></dt>
+
+<dt id="$el->sortable_($boolean)"><code>$el-&gt;<strong>sortable</strong> ($boolean)</code></dt>
+
+<dd>
+<p>Return or set whether the <code>sortable</code> attribute is specified or not. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$col_=_$el->tbodies"><code>$col = $el-&gt;<strong id="member-tbodies">tbodies</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> containing the <code>tbody</code> children of the element. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$tfoot_=_$el->tfoot"><code>$tfoot = $el-&gt;<strong id="member-tfoot">tfoot</strong></code></dt>
+
+<dt id="$el->tfoot_($tfoot)"><code>$el-&gt;<strong>tfoot</strong> ($tfoot)</code></dt>
+
+<dd>
+<p>Return or set the <code>tfoot</code> element for the table. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$thead_=_$el->thead"><code>$thead = $el-&gt;<strong id="member-thead">thead</strong></code></dt>
+
+<dt id="$el->thead_($thead)"><code>$el-&gt;<strong>thead</strong> ($thead)</code></dt>
+
+<dd>
+<p>Return or set the <code>thead</code> element for the table. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+</dd>
+</dl>
+
+<p>Additionally,
+the following obsolete methods are available: <code>align</code>,
+<code>bgcolor</code>,
+<code>border</code>,
+<code>cellpadding</code>,
+<code>cellspacing</code>,
+<code>frame</code>,
+<code>summary</code>,
+<code>rules</code>,
+and <code>width</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#the-table-element">http://www.whatwg.org/specs/web-apps/current-work/#the-table-element</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

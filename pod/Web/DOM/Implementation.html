@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Implementation</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Implementation</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Implementation.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Implementation</code></h1><h2>The DOM <code>DOMImplementation</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Implementation</code> class implements the DOM <code>DOMImplementation</code> interface.</p>
+
+<p>The <code>DOMImplementation</code> object is returned by the <code>implementation</code> method of the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> object.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The class has following methods:</p>
+
+<dl>
+<dt id="$impl_=_Web::DOM::Implementation->new"><code>$impl = Web::DOM::Implementation-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the <code>DOMImplementation</code> object.
+This method is provided for some kind of compatibility and should not be used with newer applications.
+Now that the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> class has the constructor,
+the constructor method of the <a href="../../../pod/Web/DOM/Implementation" class="podlinkpod">Web::DOM::Implementation</a> class is useless. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$doc_=_$impl->create_atom_entry_document_($id,_$title,_$lang)"><code>$doc = $impl-&gt;<strong id="member-create_atom_entry_document">create_atom_entry_document</strong> ($id,
+$title,
+$lang)</code></dt>
+
+<dd>
+<p>Create a new <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> whose document element is an <code>atom:entry</code> element,
+using the specified <code>atom:id</code>,
+<code>atom:title</code>,
+and <code>xml:lang</code> values. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$doc_=_$impl->create_atom_feed_document_($id,_$title,_$lang)"><code>$doc = $impl-&gt;<strong id="member-create_atom_feed_document">create_atom_feed_document</strong> ($id,
+$title,
+$lang)</code></dt>
+
+<dd>
+<p>Create a new <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> whose document element is an <code>atom:feed</code> element,
+using the specified <code>atom:id</code>,
+<code>atom:title</code>,
+and <code>xml:lang</code> values. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$doc_=_$impl->create_document_($nsurl,_$qname,_$doctype)"><code>$doc = $impl-&gt;<strong id="member-create_document">create_document</strong> ($nsurl,
+$qname,
+$doctype)</code></dt>
+
+<dt id="$doc_=_$impl->create_document_($nsurl,_[$prefix,_$local_name],_$doctype)"><code>$doc = $impl-&gt;<strong>create_document</strong> ($nsurl,
+[$prefix,
+$local_name],
+$doctype)</code></dt>
+
+<dd>
+<p>Create a new <a href="../../../pod/Web/DOM/XMLDocument" class="podlinkpod">Web::DOM::XMLDocument</a>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>If first and second arguments are specified,
+they are used as the namespace URL and the qualified name of the document element.
+If they are not specified,
+an empty document is created.</p>
+
+<p>The qualified name can be represented as an array reference,
+where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>If the third argument is specified,
+it is used as the document type node of the document.</p>
+
+</dd><dt id="$doc_=_$impl->create_html_document_($title)"><code>$doc = $impl-&gt;<strong id="member-create_html_document">create_html_document</strong> ($title)</code></dt>
+
+<dd>
+<p>Create a new HTML document (<a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>).
+If the argument is specified,
+it is used as the title of the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$dt_=_$impl->create_document_type_($qname,_$pubid,_$sysid)"><code>$dt = $impl-&gt;<strong id="member-create_document_type">create_document_type</strong> ($qname,
+$pubid,
+$sysid)</code></dt>
+
+<dd>
+<p>Create a new document type node (<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>) with the specified name,
+public identifier,
+and system identifier. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$bool_=_$impl->has_feature_($feature,_$version)"><code>$bool = $impl-&gt;<strong id="member-has_feature">has_feature</strong> ($feature,
+$version)</code></dt>
+
+<dd>
+<p>Return whether the specified SVG feature is supported or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#SVG">SVG</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-domimplementation">http://dom.spec.whatwg.org/#interface-domimplementation</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+
+</dd><dt id="SVG">SVG</dt>
+
+<dd>
+<p>SVG - Feature Strings <code class="url">&lt;<a href="https://svgwg.org/svg2-draft/single-page.html#chapter-feature">https://svgwg.org/svg2-draft/single-page.html#chapter-feature</a>&gt;</code>,
+<code class="url">&lt;<a href="https://svgwg.org/svg2-draft/single-page.html#svgdom-FeatureStrings">https://svgwg.org/svg2-draft/single-page.html#svgdom-FeatureStrings</a>&gt;</code>.</p>
+
+</dd><dt id="ATOMDOM">ATOMDOM</dt>
+
+<dd>
+<p>Atom DOM <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/atomdom">http://suika.suikawiki.org/www/markup/xml/atomdom</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

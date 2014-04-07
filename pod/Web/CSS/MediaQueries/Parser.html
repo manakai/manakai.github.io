@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::MediaQueries::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::MediaQueries::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/MediaQueries/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::MediaQueries::Parser</code></h1><h2>Parsing Media Queries</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::CSS::MediaQueries::Parser;
+  my $s = Web::CSS::MediaQueries::Parser-&gt;new;
+  $parsed = $s-&gt;parse_char_string_as_mq_list ($string)</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::MediaQueries::Parser</code> object can be used to parse a list of media queries or a media query, used in CSS, HTML, and other languages.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$parser_=_Web::CSS::MediaQueries::Parser->new"><code>$parser = Web::CSS::MediaQueries::Parser-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Return a new instance of the parser.</p>
+
+</dd><dt id="$code_=_$parser->onerror"><code>$code = $parser-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$parser->onerror_($code)"><code>$parser-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Return or specify the code reference to which any errors and warnings during the parsing is reported.</p>
+
+<p>XXX</p>
+
+</dd><dt id="$mr_=_$parser->media_resolver"><code>$mr = $parser-&gt;<strong id="member-media_resolver">media_resolver</strong></code></dt>
+
+<dt id="$parser->media_resolver_($mr)"><code>$parser-&gt;<strong>media_resolver</strong> ($mr)</code></dt>
+
+<dd>
+<p>Return or specify the <a href="../../../../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> object for parsing.</p>
+
+</dd><dt id="$parsed_=_$parser->parse_char_string_as_mq_($string)"><code>$parsed = $parser-&gt;<strong id="member-parse_char_string_as_mq">parse_char_string_as_mq</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified character string as a media query. If the string represents a media query, the parsed representation of the query is returned. Otherwise, <code>undef</code> is returned.</p>
+
+<p>In most cases, you don't want to call this method. Instead, use the <code>parse_char_string_as_mq_list</code> method.</p>
+
+</dd><dt id="$parsed_=_$parser->parse_char_string_as_mq_list_($string)"><code>$parsed = $parser-&gt;<strong id="member-parse_char_string_as_mq_list">parse_char_string_as_mq_list</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified character string as a list of media queries. The parsed representation of the queries is returned. (Any strung can be interpreted as a list of media queries, whether valid or not.)</p>
+</dd>
+</dl>
+
+</section><section id="DATA_STRUCTURES"><h1>DATA STRUCTURES</h1>
+
+<p>XXX</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="MQ">MQ</dt>
+
+<dd>
+<p>Media Queries <code class="url">&lt;<a href="http://dev.w3.org/csswg/mediaqueries/">http://dev.w3.org/csswg/mediaqueries/</a>&gt;</code>.</p>
+
+</dd><dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSSOM <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/#media-queries">http://dev.w3.org/csswg/cssom/#media-queries</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../../pod/Web/CSS/MediaQueries/Serializer" class="podlinkpod">Web::CSS::MediaQueries::Serializer</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2008-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

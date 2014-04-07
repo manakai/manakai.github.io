@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::MouseEvent</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::MouseEvent</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/MouseEvent.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::MouseEvent</code></h1><h2>The DOM <code>MouseEvent</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::MouseEvent</code> class implements the DOM <code>MouseEvent</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and <a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a> classes,
+following methods are available:</p>
+
+<dl>
+<dt id="$boolean_=_$ev->alt_key"><code>$boolean = $ev-&gt;<strong id="member-alt_key">alt_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->alt_graph_key"><code>$boolean = $ev-&gt;<strong id="member-alt_graph_key">alt_graph_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->ctrl_key"><code>$boolean = $ev-&gt;<strong id="member-ctrl_key">ctrl_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->meta_key"><code>$boolean = $ev-&gt;<strong id="member-meta_key">meta_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->shift_key"><code>$boolean = $ev-&gt;<strong id="member-shift_key">shift_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->get_modifier_state_($key_name)"><code>$boolean = $ev-&gt;<strong id="member-get_modifier_state">get_modifier_state</strong> ($key_name)</code></dt>
+
+<dd>
+<p>Return whether the modifier key is pressed or not. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$status_=_$ev->button"><code>$status = $ev-&gt;<strong id="member-button">button</strong></code></dt>
+
+<dd>
+<p>Return the mouse button which has changed the status. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+
+</dd><dt id="$status_=_$ev->buttons"><code>$status = $ev-&gt;<strong id="member-buttons">buttons</strong></code></dt>
+
+<dd>
+<p>Return the current status of the mouse buttons. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+
+</dd><dt id="$int_=_$ev->client_x"><code>$int = $ev-&gt;<strong id="member-client_x">client_x</strong></code></dt>
+
+<dt id="$int_=_$ev->client_y"><code>$int = $ev-&gt;<strong id="member-client_y">client_y</strong></code></dt>
+
+<dt id="$int_=_$ev->x"><code>$int = $ev-&gt;<strong id="member-x">x</strong></code></dt>
+
+<dt id="$int_=_$ev->y"><code>$int = $ev-&gt;<strong id="member-y">y</strong></code></dt>
+
+<dd>
+<p>Return the coordinate of the position in the viewport. <cite class="ref">[<a href="#CSSOMVIEW">CSSOMVIEW</a>]</cite></p>
+
+</dd><dt id="$int_=_$ev->offset_x"><code>$int = $ev-&gt;<strong id="member-offset_x">offset_x</strong></code></dt>
+
+<dt id="$int_=_$ev->offset_y"><code>$int = $ev-&gt;<strong id="member-offset_y">offset_y</strong></code></dt>
+
+<dd>
+<p>Return the coordinate of the position in the padding box of the target. <cite class="ref">[<a href="#CSSOMVIEW">CSSOMVIEW</a>]</cite></p>
+
+</dd><dt id="$int_=_$ev->page_x"><code>$int = $ev-&gt;<strong id="member-page_x">page_x</strong></code></dt>
+
+<dt id="$int_=_$ev->page_y"><code>$int = $ev-&gt;<strong id="member-page_y">page_y</strong></code></dt>
+
+<dd>
+<p>Return the coordinate of the position in the initial containing block. <cite class="ref">[<a href="#CSSOMVIEW">CSSOMVIEW</a>]</cite></p>
+
+</dd><dt id="$string_=_$ev->region"><code>$string = $ev-&gt;<strong id="member-region">region</strong></code></dt>
+
+<dd>
+<p>Return the hit region. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$object_=_$ev->related_target"><code>$object = $ev-&gt;<strong id="member-related_target">related_target</strong></code></dt>
+
+<dd>
+<p>Return the additional object specified for the event. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+
+</dd><dt id="$int_=_$ev->screen_x"><code>$int = $ev-&gt;<strong id="member-screen_x">screen_x</strong></code></dt>
+
+<dt id="$int_=_$ev->screen_y"><code>$int = $ev-&gt;<strong id="member-screen_y">screen_y</strong></code></dt>
+
+<dd>
+<p>Return the coordinate of the position in the screen. <cite class="ref">[<a href="#CSSOMVIEW">CSSOMVIEW</a>]</cite></p>
+</dd>
+</dl>
+
+<p>In addition,
+deprecated <code>init_mouse_event</code> method is supported. <cite class="ref">[<a href="#DOM3EVENTS">DOM3EVENTS</a>]</cite></p>
+
+<p>The <code>new</code> method of the <a href="../../../pod/Web/DOM/MouseEvent" class="podlinkpod">Web::DOM::MouseEvent</a> class accepts the <code>screen_x</code>,
+<code>screen_y</code>,
+<code>client_x</code>,
+<code>client_y</code>,
+<code>ctrl_key</code>,
+<code>shift_key</code>,
+<code>alt_key</code>,
+<code>meta_key</code>,
+<code>button</code>,
+<code>buttons</code>,
+<code>related_target</code>,
+and <code>region</code> name/value pairs in its second arguments,
+in addition to the name/value pairs for <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and <a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a> objects. <cite class="ref">[<a href="#UIEVENTS">UIEVENTS</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</section><section id="SUBCLASSES"><h1>SUBCLASSES</h1>
+
+<p>There is a subclass of the class,
+representing the subinterface of the <code>Event</code> interface: <a href="../../../pod/Web/DOM/WheelEvent" class="podlinkpod">Web::DOM::WheelEvent</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM3EVENTS">DOM3EVENTS</dt>
+
+<dd>
+<p>DOM Level 3 Events <code class="url">&lt;<a href="http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#events-uievents">http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#events-uievents</a>&gt;</code>.</p>
+
+</dd><dt id="UIEVENTS">UIEVENTS</dt>
+
+<dd>
+<p>UI Events <code class="url">&lt;<a href="https://dvcs.w3.org/hg/d4e/raw-file/tip/source_respec.htm#constructor-uievent">https://dvcs.w3.org/hg/d4e/raw-file/tip/source_respec.htm#constructor-uievent</a>&gt;</code>.</p>
+
+</dd><dt id="CSSOMVIEW">CSSOMVIEW</dt>
+
+<dd>
+<p>CSSOM View <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom-view/#extensions-to-the-mouseevent-interface">http://dev.w3.org/csswg/cssom-view/#extensions-to-the-mouseevent-interface</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#dom-mouseevent-region">http://www.whatwg.org/specs/web-apps/current-work/#dom-mouseevent-region</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>,
+<a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

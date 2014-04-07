@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::EventTarget</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::EventTarget</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/EventTarget.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::EventTarget</code></h1><h2>The DOM <code>EventTarget</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::EventTarget</code> class implements the DOM <code>EventTarget</code> interface.
+The <code>EventTarget</code> object does not exist by itself,
+it is used as superclass of other classes,
+such as <code>Web::DOM::Node</code>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$et->add_event_listener_($type,_$code,_$is_capture)"><code>$et-&gt;<strong id="member-add_event_listener">add_event_listener</strong> ($type,
+$code,
+$is_capture)</code></dt>
+
+<dd>
+<p>Register a callback function as event listener for the event target.
+The first argument identifies the type of the event to listen,
+e.g.
+<code>click</code> or <code>resize</code>.
+The second argument is a code reference,
+which is invoked when an event is dispatched.
+The optional third argument specifies whether the code listens the capturing phase (true) or the bubbling phase (false,
+default). <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>When an event of the specified type is dispatched,
+the code of the second argument is invoked with two arguments: <var>$self</var> and <var>$event</var>.
+The second argument,
+<var>$event</var>,
+is the event object in question.
+The first argument,
+<var>$self</var>,
+is equal to the context object (<var>$et</var>) or the current target object <code>$event-&gt;current_target</code>.</p>
+
+<p>Please be aware to not create circular reference to the event target object through the callback.
+The reference to the callback is holded by the event target object until it is explicitly unregistered.
+The event target object can be accessed as the first argument in the callback,
+as mentioned above.</p>
+
+</dd><dt id="$boolean_=_$et->dispatch_event_($event)"><code>$boolean = $et-&gt;<strong id="member-dispatch_event">dispatch_event</strong> ($event)</code></dt>
+
+<dd>
+<p>Dispatch the specified event object at the event target object.
+The method returns whether the event's default action has not been cancelled. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>Note that the event is dispatched synchronously,
+such that any event listener callback is invoked synchronously.</p>
+
+</dd><dt id="$et->remove_event_listener_($type,_$code,_$is_capture)"><code>$et-&gt;<strong id="member-remove_event_listener">remove_event_listener</strong> ($type,
+$code,
+$is_capture)</code></dt>
+
+<dd>
+<p>Unregister a callback function as event listener,
+if it is registered. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-eventtarget">http://dom.spec.whatwg.org/#interface-eventtarget</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>,
+<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::ElementTypeDefinition</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::ElementTypeDefinition</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/ElementTypeDefinition.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::ElementTypeDefinition</code></h1><h2>The DOM <code>ElementTypeDefinition</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::ElementTypeDefinition</code> class implements the DOM <code>ElementTypeDefinition</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> and <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$col_=_$et->attribute_definitions"><code>$col = $et-&gt;<strong id="member-attribute_definitions">attribute_definitions</strong></code></dt>
+
+<dd>
+<p>Return the collection (<a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>) of attribute definitions. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$string_=_$et->content_model_text"><code>$string = $et-&gt;<strong id="member-content_model_text">content_model_text</strong></code></dt>
+
+<dt id="$et->content_model_text_($string)"><code>$et-&gt;<strong>content_model_text</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the textual representation of the content model of the element type. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>!CAUTION!
+The exact processing model of this method is not defined yet.
+It is subject to change in the later revision of the DOMDTDEF specification and this implementation.</p>
+
+</dd><dt id="$adef_=_$et->get_attribute_definition_node_($name)"><code>$adef = $et-&gt;<strong id="member-get_attribute_definition_node">get_attribute_definition_node</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the attribute definition (<a href="../../../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a>) with the specified name,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$dt_=_$et->owner_document_type_definition"><code>$dt = $et-&gt;<strong id="member-owner_document_type_definition">owner_document_type_definition</strong></code></dt>
+
+<dd>
+<p>Return the document type (<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>) to which the element type belongs,
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$node_=_$et->remove_attribute_definition_node_($node)"><code>$node = $et-&gt;<strong id="member-remove_attribute_definition_node">remove_attribute_definition_node</strong> ($node)</code></dt>
+
+<dd>
+<p>Remove the specified attribute definition from the element type.
+The removed node is returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$old_=_$et->set_attribute_definition_node_($new)"><code>$old = $et-&gt;<strong id="member-set_attribute_definition_node">set_attribute_definition_node</strong> ($new)</code></dt>
+
+<dd>
+<p>Set the specified attribute definition node to the element type.
+If there is already an attribute definition with the same name,
+it is removed from the element type and returned. <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The element type name can be accessed by the <code>$et-&gt;node_name</code> method.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef">http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Values</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Values</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Values.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Values</code></h1><h2>CSS value definitions</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>XXX</p>
+
+</section><section id="REQUIRES_FEATURES"><h1>REQUIRES FEATURES</h1>
+
+<p>XXX</p>
+
+<p>If a property is supported,
+its initial value MUST be supported.</p>
+
+<p>If a supported property only accepts &lt;integer&gt;,
+&lt;number&gt;,
+&lt;length&gt;,
+and/or &lt;percentage&gt;,
+any possible value MUST be supported.
+If a supported property only accepts the only keyword which is the initial value of the property,
+as well as &lt;integer&gt;,
+&lt;number&gt;,
+&lt;length&gt;,
+and/or &lt;percentage&gt;,
+any possible value MUST be supported.</p>
+
+<p>If a supported property only accepts a keyword from the limited set,
+supported values MUST be flagged by:</p>
+
+<pre>
+<code>  $resolver-&gt;{prop_value}-&gt;{$prop_name}-&gt;{$value} = 1</code></pre>
+
+<p>... where $prop_name is CSS property name in lowercase and $value is the supported keyword. The initial value of the property MUST be supported.</p>
+
+<p>If it supports the 'background-position-x' or 'background-position-y' property, any possible value MUST be supported.</p>
+
+<p>If it supports a property whose value is &lt;line-width&gt;, any possible value MUST be supported.</p>
+
+<p>If it supports a property which allows either &lt;url&gt; or 'none', any possible value MUST be supported.</p>
+
+<p>If it supports the 'font-family' property, it MUST support any possible value.</p>
+
+<section id="<color>"><h1>&lt;color&gt;</h1>
+
+<p>If &lt;color&gt; is supported, it MUST support RGB colors (internally represented as 'RGBA' values with alpha 0) and CSS 2.1 system colors.</p>
+
+<dl>
+<dt id="$resolver->{prop_value}->{color}->{transparent}_==_1"><code>$resolver-&gt;{prop_value}-&gt;{color}-&gt;<strong id="member-{transparent}">{transparent}</strong> == 1</code></dt>
+
+<dd>
+<p>Transparent colors (internally represented as 'RGBA' values with alpha 1) MUST be supported.</p>
+
+</dd><dt id="$resolver->{function}->{rgba}_==_1"><code>$resolver-&gt;{function}-&gt;<strong id="member-{rgba}">{rgba}</strong> == 1</code></dt>
+
+<dd>
+<p>Any RGBA color MUST be supported.</p>
+
+</dd><dt id="$resolver->{prop_value}->{color}->{flavor}_==_1"><code>$resolver-&gt;{prop_value}-&gt;{color}-&gt;<strong id="member-{flavor}">{flavor}</strong> == 1</code></dt>
+
+<dd>
+<p>The 'flavor' keyword MUST be supported.</p>
+</dd>
+</dl>
+
+</section><section id="<'outline-color'>"><h1>&lt;'outline-color'&gt;</h1>
+
+<dl>
+<dt id="$resolver->{prop_value}->{'outline-color'}->{invert}_==_1"><code>$resolver-&gt;{prop_value}-&gt;{'outline-color'}-&gt;<strong id="member-{invert}">{invert}</strong> == 1</code></dt>
+
+<dd>
+<p>The 'invert' and '-manakai-invert-or-currentcolor' keywords MUST be supported.</p>
+</dd>
+</dl>
+
+</section><section id="Width_and_height"><h1>Width and height</h1>
+
+<p>Whether keywords 'available', 'min-content', 'max-content', and 'fit-content' are supported or not are controlled by:</p>
+
+<pre>
+<code>  $resolver-&gt;{prop_value}-&gt;{$key}-&gt;{$keyword} == 1</code></pre>
+
+<p>... where $key is <code>width</code> (for 'width', 'min-width', and 'max-width' properties) or <code>height</code> (for 'height', 'min-height', and 'max-height' properties) and $keyword is the keyword, in lowercase, respectively.</p>
+
+</section></section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSVALUES">CSSVALUES</dt>
+
+<dd>
+<p>CSS Values and Units <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-values/">http://dev.w3.org/csswg/css-values/</a>&gt;</code>.</p>
+
+<p>The parser MUST convert non-keyword &lt;color&gt; values to the |rgba()| functional notation.</p>
+
+<p>The parser MUST interpret &lt;length&gt; value '0' as '0px'.</p>
+
+<p>The number of &lt;resolution&gt; must be positive.</p>
+
+</dd><dt id="CSSSYNTAX">CSSSYNTAX</dt>
+
+<dd>
+<p>CSS Syntax <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-syntax/#integer">http://dev.w3.org/csswg/css-syntax/#integer</a>&gt;</code>.</p>
+
+</dd><dt id="QUIRKS">QUIRKS</dt>
+
+<dd>
+<p>Quirks Mode <code class="url">&lt;<a href="http://quirks.spec.whatwg.org/">http://quirks.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="MQ">MQ</dt>
+
+<dd>
+<p>Media Queries <code class="url">&lt;<a href="http://dev.w3.org/csswg/mediaqueries/#values">http://dev.w3.org/csswg/mediaqueries/#values</a>&gt;</code>.</p>
+
+</dd><dt id="CSSCOLOR">CSSCOLOR</dt>
+
+<dd>
+<p>CSS Color <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-color/#colorunits">http://dev.w3.org/csswg/css-color/#colorunits</a>&gt;</code>.</p>
+
+<p>Color keywords MUST be compared ASCII case-insensitively.</p>
+
+<p>The parser MUST replace functions '-moz-rgba()' and '-moz-hsla()' by 'rgba()' and 'hsla()', respectively. The parser MUST replace functions 'hsl()' and 'hsla()' by equivalent 'rgb()' or 'rgba()' value. The parser must clamp the &lt;alphavalue&gt; component in 'rgba()' function, if necessary. If the &lt;alphavalue&gt; component of 'rgba()' function is equal to 1, it MUST be replaced by equivalent 'rgb()' function. Then, the parser MAY ignore 'rgba()' function if its &lt;alphavalue&gt; is not supported.</p>
+
+</dd><dt id="CSSUI">CSSUI</dt>
+
+<dd>
+<p>CSS Basic User Interface <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-ui/">http://dev.w3.org/csswg/css-ui/</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAICSS">MANAKAICSS</dt>
+
+<dd>
+<p>manakai CSS Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20CSS%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20CSS%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../../pod/Web/CSS/Props" class="podlinkpod">Web::CSS::Props</a>, <a href="../../../../pod/Web/CSS/MediaQueries/Features" class="podlinkpod">Web::CSS::MediaQueries::Features</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

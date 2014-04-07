@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::AtomLinkElement</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::AtomLinkElement</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/AtomLinkElement.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::AtomLinkElement</code></h1><h2>The DOM <code>AtomLinkElement</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::AtomLinkElement</code> class implements the DOM <code>AtomLinkElement</code> interface.
+The class is used by the Atom <code>link</code> element.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods available for classes <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> and <a href="../../../pod/Web/DOM/AtomElement" class="podlinkpod">Web::DOM::AtomElement</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$string_=_$el->href"><code>$string = $el-&gt;<strong id="member-href">href</strong></code></dt>
+
+<dt id="$el->href_($string)"><code>$el-&gt;<strong>href</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>href</code> attribute. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->hreflang"><code>$string = $el-&gt;<strong id="member-hreflang">hreflang</strong></code></dt>
+
+<dt id="$el->hreflang_($string)"><code>$el-&gt;<strong>hreflang</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>hreflang</code> attribute. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->length"><code>$string = $el-&gt;<strong id="member-length">length</strong></code></dt>
+
+<dt id="$el->length_($string)"><code>$el-&gt;<strong>length</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>length</code> attribute. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->rel"><code>$string = $el-&gt;<strong id="member-rel">rel</strong></code></dt>
+
+<dt id="$el->rel_($string)"><code>$el-&gt;<strong>rel</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>rel</code> attribute.
+The getter expands the link relation type with no <code>:</code> character by prepending <code>http://www.iana.org/assignments/relation/</code>.
+The setter removes any preceding <code>http://www.iana.org/assignments/relation/</code> substring from the new value. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+<p>Therefore,
+the <code>rel</code> attribute value of an <code>atom:link</code> element whose <code>rel</code> content attribute value is <code>self</code> is <code>http://www.iana.org/assignments/relation/self</code>.
+The Atom specification defines that the <code>rel</code> attribute values <code>http://www.iana.org/assignments/relation/self</code> and <code>self</code> are equivalent.</p>
+
+</dd><dt id="$string_=_$el->title"><code>$string = $el-&gt;<strong id="member-title">title</strong></code></dt>
+
+<dt id="$el->title_($string)"><code>$el-&gt;<strong>title</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>title</code> attribute. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->thread_count"><code>$string = $el-&gt;<strong id="member-thread_count">thread_count</strong></code></dt>
+
+<dt id="$el->thread_count_($string)"><code>$el-&gt;<strong>thread_count</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>thr:count</code> attribute. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+
+</dd><dt id="$number_=_$el->thread_updated"><code>$number = $el-&gt;<strong id="member-thread_updated">thread_updated</strong></code></dt>
+
+<dt id="$el->thread_updated_($number)"><code>$el-&gt;<strong>thread_updated</strong> ($number)</code></dt>
+
+<dd>
+<p>Return or set the date-time value of the <code>thr:updated</code> attribute.
+The date-time value is represented as <code>time_t</code> real number (i.e.
+seconds from the Unix epoch). <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->type"><code>$string = $el-&gt;<strong id="member-type">type</strong></code></dt>
+
+<dt id="$el->type_($string)"><code>$el-&gt;<strong>type</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>type</code> attribute. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>XXX</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="ATOMDOM">ATOMDOM</dt>
+
+<dd>
+<p>Atom DOM <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/atomdom">http://suika.suikawiki.org/www/markup/xml/atomdom</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/AtomElement" class="podlinkpod">Web::DOM::AtomElement</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

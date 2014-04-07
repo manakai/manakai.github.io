@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::StringMap</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::StringMap</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/StringMap.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::StringMap</code></h1><h2>The DOM <code>DOMStringMap</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::StringMap</code> class implements the DOM <code>DOMStringMap</code> interface.</p>
+
+<p>The <code>DOMStringMap</code> object is used by the <code>dataset</code> method of the HTML elements.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The object supports Perl standard operations for hash references,
+e.g.
+<code>keys %$map</code>. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<dl>
+<dt id="$value_=_$map->{$key}"><code>$value = $map-&gt;<strong id="member-{$key}">{$key}</strong></code></dt>
+
+<dd>
+<p>Return the value of the attribute whose name is <code>data-$key</code> (where <code>$key</code>'s <code>_</code> characters are replaced by <code>-</code>),
+if any,
+or <code>undef</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$map->{$key}_=_$value"><code>$map-&gt;<strong>{$key}</strong> = $value</code></dt>
+
+<dd>
+<p>Set the value of the attribute whose name is <code>data-$key</code> (where <code>$key</code>'s <code>_</code> characters are replaced by <code>-</code>).
+Please note that <code>$key</code> cannot contain the <code>-</code> character (it must be replaced by <code>_</code>). <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="delete_$map->{$key}"><code>delete $map-&gt;<strong>{$key}</strong></code></dt>
+
+<dd>
+<p>Delete the attribute whose name is <code>data-$key</code> (where <code>$key</code>'s <code>_</code> characters are replaced by <code>-</code>),
+if any. <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>perl-web-markup</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../docs" rel="up up">Documents</a></li>
+        <li><a href="../pod/#modules" rel="up">Perl modules</a></li>
+        <li><a href="" rel="bookmark">perl-web-markup</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/README.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<section id="NAME"><h1>NAME</h1>
+
+<p>perl-web-markup - A pure-perl HTML and XML processor</p>
+
+</section><section id="MODULES"><h1>MODULES</h1>
+
+<p>Following modules are available:</p>
+
+<dl>
+<dt><a href="../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a></dt>
+
+<dd>
+<p>An HTML parser.</p>
+
+</dd><dt><a href="../pod/Web/HTML/Serializer" class="podlinkpod">Web::HTML::Serializer</a></dt>
+
+<dd>
+<p>An HTML serializer.</p>
+
+</dd><dt><a href="../pod/Web/HTML/Table" class="podlinkpod">Web::HTML::Table</a></dt>
+
+<dd>
+<p>An implementation of HTML table model.</p>
+
+</dd><dt><a href="../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a></dt>
+
+<dd>
+<p>A DOM conformance checker (for HTML and XML).</p>
+
+</dd><dt><a href="../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a></dt>
+
+<dd>
+<p>An XML parser.</p>
+
+</dd><dt><a href="../pod/Web/XML/Serializer" class="podlinkpod">Web::XML::Serializer</a></dt>
+
+<dd>
+<p>An XML serializer.</p>
+
+</dd><dt><a href="../pod/Web/RDF/XML/Parser" class="podlinkpod">Web::RDF::XML::Parser</a></dt>
+
+<dd>
+<p>An RDF/XML parser.</p>
+
+</dd><dt><a href="../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a></dt>
+
+<dd>
+<p>An XPath 1.0 parser.</p>
+
+</dd><dt><a href="../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a></dt>
+
+<dd>
+<p>An XPath 1.0 evaluator.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>These modules require Perl 5.8 or later.
+They requires <a href="http://search.cpan.org/dist/Encode/Encode.pm" class="podlinkpod">Encode</a>,
+which is included in the Perl distribution,
+and modules from the <code class="url">&lt;<a href="https://github.com/manakai/perl-web-encodings">https://github.com/manakai/perl-web-encodings</a>&gt;</code> repository,
+which is a submodule of the Git repository.
+The <a href="../pod/Web/RDF/XML/Parser" class="podlinkpod">Web::RDF::XML::Parser</a> module has more submodule dependency (see its documentation for details).</p>
+
+<p>In addition,
+a DOM implementation is required as input (and output) to these modules,
+although there is no direct dependency.
+For the XPath modules,
+see <a href="../pod/Web/XPath/Evaluation" class="podlinkpod">Web::XPath::Evaluation</a> for its requirements on the DOM implementation.
+For other modules,
+the DOM implementation must support a subset of features defined in DOM Standard,
+DOM Parsing and Serialization Standard,
+DOM3 Core,
+DOM Document Type Definitions,
+DOM Perl Binding,
+and manakai's DOM Extensions,
+to the extent implemented by the "NanoDOM" module (<code>t_deps/lib/NanoDOM.pm</code>).
+An example of such a DOM implementation is contained in <a href="../pod/perl-web-dom">the perl-web-dom package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code>.</p>
+
+<p>The <a href="../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a> module requires additional external modules; see its documentation.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../pod/perl-web-dom">The perl-web-dom package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code> implements DOM interfaces,
+which contains standard ways to parse or serialize HTML/XML documents.
+They are implemented using <a href="../pod/perl-web-markup">the perl-web-markup package</a>.</p>
+
+</section><section id="HISTORY"><h1>HISTORY</h1>
+
+<p>Most of these modules are originally developed under the name of "Whatpm" in 2007-2008 <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/html/whatpm/readme">http://suika.suikawiki.org/www/markup/html/whatpm/readme</a>&gt;</code> and then merged into the manakai-core package <code class="url">&lt;<a href="http://suika.suikawiki.org/www/manakai-core/doc/web/">http://suika.suikawiki.org/www/manakai-core/doc/web/</a>&gt;</code>.
+Those modules are split again into this separate package in 2013.</p>
+
+</section><section id="DEVELOPMENT"><h1>DEVELOPMENT</h1>
+
+<p>The latest version of these modules are available at the GitHub repository: <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup">https://github.com/manakai/perl-web-markup</a>&gt;</code>.</p>
+
+<p>Test results can be reviewed at Travis CI <code class="url">&lt;<a href="https://travis-ci.org/manakai/perl-web-markup">https://travis-ci.org/manakai/perl-web-markup</a>&gt;</code>.</p>
+
+<p>Known issues are recorded at: <code class="url">&lt;<a href="http://manakai.g.hatena.ne.jp/task/4/">http://manakai.g.hatena.ne.jp/task/4/</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

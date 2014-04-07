@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DomainName::IDNEnabled</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-url" rel="up">perl-web-url</a></li>
+        <li><a href="" rel="bookmark">Web::DomainName::IDNEnabled</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-url/tree/master/lib/Web/DomainName/IDNEnabled.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DomainName::IDNEnabled</code></h1><h2>List of IDN-enabled TLDs</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DomainName::IDNEnabled;
+  ok $Web::DomainName::IDNEnabled::TLDs-&gt;{jp};
+  ng $Web::DomainName::IDNEnabled::TLDs-&gt;{arpa};</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DomainName::IDNEnabled</code> module provides the list of IDN-enabled TLDs, which is same as the list of the <var>IDN-enabled TLDs</var> maintained by the Mozilla project.</p>
+
+</section><section id="VARIABLE"><h1>VARIABLE</h1>
+
+<p>The module defines a variable: <code>$Web::DomainName::IDNEnabled::TLDs</code>. It is a hash reference. Keys of the hash are IDN-enabled TLDs in lowercase and is encoded in Punycode if necessary. Values for existing keys are always true.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p>IDN-enabled TLDs <code class="url">&lt;<a href="http://www.mozilla.org/projects/security/tld-idn-policy-list.html">http://www.mozilla.org/projects/security/tld-idn-policy-list.html</a>&gt;</code>.</p>
+
+<p><code class="url">&lt;<a href="http://mxr.mozilla.org/mozilla-central/source/modules/libpref/src/init/all.js">http://mxr.mozilla.org/mozilla-central/source/modules/libpref/src/init/all.js</a>&gt;</code>. (Search for "network.IDN.whitelist.".)</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;w@suika.fam.cx&gt;.</p>
+
+<p>The <code>Web::DomainName::IDNEnabled</code> module contains data extracted from files maintained by the Mozilla project.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2011-2012 Wakaba &lt;w@suika.fam.cx&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

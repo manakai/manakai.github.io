@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::NodeFilter</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::NodeFilter</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/NodeFilter.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::NodeFilter</code></h1><h2>DOM <code>NodeFilter</code> constants</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::NodeFilter</code> module exports constants defined in the DOM <code>NodeFilter</code> interface.</p>
+
+<p>In the DOM Perl binding,
+node filter objects are represented as Perl code references.
+Therefore the <code>Web::DOM::NodeFilter</code> module cannot be instantiated as object.
+The module only defines several constants.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/NodeFilter" class="podlinkpod">Web::DOM::NodeFilter</a> module by default.</p>
+
+<p>Following constants are used as return value of the node filter callbacks [DOM]:</p>
+
+<pre>
+<code>  FILTER_ACCEPT FILTER_REJECT FILTER_SKIP</code></pre>
+
+<p>(For the purpose of <a href="../../../pod/Web/DOM/NodeIterator" class="podlinkpod">Web::DOM::NodeIterator</a>, <code>FILTER_REJECT</code> and <code>FILTER_SKIP</code> is equivalent.)</p>
+
+<p>Following constants are used as bitmasks for the <code>what_to_show</code> value of the <a href="../../../pod/Web/DOM/NodeIterator" class="podlinkpod">Web::DOM::NodeIterator</a> and <a href="../../../pod/Web/DOM/TreeWalker" class="podlinkpod">Web::DOM::TreeWalker</a> objects [DOM]:</p>
+
+<pre>
+<code>  SHOW_ALL SHOW_ELEMENT SHOW_ATTRIBUTE SHOW_TEXT SHOW_CDATA_SECTION
+  SHOW_ENTITY_REFERENCE SHOW_ENTITY SHOW_PROCESSING_INSTRUCTION
+  SHOW_COMMENT SHOW_DOCUMENT SHOW_DOCUMENT_TYPE SHOW_DOCUMENT_FRAGMENT
+  SHOW_NOTATION</code></pre>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-nodefilter">http://dom.spec.whatwg.org/#interface-nodefilter</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/NodeIterator" class="podlinkpod">Web::DOM::NodeIterator</a>, <a href="../../../pod/Web/DOM/TreeWalker" class="podlinkpod">Web::DOM::TreeWalker</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

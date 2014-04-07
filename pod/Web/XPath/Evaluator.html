@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::XPath::Evaluator</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::XPath::Evaluator</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/XPath/Evaluator.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::XPath::Evaluator</code></h1><h2>XPath 1.0 evaluator</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::XPath::Evaluator;
+  $eval = Web::XPath::Evaluator-&gt;new;
+  $value = $eval-&gt;evaluate ($parsed_expression);</code></pre>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$eval_=_Web::XPath::Evaluator->new"><code>$eval = Web::XPath::Evaluator-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Return a new evaluator.</p>
+
+</dd><dt id="$code_=_$eval->onerror"><code>$code = $eval-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$eval->onerror_($new_code)"><code>$eval-&gt;<strong>onerror</strong> ($new_code)</code></dt>
+
+<dd>
+<p>Get or set the error handler for the evaluator. Any error, as well as warning and information, is reported to the handler. See <a href="../../../pod/Whatpm/Errors" class="podlinkpod">Whatpm::Errors</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod</a>&gt;</code> for more information.</p>
+
+</dd><dt id="$package_=_$eval->function_library"><code>$package = $eval-&gt;<strong id="member-function_library">function_library</strong></code></dt>
+
+<dt id="$eval->function_library_($package)"><code>$eval-&gt;<strong>function_library</strong> ($package)</code></dt>
+
+<dd>
+<p>Get or set the package name of the function library used to evaluate the XPath expression. It must be a Perl package name string, which identifies <a href="../../../pod/Web/XPath/FunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a>, its subclass, or equivalent. The module is <code>require</code>d if necessary. See <a href="../../../pod/Web/XPath/FunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a> for details.</p>
+
+</dd><dt id="$vars_=_$eval->variable_bindings"><code>$vars = $eval-&gt;<strong id="member-variable_bindings">variable_bindings</strong></code></dt>
+
+<dt id="$eval->variable_bindings_($vars)"><code>$eval-&gt;<strong>variable_bindings</strong> ($vars)</code></dt>
+
+<dd>
+<p>Get or set the <a href="../../../pod/Web/XPath/VariableBindings" class="podlinkpod">Web::XPath::VariableBindings</a> object, containing the set of variable bindings used to evaluate XPath expressions.</p>
+
+</dd><dt id="$value_=_$eval->evaluate_($parsed_expr,_$context_node,_context_size_=>_$n,_context_position_=>_$n)"><code>$value = $eval-&gt;<strong id="member-evaluate">evaluate</strong> ($parsed_expr, $context_node, context_size =&gt; $n, context_position =&gt; $n)</code></dt>
+
+<dd>
+<p>Evaluate an expression.</p>
+
+<p>The first argument must be a parsed XPath 1.0 expression data structure (See <a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a>).</p>
+
+<p>The second argument must be the context node.</p>
+
+<p>Additionally, following key/value pairs can be specified: <code>context_size</code> is a Perl integer used as the context size; <code>context_position</code> is a Perl integer used as the context position. The context size must be greater than or equal to the context position. The context position must be positive. Their default is <code>1</code>.</p>
+
+<p>Any error during the evaluation of the expression is reported through the <code>onerror</code> handler. If a fatal error is encountered, the method returns <code>undef</code>. Otherwise, the result XPath value of the evaluation is returned.</p>
+
+</dd><dt id="$value_=_$self->to_xpath_boolean_($boolean)"><code>$value = $self-&gt;<strong id="member-to_xpath_boolean">to_xpath_boolean</strong> ($boolean)</code></dt>
+
+<dt id="$value_=_$self->to_xpath_number_($number)"><code>$value = $self-&gt;<strong id="member-to_xpath_number">to_xpath_number</strong> ($number)</code></dt>
+
+<dt id="$value_=_$self->to_xpath_string_($string)"><code>$value = $self-&gt;<strong id="member-to_xpath_string">to_xpath_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Convert the specified Perl boolean, number, or string to equivalent XPath value.</p>
+
+</dd><dt id="$value_=_$self->to_xpath_node_set_([$node,_$node,_...])"><code>$value = $self-&gt;<strong id="member-to_xpath_node_set">to_xpath_node_set</strong> ([$node, $node, ...])</code></dt>
+
+<dd>
+<p>Create an XPath node-set from the specified array reference of zero or more nodes.</p>
+
+</dd><dt id="$value_=_$self->to_boolean_($value)"><code>$value = $self-&gt;<strong id="member-to_boolean">to_boolean</strong> ($value)</code></dt>
+
+<dt id="$value_=_$self->to_number_($value)"><code>$value = $self-&gt;<strong id="member-to_number">to_number</strong> ($value)</code></dt>
+
+<dt id="$value_=_$self->to_string_($value)"><code>$value = $self-&gt;<strong id="member-to_string">to_string</strong> ($value)</code></dt>
+
+<dd>
+<p>Convert the specified XPath value into boolean, number, or string, by the <code>boolean</code>, <code>number()</code>, or <code>string()</code> function, respectively. The argument must be an XPath value. If the argument is already of the specified type, it is returned as is. Otherwise a new value is returned.</p>
+
+<p>Any error during the conversion is reported through the <code>onerror</code> handler. If a fatal error is encountered, the method returns <code>undef</code>.</p>
+
+</dd><dt id="$value_=_$self->to_string_value_($node)"><code>$value = $self-&gt;<strong id="member-to_string_value">to_string_value</strong> ($node)</code></dt>
+
+<dd>
+<p>Return an XPath string value representing the string-value of the specified node. The argument must be a node.</p>
+
+</dd><dt id="$self->sort_node_set_($value)"><code>$self-&gt;<strong id="member-sort_node_set">sort_node_set</strong> ($value)</code></dt>
+
+<dd>
+<p>Sort the nodes in the node-set. The argument must be an XPath value. If the value is not a node-set, it is unchanged. If the nodes are already sorted, it is unchanged. Otherwise, the nodes are sorted in place by document order or reverse document order, depending on the <code>reversed</code> flag of the value.</p>
+</dd>
+</dl>
+
+</section><section id="VALUES"><h1>VALUES</h1>
+
+<p>An XPath 1.0 value is represented as a hash reference.</p>
+
+<section id="Boolean"><h1>Boolean</h1>
+
+<p>A boolean value is represented as following key/value pairs: <code>type</code> is <code>boolean</code>; <code>value</code> is a Perl boolean value, representing the boolean value.</p>
+
+</section><section id="Number"><h1>Number</h1>
+
+<p>A number value is represented as following key/value pairs: <code>type</code> is <code>number</code>; <code>value</code> is a Perl number, representing the number value. Note that <code>value</code> can be a number value representing <code>nan</code>, <code>-nan</code>, <code>inf</code>, <code>-inf</code>, <code>0</code>, or <code>-0</code>.</p>
+
+</section><section id="String"><h1>String</h1>
+
+<p>A string value is represented as following key/value pairs: <code>type</code> is <code>string</code>; <code>value</code> is a Perl string, representing the string value. Note that if <code>value</code> is not utf8-flagged, it is interpreted as Latin-1 string as usual.</p>
+
+</section><section id="Node-set"><h1>Node-set</h1>
+
+<p>A node-set value is represented as following key/value pairs: <code>type</code> is <code>node-set</code>; <code>value</code> is an array reference, containing the nodes in the node-set; <code>unordered</code> is a Perl boolean value, representing whether the nodes are unsorted or not; <code>reversed</code> is a Perl boolean value, representing whether the nodes are sorted in reverse order or not.</p>
+
+<p>If <code>unordered</code> is true, whether the nodes in the <code>value</code> is sorted or not is unknown. Otherwise, if <code>reversed</code> is true, the nodes in the <code>value</code> is sorted in reverse document order. Otherwise, the nodes in the <code>value</code> is sorted in document order.</p>
+
+<p>Any other non-basic data type is not supported.</p>
+
+</section></section><section id="NODES"><h1>NODES</h1>
+
+<p>The node must be a DOM node, whose implementation conforming the manakai's DOM Perl binding specification. In addition, the implementation must also support the <code>manakaiIsHTML</code> attribute of the <code>Document</code> interface and the <code>manakaiTagName</code> attribute of the <code>Node</code> interface. <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> and related modules in the web-dom package <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code> is such a DOM implementation.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="XPATH">XPATH</dt>
+
+<dd>
+<p>XML Path Language (XPath) Version 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xpath/">http://www.w3.org/TR/xpath/</a>&gt;</code>.</p>
+
+<p>XML Path Language (XPath) Version 1.0 Specification Errata <code class="url">&lt;<a href="http://www.w3.org/1999/11/REC-xpath-19991116-errata/">http://www.w3.org/1999/11/REC-xpath-19991116-errata/</a>&gt;</code>.</p>
+
+<p>HTML - Interactions with XPath and XSLT <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#interactions-with-xpath-and-xslt">http://www.whatwg.org/specs/web-apps/current-work/#interactions-with-xpath-and-xslt</a>&gt;</code>.</p>
+
+<p>The <code>/</code> at the beginning of the location path MUST select the root of the context node.</p>
+
+<p>If an operand of <code>=</code> or <code>!=</code> is an object of a type other than the four basic types, it is converted in a way that is dependent on that type. It is an error if it is not defined.</p>
+
+<p>The document order is defined in terms of the <code>compareDocumentPosition</code> method of the <code>Node</code> interface [DOM] as follows. If <code>nodeA.compareDocumentPosition (nodeB) &amp; DOCUMENT_POSITION_PRECEDING</code> is true, <var>nodeA</var> preceeds <var>nodeB</var>. Otherwise, if <code>nodeA.compareDocumentPosition (nodeB) &amp; DOCUMENT_POSITION_FOLLOWING</code> is true, <var>nodeA</var> follows <var>nodeB</var>. Otherwise, they are same in document order.</p>
+
+<p>If an error is found during the evaluation of an expression, the evaluation MUST be immediately aborted.</p>
+
+</dd><dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/">http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard - Interaction of template elements with XSLT and XPath <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#template-XSLT-XPath">http://www.whatwg.org/specs/web-apps/current-work/#template-XSLT-XPath</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+</section><section id="POD_ERRORS"><h1>POD ERRORS</h1>
+
+<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
+
+<dl>
+<dt id="Around_line_152:">Around line 152:</dt>
+
+<dd>
+<p>=back without =over</p>
+</dd>
+</dl>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

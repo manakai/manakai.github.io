@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::XPath::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::XPath::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/XPath/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::XPath::Parser</code></h1><h2>An XPath parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::XPath::Parser;
+  $parser = Web::XPath::Parser-&gt;new;
+  $parsed = $parser-&gt;parse_char_string_as_expression ('/child::a/child::b');</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::XPath::Parser</code> module contains an XPath parser, i.e. a processor to convert XPath string into its internal data structure representation.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$parser_=_Web::XPath::Parser->new"><code>$parser = Web::XPath::Parser-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Return a new instance of the parser.</p>
+
+</dd><dt id="$code_=_$parser->onerror"><code>$code = $parser-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$parser->onerror_($new_code)"><code>$parser-&gt;<strong>onerror</strong> ($new_code)</code></dt>
+
+<dd>
+<p>Get or set the error handler for the parser. Any parse error, as well as warning and information, is reported to the handler. See <a href="../../../pod/Whatpm/Errors" class="podlinkpod">Whatpm::Errors</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod</a>&gt;</code> for more information.</p>
+
+</dd><dt id="$code_=_$parser->ns_resolver"><code>$code = $parser-&gt;<strong id="member-ns_resolver">ns_resolver</strong></code></dt>
+
+<dt id="$parser->ns_resolver_($new_code)"><code>$parser-&gt;<strong>ns_resolver</strong> ($new_code)</code></dt>
+
+<dd>
+<p>Get or set the namespace prefix resolver. It must be a code reference (or <code>undef</code> to unset). The code reference will be invoked with an argument, which is a character string representing the namespace prefix. The code reference must return a character string representing the namespace URL. The code reference must not throw an exception. It must return consistent result. Note that the null namespace cannot be represented.</p>
+
+<p>If the namespace resolver is not specified, there is no namespace binding applicable to XPath expression parsing.</p>
+
+</dd><dt id="$vars_=_$parser->variable_bindings"><code>$vars = $parser-&gt;<strong id="member-variable_bindings">variable_bindings</strong></code></dt>
+
+<dt id="$parser->variable_bindings_($vars)"><code>$parser-&gt;<strong>variable_bindings</strong> ($vars)</code></dt>
+
+<dd>
+<p>Get or set the <a href="../../../pod/Web/XPath/VariableBindings" class="podlinkpod">Web::XPath::VariableBindings</a> object, containing the set of variable bindings used to parse XPath expressions.</p>
+
+</dd><dt id="$package_=_$parser->function_library"><code>$package = $parser-&gt;<strong id="member-function_library">function_library</strong></code></dt>
+
+<dt id="$parser->function_library_($package)"><code>$parser-&gt;<strong>function_library</strong> ($package)</code></dt>
+
+<dd>
+<p>Get or set the package name of the function library used to parse the XPath expression. It must be a Perl package name string, which identifies <a href="../../../pod/Web/XPath/FunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a>, its subclass, or equivalent. The module is <code>require</code>d if necessary. See <a href="../../../pod/Web/XPath/FunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a> for details.</p>
+
+</dd><dt id="$parsed_=_$parser->parse_char_string_as_expression_($string)"><code>$parsed = $parser-&gt;<strong id="member-parse_char_string_as_expression">parse_char_string_as_expression</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified character string as an XPath 1.0 expression. If the parsing does not fail, it returns the parsed data structure. If the parsing fails, it reports the parse errors via the <code>onerror</code> handler and returns <code>undef</code>.</p>
+
+<p>The parsed data structure can be used as input to <a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a>.</p>
+</dd>
+</dl>
+
+<p>The parser does not examine whether the input string does not contain non-Unicode character (i.e. U-00110000) for performance reason. If your application would like to fully conform to relevant standards, you have to ensure that the input does not contain any character greater than U+10FFFF before invoking the parser.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/XPath/Evaluator" class="podlinkpod">Web::XPath::Evaluator</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="XPATH1">XPATH1</dt>
+
+<dd>
+<p>XML Path Language (XPath) Version 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xpath/">http://www.w3.org/TR/xpath/</a>&gt;</code>.</p>
+
+<p>XML Path Language (XPath) Version 1.0 Specification Errata <code class="url">&lt;<a href="http://www.w3.org/1999/11/REC-xpath-19991116-errata/">http://www.w3.org/1999/11/REC-xpath-19991116-errata/</a>&gt;</code>.</p>
+
+<p>The <code>NCName</code> production rule in the Namespaces in XML 1.0 (Second Edition) <code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-names-20060816/#NT-NCName">http://www.w3.org/TR/2006/REC-xml-names-20060816/#NT-NCName</a>&gt;</code> MUST be used to parse the XPath expression. (In other word, changes made by XML 1.1 or XML 1.0 Fifth Edition are not incorporated and even for an HTML document the same definition of <code>NCName</code> is applied.)</p>
+
+<p>If the tokenizer can't tokenize the entire input string, it MUST throw an syntax error and abort the parsing process.</p>
+
+<p>In the <code>Literal</code> production rule, any Unicode code point (i.e. U+0000-U+10FFFF) MUST be allowed. (This is a willful violation to the XPath 1.0 specification for compatibility with browsers.)</p>
+
+<p>The parser MUST resolve any namespace prefix in the input string. If the prefix cannot be resolved, it MUST throw a namespace error and abort the parsing process.</p>
+
+<p>The empty string namespace URL MUST NOT be interpreted as the null namespace.</p>
+
+<p>The parser MUST examine whether any variable reference in the input string references a variable included in the variable bindings of the context. If the variable is not found, it MUST throw a syntax error and abort the parsing process.</p>
+
+<p>The parser MUST examine whether any function call in the input string idetifies a function included in the function library of the context. If the function is not defined, the number of arguments is less than the minimum number of acceptable arguments, or the number of argument is greater than the maximum number of acceptable arguments, then it MUST throw a syntax error and abort the parsing process.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

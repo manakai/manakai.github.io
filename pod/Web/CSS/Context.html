@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Context</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Context</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Context.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Context</code></h1><h2>Providing context for CSS processing</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::Context</code> object provides context for parsing and processing of CSS,
+Selectors,
+and/or Media Queries.</p>
+
+<p>When a context object is expected,
+you can use the <a href="../../../pod/Web/CSS/Context" class="podlinkpod">Web::CSS::Context</a> object or an instance of subclass of <a href="../../../pod/Web/CSS/Context" class="podlinkpod">Web::CSS::Context</a>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The <a href="../../../pod/Web/CSS/Context" class="podlinkpod">Web::CSS::Context</a> object has following methods:</p>
+
+<section id="Constructors"><h1>Constructors</h1>
+
+<dl>
+<dt id="$ctx_=_Web::CSS::Context->new_empty"><code>$ctx = Web::CSS::Context-&gt;<strong id="member-new_empty">new_empty</strong></code></dt>
+
+<dd>
+<p>Create a new empty context object,
+with no namespaces.</p>
+
+</dd><dt id="$ctx_=_Web::CSS::Context->new_from_nscallback_($callback)"><code>$ctx = Web::CSS::Context-&gt;<strong id="member-new_from_nscallback">new_from_nscallback</strong> ($callback)</code></dt>
+
+<dd>
+<p>Create a new context object with a callback function for namespace resolution.
+The argument must be a code reference or the <code>undef</code> value.
+If it is a code reference,
+when invoked with the namespace prefix argument,
+it must return the corresponding namespace URL.
+Instead of the namespace prefix,
+the <code>undef</code> value representing the default namespace might be specified.
+The code may return the empty string,
+representing the null namespace,
+or the <code>undef</code> value,
+representing the lack of the namespace binding.
+If the callback throws an exception,
+it is propagated to the callee of the method which invoked the code.</p>
+
+</dd><dt id="$ctx_=_Web::CSS::Context->new_from_nsmaps_($p2u,_$u2p)"><code>$ctx = Web::CSS::Context-&gt;<strong id="member-new_from_nsmaps">new_from_nsmaps</strong> ($p2u,
+$u2p)</code></dt>
+
+<dd>
+<p>Create a new context object with two mapping tables,
+represented as hash references.</p>
+
+<p>The first mapping table is used to lookup namespace URL from the namespace prefix.
+The default namespace is represented by the empty string.
+The value can be the empty string,
+representing the null namespace,
+or the <code>undef</code> value,
+representing the lack of the namespace binding.</p>
+
+<p>The second mapping table is used to lookup namespace prefix from the namespace URL.
+The null namespace is represented by the empty string.
+The value can be the empty string,
+representing the default namespace,
+or the <code>undef</code> value,
+representing the lack of the namespace binding.</p>
+</dd>
+</dl>
+
+</section><section id="URL_methods"><h1>URL methods</h1>
+
+<dl>
+<dt id="$url_=_$context->url"><code>$url = $context-&gt;<strong id="member-url">url</strong></code></dt>
+
+<dt id="$context->url_($url)"><code>$context-&gt;<strong>url</strong> ($url)</code></dt>
+
+<dd>
+<p>Return or specify the URL in which the style sheet,
+selectors,
+or media queries is contained.</p>
+
+</dd><dt id="$scalarref_=_$context->urlref"><code>$scalarref = $context-&gt;<strong id="member-urlref">urlref</strong></code></dt>
+
+<dd>
+<p>Return the reference to the URL.</p>
+
+</dd><dt id="$url_=_$context->base_url"><code>$url = $context-&gt;<strong id="member-base_url">base_url</strong></code></dt>
+
+<dt id="$context->base_url_($url)"><code>$context-&gt;<strong>base_url</strong> ($url)</code></dt>
+
+<dd>
+<p>Return or specify the base URL for the style sheet.</p>
+
+</dd><dt id="$scalarref_=_$context->base_urlref"><code>$scalarref = $context-&gt;<strong id="member-base_urlref">base_urlref</strong></code></dt>
+
+<dd>
+<p>Return the reference to the base URL.</p>
+</dd>
+</dl>
+
+</section><section id="Quirksness_methods"><h1>Quirksness methods</h1>
+
+<dl>
+<dt id="$string_=_$context->manakai_compat_mode"><code>$string = $context-&gt;<strong id="member-manakai_compat_mode">manakai_compat_mode</strong></code></dt>
+
+<dt id="$context->manakai_compat_mode_($string)"><code>$context-&gt;<strong>manakai_compat_mode</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or specify the quirksness of the document for which the style sheet is parsed.
+It must be one of <code>quirks</code>,
+<code>limited quirks</code>,
+or <code>no quirks</code>.</p>
+
+</dd><dt id="$boolean_=_$context->quirks"><code>$boolean = $context-&gt;<strong id="member-quirks">quirks</strong></code></dt>
+
+<dd>
+<p>Return whether the <code>manakai_compat_mode</code> is <code>quirks</code> or not.</p>
+</dd>
+</dl>
+
+</section><section id="Namespace_methods"><h1>Namespace methods</h1>
+
+<dl>
+<dt id="$boolean_=_$ctx->has_namespace"><code>$boolean = $ctx-&gt;<strong id="member-has_namespace">has_namespace</strong></code></dt>
+
+<dd>
+<p>Return whether there is any namespace binding or not.</p>
+
+</dd><dt id="$prefix_=_$ctx->get_prefix_by_url_($url)"><code>$prefix = $ctx-&gt;<strong id="member-get_prefix_by_url">get_prefix_by_url</strong> ($url)</code></dt>
+
+<dd>
+<p>Return the namespace prefix associated with the specified namespace URL.
+The namespace URL can be the empty string,
+representing the null namespace.
+If the result is the empty string,
+it represents the default namespace.
+If the result is the <code>undef</code> value,
+there is no namespace prefix (or the default namespace) associated with the URL.</p>
+
+</dd><dt id="$url_=_$ctx->get_url_by_prefix_($url)"><code>$url = $ctx-&gt;<strong id="member-get_url_by_prefix">get_url_by_prefix</strong> ($url)</code></dt>
+
+<dd>
+<p>Return the namespace URL associated with the specified namespace prefix.
+The namespace prefix can be the empty string,
+representing the default namespace.
+If the result is the empty string,
+it represents the null namespace.
+If the result is the <code>undef</code> value,
+there is no namespace URL (even the null namespace) associated with the prefix.</p>
+</dd>
+</dl>
+
+</section></section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

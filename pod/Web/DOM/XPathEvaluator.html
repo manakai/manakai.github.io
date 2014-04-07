@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::XPathEvaluator</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::XPathEvaluator</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/XPathEvaluator.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::XPathEvaluator</code></h1><h2>The DOM <code>XPathEvaluator</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::XPathEvaluator</code> class implements the DOM <code>XPathEvaluator</code> interface.
+It is a superinterface of the <code>Document</code> interface,
+but it can also be used as a standalone object.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$eval_=_new_Web::DOM::XPathEvaluator"><code>$eval = <strong id="member-new">new Web::DOM::XPathEvaluator</strong></code></dt>
+
+<dd>
+<p>Create a new <code>XPathEvaluator</code> object. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$expr_=_$eval->create_expression_($string,_$resolver)"><code>$expr = $eval-&gt;<strong id="member-create_expression">create_expression</strong> ($string,
+$resolver)</code></dt>
+
+<dd>
+<p>Parse the specified string as an XPath 1.0 expression and returns it as a new <a href="../../../pod/Web/DOM/XPathExpression" class="podlinkpod">Web::DOM::XPathExpression</a> object.
+If a code reference or a <a href="../../../pod/Web/DOM/XPathNSResolver" class="podlinkpod">Web::DOM::XPathNSResolver</a> object is also specified as the optional second argument,
+it is used as the namespace prefix resolver. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$resolver_=_$eval->create_ns_resolver_($node)"><code>$resolver = $eval-&gt;<strong id="member-create_ns_resolver">create_ns_resolver</strong> ($node)</code></dt>
+
+<dd>
+<p>Create a <a href="../../../pod/Web/DOM/XPathNSResolver" class="podlinkpod">Web::DOM::XPathNSResolver</a> object with the specified <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> object. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+</dd><dt id="$result_=_$eval->evaluate_($string,_$node,_$resolver,_$result_type,_$result)"><code>$result = $eval-&gt;<strong id="member-evaluate">evaluate</strong> ($string,
+$node,
+$resolver,
+$result_type,
+$result)</code></dt>
+
+<dd>
+<p>Parse and evaluate an XPath 1.0 expression.
+The first argument is an XPath 1.0 expression to be evaluated.
+The second argument is the context node (<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> object) used to evaluate the expression.
+The remainging arguments are optional.
+The third argument is the namespace prefix resolver,
+specified as either a code reference or the <a href="../../../pod/Web/DOM/XPathResolver" class="podlinkpod">Web::DOM::XPathResolver</a> object.
+The fourth argument is the requested result type,
+specified by one of constants in <a href="../../../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a>.
+The fifth argument is ignored.
+The method returns the <a href="../../../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a> object containing the evaluation result. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathEvaluator">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathEvaluator</a>&gt;</code>.</p>
+
+<p>DOM XPath <code class="url">&lt;<a href="http://wiki.whatwg.org/wiki/DOM_XPath">http://wiki.whatwg.org/wiki/DOM_XPath</a>&gt;</code>.</p>
+
+<p>Improving DOM Traversal and DOM XPath <code class="url">&lt;<a href="http://lists.w3.org/Archives/Public/public-webapps/2011AprJun/0310.html">http://lists.w3.org/Archives/Public/public-webapps/2011AprJun/0310.html</a>&gt;</code>.</p>
+
+<p>743888 - Replace SVGException and XPathException with DOMException <code class="url">&lt;<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=743888#c1">https://bugzilla.mozilla.org/show_bug.cgi?id=743888#c1</a>&gt;</code>.</p>
+
+<p>The definition for the <code>evaluate</code> method MUST be modified as follows:</p>
+
+<pre>
+<code>  partial interface XPathEvaluator {
+    XPathResult evaluate(DOMString expression,
+                         (Node or Attr) contextNode,
+                         XPathNSResolver? resolver,
+                         optional unsigned short type = 0,
+                         optional object? result = null);
+  };</code></pre>
+
+<p>The set of variable bindings MUST be empty. Additional functions MUST NOT be added to the function library.</p>
+
+<p>The <code>evaluate</code> method MUST accept any type of <code>Node</code> as the <code>contextNode</code> argument, i.e. as the context node of the evaluation.</p>
+
+<p>When an evaluation is failed due to a non-syntax non-namespace error, a <code>SyntaxError</code> <code>DOMException</code> MUST be thrown.</p>
+
+<p>The callback this value used when an <code>XPathNSResolver</code> (specified as a function) is invoked is the callback function itself.</p>
+
+<p>If the <code>XPathNSResolver</code> throws an exception, it MUST be catched and act as if the <code>null</code> value is returned.</p>
+
+<p>When the evaluation is initiated, the context position and context size MUST be set to <code>1</code>.</p>
+
+<p>The <code>evaluate</code> method MUST return a newly created <code>XPathResult</code> object. It MUST NOT return the <code>WRONG_DOCUMENT_ERR</code> or <code>NOT_SUPPORTED_ERR</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>, <a href="../../../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

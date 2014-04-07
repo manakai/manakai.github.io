@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::NodeList</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::NodeList</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/NodeList.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::NodeList</code></h1><h2>The DOM <code>NodeList</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::NodeList</code> class implements the DOM <code>NodeList</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$node_=_$node_list->[$index]"><code>$node = $node_list-&gt;<strong id="member-[$index]">[$index]</strong></code></dt>
+
+<dt id="$node_=_$node_list->item_($index)"><code>$node = $node_list-&gt;<strong id="member-item">item</strong> ($index)</code></dt>
+
+<dd>
+<p>Return the node in the list,
+specified by its index. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>Use of the <code>item</code> method is discouraged as it doesn't support Perl-ish ways to access items,
+such as negative indexing,
+while <code>$node_list-&gt;[-1]</code> works as intended.</p>
+
+</dd><dt id="$number_=_@$node_list"><code>$number = @$node_list</code></dt>
+
+<dt id="$number_=_$node_list->length"><code>$number = $node_list-&gt;<strong id="member-length">length</strong></code></dt>
+
+<dd>
+<p>Return the number of the nodes in the list. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$arrayref_=_$node_list->to_a"><code>$arrayref = $node_list-&gt;<strong id="member-to_a">to_a</strong></code></dt>
+
+<dd>
+<p>Return the new static array reference containing the nodes in the node list. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="($node1,_$node2,_...)_=_$node_list->to_list"><code>($node1,
+$node2,
+...) = $node_list-&gt;<strong id="member-to_list">to_list</strong></code></dt>
+
+<dt id="($node1,_$node2,_...)_=_@$node_list"><code>($node1,
+$node2,
+...) = @$node_list</code></dt>
+
+<dd>
+<p>Return the list of the nodes contained in the node list. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The object supports Perl standard read-only operations for array references,
+e.g.
+<code>exists $node_list-&gt;[4]</code>. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-nodelist">http://dom.spec.whatwg.org/#interface-nodelist</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding#anchor-86">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding#anchor-86</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

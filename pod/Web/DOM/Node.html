@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Node</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Node</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Node.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Node</code></h1><h2>The DOM <code>Node</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Node</code> class implements the DOM <code>Node</code> interface.
+The <code>Web::DOM::Node</code> class is an abstract class.
+It is used as subclasses such as <code>Web::DOM::Element</code> and <code>Web::DOM::Document</code>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> class,
+following methods are available:</p>
+
+<dl>
+<dt id="$child_=_$node->append_child_($child)"><code>$child = $node-&gt;<strong id="member-append_child">append_child</strong> ($child)</code></dt>
+
+<dd>
+<p>Append the specified node to the list of child nodes. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node->manakai_append_content_($child)"><code>$node-&gt;<strong id="member-manakai_append_content">manakai_append_content</strong> ($child)</code></dt>
+
+<dd>
+<p>Append the specified node or string.
+If the context object is an HTML <code>template</code> element,
+it is appended to the template content.
+Otherwise,
+it is appended to the context object. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$node_=_$node->manakai_append_text_($string)"><code>$node = $node-&gt;<strong id="member-manakai_append_text">manakai_append_text</strong> ($string)</code></dt>
+
+<dd>
+<p>Append the string to the <code>text_content</code> of the node. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$string_=_$node->base_uri"><code>$string = $node-&gt;<strong id="member-base_uri">base_uri</strong></code></dt>
+
+<dd>
+<p>Return the base URL of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</dd><dt id="$node_list_=_$node->child_nodes"><code>$node_list = $node-&gt;<strong id="member-child_nodes">child_nodes</strong></code></dt>
+
+<dd>
+<p>Return the live list,
+i.e.
+<a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a>,
+of the child nodes of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node2_=_$node->clone_node_($deep)"><code>$node2 = $node-&gt;<strong id="member-clone_node">clone_node</strong> ($deep)</code></dt>
+
+<dd>
+<p>Return the newly-created clone of the node.
+If the argument is set to the true value,
+any descendant nodes are also cloned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$value_=_$node1->compare_document_position_($node2)"><code>$value = $node1-&gt;<strong id="member-compare_document_position">compare_document_position</strong> ($node2)</code></dt>
+
+<dd>
+<p>Return the result of comparison of document positions of two nodes.
+The result is represented as the bitmask of constants listed in the later section. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$bool_=_$node1->contains_($node2)"><code>$bool = $node1-&gt;<strong id="member-contains">contains</strong> ($node2)</code></dt>
+
+<dd>
+<p>Return whether the node specified as the argument is the descendant of the context node or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$url_=_$node->manakai_expanded_uri"><code>$url = $node-&gt;<strong id="member-manakai_expanded_uri">manakai_expanded_uri</strong></code></dt>
+
+<dd>
+<p>Return the expanded URL of the element or attribute,
+i.e.
+the namespace URL followed by the local name. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$child_=_$node->first_child"><code>$child = $node-&gt;<strong id="member-first_child">first_child</strong></code></dt>
+
+<dd>
+<p>Return the first child node of the node.
+If there is no child,
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$url_=_$node->manakai_get_child_namespace_uri_($name)"><code>$url = $node-&gt;<strong id="member-manakai_get_child_namespace_uri">manakai_get_child_namespace_uri</strong> ($name)</code></dt>
+
+<dd>
+<p>Return the namespace URL which would be used if the serialized representation of the node contains a start tag whose tag name is equal to the argument. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>For example:</p>
+
+<pre>
+<code>  $doc = an HTML document;
+  $el = $doc-&gt;create_element ('div');
+  is $el-&gt;manakai_get_child_namespace_uri ('p'),
+     'http://www.w3.org/1999/xhtml';
+  is $el-&gt;manakai_get_child_namespace_uri ('svg'),
+     'http://www.w3.org/2000/svg';</code></pre>
+
+</dd><dt id="$data_=_$node->get_user_data_($key)"><code>$data = $node-&gt;<strong id="member-get_user_data">get_user_data</strong> ($key)</code></dt>
+
+<dd>
+<p>Return the user data associated to the node with the specified key, if any, or <code>undef</code>. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+<p>See <a href="#USER_DATA" class="podlinkpod">"USER DATA"</a>.</p>
+
+</dd><dt id="$bool_=_$node->has_attributes"><code>$bool = $node-&gt;<strong id="member-has_attributes">has_attributes</strong></code></dt>
+
+<dd>
+<p>Return whether the node has any content attribute or not. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$bool_=_$node->has_child_nodes"><code>$bool = $node-&gt;<strong id="member-has_child_nodes">has_child_nodes</strong></code></dt>
+
+<dd>
+<p>Return whether the node has children or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$child_=_$node->insert_before_($child,_$ref_child)"><code>$child = $node-&gt;<strong id="member-insert_before">insert_before</strong> ($child, $ref_child)</code></dt>
+
+<dd>
+<p>Insert the specified node just after the specified node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$node->is_default_namespace_($nsurl)"><code>$bool = $node-&gt;<strong id="member-is_default_namespace">is_default_namespace</strong> ($nsurl)</code></dt>
+
+<dd>
+<p>Return whether the specified namespace URL is the default namespace or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$node1->is_equal_node_($node2)"><code>$bool = $node1-&gt;<strong id="member-is_equal_node">is_equal_node</strong> ($node2)</code></dt>
+
+<dd>
+<p>Return whether two nodes are equal or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$node1->is_same_node_($node2)"><code>$bool = $node1-&gt;<strong id="member-is_same_node">is_same_node</strong> ($node2)</code></dt>
+
+<dd>
+<p>Return whether two nodes are same or not. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$bool_=_$node->is_supported_($feature,_$version)"><code>$bool = $node-&gt;<strong id="member-is_supported">is_supported</strong> ($feature, $version)</code></dt>
+
+<dd>
+<p>Return true. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$child_=_$node->last_child"><code>$child = $node-&gt;<strong id="member-last_child">last_child</strong></code></dt>
+
+<dd>
+<p>Return the last child node of the node. If there is no child, <code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$url_=_$node->lookup_namespace_uri_($prefix)"><code>$url = $node-&gt;<strong id="member-lookup_namespace_uri">lookup_namespace_uri</strong> ($prefix)</code></dt>
+
+<dd>
+<p>Return the namespace URL which might be associated with the specified prefix. The <code>undef</code> value can be specified for the default namespace. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$prefix_=_$node->lookup_prefix_($nsurl)"><code>$prefix = $node-&gt;<strong id="member-lookup_prefix">lookup_prefix</strong> ($nsurl)</code></dt>
+
+<dd>
+<p>Return the namespace prefix which might be associated with the specified namespace URL. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+</dd><dt id="$sibling_=_$node->next_sibling"><code>$sibling = $node-&gt;<strong id="member-next_sibling">next_sibling</strong></code></dt>
+
+<dd>
+<p>Return the next sibing node of the node. If there is no such node, <code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$string_=_$node->node_name"><code>$string = $node-&gt;<strong id="member-node_name">node_name</strong></code></dt>
+
+<dd>
+<p>Return the name of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$number_=_$node->node_type"><code>$number = $node-&gt;<strong id="member-node_type">node_type</strong></code></dt>
+
+<dd>
+<p>Return the constant number representing the type of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="$text_=_$node->node_value"><code>$text = $node-&gt;<strong id="member-node_value">node_value</strong></code></dt>
+
+<dt id="$node->node_value_($text)"><code>$node-&gt;<strong>node_value</strong> ($text)</code></dt>
+
+<dd>
+<p>Get or set the value of the node. For <a href="../../../pod/Web/DOM/CharacterData" class="podlinkpod">Web::DOM::CharacterData</a> objects, this is equivalent to the <code>data</code> method. For <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> objects, this is equivalent to the <code>value</code> method. For other kinds of nodes, this method has no effect. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$node->normalize"><code>$node-&gt;<strong id="member-normalize">normalize</strong></code></dt>
+
+<dd>
+<p>Normalize descendant contigious <code>Text</code> nodes, if any. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$doc_=_$node->owner_document"><code>$doc = $node-&gt;<strong id="member-owner_document">owner_document</strong></code></dt>
+
+<dd>
+<p>Return the node document, i.e. the document the node belongs to, except for the document node, fot which the <code>undef</code> value is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$parent_=_$node->parent_element"><code>$parent = $node-&gt;<strong id="member-parent_element">parent_element</strong></code></dt>
+
+<dt id="$parent_=_$node->manakai_parent_element"><code>$parent = $node-&gt;<strong id="member-manakai_parent_element">manakai_parent_element</strong></code></dt>
+
+<dd>
+<p>Return the parent element of the node. If there is no parent element, <code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$parent_=_$node->parent_node"><code>$parent = $node-&gt;<strong id="member-parent_node">parent_node</strong></code></dt>
+
+<dd>
+<p>Return the parent node of the node. If there is no parent, <code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$sibling_=_$node->previous_sibling"><code>$sibling = $node-&gt;<strong id="member-previous_sibling">previous_sibling</strong></code></dt>
+
+<dd>
+<p>Return the previous sibling of the node. If there is no such node, <code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+
+</dd><dt id="$old_child_=_$node->remove_child_($old_child)"><code>$old_child = $node-&gt;<strong id="member-remove_child">remove_child</strong> ($old_child)</code></dt>
+
+<dd>
+<p>Remove a node from the list of child nodes of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$new_child_=_$node->replace_child_($new_child,_$ref_child)"><code>$new_child = $node-&gt;<strong id="member-replace_child">replace_child</strong> ($new_child, $ref_child)</code></dt>
+
+<dd>
+<p>Replace the specified child node by a new node. The first argument is the new child node. The second argument is the current child node, which is to be replaced. The new child node is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node->set_user_data_($key,_$value,_$handler)"><code>$node-&gt;<strong id="member-set_user_data">set_user_data</strong> ($key, $value, $handler)</code></dt>
+
+<dd>
+<p>Set the specified key-value pair as one of user data of the node. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+
+<p>Note that this implementation does not support user data handler. The third argument cannot be specified.</p>
+
+<p>See <a href="#USER_DATA" class="podlinkpod">"USER DATA"</a>.</p>
+
+</dd><dt id="$string_=_$node->text_content"><code>$string = $node-&gt;<strong id="member-text_content">text_content</strong></code></dt>
+
+<dt id="$node->text_content_($string)"><code>$node-&gt;<strong>text_content</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the text data of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>If the node is an <code>Element</code> or <code>DocumentFragment</code>, setter: The content of the node is replaced by a new <code>Text</code> node if the new text data is not the empty string. If the node has child nodes, they are removed.</p>
+
+<p>If the node is a <code>CharacterData</code> or <code>Attr</code>: The data of the node is returned or replaced.</p>
+
+<p>Otherwise, the method returns <code>undef</code> and the setter has no effect.</p>
+</dd>
+</dl>
+
+<p>Following methods are also available: <code>attributes</code>, <code>prefix</code>, <code>namespace_uri</code>, <code>local_name</code>, and <code>manakai_local_name</code>. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOMNODEEXODUS">DOMNODEEXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+<p>Any <code>Node</code> object is an instance of one of its subclasses. For example, a <code>Node</code> object whose <code>node_type</code> is <code>ELEMENT_NODE</code> is an instance of <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>. There are following subclasses:</p>
+
+<p><a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>, <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>, <a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>, <a href="../../../pod/Web/DOM/DocumentFragment" class="podlinkpod">Web::DOM::DocumentFragment</a>, <a href="../../../pod/Web/DOM/CharacterData" class="podlinkpod">Web::DOM::CharacterData</a>, <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>, <a href="../../../pod/Web/DOM/Entity" class="podlinkpod">Web::DOM::Entity</a>, <a href="../../../pod/Web/DOM/Notation" class="podlinkpod">Web::DOM::Notation</a>, <a href="../../../pod/Web/DOM/ElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>, and <a href="../../../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a>.</p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> module by default. In addition, they are accessible as methods of <code>Node</code> objects.</p>
+
+<dl>
+<dt id="Node_type_constants">Node type constants</dt>
+
+<dd>
+<p>Following constants are defined for the <code>node_type</code> attribute:</p>
+
+<p>ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE CDATA_SECTION_NODE ENTITY_REFERENCE_NODE ENTITY_NODE PROCESSING_INSTRUCTION_NODE COMMENT_NODE DOCUMENT_NODE DOCUMENT_TYPE_NODE DOCUMENT_FRAGMENT_NODE NOTATION_NODE <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOM3">DOM3</a>]</cite></p>
+
+<p>XPATH_NAMESPACE_NODE <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cite></p>
+
+<p>ELEMENT_TYPE_DEFINITION_NODE ATTRIBUTE_DEFINITION_NODE <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
+
+</dd><dt id="Document_position_constants">Document position constants</dt>
+
+<dd>
+<p>Following constants are defined for the <code>compare_document_position</code> method:</p>
+
+<p>DOCUMENT_POSITION_DISCONNECTED DOCUMENT_POSITION_PRECEDING DOCUMENT_POSITION_FOLLOWING DOCUMENT_POSITION_CONTAINS DOCUMENT_POSITION_CONTAINED_BY DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="USER_DATA"><h1>USER DATA</h1>
+
+<p>Methods <code>get_user_data</code> and <code>set_user_data</code> can be used to store and retrieve custom data associated with the node.</p>
+
+<p>Please note that, if the value directly or indirectly references the node itself, the node will not be garbage collected even when the other references to the node have been removed. This is the limitation of the Perl's garbage collection mechanism.</p>
+
+<p>User data keys with prefix <code>manakai_</code> are used by various Perl modules by the manakai project. Other modules and applications should not use such keys. See <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++Predefined%20User%20Data%20Names">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++Predefined%20User%20Data%20Names</a>&gt;</code> for the list of currently used keys.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-document">http://dom.spec.whatwg.org/#interface-document</a>&gt;</code>.</p>
+
+</dd><dt id="DOMATTREXODUS,_DOMNODEEXODUS">DOMATTREXODUS, DOMNODEEXODUS</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.org/">view-source:http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+
+</dd><dt id="DOM3CORE">DOM3CORE</dt>
+
+<dd>
+<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-1950641247">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-1950641247</a>&gt;</code>.</p>
+
+</dd><dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html</a>&gt;</code>.</p>
+
+</dd><dt id="DOMDTDEF">DOMDTDEF</dt>
+
+<dd>
+<p>DOM Document Type Definition Module <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef-work">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef-work</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a>, <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a>, <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

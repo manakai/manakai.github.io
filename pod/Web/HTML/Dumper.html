@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::HTML::Dumper</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::HTML::Dumper</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/HTML/Dumper.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::HTML::Dumper</code></h1><h2>Dump DOM tree by the parser test format</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::HTML::Dumper qw(dumptree);
+  
+  warn dumptree $doc;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::HTML::Dumper</code> exports a function, <code>dumptree</code>, which serializes the given document into the format used in HTML parser tests.</p>
+
+</section><section id="FUNCTION"><h1>FUNCTION</h1>
+
+<p>The module exports a function:</p>
+
+<dl>
+<dt id="$dumped_=_dumptree_$doc"><code>$dumped = dumptree $doc</code></dt>
+
+<dd>
+<p>Dump the DOM tree. The argument must be a DOM document object (i.e. an instance of <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> class). The function returns the dump for the document and its subtree.</p>
+</dd>
+</dl>
+
+</section><section id="DUMP_FORMAT"><h1>DUMP FORMAT</h1>
+
+<p>The function serializes the DOM tree into the format used in HTML parser tests, as described in <code class="url">&lt;<a href="http://wiki.whatwg.org/wiki/Parser_tests#Tree_Construction_Tests">http://wiki.whatwg.org/wiki/Parser_tests#Tree_Construction_Tests</a>&gt;</code> and <code class="url">&lt;<a href="https://github.com/html5lib/html5lib-tests/tree/master/tree-construction">https://github.com/html5lib/html5lib-tests/tree/master/tree-construction</a>&gt;</code>, with following exceptions:</p>
+
+<dl>
+<dt id="Only_the_&quot;#document&quot;_part_of_the_tree_construction_test_is_returned.">Only the "#document" part of the tree construction test is returned.</dt>
+
+<dt id="No_&quot;|_&quot;_prefix_is_prepended_to_lines.">No "| " prefix is prepended to lines.</dt>
+
+<dt id="XML-only_node_types_are_also_supported.">XML-only node types are also supported.</dt>
+
+<dd>
+<p>Element type definition, entity, and notation nodes attached to a document type node is serialized as if they were children of the document type node. They are inserted before any children of the document type node, sorted by node types in the aforementioned order, then by code point order of their node names.</p>
+
+<p>Element type definition nodes are represented as <code>&lt;!ELEMENT</code>, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the node name, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the <code>contentModelText</code> of the node, followed by <code>&gt;</code>.</p>
+
+<p>Entity nodes are represented as <code>&lt;!ENTITY</code>, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the node name, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by list of <code>textContent</code>, <code>publicId</code>, and <code>systemId</code> of the node (the empty string is used when the value is <code>undef</code>), where each item is enclosed by <code>"</code> characters, separated by a <code>U+0020</code> <code>SPACE</code> character, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the <code>notationName</code> of the node, if it is not <code>undef</code>, followed by <code>&gt;</code>.</p>
+
+<p>Notation nodes are represented as <code>&lt;!NOTATION</code>, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the node name, followed by a <code>U+0020</code> <code>SPACE</code> character, followecd by list of <code>publicId</code> and <code>systemId</code> of the node (the empty string is used when the value is <code>undef</code>), where each item is enclosed by <code>"</code> characters, separated by a <code>U+0020</code> <code>SPACE</code> character, followed by <code>&gt;</code>.</p>
+
+<p>Attribute definition nodes attached to an element type definition node is serialized as if they were children of the element type node, sorted by code point order of their node names.</p>
+
+<p>Attribute type definition nodes are represented as the node name, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the keyword represented by <code>declaredType</code> of the node (or <code>ENUMERATION</code> if it represents the enumerated type), followed by a <code>U+0020</code> <code>SPACE</code> character, followed by <code>(</code>, followed by the list of <code>allowedTokens</code> of the node separated by <code>|</code>, followed by <code>)</code>, followed by a <code>U+0020</code> <code>SPACE</code> character, followed by the keyword represented by <code>defaultType</code> or the node (or <code>EXPLICIT</code> if it reprensets the explicit default value), followed by a <code>U+0020</code> <code>SPACE</code> character, followed by <code>"</code>, followed by the <code>textContent</code> of the node, followed by <code>"</code>.</p>
+
+</dd><dt id="Namespace_designators_are_extended.">Namespace designators are extended.</dt>
+
+<dd>
+<p>The namespace designator for the HTML namespace (<code>http://www.w3.org/1999/xhtml</code>) is <code>html</code>. While elements in the HTML namespace are serialized without the namespace designator as in original format, attributes in the HTML namespace are serialized with this namespace designator.</p>
+
+<p>An application can define a custom namespace designator by setting the key-value pair to the <code>%$Web::HTML::Dumper::NamespaceMapping</code> hash:</p>
+
+<pre>
+<code>  $Web::HTML::Dumper::NamespaceMapping-&gt;{$url} = $prefix;</code></pre>
+
+<p>For example, if the application does:</p>
+
+<pre>
+<code>  $Web::HTML::Dumper::NamespaceMapping
+      -&gt;{q&lt;urn:x-suika-fam-cx:markup:suikawiki:0:9:&gt;}
+      = 'sw';</code></pre>
+
+<p>... then <code>document</code> in the SuikaWiki/0.9 namespace is serialized as <code>sw document</code>.</p>
+
+<p>When no namespace designator is explicitly defined for a namespace, the namespace designator for the namespace is <code>{</code> followed by the namespace URL followed by <code>}</code>. If an element has no namespace, the namespace designator for the element is <code>{}</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p>Parser tests - WHATWG Wiki <code class="url">&lt;<a href="http://wiki.whatwg.org/wiki/Parser_tests">http://wiki.whatwg.org/wiki/Parser_tests</a>&gt;</code>.</p>
+
+<p>html5lib-tests <code class="url">&lt;<a href="https://github.com/html5lib/html5lib-tests/tree/master/tree-construction">https://github.com/html5lib/html5lib-tests/tree/master/tree-construction</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

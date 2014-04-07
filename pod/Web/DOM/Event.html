@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Event</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Event</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Event.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Event</code></h1><h2>The DOM <code>Event</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Event</code> class implements the DOM <code>Event</code> interface.
+It represents a DOM event.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$ev_=_new_Web::DOM::Event_$type,_{cancelable_=>_$bool,_bubbles_=>_$bool}"><code>$ev = <strong id="member-new">new Web::DOM::Event</strong> $type,
+{cancelable =&gt; $bool,
+bubbles =&gt; $bool}</code></dt>
+
+<dd>
+<p>Create and initialize a new event object.
+The first required argument identifies the event type,
+e.g.
+<code>click</code> or <code>readystatechange</code>.
+The second argument,
+which can be omitted,
+specifies event properties as a hash reference. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>Subclasses of the <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> class do also provide the <code>new</code> constructor method,
+e.g.
+<code>Web::DOM::MouseEvent-&gt;new</code>.</p>
+
+</dd><dt id="$boolean_=_$ev->bubbles"><code>$boolean = $ev-&gt;<strong id="member-bubbles">bubbles</strong></code></dt>
+
+<dd>
+<p>Return whether the event bubbles or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ev->cancelable"><code>$boolean = $ev-&gt;<strong id="member-cancelable">cancelable</strong></code></dt>
+
+<dd>
+<p>Return whether the event is cancelable or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$object_=_$ev->current_target"><code>$object = $ev-&gt;<strong id="member-current_target">current_target</strong></code></dt>
+
+<dd>
+<p>Return the current target object of the event. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ev->manakai_dispatched"><code>$boolean = $ev-&gt;<strong id="member-manakai_dispatched">manakai_dispatched</strong></code></dt>
+
+<dd>
+<p>Return whether the event is currently dispatched or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ev->default_prevented"><code>$boolean = $ev-&gt;<strong id="member-default_prevented">default_prevented</strong></code></dt>
+
+<dd>
+<p>Return whether the default action has been prevented or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$const_=_$ev->event_phase"><code>$const = $ev-&gt;<strong id="member-event_phase">event_phase</strong></code></dt>
+
+<dd>
+<p>Return the numerical constant value representing the current stage of the event propagation.
+See the <a href="#CONSTANTS" class="podlinkpod">"CONSTANTS"</a> section. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ev->manakai_immediate_propagation_stopped"><code>$boolean = $ev-&gt;<strong id="member-manakai_immediate_propagation_stopped">manakai_immediate_propagation_stopped</strong></code></dt>
+
+<dd>
+<p>Return whether the <code>stop_propagation</code> or <code>stop_immediate_propagation</code> method has been invoked or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ev->is_trusted"><code>$boolean = $ev-&gt;<strong id="member-is_trusted">is_trusted</strong></code></dt>
+
+<dd>
+<p>Return whether the event is trusted,
+i.e.
+fired by the browser or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$ev->prevent_default"><code>$ev-&gt;<strong id="member-prevent_default">prevent_default</strong></code></dt>
+
+<dd>
+<p>Prevent any execution of the default action of the event. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$boolean_=_$ev->manakai_propagation_stopped"><code>$boolean = $ev-&gt;<strong id="member-manakai_propagation_stopped">manakai_propagation_stopped</strong></code></dt>
+
+<dd>
+<p>Return whether the <code>stop_propagation</code> method has been invoked or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$ev->stop_immediate_propagation"><code>$ev-&gt;<strong id="member-stop_immediate_propagation">stop_immediate_propagation</strong></code></dt>
+
+<dd>
+<p>Stop the propagation of the event immediately. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$ev->stop_propagation"><code>$ev-&gt;<strong id="member-stop_propagation">stop_propagation</strong></code></dt>
+
+<dd>
+<p>Stop the propagation of the event. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$object_=_$ev->target"><code>$object = $ev-&gt;<strong id="member-target">target</strong></code></dt>
+
+<dd>
+<p>Return the event target object to which the event has been dispatched. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$time_=_$ev->timestamp"><code>$time = $ev-&gt;<strong id="member-timestamp">timestamp</strong></code></dt>
+
+<dd>
+<p>Return the timestamp (seconds from the Unix epoch) at which the event has been created. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$ev->type"><code>$string = $ev-&gt;<strong id="member-type">type</strong></code></dt>
+
+<dd>
+<p>Return the event type. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+</dd>
+</dl>
+
+<p>In addition,
+it also supports <code>init_event</code> method. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</section><section id="CONSTANTS"><h1>CONSTANTS</h1>
+
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> module by default.
+Following constants are used by the <code>event_phase</code> method [DOM]:</p>
+
+<pre>
+<code>  NONE, CAPTURING_PHASE, AT_TARGET, BUBBLING_PHASE</code></pre>
+
+</section><section id="SUBCLASSES"><h1>SUBCLASSES</h1>
+
+<p>There are subclasses of the class, representing subinterfaces of the <code>Event</code> interface, containing: <a href="../../../pod/Web/DOM/CustomEvent" class="podlinkpod">Web::DOM::CustomEvent</a> and Web::DOM::UIEvent.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-event">http://dom.spec.whatwg.org/#interface-event</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAI">MANAKAI</dt>
+
+<dd>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+</section><section id="POD_ERRORS"><h1>POD ERRORS</h1>
+
+<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
+
+<dl>
+<dt id="Around_line_106:">Around line 106:</dt>
+
+<dd>
+<p>Deleting unknown formatting code K&lt;&gt;</p>
+</dd>
+</dl>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

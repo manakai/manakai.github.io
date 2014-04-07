@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::MediaList</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::MediaList</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/MediaList.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::MediaList</code></h1><h2>The DOM <code>MediaList</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::MediaList</code> class implements the DOM <code>MediaList</code> interface.
+It represents a list of media queries.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$media_list->append_medium_($string)"><code>$media_list-&gt;<strong id="member-append_medium">append_medium</strong> ($string)</code></dt>
+
+<dd>
+<p>Append a media query to the list. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$media_list->delete_medium_($string)"><code>$media_list-&gt;<strong id="member-delete_medium">delete_medium</strong> ($string)</code></dt>
+
+<dd>
+<p>Delete a media query from the list. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite></p>
+
+</dd><dt id="$string_=_$media_list->[$index]"><code>$string = $media_list-&gt;<strong id="member-[$index]">[$index]</strong></code></dt>
+
+<dt id="$string_=_$media_list->item_($index)"><code>$string = $media_list-&gt;<strong id="member-item">item</strong> ($index)</code></dt>
+
+<dd>
+<p>Return the media query in the list,
+specified by its index. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>Use of the <code>item</code> method is discouraged as it doesn't support Perl-ish ways to access items,
+such as negative indexing,
+while <code>$media_list-&gt;[-1]</code> works as intended.</p>
+
+</dd><dt id="$number_=_@$media_list"><code>$number = @$media_list</code></dt>
+
+<dt id="$number_=_$media_list->length"><code>$number = $media_list-&gt;<strong id="member-length">length</strong></code></dt>
+
+<dd>
+<p>Return the number of the media queries in the list. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$string_=_$media_list->media_text"><code>$string = $media_list-&gt;<strong id="member-media_text">media_text</strong></code></dt>
+
+<dt id="$string_=_''_._$media_list"><code>$string = '' .
+$media_list</code></dt>
+
+<dt id="$media_list->media_text_($string)"><code>$media_list-&gt;<strong>media_text</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the list of media queries as a character string. <cite class="ref">[<a href="#CSSOM">CSSOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$arrayref_=_$media_list->to_a"><code>$arrayref = $media_list-&gt;<strong id="member-to_a">to_a</strong></code></dt>
+
+<dd>
+<p>Return the new static array reference containing the media queries in the list. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="($rule1,_$rule2,_...)_=_$media_list->to_list"><code>($rule1,
+$rule2,
+...) = $media_list-&gt;<strong id="member-to_list">to_list</strong></code></dt>
+
+<dt id="($rule1,_$rule2,_...)_=_@$media_list"><code>($rule1,
+$rule2,
+...) = @$media_list</code></dt>
+
+<dd>
+<p>Return the list of the media queries contained in the list. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The object supports Perl standard read-only operations for array references,
+e.g.
+<code>exists $media_list-&gt;[4]</code>. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSSOM <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/#medialist">http://dev.w3.org/csswg/cssom/#medialist</a>&gt;</code>.</p>
+
+<p>The type of the <code>item</code> method is <code>DOMString?</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding#anchor-86">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding#anchor-86</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>See <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

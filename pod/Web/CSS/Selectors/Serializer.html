@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::CSS::Selectors::Serializer</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-css" rel="up">perl-web-css</a></li>
+        <li><a href="" rel="bookmark">Web::CSS::Selectors::Serializer</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-css/tree/master/lib/Web/CSS/Selectors/Serializer.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::CSS::Selectors::Serializer</code></h1><h2>A Selectors serializer</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::CSS::Selectors::Serializer</code> class has a method to serialize parsed Selectors data structure into its string form.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$serializer_=_Web::CSS::Selectors::Serializer->new"><code>$serializer = Web::CSS::Selectors::Serializer-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the serializer.</p>
+
+</dd><dt id="$string_=_$serializer->serialize_selectors_($selectors)"><code>$string = $serializer-&gt;<strong id="member-serialize_selectors">serialize_selectors</strong> ($selectors)</code></dt>
+
+<dd>
+<p>Return the character string representation of the specified parsed list of selectors structure,
+as specified in the CSSOM specification.
+The argument must be a parsed list of selectors structure (See <a href="../../../../pod/Web/CSS/Selectors/Parser" class="podlinkpod">Web::CSS::Selectors::Parser</a>).</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="CSSOM">CSSOM</dt>
+
+<dd>
+<p>CSS Object Model (CSSOM) <code class="url">&lt;<a href="http://dev.w3.org/csswg/cssom/#serializing-selectors">http://dev.w3.org/csswg/cssom/#serializing-selectors</a>&gt;</code>.</p>
+
+<p>In the serialization of selectors,
+whether the universal selector is explicitly given or not,
+whether the namespace prefix (or '*|' for wildcard) is specified or not,
+and what namespace prefix (or the default namespace) is used,
+MUST be preserved.
+(Chrome's behavior)</p>
+
+<p>To serialize a simple selector which is a ':-manakai-contains' pseudo-class,
+the concatenation of followings MUST be returned:</p>
+
+<pre>
+<code>  1. The string ':-manakai-contains('
+
+  2. The result of serializing the argument using the rules for
+     serializaing a string
+
+  3. The string ')'</code></pre>
+
+<p>In the steps to serialize a selector, any '::cue()' pseudo-element MUST be serialized as the concatenation of '::cue', the result of serializing the argument using the rules for serializing a group of selectors, and ')'.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../../pod/Web/CSS/Serializer" class="podlinkpod">Web::CSS::Serializer</a>.</p>
+
+<p><a href="../../../../pod/Web/CSS/Selectors/Parser" class="podlinkpod">Web::CSS::Selectors::Parser</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+</section><section id="POD_ERRORS"><h1>POD ERRORS</h1>
+
+<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
+
+<dl>
+<dt id="Around_line_58:">Around line 58:</dt>
+
+<dd>
+<p>You forgot a '=back' before '=head1'</p>
+</dd>
+</dl>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::TouchEvent</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::TouchEvent</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/TouchEvent.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::TouchEvent</code></h1><h2>The DOM <code>TouchEvent</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::TouchEvent</code> class implements the DOM <code>TouchEvent</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and <a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a> classes,
+following methods are available:</p>
+
+<dl>
+<dt id="$boolean_=_$ev->alt_key"><code>$boolean = $ev-&gt;<strong id="member-alt_key">alt_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->ctrl_key"><code>$boolean = $ev-&gt;<strong id="member-ctrl_key">ctrl_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->meta_key"><code>$boolean = $ev-&gt;<strong id="member-meta_key">meta_key</strong></code></dt>
+
+<dt id="$boolean_=_$ev->shift_key"><code>$boolean = $ev-&gt;<strong id="member-shift_key">shift_key</strong></code></dt>
+
+<dd>
+<p>Return whether the modifier key is pressed or not. <cite class="ref">[<a href="#TOUCH">TOUCH</a>]</cite></p>
+
+</dd><dt id="$touches_=_$ev->changed_touches"><code>$touches = $ev-&gt;<strong id="member-changed_touches">changed_touches</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/TouchList" class="podlinkpod">Web::DOM::TouchList</a> containing the changed touches. <cite class="ref">[<a href="#TOUCH">TOUCH</a>]</cite></p>
+
+</dd><dt id="$touches_=_$ev->target_touches"><code>$touches = $ev-&gt;<strong id="member-target_touches">target_touches</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/TouchList" class="podlinkpod">Web::DOM::TouchList</a> containing the target touches. <cite class="ref">[<a href="#TOUCH">TOUCH</a>]</cite></p>
+
+</dd><dt id="$touches_=_$ev->touches"><code>$touches = $ev-&gt;<strong id="member-touches">touches</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/TouchList" class="podlinkpod">Web::DOM::TouchList</a> containing the current touches. <cite class="ref">[<a href="#TOUCH">TOUCH</a>]</cite></p>
+</dd>
+</dl>
+
+<p>The <code>new</code> method of the <a href="../../../pod/Web/DOM/TouchEvent" class="podlinkpod">Web::DOM::TouchEvent</a> class accepts the <code>touches</code>,
+<code>target_touches</code>,
+<code>changed_touches</code>,
+<code>alt_key</code>,
+<code>meta_key</code>,
+<code>ctrl_key</code>,
+and <code>shift_key</code> name/value pairs in its second arguments,
+in addition to the name/value pairs for <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and <a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a> objects. <cite class="ref">[<a href="#UIEVENTS">UIEVENTS</a>]</cite></p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="TOUCH">TOUCH</dt>
+
+<dd>
+<p>Touch Events <code class="url">&lt;<a href="https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html">https://dvcs.w3.org/hg/webevents/raw-file/v1/touchevents.html</a>&gt;</code>.</p>
+
+<p>Following constructor definition MUST be added:</p>
+
+<pre>
+<code>  [Constructor(DOMString type, optional TouchEventInit eventInitDict)]
+  partial interface TouchEvent {};
+  
+  dictionary TouchEventInit : EventInit {
+    TouchList touches;
+    TouchList targetTouches;
+    TouchList changedTouches;
+    boolean altKey;
+    boolean metaKey;
+    boolean ctrlKey;
+    boolean shiftKey;
+  };</code></pre>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>, <a href="../../../pod/Web/DOM/UIEvent" class="podlinkpod">Web::DOM::UIEvent</a>, <a href="../../../pod/Web/DOM/Touch" class="podlinkpod">Web::DOM::Touch</a>, <a href="../../../pod/Web/DOM/TouchList" class="podlinkpod">Web::DOM::TouchList</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

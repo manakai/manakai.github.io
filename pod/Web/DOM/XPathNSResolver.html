@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::XPathNSResolver</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::XPathNSResolver</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/XPathNSResolver.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::XPathNSResolver</code></h1><h2>The DOM <code>XPathNSResolver</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::XPathNSResolver</code> class implements the DOM <code>XPathNSResolver</code> interface.</p>
+
+<p>In the DOM Perl Binding,
+an <code>XPathNSResolver</code> object can be represented as either a Perl subroutine (code) reference or an object returned by the <code>create_ns_resolver</code> method of the <code>Document</code> object.
+The <a href="../../../pod/Web/DOM/XPathNSResolver" class="podlinkpod">Web::DOM::XPathNSResolver</a> class is used for the latter.
+In other word,
+the class is used to wrap an <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> object by the <code>XPathNSResolver</code> interface.</p>
+
+<p>If you'd like to define a custom namespace prefix resolver,
+you should use a simple subroutine as an <code>XPathNSResolver</code>.
+The subroutine will be invoked by the XPath parser when a namespace resolution is performed,
+with two arguments: <var>$self</var> (the code reference itself) and <var>$prefix</var> (the namespace prefix to resolve).
+The subroutine is expected to return the corresponding namespace URL,
+as a character string,
+or <code>undef</code> if the prefix is not has corresponding namespace URL.</p>
+
+</section><section id="METHOD"><h1>METHOD</h1>
+
+<p>The following method is available:</p>
+
+<dl>
+<dt id="$url_=_$resolver->lookup_namespace_uri_($prefix)"><code>$url = $resolver-&gt;<strong id="member-lookup_namespace_uri">lookup_namespace_uri</strong> ($prefix)</code></dt>
+
+<dd>
+<p>Return the namespace URL associated with the specified namespace prefix. <cite class="ref">[<a href="#NSRESOLVER">NSRESOLVER</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOMXPATH">DOMXPATH</dt>
+
+<dd>
+<p>Document Object Model XPath <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathNSResolver">http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathNSResolver</a>&gt;</code>.</p>
+
+</dd><dt id="NSRESOLVER">NSRESOLVER</dt>
+
+<dd>
+<p>Selectors API - The NSResolver Interface <code class="url">&lt;<a href="http://dev.w3.org/cvsweb/~checkout~/2006/webapi/selectors-api/Overview.html?rev=1.28&amp;content-type=text/html;%20charset=utf-8#nsresolver-interface">http://dev.w3.org/cvsweb/~checkout~/2006/webapi/selectors-api/Overview.html?rev=1.28&amp;content-type=text/html;%20charset=utf-8#nsresolver-interface</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/XPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

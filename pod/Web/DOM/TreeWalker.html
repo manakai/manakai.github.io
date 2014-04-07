@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::TreeWalker</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::TreeWalker</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/TreeWalker.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::TreeWalker</code></h1><h2>The DOM <code>TreeWalker</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::TreeWalker</code> class implements the DOM <code>TreeWalker</code> interface.</p>
+
+<p>The <code>TreeWalker</code> object can be created by the <code>create_tree_walker</code> method of the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> object.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$node_=_$tw->current_node"><code>$node = $tw-&gt;<strong id="member-current_node">current_node</strong></code></dt>
+
+<dd>
+<p>Return the current node of the tree walker. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$code_=_$tw->filter"><code>$code = $tw-&gt;<strong id="member-filter">filter</strong></code></dt>
+
+<dd>
+<p>Return the node filter code. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->first_child"><code>$node = $tw-&gt;<strong id="member-first_child">first_child</strong></code></dt>
+
+<dd>
+<p>Move to the first child node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->last_child"><code>$node = $tw-&gt;<strong id="member-last_child">last_child</strong></code></dt>
+
+<dd>
+<p>Move to the last child node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->next_node"><code>$node = $tw-&gt;<strong id="member-next_node">next_node</strong></code></dt>
+
+<dd>
+<p>Move to the next node in document order. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->next_sibling"><code>$node = $tw-&gt;<strong id="member-next_sibling">next_sibling</strong></code></dt>
+
+<dd>
+<p>Move to the next sibling node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->parent_node"><code>$node = $tw-&gt;<strong id="member-parent_node">parent_node</strong></code></dt>
+
+<dd>
+<p>Move to the parent node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->previous_node"><code>$node = $tw-&gt;<strong id="member-previous_node">previous_node</strong></code></dt>
+
+<dd>
+<p>Move to the previous node in document order. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->previous_sibling"><code>$node = $tw-&gt;<strong id="member-previous_sibling">previous_sibling</strong></code></dt>
+
+<dd>
+<p>Move to the previous sibling node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$node_=_$tw->root"><code>$node = $tw-&gt;<strong id="member-root">root</strong></code></dt>
+
+<dd>
+<p>Return the root node of the tree walker. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$int_=_$tw->what_to_show"><code>$int = $tw-&gt;<strong id="member-what_to_show">what_to_show</strong></code></dt>
+
+<dd>
+<p>Return the bit vector representing the node type filter. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+</dd>
+</dl>
+
+<p>In addition,
+it also supports the obsolete <code>expand_entity_references</code> method [DOM2TRAVERSAL].</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-treewalker">http://dom.spec.whatwg.org/#interface-treewalker</a>&gt;</code>.</p>
+
+</dd><dt id="DOM2TRAVERSAL">DOM2TRAVERSAL</dt>
+
+<dd>
+<p>DOM Level2 Traversal <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-2-Traversal-Range/traversal.html">http://www.w3.org/TR/DOM-Level-2-Traversal-Range/traversal.html</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/NodeFilter" class="podlinkpod">Web::DOM::NodeFilter</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>

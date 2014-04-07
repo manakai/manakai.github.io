@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DOM::Text</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::Text</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/Text.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DOM::Text</code></h1><h2>The DOM <code>Text</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DOM::Text</code> class implements the DOM <code>Text</code> interface.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>In addition to the methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a>,
+<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/CharacterData" class="podlinkpod">Web::DOM::CharacterData</a>,
+and <a href="../../../pod/Web/DOM/ChildNode" class="podlinkpod">Web::DOM::ChildNode</a>,
+following methods are available:</p>
+
+<dl>
+<dt id="$boolean_=_$text->serialize_as_cdata"><code>$boolean = $text-&gt;<strong id="member-serialize_as_cdata">serialize_as_cdata</strong></code></dt>
+
+<dt id="$text->serialize_as_cdata_($boolean)"><code>$text-&gt;<strong>serialize_as_cdata</strong> ($boolean)</code></dt>
+
+<dd>
+<p>Return or set whether the text node should be serialized as one or more <code>CDATA</code> sections or not. <cite class="ref">[<a href="#DOMPARSING">DOMPARSING</a>]</cite></p>
+
+</dd><dt id="$text2_=_$text1->split_text_($offset)"><code>$text2 = $text1-&gt;<strong id="member-split_text">split_text</strong> ($offset)</code></dt>
+
+<dd>
+<p>Split the text node into two text nodes at the specified location.
+The newly created text node is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+<p>Use of this method is discouraged.</p>
+
+</dd><dt id="$string_=_$text->whole_text"><code>$string = $text-&gt;<strong id="member-whole_text">whole_text</strong></code></dt>
+
+<dd>
+<p>Return the the concatenation of the values of the text node and any adjacent text nodes. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-text">http://dom.spec.whatwg.org/#interface-text</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPARSING">DOMPARSING</dt>
+
+<dd>
+<p>DOM Parsing and Serialization <code class="url">&lt;<a href="http://domparsing.spec.whatwg.org/">http://domparsing.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="DOMPERL">DOMPERL</dt>
+
+<dd>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+  </footer></body></html>
