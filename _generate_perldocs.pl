@@ -6,7 +6,7 @@ use Pod::Simple::HTML;
 my $DEBUG = 0;
 
 my $repos_path = path (__FILE__)->parent->child ('local/repos');
-$repos_path->remove_tree unless $DEBUG;
+system 'rm', '-fr', $repos_path unless $DEBUG;
 
 my $docs_path = path (__FILE__)->parent->child ('pod');
 $docs_path->remove_tree;
@@ -288,6 +288,8 @@ sub pod2html ($$%) {
             $p->inner_html (qq{<code>$1</code>});
             $last_section->append_child ($p);
           }
+          $text =~ s{DOM\s+\|([A-Za-z0-9]+)\|\s+([Ii]nterface|[Oo]bject)}
+                    {DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/$1"><code>$1</code></a> $2}g;
           $text =~ s{\|([^|]+)\|}{<code>$1</code>}g;
           $source_node->inner_html ($text);
         }
