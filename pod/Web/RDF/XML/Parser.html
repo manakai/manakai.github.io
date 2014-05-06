@@ -28,7 +28,7 @@
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::RDF::XML::Parser</code> module is an implementation of RDF/XML. With the module, the RDF triples embedded in the RDF/XML document can be extracted.</p>
+<p>The <code>Web::RDF::XML::Parser</code> module is an implementation of RDF/XML. Using this module, RDF triples embedded within RDF/XML document or document fragment can be extracted.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -38,23 +38,7 @@
 <dt id="$rdf_=_Web::RDF::XML::Parser->new"><code>$rdf = Web::RDF::XML::Parser-&gt;<strong id="member-new">new</strong></code></dt>
 
 <dd>
-<p>Create a new instance of RDF/XML parser.</p>
-
-</dd><dt id="$rdf->ontriple_($code)"><code>$rdf-&gt;<strong id="member-ontriple">ontriple</strong> ($code)</code></dt>
-
-<dt id="$code_=_$rdf->ontriple"><code>$code = $rdf-&gt;<strong>ontriple</strong></code></dt>
-
-<dd>
-<p>Get or set the callback function which is invoked for each triple extracted from the document.</p>
-
-<p>The callback is invoked with following name/value pairs as arguments: <code>subject</code>, <code>predicate</code>, <code>object</code>, <code>id</code>, and <code>node</code>. First three values represent node (or literal) in the triple. They are hash references, containing one or more of followings: <code>uri</code> (URL for the node), <code>bnodeid</code> (graph-local ID for the bnode), <code>value</code> (literal value), <code>language</code> (language tag), and <code>datatype</code> (data type URL). Optional <code>id</code> value represents the ID of the triple. The node from which the triple is extracted is given as <code>node</code>. The callback is not expected to throw any exception.</p>
-
-</dd><dt id="$code_=_$rdf->onerror"><code>$code = $rdf-&gt;<strong id="member-onerror">onerror</strong></code></dt>
-
-<dt id="$rdf->onerror_($code)"><code>$rdf-&gt;<strong>onerror</strong> ($code)</code></dt>
-
-<dd>
-<p>Get or set the error handler for the parser. Any parse error, as well as warning and information, is reported to the handler. See <a href="../../../../pod/Whatpm/Errors" class="podlinkpod">Whatpm::Errors</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod</a>&gt;</code> for more information.</p>
+<p>Create an RDF/XML parser.</p>
 
 </dd><dt id="$rdf->convert_document_($doc)"><code>$rdf-&gt;<strong id="member-convert_document">convert_document</strong> ($doc)</code></dt>
 
@@ -64,33 +48,96 @@
 </dd><dt id="$rdf->convert_rdf_element_($doc)"><code>$rdf-&gt;<strong id="member-convert_rdf_element">convert_rdf_element</strong> ($doc)</code></dt>
 
 <dd>
-<p>Extract the triples from an element. The argument must be a DOM <code>element</code> containing the triples, e.g. an <code>rdf:RDF</code> element. Extracted triples are reported through the <code>ontriple</code> callback.</p>
+<p>Extract the triples from an element. The argument must be a DOM <code>Element</code> containing the triples, e.g. an <code>rdf:RDF</code> element. Extracted triples are reported through the <code>ontriple</code> callback.</p>
+
+</dd><dt id="$rdf->ontriple_($code)"><code>$rdf-&gt;<strong id="member-ontriple">ontriple</strong> ($code)</code></dt>
+
+<dt id="$code_=_$rdf->ontriple"><code>$code = $rdf-&gt;<strong>ontriple</strong></code></dt>
+
+<dd>
+<p>Get or set the callback function which is invoked for each triple extracted from the document.</p>
+
+<p>The callback is invoked with following name/value pairs as arguments: <code>subject</code>, <code>predicate</code>, <code>object</code>, and <code>node</code>. The callback is not expected to throw any exception. Values <code>subject</code>, <code>predicate</code>, <code>object</code> are parsed term data structures (see <a href="../../../../pod/Web/RDF/Checker" class="podlinkpod">Web::RDF::Checker</a>). The node from which the triple is extracted is given as <code>node</code>.</p>
+
+</dd><dt id="$rdf->onbnodeid_($code)"><code>$rdf-&gt;<strong id="member-onbnodeid">onbnodeid</strong> ($code)</code></dt>
+
+<dt id="$code_=_$rdf->onbnodeid"><code>$code = $rdf-&gt;<strong>onbnodeid</strong></code></dt>
+
+<dd>
+<p>Get or set the code reference that is invoked whenever a blank node identifier is to be constructed.</p>
+
+<p>The code is invoked with an argument, which is used within the module to identify a blank node. The code can return the argument as is, or it can return a modified copy of the argument. Anyway, the returned value is used as the blank node identifier. The code must return the same value for the same argument. The code must return different values for different arguments. The code is not expected to throw any exception.</p>
+
+<p>This hook is useful when a document contains multiple RDF fragment such that blank nodes within them have to be distinguished.</p>
+
+<p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$code_=_$rdf->onerror"><code>$code = $rdf-&gt;<strong id="member-onerror">onerror</strong></code></dt>
+
+<dt id="$rdf->onerror_($code)"><code>$rdf-&gt;<strong>onerror</strong> ($code)</code></dt>
+
+<dd>
+<p>Get or set the error handler for the parser. Any parse error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
+
+<p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$code_=_$rdf->onnonrdfnode"><code>$code = $rdf-&gt;<strong id="member-onnonrdfnode">onnonrdfnode</strong></code></dt>
+
+<dt id="$rdf->onnonrdfnode_($code)"><code>$rdf-&gt;<strong>onnonrdfnode</strong> ($code)</code></dt>
+
+<dd>
+<p>Get or set the code reference that is invoked whenever a non-RDF node is detected. Note that use of such a node in an RDF/XML fragment is non-conforming. This hook is intended for injecting validation codes (e.g. by <a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>). Note that the node can be a misplaced <code>rdf:RDF</code> element, for example.</p>
+
+<p>The code is invoked with an argument, which is the node in question. The code is expected not to throw any exception. The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$code_=_$rdf->onattr"><code>$code = $rdf-&gt;<strong id="member-onattr">onattr</strong></code></dt>
+
+<dt id="$rdf->onattr_($code)"><code>$rdf-&gt;<strong>onattr</strong> ($code)</code></dt>
+
+<dd>
+<p>Get or set the code reference that is invoked whenever an attribute is encounted by the parser. This hook is intended for injecting validation codes (e.g. by <a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>).</p>
+
+<p>The code is invoked with two arguments: the node in question and the type of the attribute, which is one of followings:</p>
+
+<pre>
+<code>  common   Normal attributes (e.g. xml:lang="" and xmlns="")
+  url      RDF/XML attributes whose value is a URL
+  rdf-id   RDF/XML attributes whose value is an rdf-id (NCName)
+  string   RDF/XML attributes whose value is a string
+  misc     Other RDF/XML attributes</code></pre>
+
+<p>The code is expected not to throw any exception. The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
 </dd>
 </dl>
+
+</section><section id="ERROR_HANDLING"><h1>ERROR HANDLING</h1>
+
+<p>This module extracts RDF triples from RDF/XML fragment using the algorithm described in the RDF/XML specification. When the input does not conform to the grammer, it try to recover from the error by most "natural" way; it might or might not report additional triples depending on how the input is non-conforming.</p>
+
+<p>In most cases the input is non-conforming, the module reports one or more errors through the <code>onerror</code> handler. To detect all the conformance errors, you have to use a conformance checker (e.g. <a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>) that invokes this module with appropriate hooks and postprocessors.</p>
 
 </section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
 
 <p>Perl 5.8 or later is required.</p>
 
-<p>This module requires <a href="../../../../pod/Char/Class/XML" class="podlinkpod">Char::Class::XML</a> from <code class="url">&lt;<a href="https://github.com/wakaba/perl-charclass">https://github.com/wakaba/perl-charclass</a>&gt;</code> and <a href="../../../../pod/Web/URL/Canonicalize" class="podlinkpod">Web::URL::Canonicalize</a> from <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>.</p>
+<p>This module requires the <a href="../../../../pod/Web/URL/Canonicalize" class="podlinkpod">Web::URL::Canonicalize</a> module in the perl-web-url repository <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>.</p>
 
 <p>In addition, it expects DOM objects (e.g. <a href="../../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> and <a href="../../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> from <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code>) as input, although there is no direct dependency.</p>
 
-</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
 <dl>
 <dt id="RDFXML">RDFXML</dt>
 
 <dd>
-<p>RDF/XML Syntax Specification (Revised), W3C, <code class="url">&lt;<a href="http://www.w3.org/TR/REC-rdf-syntax/">http://www.w3.org/TR/REC-rdf-syntax/</a>&gt;</code>.</p>
+<p>RDF 1.1 XML Syntax <code class="url">&lt;<a href="https://dvcs.w3.org/hg/rdf/raw-file/default/rdf-xml/index.html">https://dvcs.w3.org/hg/rdf/raw-file/default/rdf-xml/index.html</a>&gt;</code>.</p>
+
+</dd><dt id="VALLANGS">VALLANGS</dt>
+
+<dd>
+<p>Handling of unknown namespaces in conformance checking <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/validation-langs">http://suika.suikawiki.org/www/markup/xml/validation-langs</a>&gt;</code>.</p>
 </dd>
 </dl>
-
-</section><section id="TODO"><h1>TODO</h1>
-
-<p>The RDF/XML specification does not fully define error handling rule. This implementation is trying to copy what W3C RDF Validator does, although the attempt is far from complete.</p>
-
-<p>Need to provide hooks for validation of e.g. langauge tags, URLs, and non-RDF contents.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
@@ -98,7 +145,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2013-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
