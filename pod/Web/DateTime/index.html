@@ -1,15 +1,16 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
-      <link rel="stylesheet" href="../css/pod.css">
+      <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>perl-web-datetime</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::DateTime</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
-        <li><a href="../docs" rel="up up">Documents</a></li>
-        <li><a href="../pod/#modules" rel="up">Perl modules</a></li>
-        <li><a href="" rel="bookmark">perl-web-datetime</a></li>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-datetime" rel="up">perl-web-datetime</a></li>
+        <li><a href="" rel="bookmark">Web::DateTime</a></li>
       </ul>
-    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-datetime/tree/master/README.pod">Source</a></li></ul></nav><article>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-datetime/tree/master/lib/Web/DateTime.pm">Source</a></li></ul></nav><article>
 
 
 
@@ -25,7 +26,7 @@
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::DateTime</code> class represents a date and/or time with accessor and serializer methods for Web. To create an instance of the <code>Web::DateTime</code> class, use <a href="../pod/Web/DateTime/Parser" class="podlinkpod">Web::DateTime::Parser</a> module.</p>
+<p>The <code>Web::DateTime</code> class represents a date and/or time with accessor and serializer methods for Web. To create an instance of the <code>Web::DateTime</code> class, use <a href="../../../pod/Web/DateTime/Parser" class="podlinkpod">Web::DateTime::Parser</a> module.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -103,9 +104,9 @@
 </dd><dt id="$datetime_=_$dt->to_datetime"><code>$datetime = $dt-&gt;<strong id="member-to_datetime">to_datetime</strong></code></dt>
 
 <dd>
-<p>Return a new <a href="../pod/DateTime" class="podlinkpod">DateTime</a> object which represents the time represented by the object. If the object has associated time zone, the returned object is in the equivalent time zone. Otherwise, the returned object is in the <code>floating</code> time zone. Note that Web date and time formats do not support leap seconds while <a href="../pod/DateTime" class="podlinkpod">DateTime</a> does support them such that operations on Web date and time values and <a href="../pod/DateTime" class="podlinkpod">DateTime</a> objects might obtain different results.</p>
+<p>Return a new <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> object which represents the time represented by the object. If the object has associated time zone, the returned object is in the equivalent time zone. Otherwise, the returned object is in the <code>floating</code> time zone. Note that Web date and time formats do not support leap seconds while <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> does support them such that operations on Web date and time values and <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> objects might obtain different results.</p>
 
-<p>This method requires the <a href="../pod/DateTime" class="podlinkpod">DateTime</a> module.</p>
+<p>This method requires the <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> module.</p>
 
 </dd><dt id="$number_=_$dt->to_unix_integer"><code>$number = $dt-&gt;<strong id="member-to_unix_integer">to_unix_integer</strong></code></dt>
 
@@ -190,13 +191,13 @@
 </dd><dt id="$tz_=_$dt->time_zone"><code>$tz = $dt-&gt;<strong id="member-time_zone">time_zone</strong></code></dt>
 
 <dd>
-<p>Return the associated <a href="../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object, if any, or <code>undef</code>.</p>
+<p>Return the associated <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object, if any, or <code>undef</code>.</p>
 </dd>
 </dl>
 
 </section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
 
-<p>The module requires Perl 5.8 or later and the <a href="../pod/Time/Local" class="podlinkpod">Time::Local</a> module (which is a core module).</p>
+<p>The module requires Perl 5.8 or later and the <a href="../../../pod/Time/Local" class="podlinkpod">Time::Local</a> module (which is a core module).</p>
 
 <p>The <code>to_datetime</code> method requires more module.</p>
 
