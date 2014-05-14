@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DateTime::TimeZone</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-datetime" rel="up">perl-web-datetime</a></li>
+        <li><a href="" rel="bookmark">Web::DateTime::TimeZone</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-datetime/tree/master/lib/Web/DateTime/TimeZone.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DateTime::TimeZone</code></h1><h2>Time zone for Web</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DateTime::TimeZone;
+  $tz = Web::DateTime::TimeZone-&gt;new_from_offset (+9*60*60+0*60);
+  warn $tz-&gt;to_offset_string;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DateTime::TimeZone</code> class can be used to represent a time zone.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$tz_=_Web::DateTime::TimeZone->new_utc"><code>$tz = Web::DateTime::TimeZone-&gt;<strong id="member-new_utc">new_utc</strong></code></dt>
+
+<dd>
+<p>Create a new time zone object representing the UTC time zone.</p>
+
+</dd><dt id="$tz_=_Web::DateTime::TimeZone->new_from_offset_($integer)"><code>$tz = Web::DateTime::TimeZone-&gt;<strong id="member-new_from_offset">new_from_offset</strong> ($integer)</code></dt>
+
+<dd>
+<p>Create a new time zone object whose offset is the integer (in seconds) specified as the argument.</p>
+
+</dd><dt id="$number_=_$tz->offset_as_seconds"><code>$number = $tz-&gt;<strong id="member-offset_as_seconds">offset_as_seconds</strong></code></dt>
+
+<dd>
+<p>Return the number of seconds of the time-zone offset.</p>
+
+</dd><dt id="$sign_=_$tz->offset_sign"><code>$sign = $tz-&gt;<strong id="member-offset_sign">offset_sign</strong></code></dt>
+
+<dd>
+<p>Return the sign of the time-zone offset. If the offset is positive, number <code>+1</code> is returned. Otherwise, number <code>-1</code> is returned.</p>
+
+</dd><dt id="$number_=_$tz->offset_hour"><code>$number = $tz-&gt;<strong id="member-offset_hour">offset_hour</strong></code></dt>
+
+<dd>
+<p>Return the hour component of the time-zone offset (without sign).</p>
+
+</dd><dt id="$number_=_$tz->offset_minute"><code>$number = $tz-&gt;<strong id="member-offset_minute">offset_minute</strong></code></dt>
+
+<dd>
+<p>Return the minute component of the time-zone offset.</p>
+
+</dd><dt id="$string_=_$tz->to_offset_string"><code>$string = $tz-&gt;<strong id="member-to_offset_string">to_offset_string</strong></code></dt>
+
+<dd>
+<p>Serialize the time-zone offset as an HTML time-zone offset string [HTML].</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>The module requires Perl 5.8 or later.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a>.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2008-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

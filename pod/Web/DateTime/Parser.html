@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DateTime::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-datetime" rel="up">perl-web-datetime</a></li>
+        <li><a href="" rel="bookmark">Web::DateTime::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-datetime/tree/master/lib/Web/DateTime/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DateTime::Parser</code></h1><h2>Date and time parser for Web</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DateTime::Parser;
+  $parser = Web::DateTime::Parser-&gt;new;
+  $dt = $parser-&gt;parse_global_date_and_time_string ($value);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DateTime::Parser</code> module is a collection of parsing methods for various date and time formats used in Web.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$parser_=_Web::DateTime::Parser->new"><code>$parser = Web::DateTime::Parser-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the parser.</p>
+
+</dd><dt id="$parser->onerror_($code)"><code>$parser-&gt;<strong id="member-onerror">onerror</strong> ($code)</code></dt>
+
+<dt id="$code_=_$parser->onerror"><code>$code = $parser-&gt;<strong>onerror</strong></code></dt>
+
+<dd>
+<p>Get or set the error handler for parser methods. Any parse error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
+
+<p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$dt_=_$parser->parse_date_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_date_string">parse_date_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML date string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values from HTML <code>&lt;input type=date&gt;</code>.</p>
+
+</dd><dt id="$dt_=_$parser->parse_date_string_with_optional_time_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_date_string_with_optional_time">parse_date_string_with_optional_time</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML date string with optional time [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values in HTML <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""</code> attributes.</p>
+
+</dd><dt id="$dt_=_$parser->parse_global_date_and_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_global_date_and_time_string">parse_global_date_and_time_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML global date and time string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values from HTML <code>&lt;input type=datetime&gt;</code>.</p>
+
+</dd><dt id="$dt_=_$parser->parse_local_date_and_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_local_date_and_time_string">parse_local_date_and_time_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML local date and time string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values from HTML <code>&lt;input type=datetime-local&gt;</code>.</p>
+
+</dd><dt id="$dt_=_$parser->parse_month_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_month_string">parse_month_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML month string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values from HTML <code>&lt;input type=month&gt;</code>.</p>
+
+</dd><dt id="$dt_=_$parser->parse_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_time_string">parse_time_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML time string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values from HTML <code>&lt;input type=time&gt;</code>.</p>
+
+</dd><dt id="$dt_=_$parser->parse_week_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_week_string">parse_week_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML week string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+<p>This method is suitable for values from HTML <code>&lt;input type=week&gt;</code>.</p>
+
+</dd><dt id="$tz_=_$parser->parse_time_zone_offset_string_($string)"><code>$tz = $parser-&gt;<strong id="member-parse_time_zone_offset_string">parse_time_zone_offset_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the specified argument as an HTML time-zone offset string [HTML] and return a <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>The module requires Perl 5.8 or later.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2008-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>
