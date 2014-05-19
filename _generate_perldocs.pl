@@ -34,6 +34,14 @@ my $ModuleDocURL = {
   Encode => q<http://search.cpan.org/dist/Encode/Encode.pm>,
   Exporter => q<http://search.cpan.org/dist/Exporter/lib/Exporter.pm>,
   JE => q<http://search.cpan.org/dist/JE/lib/JE.pm>,
+  'Time::Local' => q<http://search.cpan.org/dist/Time-Local/lib/Time/Local.pm>,
+  'Time::Piece' => q<http://search.cpan.org/dist/Time-Piece/Piece.pm>,
+  DateTime => q<http://search.cpan.org/dist/DateTime/lib/DateTime.pm>,
+  'Regexp::Parser' => q<http://search.cpan.org/dist/Regexp-Parser/lib/Regexp/Parser.pm>,
+
+  'Whatpm::HTML' => q<http://manakai.github.io/pod/Web/HTML/Parser>,
+  'Message::DOM::Document' => q<http://manakai.github.io/pod/Web/DOM/Document>,
+  'Message::DOM::Element' => q<http://manakai.github.io/pod/Web/DOM/Element>,
 };
 
 sub process_inline_nodes ($$@) {
