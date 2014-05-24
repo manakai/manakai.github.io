@@ -16,13 +16,14 @@
 
 
 
-<hgroup><h1><code>Web::DOM::Attr</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Attr"><code>Attr</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::Attr</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Attr"><code>Attr</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::DOM::Attr</code> class implements the DOM <code>Attr</code> interface.</p>
+<p>The <code>Web::DOM::Attr</code> class implements the DOM <code>Attr</code> interface.
+An <code>Attr</code> object represents a content attribute of element.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>The methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> and <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> are available,
+<p>The methods of classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> and <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> are available on a <code>Attr</code> object,
 as well as following methods:</p>
 
 <dl>
@@ -84,7 +85,7 @@ the namespace prefix is removed. <cite class="ref">[<a href="#DOMNODEEXODUS">DOM
 </dd><dt id="$bool_=_$attr->specified"><code>$bool = $attr-&gt;<strong id="member-specified">specified</strong></code></dt>
 
 <dd>
-<p>Return true. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Return true for backward compatibility. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$value_=_$attr->value"><code>$value = $attr-&gt;<strong id="member-value">value</strong></code></dt>
 
@@ -142,7 +143,7 @@ DOMNODEEXODUS</dt>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DateTime::Interval</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-datetime" rel="up">perl-web-datetime</a></li>
+        <li><a href="" rel="bookmark">Web::DateTime::Interval</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-datetime/tree/master/lib/Web/DateTime/Interval.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DateTime::Interval</code></h1><h2>Interval between dates for Web</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DateTime::Interval;
+  $interval = Web::DateTime::Interval-&gt;new_from_start_and_end ($dt1, $dt2);
+  warn $interval-&gt;to_start_and_end_string;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DateTime::Interval</code> class represents a time interval between two dates and times.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$interval_=_Web::DateTime::Interval->new_from_start_and_end_($dt1,_$dt2)"><code>$interval = Web::DateTime::Interval-&gt;<strong id="member-new_from_start_and_end">new_from_start_and_end</strong> ($dt1, $dt2)</code></dt>
+
+<dd>
+<p>Create a new interval object from start and end <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> objects. The first date/time must be less than or equal to the second date/time.</p>
+
+</dd><dt id="$interval_=_Web::DateTime::Interval->new_from_start_and_duration_($dt,_$duration)"><code>$interval = Web::DateTime::Interval-&gt;<strong id="member-new_from_start_and_duration">new_from_start_and_duration</strong> ($dt, $duration)</code></dt>
+
+<dd>
+<p>Create a new interval object from start <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object and <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> object. The duration must be positive and must not have non-zero months.</p>
+
+</dd><dt id="false_=_$interval->is_date_time"><code>false = $interval-&gt;<strong id="member-is_date_time">is_date_time</strong></code></dt>
+
+<dt id="false_=_$interval->is_time_zone"><code>false = $interval-&gt;<strong id="member-is_time_zone">is_time_zone</strong></code></dt>
+
+<dt id="false_=_$interval->is_duration"><code>false = $interval-&gt;<strong id="member-is_duration">is_duration</strong></code></dt>
+
+<dt id="true_=_$interval->is_interval"><code>true = $interval-&gt;<strong id="member-is_interval">is_interval</strong></code></dt>
+
+<dd>
+<p>Return whether the object is of the specified type or not.</p>
+
+</dd><dt id="$dt_=_$interval->start_date_time"><code>$dt = $interval-&gt;<strong id="member-start_date_time">start_date_time</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the start date and time of the interval.</p>
+
+</dd><dt id="$dt_=_$interval->end_date_time"><code>$dt = $interval-&gt;<strong id="member-end_date_time">end_date_time</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the end date and time of the interval.</p>
+
+</dd><dt id="$duration_=_$interval->duration"><code>$duration = $interval-&gt;<strong id="member-duration">duration</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> object representing the duration between the start and end dates and times.</p>
+
+</dd><dt id="$string_=_$interval->to_start_and_end_string"><code>$string = $interval-&gt;<strong id="member-to_start_and_end_string">to_start_and_end_string</strong></code></dt>
+
+<dd>
+<p>Return the string representing the interval, using the format of two valid global date and time strings, which is appropriate for vEvent microdata [HTML].</p>
+
+<p>This can also be used as an ISO 8601 time interval representation in most cases.</p>
+
+</dd><dt id="$string_=_$interval->to_start_and_duration_string"><code>$string = $interval-&gt;<strong id="member-to_start_and_duration_string">to_start_and_duration_string</strong></code></dt>
+
+<dd>
+<p>Return the string representing the interval, using the format of a valid global date and time string and an vevent duration string, which is appropriate for vEvent microdata [HTML].</p>
+
+<p>This can also be used as an ISO 8601 time interval representation in most cases.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

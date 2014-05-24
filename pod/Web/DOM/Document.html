@@ -181,7 +181,8 @@ e.g.
 <code>CustomEvent</code>,
 or <code>MouseEvent</code>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
-<p>Use <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>'s (or its subclass'es) <code>new</code> method instead.</p>
+<p>This method is considered as legacy.
+Use <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a>'s (or its subclass'es) <code>new</code> method instead.</p>
 
 </dd><dt id="$ent_=_$doc->create_general_entity_($name)"><code>$ent = $doc-&gt;<strong id="member-create_general_entity">create_general_entity</strong> ($name)</code></dt>
 
@@ -201,10 +202,10 @@ Second and third arguments are optional,
 representing bit vector of node types and code reference,
 both used to filter candidate nodes.
 For the bit vector,
-see <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.
+see <a href="../../../pod/Web/DOM/TreeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TreeWalker</a>.
 The code reference would be invoked with an argument (<code>$_[1]</code>) which is the node in question.
 The code is expected to return whether the node is accepted or not,
-using one of constants from <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.</p>
+using one of constants from <a href="../../../pod/Web/DOM/TreeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TreeWalker</a>.</p>
 
 </dd><dt id="$notation_=_$doc->create_notation_($name)"><code>$notation = $doc-&gt;<strong id="member-create_notation">create_notation</strong> ($name)</code></dt>
 
@@ -249,12 +250,12 @@ Second and third arguments are optional,
 representing bit vector of node types and code reference,
 both used to filter candidate nodes.
 For the bit vector,
-see <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.
+see <a href="../../../pod/Web/DOM/TreeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TreeWalker</a>.
 The code reference would be invoked with an argument (<code>$_[1]</code>) which is the node in question.
 The code is expected to return whether the node is accepted,
 rejected,
 or skipped,
-using one of constants from <a href="../../../pod/Web/DOM/TypeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TypeWalker</a>.</p>
+using one of constants from <a href="../../../pod/Web/DOM/TreeWalker#CONSTANTS" class="podlinkpod">"CONSTANTS" in Web::DOM::TreeWalker</a>.</p>
 
 </dd><dt id="$pi_=_$doc->create_processing_instruction_($target,_$data)"><code>$pi = $doc-&gt;<strong id="member-create_processing_instruction">create_processing_instruction</strong> ($target,
 $data)</code></dt>
@@ -457,7 +458,7 @@ and <code>clear</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-document">http://dom.spec.whatwg.org/#interface-document</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-document">http://dom.spec.whatwg.org/#interface-document</a>&gt;</code>.</p>
 
 </dd><dt id="DOM3CORE">DOM3CORE</dt>
 
@@ -467,7 +468,7 @@ and <code>clear</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 </dd><dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
 
 </dd><dt id="SVG">SVG</dt>
 
