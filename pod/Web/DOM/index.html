@@ -253,7 +253,7 @@
 
 <p>Features performing URL-related operations require <a href="../../../pod/perl-web-url">the perl-web-url package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>, which depends on <a href="../../../pod/perl-web-encodings">the perl-web-encodings package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-encodings">https://github.com/manakai/perl-web-encodings</a>&gt;</code>. Such features include: <code>base_uri</code>, <code>manakai_set_url</code>, <code>manakai_entity_uri</code>, <code>manakai_entity_base_uri</code>, <code>declaration_base_uri</code>, <code>manakai_declaration_base_uri</code>, <code>action</code>, <code>cite</code>, <code>codebase</code>, <code>data</code>, <code>formaction</code>, <code>href</code>, <code>longdesc</code>, <code>object</code>, <code>ping</code>, <code>poster</code>, and <code>src</code>.</p>
 
-<p>Following features require the XXX module: <code>value</code> of <a href="../../../pod/Web/DOM/AtomDateConstruct" class="podlinkpod">Web::DOM::AtomDateConstruct</a>.</p>
+<p>Following features require modules in <a href="../../../pod/perl-web-datetime">the perl-web-datetime package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-datetime">https://github.com/manakai/perl-web-datetime</a>&gt;</code>: <code>value</code> of <a href="../../../pod/Web/DOM/AtomDateConstruct" class="podlinkpod">Web::DOM::AtomDateConstruct</a>, <code>create_atom_feed_document</code>, <code>create_atom_entry_element</code>, <code>updated_element</code>, and <code>published_element</code>.</p>
 
 <section id="Using_CSS,_Selectors,_and_Media_Queries"><h1>Using CSS, Selectors, and Media Queries</h1>
 
@@ -335,15 +335,16 @@
 
 <dd>
 <p>DOM Ranges interfaces and methods [DOM]; Ranges support in DOM Core methods and attributes [DOM]; Range.prototype.createContextualFragment [DOMPARSING].</p>
-
-</dd><dt id="DOM_Promise">DOM Promise</dt>
+</dd>
 </dl>
 
 <p>In addition, source codes of the modules include many "XXX" markers, indicating TODO items.</p>
 
-<p>Middle priority: URL; Encoding.</p>
+<p>Middle priority: URL; Encoding; Promise.</p>
 
-<p>Lower priority: Form API; HTMLMediaElement and related interfaces; Canvas; The ImageBitmap interface; The Screen interface; SVG; DnD; The RelatedEvent interface; The Window interface and related interfaces; The History interface and related interfaces; The Location interface; The Navigator interface and related interfaces; Scripting; Workers; Console; XHR; EventSource; WebSocket; postMessage and related interfaces; Storage; IndexedDB; Fullscreen; Notifications; Zip; XSLT 1.0.</p>
+<p>Lower priority: Form API; HTMLMediaElement and related interfaces; Canvas; The ImageBitmap interface; The Screen interface; SVG; DnD; The RelatedEvent interface; The Window interface and related interfaces; The History interface and related interfaces; The Location interface; The Navigator interface and related interfaces; Scripting; Workers; Console; XHR; EventSource; WebSocket; postMessage and related interfaces; Storage; IndexedDB; Fullscreen; Notifications. JS-compatible <code>Date</code>, <code>JSON</code> objects.</p>
+
+<p>Very low priority: Zip; XSLT 1.0.</p>
 
 <p>At the time of writing, there is no plan to implement the <code>properties</code> attribute of the <code>HTMLElement</code> interface (Instead, the <code>manakaiGetProperties</code> method is implemented).</p>
 
