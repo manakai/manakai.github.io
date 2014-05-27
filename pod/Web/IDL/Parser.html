@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::IDL::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-js" rel="up">perl-web-js</a></li>
+        <li><a href="" rel="bookmark">Web::IDL::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-js/tree/master/lib/Web/IDL/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::IDL::Parser</code></h1><h2>A Web IDL parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::IDL::Parser;
+  $parser = Web::IDL::Parser-&gt;new;
+  $parser-&gt;parse_char_string ($idl_fragment);
+  warn Dumper $parser-&gt;parsed_struct;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::IDL::Parser</code> module provides a Web IDL parser.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$parser_=_Web::IDL::Parser->new"><code>$parser = Web::IDL::Parser-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new Web IDL parser object.</p>
+
+</dd><dt id="$parser->onerror_($code)"><code>$parser-&gt;<strong id="member-onerror">onerror</strong> ($code)</code></dt>
+
+<dt id="$code_=_$parser->onerror"><code>$code = $parser-&gt;<strong>onerror</strong></code></dt>
+
+<dd>
+<p>Get or set the error handler for the parser. Any parse error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
+
+<p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
+
+</dd><dt id="$parser->parse_char_string_($input)"><code>$parser-&gt;<strong id="member-parse_char_string">parse_char_string</strong> ($input)</code></dt>
+
+<dd>
+<p>Parse a string of character as a Web IDL fragment. The parsed result can be then accessed by the <code>parsed_struct</code> method. Any parse error is reported through the <code>onerror</code> handler.</p>
+
+</dd><dt id="$parsed_=_$parser->parsed_struct"><code>$parsed = $parser-&gt;<strong id="member-parsed_struct">parsed_struct</strong></code></dt>
+
+<dd>
+<p>If the previous invocation of the <code>parse_char_string</code> method succeeded, the parsed data structure of the input Web IDL fragment is returned. Otherwise, <code>undef</code> is returned.</p>
+
+<p>Please note that the parsed result might contain Web IDL conformance error, e.g. its interface names can be duplicated, or a referenced type might not be defined at all.</p>
+</dd>
+</dl>
+
+</section><section id="DATA_STRUCTURE"><h1>DATA STRUCTURE</h1>
+
+<p>The parsed data structure is a hash reference, with a key/value pair: <code>definitions</code>. Its value is an array reference containing definitions.</p>
+
+<p>A definition is a hash reference with following key/value pairs:</p>
+
+<dl>
+<dt id="index">index</dt>
+
+<dd>
+<p>The index in the input character string at which the first character for the definition appears.</p>
+
+</dd><dt id="definition_name">definition_name</dt>
+
+<dd>
+<p>Type of the definition: <code>interface</code>, <code>exception</code>, <code>dictionary</code>, <code>enum</code>, or <code>callback</code>.</p>
+
+<p>Note that the <code>definition_name</code> for a <code>callback interface</code> is <code>interface</code>.</p>
+
+</dd><dt id="partial">partial</dt>
+
+<dd>
+<p>Whether the definition has the <code>partial</code> keyword or not.</p>
+
+</dd><dt id="callback">callback</dt>
+
+<dd>
+<p>Whether the definition is an interface and it has the <code>callback</code> keyword or not. Note that for a non-interface callback, this value is false.</p>
+
+</dd><dt id="name">name</dt>
+
+<dd>
+<p>The name of the defined construct.</p>
+
+</dd><dt id="super_name">super_name</dt>
+
+<dd>
+<p>The name of the member from which the member inherits, if any.</p>
+
+</dd><dt id="members">members</dt>
+
+<dd>
+<p>The array reference containing the members of the definition, if applicable.</p>
+
+</dd><dt id="type">type</dt>
+
+<dd>
+<p>The builtin Web IDL type associated with the definition, if applicable.</p>
+
+</dd><dt id="type_name">type_name</dt>
+
+<dd>
+<p>The name of the Web IDL type associated with the definition, if applicable.</p>
+
+</dd><dt id="value_strings">value_strings</dt>
+
+<dd>
+<p>The allowed string values associated with the definition, if applicable.</p>
+
+</dd><dt id="arguments">arguments</dt>
+
+<dd>
+<p>The array reference of the arguments, if applicable.</p>
+</dd>
+</dl>
+
+<p>A member is a hash reference with following key/value pairs:</p>
+
+<dl>
+<dt id="index">index</dt>
+
+<dd>
+<p>The index in the input character string at which the first character for the member appears.</p>
+
+</dd><dt id="member_type">member_type</dt>
+
+<dd>
+<p>The type of the member: <code>attribute</code>, <code>operation</code>, <code>const</code>, <code>field</code>, or <code>dictionary_member</code>.</p>
+
+</dd><dt id="name">name</dt>
+
+<dd>
+<p>The name of the member, if applicable.</p>
+
+</dd><dt id="type">type</dt>
+
+<dd>
+<p>The builtin Web IDL type associated with the member, if applicable.</p>
+
+</dd><dt id="type_name">type_name</dt>
+
+<dd>
+<p>The name of the Web IDL type associated with the member, if applicable.</p>
+
+</dd><dt id="value_float">value_float</dt>
+
+<dd>
+<p>The value associated with the member, in float, if applicable.</p>
+
+</dd><dt id="arguments">arguments</dt>
+
+<dd>
+<p>The array reference of the arguments, if applicable.</p>
+</dd>
+</dl>
+
+<p>An argument is a hash reference with following key/value pairs:</p>
+
+<dl>
+<dt id="index">index</dt>
+
+<dd>
+<p>The index in the input character string at which the first character for the argument appears.</p>
+
+</dd><dt id="name">name</dt>
+
+<dd>
+<p>The name of the argument.</p>
+
+</dd><dt id="type">type</dt>
+
+<dd>
+<p>The builtin Web IDL type associated with the argument, if any.</p>
+
+</dd><dt id="type_name">type_name</dt>
+
+<dd>
+<p>The name of the Web IDL type associated with the argument, if any.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="WEBIDL">WEBIDL</dt>
+
+<dd>
+<p>Web IDL <code class="url">&lt;<a href="http://heycam.github.io/webidl/">http://heycam.github.io/webidl/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="." rel="top">Top</a>
+    </li><li><a href="contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>
