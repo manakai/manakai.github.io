@@ -105,10 +105,10 @@
 <dd>
 <p>The array reference containing the members of the definition, if applicable.</p>
 
-</dd><dt id="value_strings">value_strings</dt>
+</dd><dt id="value_items">value_items</dt>
 
 <dd>
-<p>The allowed string values associated with the definition, if applicable.</p>
+<p>The array reference of the allowed string values associated with the definition, if applicable. Items are hash references with a key/value pair whose key is <code>type_string</code> and value is the string value.</p>
 
 </dd><dt id="arguments">arguments</dt>
 
@@ -335,6 +335,8 @@
 <p>The type of the parameterized type, such as <code>sequence</code> and <code>Promise</code>, if the hash reference containing the key/value pair represents a parameterized Web IDL type of the target.</p>
 </dd>
 </dl>
+
+<p>Hash references might also contain key/value pairs <code>id</code>, <code>spec</code>, and <code>obsolete</code>, corresponding to non-standard directives <code>[*id="..."*]</code>, <code>[*spec=...*]</code>, and <code>[*obsolete*]</code>. These directives are only used for internal processing of <code class="url">&lt;<a href="https://github.com/manakai/data-web-defs">https://github.com/manakai/data-web-defs</a>&gt;</code> and are not (and should not) be used elsewhere.</p>
 
 </section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
