@@ -351,11 +351,13 @@
 <dd>
 <p>Web IDL <code class="url">&lt;<a href="http://heycam.github.io/webidl/">http://heycam.github.io/webidl/</a>&gt;</code>.</p>
 
-<p>Web IDL "Promise&lt;T&gt;" <code class="url">&lt;<a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=24291">https://www.w3.org/Bugs/Public/show_bug.cgi?id=24291</a>&gt;</code>.</p>
-
 <p>Web IDL "class" <code class="url">&lt;<a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=23225">https://www.w3.org/Bugs/Public/show_bug.cgi?id=23225</a>&gt;</code>, <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#elements">http://dom.spec.whatwg.org/#elements</a>&gt;</code>.</p>
 </dd>
 </dl>
+
+<p>This implementation also supports <code>Promise</code> type (without following <code>&lt;T&gt;</code> part) for backward compatibility. It is interpreted as <code>Promise&lt;any&gt;</code>. This will be removed in due course.</p>
+
+<p>This implementation also supports old syntax for extended attributes which take an identifier list <code class="url">&lt;<a href="https://github.com/heycam/webidl/commit/0527ec461492849d310257c50a7d2c54b4632b91">https://github.com/heycam/webidl/commit/0527ec461492849d310257c50a7d2c54b4632b91</a>&gt;</code>, for backward compatibility. This will be removed in due course.</p>
 
 <p>In this implementation, extended attributes MUST be in one of six forms shown in the Web IDL specification.</p>
 
