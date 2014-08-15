@@ -16,7 +16,7 @@
 
 
 
-<hgroup><h1><code>Web::DOM::Element</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Element"><code>Element</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::Element</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Element"><code>Element</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::Element</code> class implements the DOM <code>Element</code> interface.
 It represents an element in the document.</p>
@@ -74,6 +74,14 @@ If there is no attribute with the specified name,
 <p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the specified attribute.
 If there is no attribute with the specified name,
 <code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$indexed_=_$el->manakai_get_attribute_indexed_string_ns_($nsurl,_$local_name)"><code>$indexed = $el-&gt;<strong id="member-manakai_get_attribute_indexed_string_ns">manakai_get_attribute_indexed_string_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return the IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code> representation of the attribute with the specified namespace URL and local name.
+If there is no attribute with the specified name,
+<code>undef</code> is returned. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
 
 </dd><dt id="$attr_=_$el->get_attribute_node_ns_($nsurl,_$local_name)"><code>$attr = $el-&gt;<strong id="member-get_attribute_node_ns">get_attribute_node_ns</strong> ($nsurl,
 $local_name)</code></dt>
@@ -228,6 +236,23 @@ its value is replaced by the new one. <cite class="ref">[<a href="#DOM">DOM</a>]
 <p>The qualified name can be represented as an array reference,
 where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
 
+</dd><dt id="$el->manakai_set_attribute_indexed_string_ns_($nsurl,_$qname_=>_$value)"><code>$el-&gt;<strong id="member-manakai_set_attribute_indexed_string_ns">manakai_set_attribute_indexed_string_ns</strong> ($nsurl,
+$qname =&gt; $value)</code></dt>
+
+<dt id="$el->manakai_set_attribute_indexed_string_ns_($nsurl,_[$prefix,_$local_name]_=>_$value)"><code>$el-&gt;<strong>manakai_set_attribute_indexed_string_ns</strong> ($nsurl,
+[$prefix,
+$local_name] =&gt; $value)</code></dt>
+
+<dd>
+<p>Set the attribute with the specified namespace URL,
+qualified name,
+and value represented as an IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code>.
+If there is already the attribute with the same namespace URL / local name pair,
+its value is replaced by the new one. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
+
+<p>The qualified name can be represented as an array reference,
+where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
 </dd><dt id="$old_attr_=_$el->set_attribute_node_($new_attr)"><code>$old_attr = $el-&gt;<strong id="member-set_attribute_node">set_attribute_node</strong> ($new_attr)</code></dt>
 
 <dt id="$old_attr_=_$el->set_attribute_node_ns_($new_attr)"><code>$old_attr = $el-&gt;<strong id="member-set_attribute_node_ns">set_attribute_node_ns</strong> ($new_attr)</code></dt>
@@ -269,7 +294,7 @@ the obsolete <code>manakai_base_uri</code> method is available. <cite class="ref
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-element">http://dom.spec.whatwg.org/#interface-element</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-element">http://dom.spec.whatwg.org/#interface-element</a>&gt;</code>.</p>
 
 </dd><dt id="DOMNODEEXODUS">DOMNODEEXODUS</dt>
 
@@ -306,6 +331,11 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 
 <dd>
 <p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAIINDEX">MANAKAIINDEX</dt>
+
+<dd>
+<p>manakai index data structures <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -320,7 +350,7 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

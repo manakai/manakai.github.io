@@ -19,7 +19,7 @@
 <hgroup><h1><code>Web::DOM::Attr</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Attr"><code>Attr</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::Attr</code> class implements the DOM <code>Attr</code> interface.
-An <code>Attr</code> object represents a content attribute of element.</p>
+An <code>Attr</code> object represents a content attribute of an element.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -27,12 +27,27 @@ An <code>Attr</code> object represents a content attribute of element.</p>
 as well as following methods:</p>
 
 <dl>
-<dt id="$code_=_$attr->manakai_attribute_type"><code>$code = $attr-&gt;<strong id="member-manakai_attribute_type">manakai_attribute_type</strong></code></dt>
+<dt id="$node_=_$node->manakai_append_text_($string)"><code>$node = $node-&gt;<strong id="member-manakai_append_text">manakai_append_text</strong> ($string)</code></dt>
+
+<dd>
+<p>Append a string to the <code>value</code> of the attribute. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$attr->manakai_append_indexed_string_($indexed)"><code>$attr-&gt;<strong id="member-manakai_append_indexed_string">manakai_append_indexed_string</strong> ($indexed)</code></dt>
+
+<dd>
+<p>Append an IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code> to the <code>value</code> of the attribute. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
+
+</dd><dt id="$code_=_$attr->manakai_attribute_type"><code>$code = $attr-&gt;<strong id="member-manakai_attribute_type">manakai_attribute_type</strong></code></dt>
 
 <dt id="$attr->manakai_attribute_type_($code)"><code>$attr-&gt;<strong>manakai_attribute_type</strong> ($code)</code></dt>
 
 <dd>
 <p>Return or set the DTD attribute type for the attribute. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$indexed_=_$attr->manakai_get_indexed_string"><code>$indexed = $attr-&gt;<strong id="member-manakai_get_indexed_string">manakai_get_indexed_string</strong></code></dt>
+
+<dd>
+<p>Return an IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code> representation of the <code>value</code> of the attribute. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
 
 </dd><dt id="$bool_=_$attr->is_id"><code>$bool = $attr-&gt;<strong id="member-is_id">is_id</strong></code></dt>
 
@@ -112,7 +127,7 @@ they are accessible as methods of <code>Attr</code> objects.</p>
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-attr">http://dom.spec.whatwg.org/#interface-attr</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-attr">http://dom.spec.whatwg.org/#interface-attr</a>&gt;</code>.</p>
 
 </dd><dt id="DOMATTREXODUS,_DOMNODEEXODUS">DOMATTREXODUS,
 DOMNODEEXODUS</dt>
@@ -123,18 +138,24 @@ DOMNODEEXODUS</dt>
 </dd><dt id="DOMDTDEF">DOMDTDEF</dt>
 
 <dd>
-<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef">http://suika.fam.cx/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
+<p>DOM Document Type Definitions <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef">http://suika.suikawiki.org/www/markup/xml/domdtdef/domdtdef</a>&gt;</code>.</p>
 
 </dd><dt id="MANAKAI">MANAKAI</dt>
 
 <dd>
-<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+<p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAIINDEX">MANAKAIINDEX</dt>
+
+<dd>
+<p>manakai index data structures <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures</a>&gt;</code>.</p>
 </dd>
 </dl>
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
 <p><a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>,
 <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
