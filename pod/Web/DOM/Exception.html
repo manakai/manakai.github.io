@@ -16,15 +16,14 @@
 
 
 
-<hgroup><h1><code>Web::DOM::Exception</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/DOMException"><code>DOMException</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::Exception</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/DOMException"><code>DOMException</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::Exception</code> class implements the DOM <code>DOMException</code> interface.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>The <code>Web::DOM::Exception</code> class inherits from <code>Web::DOM::Error</code>.
-In addition,
-it defines following method:</p>
+<p>In addition to the methods of the class <code>Web::DOM::Error</code>,
+the following method is available:</p>
 
 <dl>
 <dt id="$code_=_$error->code"><code>$code = $error-&gt;<strong id="member-code">code</strong></code></dt>
@@ -38,7 +37,7 @@ This method is considered depreacated and the <code>name</code> method should be
 </section><section id="CONSTANTS"><h1>CONSTANTS</h1>
 
 <p>This class exports several constants for error codes,
-but they are now considered useless in favor of <code>name</code> method taking string error names.</p>
+but they are now deprecated in favor of the <code>name</code> method returning string error names (see <a href="../../../pod/Web/DOM/Error" class="podlinkpod">Web::DOM::Error</a>).</p>
 
 </section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
 
@@ -46,9 +45,13 @@ but they are now considered useless in favor of <code>name</code> method taking 
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Living Standard - Exception <code>DOMException</code> <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#exception-domexception">http://dom.spec.whatwg.org/#exception-domexception</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/">http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
 </dd>
 </dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/Error" class="podlinkpod">Web::DOM::Error</a>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
@@ -56,7 +59,7 @@ but they are now considered useless in favor of <code>name</code> method taking 
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

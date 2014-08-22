@@ -16,10 +16,10 @@
 
 
 
-<hgroup><h1><code>Web::DOM::Document</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Document"><code>Document</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::Document</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Document"><code>Document</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::Document</code> class implements the DOM <code>Document</code> interface,
-which represents the document (either HTML or XML).</p>
+which represents an HTML or XML document.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -71,14 +71,15 @@ the <code>body</code> element or the <code>frameset</code> element). <cite class
 <dt id="$doc->input_encoding_($string)"><code>$doc-&gt;<strong>input_encoding</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the encoding of the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Return or set the canonical encoding label of the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
 
 </dd><dt id="$string_=_$doc->manakai_charset"><code>$string = $doc-&gt;<strong id="member-manakai_charset">manakai_charset</strong></code></dt>
 
 <dt id="$doc->manakai_charset_($string)"><code>$doc-&gt;<strong>manakai_charset</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>charset</code> parameter value of the <code>Content-Type</code> metadata. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Return or set the <code>charset</code> parameter value of the <code>Content-Type</code> metadata,
+if any. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
 
 </dd><dt id="$string_=_$doc->compat_mode"><code>$string = $doc-&gt;<strong id="member-compat_mode">compat_mode</strong></code></dt>
 
@@ -104,7 +105,7 @@ and <code>quirks</code>. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cit
 </dd><dt id="$attr_=_$doc->create_attribute_($local_name)"><code>$attr = $doc-&gt;<strong id="member-create_attribute">create_attribute</strong> ($local_name)</code></dt>
 
 <dd>
-<p>Create a new attribute (<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>) with the specified name and empty value. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Create a new attribute (<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>) with the specified name and empty value. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$attr_=_$doc->create_attribute_ns_($nsurl,_$qname)"><code>$attr = $doc-&gt;<strong id="member-create_attribute_ns">create_attribute_ns</strong> ($nsurl,
 $qname)</code></dt>
@@ -114,7 +115,7 @@ $qname)</code></dt>
 $local_name])</code></dt>
 
 <dd>
-<p>Create a new attribute (<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>) with the specified namespace URL and qualified name. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Create a new attribute (<a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>) with the specified namespace URL and qualified name. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 <p>The qualified name can be represented as an array reference,
 where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
@@ -387,12 +388,12 @@ any descendant nodes are also cloned. <cite class="ref">[<a href="#DOM">DOM</a>]
 </dd><dt id="$col_=_$doc->links"><code>$col = $doc-&gt;<strong id="member-links">links</strong></code></dt>
 
 <dd>
-<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>a</code> or <code>area</code> elements with the <code>href</code> attribute in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the HTML <code>a</code> or <code>area</code> elements with the <code>href</code> attribute in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$col_=_$doc->scripts"><code>$col = $doc-&gt;<strong id="member-scripts">scripts</strong></code></dt>
 
 <dd>
-<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the <code>script</code> elements in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Return the <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a> object containing the HTML <code>script</code> elements in the document. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$bool_=_$doc->strict_error_checking"><code>$bool = $doc-&gt;<strong id="member-strict_error_checking">strict_error_checking</strong></code></dt>
 
@@ -459,6 +460,11 @@ and <code>clear</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 <dd>
 <p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-document">http://dom.spec.whatwg.org/#interface-document</a>&gt;</code>.</p>
+
+</dd><dt id="DOMATTREXODUS">DOMATTREXODUS</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.org/">view-source:http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
 
 </dd><dt id="DOM3CORE">DOM3CORE</dt>
 
