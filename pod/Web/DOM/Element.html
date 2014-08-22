@@ -33,7 +33,7 @@ following methods are available:</p>
 <dt id="$map_=_$el->attributes"><code>$map = $el-&gt;<strong id="member-attributes">attributes</strong></code></dt>
 
 <dd>
-<p>Return the <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a> object containing the content attributes for the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+<p>Return the <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a> object containing the content attributes for the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$tokens_=_$el->class_list"><code>$tokens = $el-&gt;<strong id="member-class_list">class_list</strong></code></dt>
 
@@ -73,7 +73,7 @@ If there is no attribute with the specified name,
 <dd>
 <p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the specified attribute.
 If there is no attribute with the specified name,
-<code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$indexed_=_$el->manakai_get_attribute_indexed_string_ns_($nsurl,_$local_name)"><code>$indexed = $el-&gt;<strong id="member-manakai_get_attribute_indexed_string_ns">manakai_get_attribute_indexed_string_ns</strong> ($nsurl,
 $local_name)</code></dt>
@@ -89,7 +89,7 @@ $local_name)</code></dt>
 <dd>
 <p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the attribute with the specified namespace URL and local name.
 If there is no attribute with the specified name,
-<code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$bool_=_$el->has_attribute_($name)"><code>$bool = $el-&gt;<strong id="member-has_attribute">has_attribute</strong> ($name)</code></dt>
 
@@ -101,6 +101,11 @@ $local_name)</code></dt>
 
 <dd>
 <p>Return whether there is the attribute with the specified namespace URL and local name or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$el->has_attributes"><code>$bool = $el-&gt;<strong id="member-has_attributes">has_attributes</strong></code></dt>
+
+<dd>
+<p>Return whether the element has any content attribute or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->id"><code>$string = $el-&gt;<strong id="member-id">id</strong></code></dt>
 
@@ -210,7 +215,7 @@ the method does nothing. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 <dd>
 <p>Remove the specified attribute from the element.
-The removed attribute is returned. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+The removed attribute is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$el->set_attribute_($name_=>_$value)"><code>$el-&gt;<strong id="member-set_attribute">set_attribute</strong> ($name =&gt; $value)</code></dt>
 
@@ -261,7 +266,7 @@ where the first item is the prefix (or <code>undef</code> for the null namespace
 <p>Append (or replace,
 if exists) the attribute node to the list of attributes for the element.
 If there is already the attribute with same namespace URL / local name pair,
-the attribute is removed from the list and is returned by the method. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+the attribute is removed from the list and is returned by the method. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$name_=_$el->tag_name"><code>$name = $el-&gt;<strong id="member-tag_name">tag_name</strong></code></dt>
 
@@ -311,11 +316,6 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 
 <dd>
 <p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#htmlelement">http://www.whatwg.org/specs/web-apps/current-work/#htmlelement</a>&gt;</code>.</p>
-
-</dd><dt id="DOM3CORE">DOM3CORE</dt>
-
-<dd>
-<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-745549614">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-745549614</a>&gt;</code>.</p>
 
 </dd><dt id="DOMDTDEF">DOMDTDEF</dt>
 
