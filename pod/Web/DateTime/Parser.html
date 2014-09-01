@@ -108,6 +108,8 @@
 <dd>
 <p>Parse the argument as an <code>HTTP-date</code> string [HTTP], using the parsing rules in RFC 6265 [COOKIES], and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
+<p>Leap seconds are treated as invalid second values, which is a willful violation to RFC 7231.</p>
+
 <p>This method is suitable for values in HTTP <code>Expires</code>, <code>Last-Modified</code>, and <code>Date</code> headers, as well as in <code>Expires</code> attribute in Cookies.</p>
 
 </dd><dt id="$dt_=_$parser->parse_rss2_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_rss2_date_time_string">parse_rss2_date_time_string</strong> ($string)</code></dt>
@@ -316,7 +318,7 @@
 <dd>
 <p>RFC 1945, Hypertext Transfer Protocol -- HTTP/1.0 <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc1945">http://tools.ietf.org/html/rfc1945</a>&gt;</code>.</p>
 
-<p>RFC 2616, Hypertext Transfer Protocol -- HTTP/1.1 <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc2616">http://tools.ietf.org/html/rfc2616</a>&gt;</code>.</p>
+<p>RFC 7231, Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>&gt;</code>.</p>
 
 </dd><dt id="COOKIES">COOKIES</dt>
 
