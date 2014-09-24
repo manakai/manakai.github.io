@@ -217,6 +217,9 @@ ga('create', 'UA-39820773-4', 'manakai.github.io');
 ga('send', 'pageview');
 </script>
   });
+  my $ul = $footer->first_element_child->next_element_sibling;
+  $ul->first_element_child->first_element_child->href ($root_url);
+  $ul->last_element_child->first_element_child->href ("$root_url/contact");
   $doc->body->append_child ($footer);
 
   $html_path->parent->mkpath;
