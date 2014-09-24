@@ -131,7 +131,7 @@ sub node2html ($$$%) {
       <link rel=stylesheet href="$root_url/css/pod.css">
       <meta name=viewport content="width=device-width">
 
-      <h1><a href="." rel=top>The manakai project</a></h1>
+      <h1><a href="$root_url" rel=top>The manakai project</a></h1>
   });
   $doc->title ($args{module_name});
   if (not defined $repo_short) {
@@ -202,11 +202,11 @@ sub node2html ($$$%) {
   $doc->head->append_child ($link);
 
   my $footer = $doc->create_element ('footer');
-  $footer->inner_html (q{
+  $footer->inner_html (qq{
   <p>The manakai project since 2002
   <ul>
-    <li><a href="." rel=top>Top</a>
-    <li><a href="contact">Contact</a>
+    <li><a href="$root_url" rel=top>Top</a>
+    <li><a href="$root_url/contact">Contact</a>
   </ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -217,9 +217,6 @@ ga('create', 'UA-39820773-4', 'manakai.github.io');
 ga('send', 'pageview');
 </script>
   });
-  my $ul = $footer->first_element_child->next_element_sibling;
-  $ul->first_element_child->first_element_child->href ($root_url);
-  $ul->last_element_child->first_element_child->href ("$root_url/contact");
   $doc->body->append_child ($footer);
 
   $html_path->parent->mkpath;
