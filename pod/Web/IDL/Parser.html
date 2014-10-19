@@ -76,7 +76,7 @@
 </dd><dt id="definition_name">definition_name</dt>
 
 <dd>
-<p>Type of the definition: <code>interface</code>, <code>class</code>, <code>exception</code>, <code>dictionary</code>, <code>enum</code>, or <code>callback</code>.</p>
+<p>Type of the definition: <code>interface</code>, <code>class</code>, <code>dictionary</code>, <code>enum</code>, or <code>callback</code>.</p>
 
 <p>Note that the <code>definition_name</code> for a <code>callback interface</code> is <code>interface</code>.</p>
 
@@ -135,7 +135,7 @@
 </dd><dt id="member_type">member_type</dt>
 
 <dd>
-<p>The type of the member: <code>attribute</code>, <code>operation</code>, <code>const</code>, <code>field</code>, or <code>dictionary_member</code>.</p>
+<p>The type of the member: <code>attribute</code>, <code>operation</code>, <code>const</code>, <code>serializer</code>, <code>iterable</code>, <code>legacyiterable</code>, <code>maplike</code>, <code>setlike</code>, or <code>dictionary_member</code>.</p>
 
 </dd><dt id="name">name</dt>
 
@@ -195,6 +195,13 @@
 
 <dd>
 <p>The array reference of the arguments for the member, if applicable.</p>
+
+</dd><dt id="type1">type1</dt>
+
+<dt id="type2">type2</dt>
+
+<dd>
+<p>The type(s) specified in the member, in an <code>iterable</code> or similar kind of member, if any. If specified, the value is a hash reference whose key/value pairs are the type key/value pairs whose target is the first or second type of the member.</p>
 
 </dd><dt id="extended_attributes">extended_attributes</dt>
 
