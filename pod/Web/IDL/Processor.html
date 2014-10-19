@@ -85,6 +85,26 @@
 
 <dd>
 <p>A sequence value. The <code>1</code>st item is an array reference containing the items of the value. If it is an empty array reference, this is an empty sequence.</p>
+
+</dd><dt id="iterable">iterable</dt>
+
+<dd>
+<p>An <code>iterable</code> declaration. The <code>1</code>st item is a hash reference describing the declaration.</p>
+
+</dd><dt id="legacyiterable">legacyiterable</dt>
+
+<dd>
+<p>An <code>legacyiterable</code> declaration. The <code>1</code>st item is a hash reference describing the declaration.</p>
+
+</dd><dt id="maplike">maplike</dt>
+
+<dd>
+<p>An <code>maplike</code> declaration. The <code>1</code>st item is a hash reference describing the declaration.</p>
+
+</dd><dt id="setlike">setlike</dt>
+
+<dd>
+<p>An <code>setlike</code> declaration. The <code>1</code>st item is a hash reference describing the declaration.</p>
 </dd>
 </dl>
 
@@ -93,6 +113,26 @@
 
 <dd>
 <p>Whether the dictionary member is required or not.</p>
+
+</dd><dt id="read_(boolean)">read (boolean)</dt>
+
+<dd>
+<p>Always true for <code>maplike</code> or <code>setlike</code> declaration.</p>
+
+</dd><dt id="write_(boolean)">write (boolean)</dt>
+
+<dd>
+<p>Whether the <code>maplike</code> or <code>setlike</code> declaration is <var>not</var> read-only.</p>
+
+</dd><dt id="keys_type_(type)">keys_type (type)</dt>
+
+<dd>
+<p>The first type in the <code>maplike</code> or <code>iterable</code> declaration when two types are specified.</p>
+
+</dd><dt id="values_type_(type)">values_type (type)</dt>
+
+<dd>
+<p>The last type in the <code>maplike</code>, <code>setlike</code>, <code>iterable</code>, or <code>legacyiterable</code> declaration.</p>
 </dd>
 </dl>
 
