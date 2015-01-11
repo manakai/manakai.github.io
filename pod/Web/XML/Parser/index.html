@@ -111,6 +111,13 @@
 
 <dd>
 <p>Get or set the maximum number of entity references to be expanded. The value must be a non-negative integer. Note that predefined entities and HTML character entities are always expanded and not taken into account for the number of entity expansions.</p>
+
+</dd><dt id="$parser->ignore_doctype_pis_($boolean)"><code>$parser-&gt;<strong id="member-ignore_doctype_pis">ignore_doctype_pis</strong> ($boolean)</code></dt>
+
+<dt id="$boolean_=_$parser->ignore_doctype_pis"><code>$boolean = $parser-&gt;<strong>ignore_doctype_pis</strong></code></dt>
+
+<dd>
+<p>Get or set whether processing instructions in the DTD should be exposed to the DOM or not. If true, the <code>DocumentType</code> object, if any, contains no child node even when there are processing instructions in the DTD.</p>
 </dd>
 </dl>
 
