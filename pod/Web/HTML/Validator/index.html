@@ -221,6 +221,8 @@
 
 <p>Unless otherwise specified, for the purpose of validation of HTML documents or fragments (serialized in the HTML syntax and then) embedded within other DOM attribute or node, such as the <code>srcdoc</code> attribute of the HTML <code>iframe</code> element, and Atom or RSS elements, whether scripting is enabled or disabled for the document associated with the HTML parser used to parse the document or fragment, as well as whether scripting is enabled or disabled for the nodes returned by the HTML parser, is same as whether scripting is enabled or disabled for the node document of the node.</p>
 
+<p>If the |http-equiv| attribute of the |meta| element is in the Default style state, the |content| attribute value MUST NOT be the empty string.</p>
+
 </dd><dt id="OBSVOCAB">OBSVOCAB</dt>
 
 <dd>
@@ -249,10 +251,14 @@
 <dd>
 <p>The Atom Syndication Format <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc4287">http://tools.ietf.org/html/rfc4287</a>&gt;</code>, <code class="url">&lt;<a href="http://www.rfc-editor.org/errata_search.php?rfc=4287">http://www.rfc-editor.org/errata_search.php?rfc=4287</a>&gt;</code>.</p>
 
+<p>The <code>rel</code> attribute value MUST be a link type or link relation for which semantics in Atom document is specified. It MUST NOT be a non-conforming link type.</p>
+
 </dd><dt id="ATOM03">ATOM03</dt>
 
 <dd>
 <p>The Atom Syndication Format 0.3 (PRE-DRAFT) <code class="url">&lt;<a href="https://github.com/mnot/I-D/blob/master/Published/atom-format/draft-nottingham-atom-format-02.xml">https://github.com/mnot/I-D/blob/master/Published/atom-format/draft-nottingham-atom-format-02.xml</a>&gt;</code>.</p>
+
+<p>The <code>rel</code> attribute value MUST be a link type or link relation for which semantics in Atom 0.3 document is specified. It MUST NOT be a non-conforming link type.</p>
 
 </dd><dt id="ATOMTHREADS">ATOMTHREADS</dt>
 
@@ -330,6 +336,35 @@
 
 <dd>
 <p>Social Feedback - GREE Developer Center <code class="url">&lt;<a href="https://docs.developer.gree.net/ja/platform/connect/socialfeedback">https://docs.developer.gree.net/ja/platform/connect/socialfeedback</a>&gt;</code>.</p>
+
+</dd><dt id="HTMLPRE5924">HTMLPRE5924</dt>
+
+<dd>
+<p>HTML Standard Tracker <code class="url">&lt;<a href="https://html5.org/r/5924">https://html5.org/r/5924</a>&gt;</code>.</p>
+
+</dd><dt id="HTMLPRE5925">HTMLPRE5925</dt>
+
+<dd>
+<p>HTML Standard Tracker <code class="url">&lt;<a href="https://html5.org/r/5925">https://html5.org/r/5925</a>&gt;</code>.</p>
+
+</dd><dt id="WHATWGWIKI">WHATWGWIKI</dt>
+
+<dd>
+<p>WHATWG Wiki MetaExtensions <code class="url">&lt;<a href="https://wiki.whatwg.org/wiki/MetaExtensions">https://wiki.whatwg.org/wiki/MetaExtensions</a>&gt;</code>.</p>
+
+<p>WHATWG Wiki RelExtensions <code class="url">&lt;<a href="https://wiki.whatwg.org/wiki/RelExtensions">https://wiki.whatwg.org/wiki/RelExtensions</a>&gt;</code>.</p>
+
+<p>Unless otherwise specified, link types marked as "accepted" in the RelExtensions table MUST be treated as if it were part of the Microformats Wiki's relevant table.</p>
+
+</dd><dt id="UFWIKI">UFWIKI</dt>
+
+<dd>
+<p>Microformats Wiki - existing rel values <code class="url">&lt;<a href="http://microformats.org/wiki/existing-rel-values">http://microformats.org/wiki/existing-rel-values</a>&gt;</code>.</p>
+
+</dd><dt id="CSP">CSP</dt>
+
+<dd>
+<p>Content Security Policy <code class="url">&lt;<a href="https://w3c.github.io/webappsec/specs/content-security-policy/">https://w3c.github.io/webappsec/specs/content-security-policy/</a>&gt;</code>.</p>
 
 </dd><dt id="MIMESNIFF">MIMESNIFF</dt>
 
