@@ -129,8 +129,6 @@
 <ul>
 <li><a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a></li>
 
-<li><a href="../pod/Web/DOM/DOMError" class="podlinkpod">Web::DOM::DOMError</a></li>
-
 <li><a href="../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and its subclasses</li>
 
 <li><a href="../pod/Web/DOM/Implementation" class="podlinkpod">Web::DOM::Implementation</a></li>
@@ -287,7 +285,7 @@
 
 <p>Following features fully or partially implemented in previous versions of manakai DOM implementations are considered obsolete and will not be implemented by these modules unless they are reintroduced by some DOM specification or found to be necessary for backward compatibility:</p>
 
-<p>DOMImplementationRegistry, DOMImplementationSource, DOMImplementationList, DOM features, DOMStringList, StringExtended, read-only nodes, EntityReference, CDATASection, replaceWholeText, isElementContentWhitespace, specified setter, hasReplacementTree setter, DOM3 configuration parameters, configuration parameters for DOM3 spec compatible DTD-based node operations, DOM3 DOMError, DOMErrorHandler, UserDataHandler, DOMLocator, isId and family, internalSubset, TypeInfo and schemaTypeInfo, DOM3 LS, namespaces for DOM3 events, EventException, MutationEvent, MutationNameEvent, TextEvent, DocumentEvent-&gt;canDispatch, DocumentType-&gt;implementation, Document-&gt;createXHTMLDocument, URIReference, InternetMediaType, MANAKAI_FILTER_OPAQUE, Document-&gt;manakaiCreateSerialWalker, SerialWalker. HTMLElement-&gt;irrelevant, HTMLAnchorElement-&gt;media, HTMLAreaElement-&gt;media, HTMLCommandElement, HTMLDataGridElement, HTMLEventSourceElement, HTMLIsIndexElement, HTMLLegendElement-&gt;form, HTMLMenuElement-&gt;autosubmit, HTMLBlockquoteElement, HTMLStrictlyInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLSectioningElementExtended, HTMLListElementExtended, HTMLDListElementExtended, CSSStyleDeclaration-&gt;styleFloat. Overloaded operators <code>==</code>, <code>!=</code>, and <code>.=</code>, write operations through overloaded <code>@{}</code> and <code>%{}</code> operators for NodeList, NamedNodeMap, and HTMLCollection. Attr, Entity, and AttributeDefinition nodes can no longer contain Text nodes.</p>
+<p>DOMImplementationRegistry, DOMImplementationSource, DOMImplementationList, DOM features, DOMStringList, StringExtended, read-only nodes, EntityReference, CDATASection, replaceWholeText, isElementContentWhitespace, specified setter, hasReplacementTree setter, DOM3 configuration parameters, configuration parameters for DOM3 spec compatible DTD-based node operations, DOM3 DOMError, DOM Standard DOMError, DOMErrorHandler, UserDataHandler, DOMLocator, isId and family, internalSubset, TypeInfo and schemaTypeInfo, DOM3 LS, namespaces for DOM3 events, EventException, MutationEvent, MutationNameEvent, TextEvent, DocumentEvent-&gt;canDispatch, DocumentType-&gt;implementation, Document-&gt;createXHTMLDocument, URIReference, InternetMediaType, MANAKAI_FILTER_OPAQUE, Document-&gt;manakaiCreateSerialWalker, SerialWalker. HTMLElement-&gt;irrelevant, HTMLAnchorElement-&gt;media, HTMLAreaElement-&gt;media, HTMLCommandElement, HTMLDataGridElement, HTMLEventSourceElement, HTMLIsIndexElement, HTMLLegendElement-&gt;form, HTMLMenuElement-&gt;autosubmit, HTMLBlockquoteElement, HTMLStrictlyInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLSectioningElementExtended, HTMLListElementExtended, HTMLDListElementExtended, CSSStyleDeclaration-&gt;styleFloat. Overloaded operators <code>==</code>, <code>!=</code>, and <code>.=</code>, write operations through overloaded <code>@{}</code> and <code>%{}</code> operators for NodeList, NamedNodeMap, and HTMLCollection. Attr, Entity, and AttributeDefinition nodes can no longer contain Text nodes.</p>
 
 <p>By default the <code>DocumentType</code> node can no longer contain <code>ProcessingInstruction</code> nodes as children. The old behavior can be restored by setting a true value to the <code>manakai-allow-doctype-children</code> configuration parameter (See <a href="../pod/Web/DOM/Configuration" class="podlinkpod">Web::DOM::Configuration</a>).</p>
 
@@ -359,7 +357,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
