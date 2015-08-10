@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::DOM::Node</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::DOM::Node</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
@@ -16,7 +16,7 @@
 
 
 
-<hgroup><h1><code>Web::DOM::Node</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Node"><code>Node</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::Node</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Node"><code>Node</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::Node</code> class implements the DOM <code>Node</code> interface.
 The <code>Web::DOM::Node</code> class is an abstract class.
@@ -45,7 +45,12 @@ it is appended to the context object. <cite class="ref">[<a href="#MANAKAI">MANA
 </dd><dt id="$node_=_$node->manakai_append_text_($string)"><code>$node = $node-&gt;<strong id="member-manakai_append_text">manakai_append_text</strong> ($string)</code></dt>
 
 <dd>
-<p>Append the string to the <code>text_content</code> of the node. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Append a string to the <code>text_content</code> of the node. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+
+</dd><dt id="$node->manakai_append_indexed_string_($indexed)"><code>$node-&gt;<strong id="member-manakai_append_indexed_string">manakai_append_indexed_string</strong> ($indexed)</code></dt>
+
+<dd>
+<p>Append an IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code> to the <code>text_content</code> of the node. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
 
 </dd><dt id="$string_=_$node->base_uri"><code>$string = $node-&gt;<strong id="member-base_uri">base_uri</strong></code></dt>
 
@@ -109,17 +114,22 @@ If there is no child,
   is $el-&gt;manakai_get_child_namespace_uri ('svg'),
      'http://www.w3.org/2000/svg';</code></pre>
 
+</dd><dt id="$indexed_=_$node->manakai_get_indexed_string"><code>$indexed = $node-&gt;<strong id="member-manakai_get_indexed_string">manakai_get_indexed_string</strong></code></dt>
+
+<dd>
+<p>Return an IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code> representation of the <code>text_content</code> of the node. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
+
+</dd><dt id="['',_$di,_$ci]_=_$node->manakai_get_source_location"><code>['', $di, $ci] = $node-&gt;<strong id="member-manakai_get_source_location">manakai_get_source_location</strong></code></dt>
+
+<dd>
+<p>Return an array reference containing document and character index values, which might be able to use to find the location in the source text from which the node is created, if any. If they are not known, an array reference <code>['', -1, 0]</code> is returned instead. The first (zeroth) item is always the empty string. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
+
 </dd><dt id="$data_=_$node->get_user_data_($key)"><code>$data = $node-&gt;<strong id="member-get_user_data">get_user_data</strong> ($key)</code></dt>
 
 <dd>
 <p>Return the user data associated to the node with the specified key, if any, or <code>undef</code>. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
 
 <p>See <a href="#USER_DATA" class="podlinkpod">"USER DATA"</a>.</p>
-
-</dd><dt id="$bool_=_$node->has_attributes"><code>$bool = $node-&gt;<strong id="member-has_attributes">has_attributes</strong></code></dt>
-
-<dd>
-<p>Return whether the node has any content attribute or not. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
 
 </dd><dt id="$bool_=_$node->has_child_nodes"><code>$bool = $node-&gt;<strong id="member-has_child_nodes">has_child_nodes</strong></code></dt>
 
@@ -225,6 +235,11 @@ If there is no child,
 <dd>
 <p>Replace the specified child node by a new node. The first argument is the new child node. The second argument is the current child node, which is to be replaced. The new child node is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
+</dd><dt id="$node->manakai_set_source_location_(['',_$di,_$ci])"><code>$node-&gt;<strong id="member-manakai_set_source_location">manakai_set_source_location</strong> (['', $di, $ci])</code></dt>
+
+<dd>
+<p>Set an array reference containing document and character index values, which might be able to use to find the location in the source text from which the node is created. The first (zeroth) item in the array reference is ignored. If the node is not associated with any source text (e.g. created by a DOM method), or the actual source location is known, values <code>-1</code> and <code>0</code> should be used. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
+
 </dd><dt id="$node->set_user_data_($key,_$value,_$handler)"><code>$node-&gt;<strong id="member-set_user_data">set_user_data</strong> ($key, $value, $handler)</code></dt>
 
 <dd>
@@ -249,7 +264,7 @@ If there is no child,
 </dd>
 </dl>
 
-<p>Following methods are also available: <code>attributes</code>, <code>prefix</code>, <code>namespace_uri</code>, <code>local_name</code>, and <code>manakai_local_name</code>. <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite> <cite class="ref">[<a href="#DOMNODEEXODUS">DOMNODEEXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Following methods are also available: <code>attributes</code>, <code>has_attributes</code>, <code>prefix</code>, <code>namespace_uri</code>, <code>local_name</code>, and <code>manakai_local_name</code>. <cite class="ref">[<a href="#DOMNODEEXODUS">DOMNODEEXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
 
 <p>Any <code>Node</code> object is an instance of one of its subclasses. For example, a <code>Node</code> object whose <code>node_type</code> is <code>ELEMENT_NODE</code> is an instance of <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>. There are following subclasses:</p>
 
@@ -304,7 +319,7 @@ If there is no child,
 </dd><dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
 
 </dd><dt id="DOM3CORE">DOM3CORE</dt>
 
@@ -325,6 +340,11 @@ If there is no child,
 
 <dd>
 <p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%20DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAIINDEX">MANAKAIINDEX</dt>
+
+<dd>
+<p>manakai index data structures <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -348,8 +368,8 @@ If there is no child,
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

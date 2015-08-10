@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::DateTime</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::DateTime</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
@@ -26,102 +26,42 @@
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::DateTime</code> class represents a date and/or time with accessor and serializer methods for Web. To create an instance of the <code>Web::DateTime</code> class, use <a href="../../../pod/Web/DateTime/Parser" class="podlinkpod">Web::DateTime::Parser</a> module.</p>
+<p>The <code>Web::DateTime</code> class represents a date and/or time with accessor and serializer methods for Web. To create an instance of the <code>Web::DateTime</code> class from various date and/or time formatted strings, use <a href="../../../pod/Web/DateTime/Parser" class="podlinkpod">Web::DateTime::Parser</a> module.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
 <p>Following methods are available:</p>
 
 <dl>
-<dt id="$string_=_$dt->to_date_string"><code>$string = $dt-&gt;<strong id="member-to_date_string">to_date_string</strong></code></dt>
+<dt id="$dt_=_Web::DateTime->new_from_unix_time_($time)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_unix_time">new_from_unix_time</strong> ($time)</code></dt>
 
 <dd>
-<p>Serialize the date value represented by the object as an HTML valid date string [HTML]. Note that time and time zone are ignored.</p>
+<p>Create a new instance of <code>Web::DateTime</code> from the specified number, representing a Unix time (i.e. number of seconds from January 1, 1970, 00:00:00 UTC). The number can contain fractional part and can be negative.</p>
 
-<p>This method is suitable for values for HTML <code>&lt;input type=date&gt;</code>, <code>time</code> elements, and <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
-
-</dd><dt id="$string_=_$dt->to_date_string_with_optional_time"><code>$string = $dt-&gt;<strong id="member-to_date_string_with_optional_time">to_date_string_with_optional_time</strong></code></dt>
+</dd><dt id="$dt_=_Web::DateTime->new_from_object_($obj)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_object">new_from_object</strong> ($obj)</code></dt>
 
 <dd>
-<p>Serialize the date value represented by the object as HTML valid date string with optional time [HTML]. If the object represents a date, time, and time zone, it is serialized as a global date and time string. Otherwise, it is serialized as a date string.</p>
+<p>Create a new instance of <code>Web::DateTime</code> from the specified date/time object. The argument must be an instance of <a href="http://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> or <a href="http://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a>. (More classes might be supported in future.)</p>
 
-<p>This method is suitable for values for HTML <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
+<p>As the <code>Web::DateTime</code> (and most Web date/time formats) can't handle leap seconds, if the <a href="http://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> object represents a leap second, the result <code>Web::DateTime</code> object represents the second just after the leap second.</p>
 
-</dd><dt id="$string_=_$dt->to_global_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_global_date_and_time_string">to_global_date_and_time_string</strong></code></dt>
+</dd><dt id="true_=_$dt->is_date_time"><code>true = $dt-&gt;<strong id="member-is_date_time">is_date_time</strong></code></dt>
 
-<dd>
-<p>Serialize the date value represented by the object as an HTML valid global date and time string [HTML].</p>
+<dt id="false_=_$dt->is_time_zone"><code>false = $dt-&gt;<strong id="member-is_time_zone">is_time_zone</strong></code></dt>
 
-<p>The serialized value always uses the UTC time zone. The time zone of the object is ignored (it does affect the value but the time zone itself does not appear in the serialization). If the object is not associated with any time zone, it is interpreted as UTC timestamp (which could be wrong, however).</p>
+<dt id="false_=_$dt->is_duration"><code>false = $dt-&gt;<strong id="member-is_duration">is_duration</strong></code></dt>
 
-<p>Use <code>to_time_zoned_global_date_and_time_string</code> method to preserve time zone.</p>
-
-<p>The value might not be a normalized date and time string. It is, in most cases, also a valid XML Schema <code>xs:dateTime</code> and <code>xs:dateTimeStamp</code> value and a valid RFC 3339 <code>date-time</code> value.</p>
-
-<p>This method is suitable for values for HTML <code>&lt;input type=datetime&gt;</code>, <code>time</code> elements, and <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
-
-</dd><dt id="$string_=_$dt->to_local_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_local_date_and_time_string">to_local_date_and_time_string</strong></code></dt>
+<dt id="false_=_$dt->is_interval"><code>false = $dt-&gt;<strong id="member-is_interval">is_interval</strong></code></dt>
 
 <dd>
-<p>Serialize the date value represented by the object as an HTML valid local date and time string [HTML]. Note that time zone is ignored.</p>
+<p>Return whether the object is of the specified type or not.</p>
 
-<p>The value might not be a normalized local date and time string. It is, in most cases, also a valid XML Schema <code>xs:dateTime</code> value.</p>
-
-<p>This method is suitable for values for HTML <code>&lt;input type=datetime-local&gt;</code> and <code>time</code> elements.</p>
-
-</dd><dt id="$string_=_$dt->to_month_string"><code>$string = $dt-&gt;<strong id="member-to_month_string">to_month_string</strong></code></dt>
+</dd><dt id="$boolean_=_$dt->has_component_($name)"><code>$boolean = $dt-&gt;<strong id="member-has_component">has_component</strong> ($name)</code></dt>
 
 <dd>
-<p>Serialize the month value represented by the object as an HTML valid month string [HTML]. Note that day, time, and time zone are ignored.</p>
+<p>Return whether the specified component is given when the object is created. Available component names are: <code>year</code>, <code>month</code> (month of year), <code>week</code> (week of year), <code>day</code> (day of month, week, or year), <code>time</code> (hour, minute, and optional second of day), and <code>offset</code> (time zone offset).</p>
 
-<p>This method is suitable for values for HTML <code>&lt;input type=month&gt;</code> and <code>time</code> elements.</p>
-
-</dd><dt id="$string_=_$dt->to_time_string"><code>$string = $dt-&gt;<strong id="member-to_time_string">to_time_string</strong></code></dt>
-
-<dd>
-<p>Serialize the time value represented by the object as an HTML valid time string [HTML]. Note that date and time zone are ignored.</p>
-
-<p>This method is suitable for values for HTML <code>&lt;input type=time&gt;</code> and <code>time</code> elements.</p>
-
-</dd><dt id="$string_=_$dt->to_time_zoned_global_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_time_zoned_global_date_and_time_string">to_time_zoned_global_date_and_time_string</strong></code></dt>
-
-<dd>
-<p>Serialize the date value represented by the object as an HTML valid global date and time string [HTML].</p>
-
-<p>If a time zone is associated with the object, it is used to serialize the time value. If the object is not associated with any time zone, it is interpreted as UTC timestamp (which could be wrong, however).</p>
-
-<p>Use <code>to_date_and_time_string</code> method to always obtain a UTC timestamp.</p>
-
-<p>This method is suitable for values for HTML <code>&lt;input type=datetime&gt;</code>, <code>time</code> elements, and <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
-
-</dd><dt id="$string_=_$dt->to_week_string"><code>$string = $dt-&gt;<strong id="member-to_week_string">to_week_string</strong></code></dt>
-
-<dd>
-<p>Serialize the week value represented by the object as an HTML valid week string [HTML]. Note that month, day, time, and time zone are ignored.</p>
-
-<p>This method is suitable for values for HTML <code>&lt;input type=week&gt;</code> and <code>time</code> elements.</p>
-
-</dd><dt id="$datetime_=_$dt->to_datetime"><code>$datetime = $dt-&gt;<strong id="member-to_datetime">to_datetime</strong></code></dt>
-
-<dd>
-<p>Return a new <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> object which represents the time represented by the object. If the object has associated time zone, the returned object is in the equivalent time zone. Otherwise, the returned object is in the <code>floating</code> time zone. Note that Web date and time formats do not support leap seconds while <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> does support them such that operations on Web date and time values and <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> objects might obtain different results.</p>
-
-<p>This method requires the <a href="../../../pod/DateTime" class="podlinkpod">DateTime</a> module.</p>
-
-</dd><dt id="$number_=_$dt->to_unix_integer"><code>$number = $dt-&gt;<strong id="member-to_unix_integer">to_unix_integer</strong></code></dt>
-
-<dd>
-<p>Return a Unix time value (<code>time_t</code> integer) [POSIX.1] of the time represented by the object. The value can be positive or negative, and might not be a 32-bit integer. Any fraction part of seconds is discarded. Note that the Unix <code>time_t</code> value represents the time without associated time zone information. If the object has no associated time zone, it is considered as a UTC timestamp for the purpose of conversion.</p>
-
-</dd><dt id="$number_=_$dt->to_html_number"><code>$number = $dt-&gt;<strong id="member-to_html_number">to_html_number</strong></code></dt>
-
-<dd>
-<p>Return the number of the date and time represented by the object, as used for, e.g., <code>&lt;input type=datetime&gt;</code> (i.e. number of milliseconds from the beginning of January 1, 1970 UTC) [HTML]. Note that the number might not be an integer.</p>
-
-</dd><dt id="$number_=_$dt->to_html_month_number"><code>$number = $dt-&gt;<strong id="member-to_html_month_number">to_html_month_number</strong></code></dt>
-
-<dd>
-<p>Return the number (an integer) of the month represented by the object, as used for <code>&lt;input type=month&gt;</code> (i.e. number of months from January 1970) [HTML].</p>
+<p>For example, if the object is created from a valid week string, <code>year</code> and <code>week</code> will return true, and any other value will return false.</p>
 
 </dd><dt id="$number_=_$dt->year"><code>$number = $dt-&gt;<strong id="member-year">year</strong></code></dt>
 
@@ -138,11 +78,6 @@
 <dd>
 <p>Return the number in the year, month, day, hour, minute, or second component of the object, respectively. If a time zone is associated with the object, the return value is in that time zone.</p>
 
-</dd><dt id="$string_=_$dt->second_fraction_string"><code>$string = $dt-&gt;<strong id="member-second_fraction_string">second_fraction_string</strong></code></dt>
-
-<dd>
-<p>Return the fraction part of the second component of the time represented by the object, including leading <code>.</code> character (decimal separator). If the fraction part is zero (the second component is an integer), the empty string is returned.</p>
-
 </dd><dt id="$number_=_$dt->utc_year"><code>$number = $dt-&gt;<strong id="member-utc_year">utc_year</strong></code></dt>
 
 <dt id="$number_=_$dt->utc_month"><code>$number = $dt-&gt;<strong id="member-utc_month">utc_month</strong></code></dt>
@@ -158,6 +93,16 @@
 <dd>
 <p>Return the number in the year, month, day, hour, minute, or second component of the object, respectively. If a time zone is associated with the object, the return value is converted into UTC. Otherwise, no convertion is performed.</p>
 
+</dd><dt id="$number_=_$dt->utc_week"><code>$number = $dt-&gt;<strong id="member-utc_week">utc_week</strong></code></dt>
+
+<dd>
+<p>Return the week number of the UTC date and time represented by the object.</p>
+
+</dd><dt id="$number_=_$dt->utc_week_year"><code>$number = $dt-&gt;<strong id="member-utc_week_year">utc_week_year</strong></code></dt>
+
+<dd>
+<p>Return the week-year number of the UTC date and time represented by the object.</p>
+
 </dd><dt id="$number_=_$dt->day_of_week"><code>$number = $dt-&gt;<strong id="member-day_of_week">day_of_week</strong></code></dt>
 
 <dd>
@@ -167,6 +112,11 @@
 
 <dd>
 <p>Return the day of week of the UTC date represented by the object, as a number. Sunday, Monday, ..., and Saturday are represented as <code>0</code>, <code>1</code>, ..., and <code>6</code>, respectively.</p>
+
+</dd><dt id="$string_=_$dt->second_fraction_string"><code>$string = $dt-&gt;<strong id="member-second_fraction_string">second_fraction_string</strong></code></dt>
+
+<dd>
+<p>Return the fraction part of the second component of the time represented by the object, including leading <code>.</code> character (decimal separator). If the fraction part is zero (the second component is an integer), the empty string is returned.</p>
 
 </dd><dt id="$number_=_$dt->fractional_second"><code>$number = $dt-&gt;<strong id="member-fractional_second">fractional_second</strong></code></dt>
 
@@ -178,28 +128,180 @@
 <dd>
 <p>Return the second component of the UTC time represented by the object, including fractional part if any, as a number.</p>
 
-</dd><dt id="$number_=_$dt->utc_week"><code>$number = $dt-&gt;<strong id="member-utc_week">utc_week</strong></code></dt>
-
-<dd>
-<p>Return the week number of the UTC date and time represented by the object.</p>
-
-</dd><dt id="$number_=_$dt->utc_week_year"><code>$number = $dt-&gt;<strong id="member-utc_week_year">utc_week_year</strong></code></dt>
-
-<dd>
-<p>Return the week-year number of the UTC date and time represented by the object.</p>
-
 </dd><dt id="$tz_=_$dt->time_zone"><code>$tz = $dt-&gt;<strong id="member-time_zone">time_zone</strong></code></dt>
 
 <dd>
 <p>Return the associated <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object, if any, or <code>undef</code>.</p>
+
+</dd><dt id="$dt->set_time_zone_($tz)"><code>$dt-&gt;<strong id="member-set_time_zone">set_time_zone</strong> ($tz)</code></dt>
+
+<dd>
+<p>Associate a <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object to the object. Any existing time zone object is disassociated. If the argument is <code>undef</code>, no new time zone is associated with the object.</p>
+
+</dd><dt id="$number_=_$dt->to_unix_integer"><code>$number = $dt-&gt;<strong id="member-to_unix_integer">to_unix_integer</strong></code></dt>
+
+<dd>
+<p>Return a Unix time value (<code>time_t</code> integer) [POSIX.1] of the time represented by the object. The value can be positive or negative, and might not be a 32-bit integer. Any fraction part of seconds is discarded. Note that the Unix <code>time_t</code> value represents the time without associated time zone information. If the object has no associated time zone, it is considered as a UTC timestamp for the purpose of conversion.</p>
+
+</dd><dt id="$number_=_$dt->to_unix_time"><code>$number = $dt-&gt;<strong id="member-to_unix_time">to_unix_time</strong></code></dt>
+
+<dd>
+<p>Return a Unix time value of the time represented by the object, with fractional part of the second, if any. The value can be positive or negative, and might not be an integer. Note that the Unix time value represents the time without associated time zone information. If the object has no associated time zone, it is considered as a UTC timestamp for the purpose of conversion.</p>
+
+</dd><dt id="$number_=_$dt->to_html_number"><code>$number = $dt-&gt;<strong id="member-to_html_number">to_html_number</strong></code></dt>
+
+<dd>
+<p>Return the number of the date and time represented by the object, as used for, e.g., <code>&lt;input type=datetime&gt;</code> (i.e. number of milliseconds from the beginning of January 1, 1970 UTC) [HTML]. Note that the number might not be an integer.</p>
+
+</dd><dt id="$number_=_$dt->to_html_month_number"><code>$number = $dt-&gt;<strong id="member-to_html_month_number">to_html_month_number</strong></code></dt>
+
+<dd>
+<p>Return the number (an integer) of the month represented by the object, as used for <code>&lt;input type=month&gt;</code> (i.e. number of months from January 1970) [HTML].</p>
+
+</dd><dt id="$string_=_$dt->to_global_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_global_date_and_time_string">to_global_date_and_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as an HTML valid global date and time string [HTML].</p>
+
+<p>The serialized value always uses the UTC time zone. The time zone of the object is ignored (it does affect the value but the time zone itself does not appear in the serialization). If the object is not associated with any time zone, it is interpreted as UTC timestamp (which could be wrong, however).</p>
+
+<p>Use <code>to_time_zoned_global_date_and_time_string</code> method to preserve time zone.</p>
+
+<p>The value might not be a normalized date and time string.</p>
+
+<p>The value is, in most cases, also a valid XML Schema <code>xs:dateTime</code> or <code>xs:dateTimeStamp</code> value, a valid RFC 3339 <code>date-time</code> value, a valid Atom 1.0 Date construct's content, a valid RSS 1.0 <code>dc:date</code> element content, and a valid <code>http://schema.org/DateTime</code> value.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=datetime&gt;</code>, <code>time</code> elements, and <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
+
+</dd><dt id="$string_=_$dt->to_normalized_forced_utc_global_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_normalized_forced_utc_global_date_and_time_string">to_normalized_forced_utc_global_date_and_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as an HTML valid normalized forced-UTC global date and time string [HTML].</p>
+
+</dd><dt id="$string_=_$dt->to_time_zoned_global_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_time_zoned_global_date_and_time_string">to_time_zoned_global_date_and_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as an HTML valid global date and time string [HTML].</p>
+
+<p>If a time zone is associated with the object, it is used to serialize the time value. If the object is not associated with any time zone, it is interpreted as UTC timestamp (which could be wrong, however).</p>
+
+<p>Use <code>to_date_and_time_string</code> method to always obtain a UTC timestamp.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=datetime&gt;</code>, <code>time</code> elements, and <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
+
+</dd><dt id="$string_=_$dt->to_http_date_string"><code>$string = $dt-&gt;<strong id="member-to_http_date_string">to_http_date_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as an HTTP valid <code>HTTP-date</code> (<code>rfc1123-date</code>) string [HTTP]. Any fraction part of seconds is discarded.</p>
+
+<p>This method is suitable for values for HTTP <code>Last-Modified</code>, <code>Expires</code>, and <code>Date</code> headers, as well as <code>Expires</code> attribute in HTTP Cookies.</p>
+
+</dd><dt id="$string_=_$dt->to_rss2_date_time_string"><code>$string = $dt-&gt;<strong id="member-to_rss2_date_time_string">to_rss2_date_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as a valid RSS 2.0 date and time string [RSS2] [RSS2BP]. Any fraction part of seconds is discarded.</p>
+
+</dd><dt id="$string_=_$dt->to_local_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_local_date_and_time_string">to_local_date_and_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as an HTML valid local date and time string [HTML]. Note that time zone is ignored.</p>
+
+<p>The value might not be a normalized local date and time string. It is, in most cases, also a valid XML Schema <code>xs:dateTime</code> value.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=datetime-local&gt;</code> and <code>time</code> elements.</p>
+
+</dd><dt id="$string_=_$dt->to_normalized_local_date_and_time_string"><code>$string = $dt-&gt;<strong id="member-to_normalized_local_date_and_time_string">to_normalized_local_date_and_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as an HTML valid normalized local date and time string [HTML]. Note that time zone is ignored.</p>
+
+</dd><dt id="$string_=_$dt->to_document_last_modified_string"><code>$string = $dt-&gt;<strong id="member-to_document_last_modified_string">to_document_last_modified_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object in the format of <code>document.lastModified</code> IDL attribute [HTML]. Any fraction part of seconds is discarded. The time zone of the object, if any, or UTC, is used to serialize the value, but the time zone offset is not included in this format.</p>
+
+</dd><dt id="$string_=_$dt->to_date_string"><code>$string = $dt-&gt;<strong id="member-to_date_string">to_date_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date value represented by the object as an HTML valid date string [HTML]. Note that time and time zone are ignored.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=date&gt;</code>, <code>time</code> elements, <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes, and microdata <code>http://schema.org/Date</code> item values.</p>
+
+</dd><dt id="$string_=_$dt->to_date_string_with_optional_time"><code>$string = $dt-&gt;<strong id="member-to_date_string_with_optional_time">to_date_string_with_optional_time</strong></code></dt>
+
+<dd>
+<p>Serialize the date value represented by the object as HTML valid date string with optional time [HTML]. If the object represents a date, time, and time zone, it is serialized as a global date and time string. Otherwise, it is serialized as a date string.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
+
+</dd><dt id="$string_=_$dt->to_year_string"><code>$string = $dt-&gt;<strong id="member-to_year_string">to_year_string</strong></code></dt>
+
+<dd>
+<p>Serialize the year value represented by the object for HTML. Note that month, day, time, and time zone are ignored.</p>
+
+<p>This method is suitable for values for HTML <code>time</code> elements.</p>
+
+</dd><dt id="$string_=_$dt->to_month_string"><code>$string = $dt-&gt;<strong id="member-to_month_string">to_month_string</strong></code></dt>
+
+<dd>
+<p>Serialize the month value represented by the object as an HTML valid month string [HTML]. Note that day, time, and time zone are ignored.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=month&gt;</code> and <code>time</code> elements.</p>
+
+</dd><dt id="$string_=_$dt->to_yearless_date_string"><code>$string = $dt-&gt;<strong id="member-to_yearless_date_string">to_yearless_date_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date value represented by the object as an HTML valid yearless date string [HTML]. Note that year, time, and time zone are ignored.</p>
+
+<p>This method is suitable for values for HTML <code>time</code> elements.</p>
+
+</dd><dt id="$string_=_$dt->to_week_string"><code>$string = $dt-&gt;<strong id="member-to_week_string">to_week_string</strong></code></dt>
+
+<dd>
+<p>Serialize the week value represented by the object as an HTML valid week string [HTML]. Note that month, day, time, and time zone are ignored.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=week&gt;</code> and <code>time</code> elements.</p>
+
+</dd><dt id="$string_=_$dt->to_time_string"><code>$string = $dt-&gt;<strong id="member-to_time_string">to_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the time value represented by the object as an HTML valid time string [HTML]. Note that date and time zone are ignored.</p>
+
+<p>This method is suitable for values for HTML <code>&lt;input type=time&gt;</code>, <code>time</code> elements, and microdata <code>http://schema.org/Time</code> item values.</p>
+
+</dd><dt id="$string_=_$dt->to_shortest_time_string"><code>$string = $dt-&gt;<strong id="member-to_shortest_time_string">to_shortest_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the time value represented by the object as an HTML valid time string [HTML], using shortest possible form. Note that date and time zone are ignored.</p>
+
+</dd><dt id="$datetime_=_$dt->to_date_time"><code>$datetime = $dt-&gt;<strong id="member-to_date_time">to_date_time</strong></code></dt>
+
+<dd>
+<p>Return a new <a href="http://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> object which represents the time represented by the object. If the object has associated time zone, the returned object is in the equivalent time zone. Otherwise, the returned object is in the <code>floating</code> time zone. Note that Web date and time formats do not support leap seconds while <a href="http://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> does support them such that operations on Web date and time values and <a href="http://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> objects might obtain different results.</p>
+
+<p>This method requires the <a href="http://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> module.</p>
+
+</dd><dt id="$timepiece_=_$dt->to_time_piece_gm"><code>$timepiece = $dt-&gt;<strong id="member-to_time_piece_gm">to_time_piece_gm</strong></code></dt>
+
+<dd>
+<p>Return a new <a href="http://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> object which represents the time represented by the object, in UTC. If the object is not associated with any time zone, it is handled as if it were associated with UTC.</p>
+
+<p>This method requires the <a href="http://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> module.</p>
+
+</dd><dt id="$timepiece_=_$dt->to_time_piece_local"><code>$timepiece = $dt-&gt;<strong id="member-to_time_piece_local">to_time_piece_local</strong></code></dt>
+
+<dd>
+<p>Return a new <a href="http://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> object which represents the time represented by the object, in local time zone (i.e. Perl's <code>localtime</code>'s time zone). If the object is not associated with any time zone, it is handled as if it were associated with UTC and then converted as appropriate.</p>
+
+<p>This method requires the <a href="http://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> module.</p>
 </dd>
 </dl>
 
 </section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
 
-<p>The module requires Perl 5.8 or later and the <a href="../../../pod/Time/Local" class="podlinkpod">Time::Local</a> module (which is a core module).</p>
+<p>The module requires Perl 5.8 or later.</p>
 
-<p>The <code>to_datetime</code> method requires more module.</p>
+<p>Methods <code>to_date_time</code>, <code>to_time_piece_gm</code>, and <code>to_time_piece_local</code> require more modules.</p>
 
 </section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
@@ -213,6 +315,23 @@
 
 <dd>
 <p>POSIX.1-2008 <code class="url">&lt;<a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap04.html#tag_04_15">http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap04.html#tag_04_15</a>&gt;</code>.</p>
+
+</dd><dt id="HTTP">HTTP</dt>
+
+<dd>
+<p>RFC 1945, Hypertext Transfer Protocol -- HTTP/1.0 <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc1945">http://tools.ietf.org/html/rfc1945</a>&gt;</code>.</p>
+
+<p>RFC 7231, Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>&gt;</code>.</p>
+
+</dd><dt id="RSS2">RSS2</dt>
+
+<dd>
+<p>RSS 2.0 Specification <code class="url">&lt;<a href="http://www.rssboard.org/rss-specification">http://www.rssboard.org/rss-specification</a>&gt;</code>.</p>
+
+</dd><dt id="RSS2BP">RSS2BP</dt>
+
+<dd>
+<p>Really Simple Syndication Best Practices Profile <code class="url">&lt;<a href="http://www.rssboard.org/rss-profile">http://www.rssboard.org/rss-profile</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -220,11 +339,27 @@
 
 <p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
+</section><section id="ACKNOWLEDGEMENTS"><h1>ACKNOWLEDGEMENTS</h1>
+
+<p>This module contains a code derived from <a href="http://search.cpan.org/dist/Time-Local/lib/Time/Local.pm" class="podlinkpod">Time::Local</a>, whose authors are:</p>
+
+<pre>
+<code>  This module is based on a Perl 4 library, timelocal.pl, that was
+  included with Perl 4.036, and was most likely written by Tom
+  Christiansen.
+
+  The current version was written by Graham Barr.
+
+  It is now being maintained separately from the Perl core by Dave
+  Rolsky, &lt;autarch@urth.org&gt;.</code></pre>
+
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
 <p>Copyright 2008-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>This program partially derived from <a href="http://search.cpan.org/dist/Time-Local/lib/Time/Local.pm" class="podlinkpod">Time::Local</a>: "Copyright (c) 1997-2003 Graham Barr, 2003-2007 David Rolsky. All rights reserved. This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself."</p>
 
 
 
@@ -232,8 +367,8 @@
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

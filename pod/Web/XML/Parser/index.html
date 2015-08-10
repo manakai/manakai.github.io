@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::XML::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::XML::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../../docs" rel="up up up">Documents</a></li>
@@ -20,23 +20,25 @@
 
 <pre>
 <code>  use Web::XML::Parser;
-  use Message::DOM::DOMImplementation;
+  use Web::DOM::Document;
   $parser = Web::XML::Parser-&gt;new;
-  $dom = Message::DOM::DOMImplementation-&gt;new;
-  $doc = $dom-&gt;create_document;
+  $doc = Web::DOM::Document-&gt;new;
   
   $parser-&gt;parse_char_string ($chars =&gt; $doc);
+  $parser-&gt;parse_byte_string ($encoding, $bytes =&gt; $doc);
 
   ## Or, just use DOM attribute:
   $doc-&gt;inner_html ($chars);</code></pre>
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::XML::Parser</code> module is an implementation of the XML parser. The parser is not Draconian - the parser does not holt on well-formedness errors. It implements a variant of XML5 proposal, which defines error handling for ill-formed XML documents.</p>
+<p>The <code>Web::XML::Parser</code> module is an XML parser, supporting XML 1.0 and XML Namespaces 1.0, written in pure Perl.</p>
+
+<p>This parser is inspired by the HTML Standard and the draft XML5 specification. It is not a Draconian parser; it does not abort the parsing just because of a well-formedness error but does try to recover from the error.</p>
+
+<p>This module provides a low-level API to the parser, which accepts byte or character sequence as input and construct DOM tree as output, optionally reporting errors and warnings detected during the parsing. Applications such as browsers, data mining tools, validators, and so on, can use this module directly. However, it is encouraged to use higher-level APIs such as DOM <code>inner_html</code> method (see <a href="../../../../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a> in <a href="../../../../pod/perl-web-dom">the perl-web-dom package</a>, for example).</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
-
-<p>It is recommended to use standard DOM interface, such as <code>inner_html</code> method of the <code>Document</code> object, to parse an XML string, where possible. The <a href="../../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a> module, which, in fact, is used to implement the <code>inner_html</code> method, offers more control on how parser behaves, which would not be useful unless you are writing a complex user agent such as browser or validator.</p>
 
 <p>The <a href="../../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a> module provides following methods:</p>
 
@@ -49,20 +51,34 @@
 </dd><dt id="$parser->parse_char_string_($chars_=>_$doc)"><code>$parser-&gt;<strong id="member-parse_char_string">parse_char_string</strong> ($chars =&gt; $doc)</code></dt>
 
 <dd>
-<p>Parse a string of characters (i.e. a possibly utf8-flagged string) as XML and construct the DOM tree.</p>
+<p>Parse a character string as XML. The first argument must be a character string (i.e. a latin1 or utf8 string). The second argument must be a DOM <code>Document</code> object. The <code>Document</code> is to be mutated during the parsing.</p>
 
-<p>The first argument to the method must be a string to parse. It may or may not be a valid or well-formed XML document.</p>
+<p>See <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup#dependency">https://github.com/manakai/perl-web-markup#dependency</a>&gt;</code> for the requirements on the <code>Document</code> object.</p>
 
-<p>The second argument to the method must be a DOM <code>Document</code> object (<a href="../../../../pod/Message/DOM/Document" class="podlinkpod">Message::DOM::Document</a>). Any child nodes of the document is first removed by the parser.</p>
+</dd><dt id="$parser->parse_byte_string_($encoding,_$bytes_=>_$doc)"><code>$parser-&gt;<strong id="member-parse_byte_string">parse_byte_string</strong> ($encoding, $bytes =&gt; $doc)</code></dt>
+
+<dd>
+<p>Parse a byte string as XML. The first argument must be a character encoding label fo the byte string, if any, or <code>undef</code> (See <a href="#SPECIFYING_ENCODING" class="podlinkpod">"SPECIFYING ENCODING"</a>). The second argument must be a byte string. The third argument must be a DOM <code>Document</code> object. The <code>Document</code> is to be mutated during the parsing.</p>
+
+<p>See <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup#dependency">https://github.com/manakai/perl-web-markup#dependency</a>&gt;</code> for the requirements on the <code>Document</code> object.</p>
 
 </dd><dt id="$node_list_=_$parser->parse_char_string_with_context_($chars,_$context,_$empty_doc)"><code>$node_list = $parser-&gt;<strong id="member-parse_char_string_with_context">parse_char_string_with_context</strong> ($chars, $context, $empty_doc)</code></dt>
 
 <dd>
-<p>Parse a string of characters using the context node <var>$context</var>, using the empty document <var>$empty_doc</var>.</p>
+<p>Parse a character string as XML in the specified context. The first argument must be a character string (i.e. a latin1 or utf8 string). The second argument must be an <code>Element</code> object used as the context, or <code>undef</code> if there is no context. The third argument must be an empty <code>Document</code> object used in the parsing. Note that the <code>Document</code>'s children list is not to be affected by the parsing. The method returns an <code>HTMLCollection</code> object containing the result of the parsing (zero or more <code>Node</code> objects).</p>
 
-<p>The first argument to the method must be a string of characters. The second argument must be an element or <code>undef</code>.</p>
+<p>This method can be used to implement the <code>inner_html</code> method of an <code>Element</code>.</p>
 
-<p>The method returns the result node list.</p>
+<p>See <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup#dependency">https://github.com/manakai/perl-web-markup#dependency</a>&gt;</code> for the requirements on the <code>Document</code> and <code>Element</code> objects.</p>
+
+</dd><dt id="$string_=_$parser->known_definite_encoding"><code>$string = $parser-&gt;<strong id="member-known_definite_encoding">known_definite_encoding</strong></code></dt>
+
+<dt id="$parser->known_definite_encoding_($string)"><code>$parser-&gt;<strong>known_definite_encoding</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set a known character encoding used to parse the document. See also <a href="#SPECIFYING_ENCODING" class="podlinkpod">"SPECIFYING ENCODING"</a>.</p>
+
+<p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
 
 </dd><dt id="$code_=_$parser->onerror"><code>$code = $parser-&gt;<strong id="member-onerror">onerror</strong></code></dt>
 
@@ -71,12 +87,16 @@
 <dd>
 <p>Get or set the error handler for the parser. Any parse error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
 
+<p>The code is not expected to throw any exception. See also <code>throw</code>.</p>
+
+<p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
+
 </dd><dt id="$parser->throw_($code)"><code>$parser-&gt;<strong id="member-throw">throw</strong> ($code)</code></dt>
 
 <dd>
 <p>Terminate the parser and run the specified code reference. The code reference must throw an exception.</p>
 
-<p>If the error handler specified by the <code>onerror</code> method throw an exception, it must not be directly thrown and this method must be used instead. Otherwise resources used by the parser is not destroyed due to the unexpected termination.</p>
+<p>When the error handler specified by the <code>onerror</code> method is intended to abort the parsing, it must invoke this method and return. Otherwise resources used by the parser might not be destroyed due to the unexpected termination.</p>
 
 </dd><dt id="$parser->max_entity_depth_($integer)"><code>$parser-&gt;<strong id="member-max_entity_depth">max_entity_depth</strong> ($integer)</code></dt>
 
@@ -91,16 +111,37 @@
 
 <dd>
 <p>Get or set the maximum number of entity references to be expanded. The value must be a non-negative integer. Note that predefined entities and HTML character entities are always expanded and not taken into account for the number of entity expansions.</p>
+
+</dd><dt id="$parser->ignore_doctype_pis_($boolean)"><code>$parser-&gt;<strong id="member-ignore_doctype_pis">ignore_doctype_pis</strong> ($boolean)</code></dt>
+
+<dt id="$boolean_=_$parser->ignore_doctype_pis"><code>$boolean = $parser-&gt;<strong>ignore_doctype_pis</strong></code></dt>
+
+<dd>
+<p>Get or set whether processing instructions in the DTD should be exposed to the DOM or not. If true, the <code>DocumentType</code> object, if any, contains no child node even when there are processing instructions in the DTD.</p>
 </dd>
 </dl>
 
-<p>Parsed document structure is reflected to the <code>Document</code> object specified as an argument to parse methods.</p>
+<p>The module also has following methods for API compatibility with <a href="../../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> but they have no effect: <code>locale_tag</code>, <code>scripting</code>.</p>
+
+</section><section id="SPECIFYING_ENCODING"><h1>SPECIFYING ENCODING</h1>
+
+<p>The input to the <code>parse_char_*</code> methods are a string of characters. It is always interpreted as a Perl character string (utf8 or latin1).</p>
+
+<p>The input to the <code>parse_byte*</code> methods are a string of bytes, where characters are encoded in some Web-compatible character encoding. It is decoded as specified by Encoding standards.</p>
+
+<p>The <code>parse_byte*</code> methods accept a character encoding label as one of arguments. It is interpreted as the transport layer character encoding metadata. In HTTP, it is the value of the <code>charset</code> parameter in the <code>Content-Type</code> header. If it is unknown, the argument must be set to <code>undef</code>.</p>
+
+<p>The <code>known_definite_encoding</code> method can be used to set a known definite encoding. If its value is not <code>undef</code>, it is used to decode the document. This takes precedence over the transport layer character encoding metadata and is always respected.</p>
+
+<p>The character encoding, if specified, must be represented by one of its labels, defined by the Encoding Standard. Unknown labels are ignored. Examples of labels include (but not limited to): <code>utf-8</code>, <code>windows-1252</code>, <code>shift_jis</code>, <code>euc-jp</code>, <code>iso-2022-jp</code>, and <code>gb18030</code>. Encoding labels are ASCII case-insensitive.</p>
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="../../../../pod/Message/DOM/Document" class="podlinkpod">Message::DOM::Document</a>, <a href="../../../../pod/Message/DOM/Element" class="podlinkpod">Message::DOM::Element</a>.</p>
+<p><a href="../../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>, <a href="../../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> in <a href="../../../../pod/perl-web-dom">the perl-web-dom package</a>.</p>
 
-<p><a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>.</p>
+<p><a href="../../../../pod/Web/XML/Serializer" class="podlinkpod">Web::XML::Serializer</a>.</p>
+
+<p><a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>, <a href="../../../../pod/Web/XML/DTDValidator" class="podlinkpod">Web::XML::DTDValidator</a>.</p>
 
 <p><a href="../../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a>.</p>
 
@@ -114,26 +155,27 @@
 <dd>
 <p>XML 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xml/">http://www.w3.org/TR/xml/</a>&gt;</code>.</p>
 
-<p>XML 1.1 <code class="url">&lt;<a href="http://www.w3.org/TR/xml11/">http://www.w3.org/TR/xml11/</a>&gt;</code>.</p>
+</dd><dt id="XMLNS">XMLNS</dt>
 
+<dd>
 <p>Namespaces in XML 1.0 <code class="url">&lt;<a href="http://www.w3.org/TR/xml-names/">http://www.w3.org/TR/xml-names/</a>&gt;</code>.</p>
 
-<p>Namespaces in XML 1.1 <code class="url">&lt;<a href="http://www.w3.org/TR/xml-names11/">http://www.w3.org/TR/xml-names11/</a>&gt;</code>.</p>
+</dd><dt id="INFOSET">INFOSET</dt>
 
+<dd>
 <p>XML Information Set <code class="url">&lt;<a href="http://www.w3.org/TR/xml-infoset/">http://www.w3.org/TR/xml-infoset/</a>&gt;</code>.</p>
 
 <p>DOM Level 3 Core - Infoset Mapping <code class="url">&lt;<a href="http://www.w3.org/TR/DOM-Level-3-Core/infoset-mapping.html">http://www.w3.org/TR/DOM-Level-3-Core/infoset-mapping.html</a>&gt;</code>.</p>
 
-<p>XML5. See <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/XML5">http://suika.suikawiki.org/~wakaba/wiki/sw/n/XML5</a>&gt;</code> for references.</p>
+</dd><dt id="XML5">XML5</dt>
 
-<p>XXX XML-DOM mapping is not fully defined.</p>
-
-<p>The <code>xmlns</code> attribute in an XML document MUST be mapped to an <code>Attr</code> object whose namespace is the XMLNS namespace and name is <code>xmlns</code>.</p>
+<dd>
+<p>XML-ER <code class="url">&lt;<a href="https://dvcs.w3.org/hg/xml-er/raw-file/tip/Overview.html">https://dvcs.w3.org/hg/xml-er/raw-file/tip/Overview.html</a>&gt;</code>.</p>
 
 </dd><dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Living Standard - Parsing XHTML documents <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#parsing-xhtml-documents">http://www.whatwg.org/specs/web-apps/current-work/#parsing-xhtml-documents</a>&gt;</code>.</p>
+<p>HTML Standard - Parsing XHTML documents <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#parsing-xhtml-documents">http://www.whatwg.org/specs/web-apps/current-work/#parsing-xhtml-documents</a>&gt;</code>.</p>
 
 <p>The XML fragment parsing algorithm must return the children of the template content of the root element of the resulting <code>Document</code>, in tree order, if the /context/ element is an HTML <code>template</code> element.</p>
 
@@ -149,15 +191,23 @@
 </dd>
 </dl>
 
+<p>Note that there is no single specification that completely defines XML parsing.</p>
+
+<p>XML 1.1 is no longer supported.</p>
+
+<p>See also <a href="../../../../pod/Web/XML/DTDValidator" class="podlinkpod">Web::XML::DTDValidator</a>.</p>
+
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
 <p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>This library derived from a JSON file, which contains data extracted from HTML Standard. "Written by Ian Hickson (Google, ian@hixie.ch) - Parts © Copyright 2004-2014 Apple Inc., Mozilla Foundation, and Opera Software ASA; You are granted a license to use, reproduce and create derivative works of this document."</p>
 
 
 
@@ -165,8 +215,8 @@
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../../.." rel="top">Top</a>
+    </li><li><a href="../../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

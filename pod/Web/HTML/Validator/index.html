@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::HTML::Validator</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::HTML::Validator</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../../docs" rel="up up up">Documents</a></li>
@@ -59,6 +59,15 @@
 
 <p>The value should not be set during the validation. If the value is changed, the result is undefined.</p>
 
+</dd><dt id="$dids_=_$val->di_data_set"><code>$dids = $val-&gt;<strong id="member-di_data_set">di_data_set</strong></code></dt>
+
+<dt id="$val->di_data_set_($dids)"><code>$val-&gt;<strong>di_data_set</strong> ($dids)</code></dt>
+
+<dd>
+<p>Get or set the "di" data set for the validator. It is used for reporting errors in nested subdocuments contained in the validated document (e.g. <code>iframe</code> <code>srcdoc</code> documents).</p>
+
+<p>See also SuikaWiki:manakai index data structure <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures</a>&gt;</code>.</p>
+
 </dd><dt id="$boolean_=_$val->scripting"><code>$boolean = $val-&gt;<strong id="member-scripting">scripting</strong></code></dt>
 
 <dt id="$val->scripting_($boolean)"><code>$val-&gt;<strong>scripting</strong> ($boolean)</code></dt>
@@ -79,7 +88,7 @@
 </dd>
 </dl>
 
-<p>Since the input to the validator is a DOM, not a string, syntax-level conformance errors can't be checked. For detecting any conformance error, you have to parse the string using appropriate parser (<a href="../../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> for HTML, or <a href="../../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a> for XML), and then invoke the validator with the result DOM as the input. For XML, you might also want to invoke DTD validator between invocations of parser and validator, as this validator does not perform any DTD-based validation.</p>
+<p>Since the input to the validator is a DOM, not a string, syntax-level conformance errors can't be checked. For detecting any conformance error, you have to parse the string using appropriate parser (<a href="../../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> for HTML, or <a href="../../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a> for XML), and then invoke the validator with the result DOM as the input.</p>
 
 </section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
 
@@ -212,6 +221,8 @@
 
 <p>Unless otherwise specified, for the purpose of validation of HTML documents or fragments (serialized in the HTML syntax and then) embedded within other DOM attribute or node, such as the <code>srcdoc</code> attribute of the HTML <code>iframe</code> element, and Atom or RSS elements, whether scripting is enabled or disabled for the document associated with the HTML parser used to parse the document or fragment, as well as whether scripting is enabled or disabled for the nodes returned by the HTML parser, is same as whether scripting is enabled or disabled for the node document of the node.</p>
 
+<p>If the |http-equiv| attribute of the |meta| element is in the Default style state, the |content| attribute value MUST NOT be the empty string.</p>
+
 </dd><dt id="OBSVOCAB">OBSVOCAB</dt>
 
 <dd>
@@ -240,10 +251,14 @@
 <dd>
 <p>The Atom Syndication Format <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc4287">http://tools.ietf.org/html/rfc4287</a>&gt;</code>, <code class="url">&lt;<a href="http://www.rfc-editor.org/errata_search.php?rfc=4287">http://www.rfc-editor.org/errata_search.php?rfc=4287</a>&gt;</code>.</p>
 
+<p>The <code>rel</code> attribute value MUST be a link type or link relation for which semantics in Atom document is specified. It MUST NOT be a non-conforming link type.</p>
+
 </dd><dt id="ATOM03">ATOM03</dt>
 
 <dd>
 <p>The Atom Syndication Format 0.3 (PRE-DRAFT) <code class="url">&lt;<a href="https://github.com/mnot/I-D/blob/master/Published/atom-format/draft-nottingham-atom-format-02.xml">https://github.com/mnot/I-D/blob/master/Published/atom-format/draft-nottingham-atom-format-02.xml</a>&gt;</code>.</p>
+
+<p>The <code>rel</code> attribute value MUST be a link type or link relation for which semantics in Atom 0.3 document is specified. It MUST NOT be a non-conforming link type.</p>
 
 </dd><dt id="ATOMTHREADS">ATOMTHREADS</dt>
 
@@ -277,7 +292,7 @@
 <dd>
 <p>Schema.org <code class="url">&lt;<a href="http://schema.org/">http://schema.org/</a>&gt;</code>.</p>
 
-<p>Definitions are clarified as follows: An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Integer">http://schema.org/Integer</a>&gt;</code> MUST be a valid integer. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/DateTime">http://schema.org/DateTime</a>&gt;</code> MUST be a valid global date and time string or a valid local date and time string. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Date">http://schema.org/Date</a>&gt;</code> MUST be a valid date string. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Time">http://schema.org/Time</a>&gt;</code> MUST be a valid time string. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/URL">http://schema.org/URL</a>&gt;</code> MUST be an absolute URL.</p>
+<p>An item value whose data type is <code class="url">&lt;<a href="http://schema.org/Integer">http://schema.org/Integer</a>&gt;</code> MUST be a valid integer. An item value whose data type is <code class="url">&lt;<a href="http://schema.org/URL">http://schema.org/URL</a>&gt;</code> MUST be an absolute URL.</p>
 
 </dd><dt id="DATAVOCAB">DATAVOCAB</dt>
 
@@ -286,12 +301,12 @@
 
 <p>Structured data <code class="url">&lt;<a href="https://support.google.com/webmasters/topic/2643152?ref_topic=30163">https://support.google.com/webmasters/topic/2643152?ref_topic=30163</a>&gt;</code>.</p>
 
-<p>Definitions are clarified as follows: If the value is defined as an "ISO date", it MUST be a valid date string or a valid global date and time string. If the value is defined as an "ISO duration", it MUST be a valid vevent duration string. If the value is defined as a URL, image, or link, it MUST be an absolute URL.</p>
+<p>If the value is defined as a URL, image, or link, it MUST be an absolute URL.</p>
 
 </dd><dt id="ARIA">ARIA</dt>
 
 <dd>
-<p>Accessible Rich Internet Applications (WAI-ARIA) 1.0 <code class="url">&lt;<a href="http://www.w3.org/WAI/PF/aria/complete">http://www.w3.org/WAI/PF/aria/complete</a>&gt;</code>.</p>
+<p>Accessible Rich Internet Applications (WAI-ARIA) 1.1 <code class="url">&lt;<a href="http://w3c.github.io/aria/aria/aria.html">http://w3c.github.io/aria/aria/aria.html</a>&gt;</code>.</p>
 
 <p>When an attribute value is defined as "token list", the value MUST be a valid unordered set of unique space-separated tokens.</p>
 
@@ -322,6 +337,35 @@
 <dd>
 <p>Social Feedback - GREE Developer Center <code class="url">&lt;<a href="https://docs.developer.gree.net/ja/platform/connect/socialfeedback">https://docs.developer.gree.net/ja/platform/connect/socialfeedback</a>&gt;</code>.</p>
 
+</dd><dt id="HTMLPRE5924">HTMLPRE5924</dt>
+
+<dd>
+<p>HTML Standard Tracker <code class="url">&lt;<a href="https://html5.org/r/5924">https://html5.org/r/5924</a>&gt;</code>.</p>
+
+</dd><dt id="HTMLPRE5925">HTMLPRE5925</dt>
+
+<dd>
+<p>HTML Standard Tracker <code class="url">&lt;<a href="https://html5.org/r/5925">https://html5.org/r/5925</a>&gt;</code>.</p>
+
+</dd><dt id="WHATWGWIKI">WHATWGWIKI</dt>
+
+<dd>
+<p>WHATWG Wiki MetaExtensions <code class="url">&lt;<a href="https://wiki.whatwg.org/wiki/MetaExtensions">https://wiki.whatwg.org/wiki/MetaExtensions</a>&gt;</code>.</p>
+
+<p>WHATWG Wiki RelExtensions <code class="url">&lt;<a href="https://wiki.whatwg.org/wiki/RelExtensions">https://wiki.whatwg.org/wiki/RelExtensions</a>&gt;</code>.</p>
+
+<p>Unless otherwise specified, link types marked as "accepted" in the RelExtensions table MUST be treated as if it were part of the Microformats Wiki's relevant table.</p>
+
+</dd><dt id="UFWIKI">UFWIKI</dt>
+
+<dd>
+<p>Microformats Wiki - existing rel values <code class="url">&lt;<a href="http://microformats.org/wiki/existing-rel-values">http://microformats.org/wiki/existing-rel-values</a>&gt;</code>.</p>
+
+</dd><dt id="CSP">CSP</dt>
+
+<dd>
+<p>Content Security Policy <code class="url">&lt;<a href="https://w3c.github.io/webappsec/specs/content-security-policy/">https://w3c.github.io/webappsec/specs/content-security-policy/</a>&gt;</code>.</p>
+
 </dd><dt id="MIMESNIFF">MIMESNIFF</dt>
 
 <dd>
@@ -346,9 +390,9 @@
 </dd>
 </dl>
 
-<p>The validator also supports much more Web standards (indirectly via required modules), including but not limited to CSS, IETF BCP 47 language tags, and Encoding Standard.</p>
+<p>The validator also supports much more Web standards (indirectly via required modules), including but not limited to CSS, IETF BCP 47 language tags, Encoding Standard, and XML 1.0 DTD.</p>
 
-<p>Note that HTML 3.2, HTML4, XML 1.1, Namespaces in XML 1.1, <code>xml:id</code>, XLink, XInclude, XHTML1, XHTML Modularization, Ruby Annotations, RDFa, XForms, and XHTML2 are not considered as applicable specifications. The module does not support ARIA attributes in its own namespace. Also, the module does not support historical HTML features no longer part of the language, except for those explicitly listed in the OBSVOCAB specification. See the specification for details.</p>
+<p>Note that HTML2, HTML3, HTML4, HTML 5.0, XML 1.1, Namespaces in XML 1.1, <code>xml:id</code>, XLink, XInclude, XHTML1, XHTML Modularization, Ruby Annotations, RSS 0.9, RDFa, XForms, XHTML2, HLink, XML Events, and XFrames are not considered as applicable specifications. The module does not support ARIA attributes in its own namespace. Also, the module does not support historical HTML features no longer part of the language, except for those explicitly listed in the OBSVOCAB specification. See the specification for details.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
@@ -356,7 +400,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
@@ -366,8 +410,8 @@
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../../.." rel="top">Top</a>
+    </li><li><a href="../../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

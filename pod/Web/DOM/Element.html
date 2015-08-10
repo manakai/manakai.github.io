@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::DOM::Element</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::DOM::Element</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
@@ -16,7 +16,7 @@
 
 
 
-<hgroup><h1><code>Web::DOM::Element</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Element"><code>Element</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::Element</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/Element"><code>Element</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::Element</code> class implements the DOM <code>Element</code> interface.
 It represents an element in the document.</p>
@@ -33,7 +33,7 @@ following methods are available:</p>
 <dt id="$map_=_$el->attributes"><code>$map = $el-&gt;<strong id="member-attributes">attributes</strong></code></dt>
 
 <dd>
-<p>Return the <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a> object containing the content attributes for the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+<p>Return the <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a> object containing the content attributes for the element. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$tokens_=_$el->class_list"><code>$tokens = $el-&gt;<strong id="member-class_list">class_list</strong></code></dt>
 
@@ -73,7 +73,15 @@ If there is no attribute with the specified name,
 <dd>
 <p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the specified attribute.
 If there is no attribute with the specified name,
-<code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$indexed_=_$el->manakai_get_attribute_indexed_string_ns_($nsurl,_$local_name)"><code>$indexed = $el-&gt;<strong id="member-manakai_get_attribute_indexed_string_ns">manakai_get_attribute_indexed_string_ns</strong> ($nsurl,
+$local_name)</code></dt>
+
+<dd>
+<p>Return the IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code> representation of the attribute with the specified namespace URL and local name.
+If there is no attribute with the specified name,
+<code>undef</code> is returned. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
 
 </dd><dt id="$attr_=_$el->get_attribute_node_ns_($nsurl,_$local_name)"><code>$attr = $el-&gt;<strong id="member-get_attribute_node_ns">get_attribute_node_ns</strong> ($nsurl,
 $local_name)</code></dt>
@@ -81,7 +89,7 @@ $local_name)</code></dt>
 <dd>
 <p>Return the <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> object for the attribute with the specified namespace URL and local name.
 If there is no attribute with the specified name,
-<code>undef</code> is returned. <cite class="ref">[<a href="#DOM3CORE">DOM3CORE</a>]</cite></p>
+<code>undef</code> is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$bool_=_$el->has_attribute_($name)"><code>$bool = $el-&gt;<strong id="member-has_attribute">has_attribute</strong> ($name)</code></dt>
 
@@ -93,6 +101,11 @@ $local_name)</code></dt>
 
 <dd>
 <p>Return whether there is the attribute with the specified namespace URL and local name or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
+</dd><dt id="$bool_=_$el->has_attributes"><code>$bool = $el-&gt;<strong id="member-has_attributes">has_attributes</strong></code></dt>
+
+<dd>
+<p>Return whether the element has any content attribute or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->id"><code>$string = $el-&gt;<strong id="member-id">id</strong></code></dt>
 
@@ -202,7 +215,7 @@ the method does nothing. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 <dd>
 <p>Remove the specified attribute from the element.
-The removed attribute is returned. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+The removed attribute is returned. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$el->set_attribute_($name_=>_$value)"><code>$el-&gt;<strong id="member-set_attribute">set_attribute</strong> ($name =&gt; $value)</code></dt>
 
@@ -228,6 +241,23 @@ its value is replaced by the new one. <cite class="ref">[<a href="#DOM">DOM</a>]
 <p>The qualified name can be represented as an array reference,
 where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
 
+</dd><dt id="$el->manakai_set_attribute_indexed_string_ns_($nsurl,_$qname_=>_$value)"><code>$el-&gt;<strong id="member-manakai_set_attribute_indexed_string_ns">manakai_set_attribute_indexed_string_ns</strong> ($nsurl,
+$qname =&gt; $value)</code></dt>
+
+<dt id="$el->manakai_set_attribute_indexed_string_ns_($nsurl,_[$prefix,_$local_name]_=>_$value)"><code>$el-&gt;<strong>manakai_set_attribute_indexed_string_ns</strong> ($nsurl,
+[$prefix,
+$local_name] =&gt; $value)</code></dt>
+
+<dd>
+<p>Set the attribute with the specified namespace URL,
+qualified name,
+and value represented as an IndexedString <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures#anchor-1</a>&gt;</code>.
+If there is already the attribute with the same namespace URL / local name pair,
+its value is replaced by the new one. <cite class="ref">[<a href="#MANAKAIINDEX">MANAKAIINDEX</a>]</cite></p>
+
+<p>The qualified name can be represented as an array reference,
+where the first item is the prefix (or <code>undef</code> for the null namespace) and the second item is the local name. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
 </dd><dt id="$old_attr_=_$el->set_attribute_node_($new_attr)"><code>$old_attr = $el-&gt;<strong id="member-set_attribute_node">set_attribute_node</strong> ($new_attr)</code></dt>
 
 <dt id="$old_attr_=_$el->set_attribute_node_ns_($new_attr)"><code>$old_attr = $el-&gt;<strong id="member-set_attribute_node_ns">set_attribute_node_ns</strong> ($new_attr)</code></dt>
@@ -236,7 +266,7 @@ where the first item is the prefix (or <code>undef</code> for the null namespace
 <p>Append (or replace,
 if exists) the attribute node to the list of attributes for the element.
 If there is already the attribute with same namespace URL / local name pair,
-the attribute is removed from the list and is returned by the method. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+the attribute is removed from the list and is returned by the method. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$name_=_$el->tag_name"><code>$name = $el-&gt;<strong id="member-tag_name">tag_name</strong></code></dt>
 
@@ -269,7 +299,7 @@ the obsolete <code>manakai_base_uri</code> method is available. <cite class="ref
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-element">http://dom.spec.whatwg.org/#interface-element</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-element">http://dom.spec.whatwg.org/#interface-element</a>&gt;</code>.</p>
 
 </dd><dt id="DOMNODEEXODUS">DOMNODEEXODUS</dt>
 
@@ -287,11 +317,6 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 <dd>
 <p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#htmlelement">http://www.whatwg.org/specs/web-apps/current-work/#htmlelement</a>&gt;</code>.</p>
 
-</dd><dt id="DOM3CORE">DOM3CORE</dt>
-
-<dd>
-<p>Document Object Model (DOM) Level 3 Core Specification <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-745549614">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/DOM3-Core.html#core-ID-745549614</a>&gt;</code>.</p>
-
 </dd><dt id="DOMDTDEF">DOMDTDEF</dt>
 
 <dd>
@@ -306,6 +331,11 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 
 <dd>
 <p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAIINDEX">MANAKAIINDEX</dt>
+
+<dd>
+<p>manakai index data structures <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -320,7 +350,7 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2012-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2012-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
@@ -330,8 +360,8 @@ commented out <code class="url">&lt;<a href="view-source:http://dom.spec.whatwg.
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

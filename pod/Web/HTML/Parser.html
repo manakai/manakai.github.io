@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::HTML::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::HTML::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
@@ -20,10 +20,9 @@
 
 <pre>
 <code>  use Web::HTML::Parser;
-  use Message::DOM::DOMImplementation;
+  use Web::DOM::Document;
   $parser = Web::HTML::Parser-&gt;new;
-  $dom = Message::DOM::DOMImplementation-&gt;new;
-  $doc = $dom-&gt;create_document;
+  $doc = Web::DOM::Document-&gt;new;
   
   $parser-&gt;parse_char_string ($chars =&gt; $doc);
   $parser-&gt;parse_byte_string ($encoding, $bytes =&gt; $doc);
@@ -34,13 +33,13 @@
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::HTML::Parser</code> module is an implementation of the HTML parser. It implements the HTML parsing algorithm as defined by HTML Living Standard. Therefore, it's parsing behavior is fully compatible with Web browsers with HTML5 parser enabled.</p>
+<p>The <code>Web::HTML::Parser</code> module is an HTML parser, as specified by the HTML Standard (i.e. an "HTML5" parser), written in pure Perl.</p>
+
+<p>This module provides a low-level API to the parser, which accepts byte or character sequence as input and construct DOM tree as output, optionally reporting errors and warnings detected during the parsing. Applications such as browsers, data mining tools, validators, and so on, can use this module directly. However, it is encouraged to use higher-level APIs such as DOM <code>inner_html</code> method (see <a href="../../../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a> in <a href="../../../pod/perl-web-dom">the perl-web-dom package</a>, for example).</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>It is recommended to use standard DOM interface, such as <code>inner_html</code> method of the <code>Document</code> object, to parse an HTML string, where possible. The <a href="../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> module, which, in fact, is used to implement the <code>inner_html</code> method, offers more control on how parser behaves, which would not be useful unless you are writing a complex user agent such as browser or validator.</p>
-
-<p>The <a href="../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> module provides following methods:</p>
+<p>The <a href="../../../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> module has following methods:</p>
 
 <dl>
 <dt id="$parser_=_Web::HTML::Parser->new"><code>$parser = Web::HTML::Parser-&gt;<strong id="member-new">new</strong></code></dt>
@@ -51,40 +50,34 @@
 </dd><dt id="$parser->parse_char_string_($chars_=>_$doc)"><code>$parser-&gt;<strong id="member-parse_char_string">parse_char_string</strong> ($chars =&gt; $doc)</code></dt>
 
 <dd>
-<p>Parse a string of characters (i.e. a possibly utf8-flagged string) as HTML and construct the DOM tree.</p>
+<p>Parse a character string as HTML. The first argument must be a character string (i.e. a latin1 or utf8 string). The second argument must be a DOM <code>Document</code> object. The <code>Document</code> is to be mutated during the parsing.</p>
 
-<p>The first argument to the method must be a string to parse. It may or may not be a valid HTML document.</p>
-
-<p>The second argument to the method must be a DOM <code>Document</code> object (<a href="../../../pod/Message/DOM/Document" class="podlinkpod">Message::DOM::Document</a>). Any child nodes of the document is first removed by the parser.</p>
+<p>See <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup#dependency">https://github.com/manakai/perl-web-markup#dependency</a>&gt;</code> for the requirements on the <code>Document</code> object.</p>
 
 </dd><dt id="$parser->parse_byte_string_($encoding,_$bytes_=>_$doc)"><code>$parser-&gt;<strong id="member-parse_byte_string">parse_byte_string</strong> ($encoding, $bytes =&gt; $doc)</code></dt>
 
 <dd>
-<p>Parse a string of bytes as HTML and construct the DOM tree.</p>
+<p>Parse a byte string as HTML. The first argument must be a character encoding label fo the byte string, if any, or <code>undef</code> (See <a href="#SPECIFYING_ENCODING" class="podlinkpod">"SPECIFYING ENCODING"</a>). The second argument must be a byte string. The third argument must be a DOM <code>Document</code> object. The <code>Document</code> is to be mutated during the parsing.</p>
 
-<p>The first argument to the method is the character encoding of the document, if known, or <code>undef</code>. See also <a href="#SPECIFYING_ENCODING" class="podlinkpod">"SPECIFYING ENCODING"</a>.</p>
-
-<p>The second argument to the method must be a string to parse. It may or may not be a valid HTML document.</p>
-
-<p>The third argument to the method must be a DOM <code>Document</code> object (<a href="../../../pod/Message/DOM/Document" class="podlinkpod">Message::DOM::Document</a>). Any child nodes of the document is first removed by the parser.</p>
+<p>See <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup#dependency">https://github.com/manakai/perl-web-markup#dependency</a>&gt;</code> for the requirements on the <code>Document</code> object.</p>
 
 </dd><dt id="$node_list_=_$parser->parse_char_string_with_context_($chars,_$context,_$empty_doc)"><code>$node_list = $parser-&gt;<strong id="member-parse_char_string_with_context">parse_char_string_with_context</strong> ($chars, $context, $empty_doc)</code></dt>
 
 <dd>
-<p>Parse a string of characters using the context node <var>$context</var>, using the empty document <var>$empty_doc</var>.</p>
+<p>Parse a character string as HTML in the specified context. The first argument must be a character string (i.e. a latin1 or utf8 string). The second argument must be an <code>Element</code> object used as the context, or <code>undef</code> if there is no context. The third argument must be an empty <code>Document</code> object used in the parsing. Note that the <code>Document</code>'s children list is not to be affected by the parsing. The method returns an <code>HTMLCollection</code> object containing the result of the parsing (zero or more <code>Node</code> objects).</p>
 
-<p>The first argument to the method must be a string of characters. The second argument must be an element or <code>undef</code>.</p>
+<p>This method can be used to implement the <code>inner_html</code> method of an <code>Element</code>.</p>
 
-<p>The method returns the result node list.</p>
+<p>See <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup#dependency">https://github.com/manakai/perl-web-markup#dependency</a>&gt;</code> for the requirements on the <code>Document</code> and <code>Element</code> objects.</p>
 
 </dd><dt id="$parser->locale_tag_($string)"><code>$parser-&gt;<strong id="member-locale_tag">locale_tag</strong> ($string)</code></dt>
 
 <dt id="$string_=_$parser->locale_tag"><code>$string = $parser-&gt;<strong>locale_tag</strong></code></dt>
 
 <dd>
-<p>Get or set the BCP 47 language tag for the locale used to parse the document, e.g. <code>en</code>, <code>ja</code>, <code>zh-tw</code>, and <code>zh-cn</code>. It is used to determine the default character encoding (which is only used when character encoding cannot be determined by other means) and to expand the <code>isindex</code> start tag (which is obsolete).</p>
+<p>Get or set the BCP 47 language tag for the locale used to parse the document, e.g. <code>en</code>, <code>ja</code>, <code>zh-tw</code>, and <code>zh-cn</code>. It is used to determine the default character encoding (which is only used when character encoding cannot be determined by other means).</p>
 
-<p>If <code>undef</code> is specified (or the <code>locale_tag</code> method is not explicitly invoked at all), the default is "none", which results in the <code>windows-1252</code> character encoding and English text defaults.</p>
+<p>If <code>undef</code> is specified (or the <code>locale_tag</code> method is not explicitly invoked at all), the default is "none", which results in the <code>windows-1252</code> character encoding default.</p>
 
 <p>Except for the <code>zh-tw</code> and <code>zh-cn</code>, only the primary language tag (i.e. a language code with no <code>-</code> and subtags) should be specified. Tags are compared ASCII case-insensitively.</p>
 
@@ -104,7 +97,7 @@
 <dt id="$parser->scripting_($boolean)"><code>$parser-&gt;<strong>scripting</strong> ($boolean)</code></dt>
 
 <dd>
-<p>Set whether the scripting flag of the parser is "enabled" or not. By default the value is "disabled" (false). If the value is "enabled", the |noscript| element's content is not parsed (This is how browsers parse the document by default). Otherwise the content is parsed as normal.</p>
+<p>Set whether the scripting flag of the parser is "enabled" or not. By default the value is "disabled" (false). If the value is "enabled", the <code>noscript</code> element's content is not parsed (This is how browsers parse the document by default). Otherwise the content is parsed as normal.</p>
 
 <p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
 
@@ -115,6 +108,8 @@
 <dd>
 <p>Get or set the error handler for the parser. Any parse error, as well as warning and additional processing information, is reported to the handler. See <code class="url">&lt;<a href="https://github.com/manakai/data-errors/blob/master/doc/onerror.txt">https://github.com/manakai/data-errors/blob/master/doc/onerror.txt</a>&gt;</code> for details of error handling.</p>
 
+<p>The code is not expected to throw any exception. See also <code>throw</code>.</p>
+
 <p>The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
 
 </dd><dt id="$parser->throw_($code)"><code>$parser-&gt;<strong id="member-throw">throw</strong> ($code)</code></dt>
@@ -122,17 +117,15 @@
 <dd>
 <p>Terminate the parser and run the specified code reference. The code reference must throw an exception.</p>
 
-<p>If the error handler specified by the <code>onerror</code> method throw an exception, it must not be directly thrown and this method must be used instead. Otherwise resources used by the parser is not destroyed due to the unexpected termination.</p>
+<p>When the error handler specified by the <code>onerror</code> method is intended to abort the parsing, it must invoke this method and return. Otherwise resources used by the parser might not be destroyed due to the unexpected termination.</p>
 </dd>
 </dl>
 
-<p>Parsed document structure is reflected to the <code>Document</code> object specified as an argument to parse methods. The character encoding used to parse the document can be retrieved by the <code>input_encoding</code> method of the <code>Document</code>.</p>
-
-<p>Although the parser is intended to be fully conformant to the HTML Living Standard, it might not implement latest spec changes yet. See list of bugs on the HTML parser <code class="url">&lt;<a href="http://manakai.g.hatena.ne.jp/task/2/">http://manakai.g.hatena.ne.jp/task/2/</a>&gt;</code> for the current implementation status.</p>
+<p>The module also has following methods for API compatibility with <a href="../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a> but they have no effect: <code>max_entity_depth</code>, <code>max_entity_expansions</code>, <code>ignore_doctype_pis</code>.</p>
 
 </section><section id="SPECIFYING_ENCODING"><h1>SPECIFYING ENCODING</h1>
 
-<p>The input to the <code>parse_char_*</code> methods are a string of characters. It is always interpreted as a Perl string (utf8 or latin1).</p>
+<p>The input to the <code>parse_char_*</code> methods are a string of characters. It is always interpreted as a Perl character string (utf8 or latin1).</p>
 
 <p>The input to the <code>parse_byte*</code> methods are a string of bytes, where characters are encoded in some Web-compatible character encoding. It is decoded as specified by HTML and Encoding standards.</p>
 
@@ -146,7 +139,7 @@
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="../../../pod/Message/DOM/Document" class="podlinkpod">Message::DOM::Document</a>, <a href="../../../pod/Message/DOM/Element" class="podlinkpod">Message::DOM::Element</a>.</p>
+<p><a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>, <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> in <a href="../../../pod/perl-web-dom">the perl-web-dom package</a>.</p>
 
 <p><a href="../../../pod/Web/HTML/Serializer" class="podlinkpod">Web::HTML::Serializer</a>.</p>
 
@@ -154,18 +147,17 @@
 
 <p><a href="../../../pod/Web/XML/Parser" class="podlinkpod">Web::XML::Parser</a>.</p>
 
-<p>See <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++Predefined%20User%20Data%20Names">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++Predefined%20User%20Data%20Names</a>&gt;</code> for details of source location annotations using DOM3 user data.</p>
-
 </section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
 <dl>
 <dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Living Standard - Parsing HTML documents <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#parsing">http://www.whatwg.org/specs/web-apps/current-work/#parsing</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
 
-<p>HTML Living Standard - Parsing HTML fragments <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#parsing-html-fragments">http://www.whatwg.org/specs/web-apps/current-work/#parsing-html-fragments</a>&gt;</code>.</p>
+</dd><dt id="DOCUMENTINNERHTML">DOCUMENTINNERHTML</dt>
 
+<dd>
 <p>Document.prototype.innerHTML <code class="url">&lt;<a href="http://html5.org/tools/web-apps-tracker?from=6531&amp;to=6532">http://html5.org/tools/web-apps-tracker?from=6531&amp;to=6532</a>&gt;</code>.</p>
 
 </dd><dt id="DOMPARSING">DOMPARSING</dt>
@@ -182,6 +174,11 @@
 
 <dd>
 <p>manakai DOM Extensions <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai++DOM%20Extensions</a>&gt;</code>.</p>
+
+</dd><dt id="MANAKAIINDEX">MANAKAIINDEX</dt>
+
+<dd>
+<p>manakai index data structure <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai%20index%20data%20structures">http://wiki.suikawiki.org/n/manakai%20index%20data%20structures</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -191,9 +188,11 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>This library derived from a JSON file, which contains data extracted from HTML Standard. "Written by Ian Hickson (Google, ian@hixie.ch) - Parts © Copyright 2004-2014 Apple Inc., Mozilla Foundation, and Opera Software ASA; You are granted a license to use, reproduce and create derivative works of this document."</p>
 
 
 
@@ -201,8 +200,8 @@
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

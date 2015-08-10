@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::HTML::ParserData</title><link rel="license" href="#LICENSE"></head><body><h1><a href="." rel="top">The manakai project</a></h1>
+      <title>Web::HTML::ParserData</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
@@ -18,21 +18,21 @@
 
 <hgroup><h1><code>Web::HTML::ParserData</code></h1><h2>Data for HTML parser</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::HTML::ParserData</code> module contains data for HTML parser,
-extracted from the HTML Living Standard.</p>
+<p>The <code>Web::HTML::ParserData</code> module contains data for HTML and XML parsers,
+extracted from the HTML Standard.</p>
 
 </section><section id="CONSTANTS"><h1>CONSTANTS</h1>
 
-<p>Following constants for namespace URLs are defined (but not exported): <code>HTML_NS</code> (HTML namespace),
+<p>Following constants returning namespace URLs are defined (but not exported): <code>HTML_NS</code> (HTML namespace),
 <code>SVG_NS</code> (SVG namespace),
 <code>MML_NS</code> (MathML namespace),
 <code>XML_NS</code> (XML namespace),
-<code>XMLNS_NS</code> (XML Namespace namespace),
+<code>XMLNS_NS</code> (XML Namespaces namespace),
 and <code>XLINK_NS</code> (XLink namespace).</p>
 
 </section><section id="VARIABLES"><h1>VARIABLES</h1>
 
-<p>Following data from the HTML specification are included:</p>
+<p>There are following data from the HTML Standard:</p>
 
 <dl>
 <dt id="$AllVoidElements"><code>$AllVoidElements</code></dt>
@@ -44,13 +44,39 @@ This list is equal to the list of HTML elements whose "syntax_category" is "void
 
 </dd><dt id="$MathMLTextIntegrationPoints"><code>$MathMLTextIntegrationPoints</code></dt>
 
-<dt id="$MathMLHTMLIntegrationPoints"><code>$MathMLHTMLIntegrationPoints</code></dt>
+<dd>
+<p>The local names of the MathML text integration point elements <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#mathml-text-integration-point">http://www.whatwg.org/specs/web-apps/current-work/#mathml-text-integration-point</a>&gt;</code>.
+Keys are local names and values are true values.</p>
 
-<dt id="$SVGHTMLIntegrationPoints"><code>$SVGHTMLIntegrationPoints</code></dt>
+</dd><dt id="$MathMLTextIntegrationPointMathMLElements"><code>$MathMLTextIntegrationPointMathMLElements</code></dt>
 
-<dt id="$ForeignContentBreakers"><code>$ForeignContentBreakers</code></dt>
+<dd>
+<p>The tag names of the start tags that are interpreted as MathML elements in MathML text integration point <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#tree-construction">http://www.whatwg.org/specs/web-apps/current-work/#tree-construction</a>&gt;</code>.
+Keys are tag names (in lowercase) and values are true values.</p>
 
-<dt id="$MathMLAttrNameFixup"><code>$MathMLAttrNameFixup</code></dt>
+</dd><dt id="$SVGHTMLIntegrationPoints"><code>$SVGHTMLIntegrationPoints</code></dt>
+
+<dd>
+<p>The local names of the HTML integration point SVG elements <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#html-integration-point">http://www.whatwg.org/specs/web-apps/current-work/#html-integration-point</a>&gt;</code>.
+Keys are local names and values are true values.</p>
+
+</dd><dt id="$MathMLHTMLIntegrationPoints"><code>$MathMLHTMLIntegrationPoints</code></dt>
+
+<dd>
+<p>The local names of the HTML integration point MathML elements <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#html-integration-point">http://www.whatwg.org/specs/web-apps/current-work/#html-integration-point</a>&gt;</code>.
+Keys are local names and values are true values.</p>
+
+<p>Note that the <code>annotation-xml</code> element is <b>NOT</b> in this list (but sometimes it is an HTML integration point).</p>
+
+</dd><dt id="$ForeignContentBreakers"><code>$ForeignContentBreakers</code></dt>
+
+<dd>
+<p>The tag names of the start tags that will close foreign elements if they appear in foreign content parsing mode <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#parsing-main-inforeign">http://www.whatwg.org/specs/web-apps/current-work/#parsing-main-inforeign</a>&gt;</code>.
+Keys are tag names (in lowercase) and values are true values.</p>
+
+<p>Note that the <code>font</code> tag name is <b>NOT</b> in this list (but it sometimes closes foreign elements).</p>
+
+</dd><dt id="$MathMLAttrNameFixup"><code>$MathMLAttrNameFixup</code></dt>
 
 <dd>
 <p>Table in adjust MathML attributes <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#adjust-mathml-attributes">http://www.whatwg.org/specs/web-apps/current-work/#adjust-mathml-attributes</a>&gt;</code>.</p>
@@ -74,32 +100,62 @@ an element in the SVG namespace <code class="url">&lt;<a href="http://www.whatwg
 
 </dd><dt id="$NamedCharRefs"><code>$NamedCharRefs</code></dt>
 
-<dt id="$CharRefReplacements"><code>$CharRefReplacements</code></dt>
+<dd>
+<p>HTML named character references.</p>
 
-<dt id="$NoncharacterCodePoints"><code>$NoncharacterCodePoints</code></dt>
+</dd><dt id="$CharRefReplacements"><code>$CharRefReplacements</code></dt>
 
-<dt id="$ObsoletePermittedDoctypes"><code>$ObsoletePermittedDoctypes</code></dt>
+<dd>
+<p>The code point replacement table for HTML character references,
+as specified in HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/#tokenizing-character-references">http://www.whatwg.org/specs/web-apps/current-work/#tokenizing-character-references</a>&gt;</code>.
+Keys are original code points (as specified in character references),
+represented as strings in shortest decimal form,
+and values are corresponding replaced code points,
+represented as integers.</p>
 
-<dt id="$QuirkyPublicIDPrefixes"><code>$QuirkyPublicIDPrefixes</code></dt>
+<p>Note that surrogate code points are not included in this list (but replaced by U+FFFD).
+Note also that some code points are replaced by the same code point.</p>
 
-<dt id="$QuirkyPublicIDs"><code>$QuirkyPublicIDs</code></dt>
+</dd><dt id="$NoncharacterCodePoints"><code>$NoncharacterCodePoints</code></dt>
+
+<dd>
+<p>The Unicode noncharacter code points.
+Keys are code points,
+represented as strings in shortest decimal form,
+and values are some true values.</p>
+</dd>
 </dl>
 
-</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+<p>Note that variables not mentioned in this section should not be used.
+They might be removed in later revision of this module.</p>
 
-<p>HTML Living Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<dl>
+<dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="SOURCES"><h1>SOURCES</h1>
 
 <p>data-web-defs <code class="url">&lt;<a href="https://github.com/manakai/data-web-defs/">https://github.com/manakai/data-web-defs/</a>&gt;</code>.</p>
 
+<p>data-chars <code class="url">&lt;<a href="https://github.com/manakai/data-chars/">https://github.com/manakai/data-chars/</a>&gt;</code>.</p>
+
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2004-2011 Apple Computer,
-Inc.,
-Mozilla Foundation,
-and Opera Software ASA.</p>
-
 <p>You are granted a license to use,
-reproduce and create derivative works of this document.</p>
+reproduce and create derivative works of this file.</p>
+
+<p>The JSON file contains data extracted from HTML Standard.
+"Written by Ian Hickson (Google,
+ian@hixie.ch) - Parts © Copyright 2004-2014 Apple Inc.,
+Mozilla Foundation,
+and Opera Software ASA; You are granted a license to use,
+reproduce and create derivative works of this document."</p>
 
 
 
@@ -107,8 +163,8 @@ reproduce and create derivative works of this document.</p>
 </section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
-    <li><a href="." rel="top">Top</a>
-    </li><li><a href="contact">Contact</a>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
   </li></ul>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
