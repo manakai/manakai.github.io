@@ -1,7 +1,7 @@
 all: generate-docs
 
 deps:
-	curl http://wakaba.github.io/packages/pmbp | sh
+	curl https://wakaba.github.io/packages/pmbp | sh
 	perl local/bin/pmbp.pl \
 	    --install-module Path::Tiny \
 	    --install-module Exporter::Lite \
@@ -19,3 +19,5 @@ test:
 	ls pod/index.html > /dev/null && \
 	ls pod/Web/DOM/Document.html > /dev/null && \
 	ls pod/webhacc.html > /dev/null
+
+## License: Public Domain.

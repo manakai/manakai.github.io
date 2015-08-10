@@ -39,9 +39,9 @@ my $ModuleDocURL = {
   DateTime => q<http://search.cpan.org/dist/DateTime/lib/DateTime.pm>,
   'Regexp::Parser' => q<http://search.cpan.org/dist/Regexp-Parser/lib/Regexp/Parser.pm>,
 
-  'Whatpm::HTML' => q<http://manakai.github.io/pod/Web/HTML/Parser>,
-  'Message::DOM::Document' => q<http://manakai.github.io/pod/Web/DOM/Document>,
-  'Message::DOM::Element' => q<http://manakai.github.io/pod/Web/DOM/Element>,
+  'Whatpm::HTML' => q<https://manakai.github.io/pod/Web/HTML/Parser>,
+  'Message::DOM::Document' => q<https://manakai.github.io/pod/Web/DOM/Document>,
+  'Message::DOM::Element' => q<https://manakai.github.io/pod/Web/DOM/Element>,
 };
 
 sub process_inline_nodes ($$@) {
