@@ -27,25 +27,27 @@
 
 <p>The <code>Web::DomainName::IDNEnabled</code> module provides the list of IDN-enabled TLDs, which is same as the list of the <var>IDN-enabled TLDs</var> maintained by the Mozilla project.</p>
 
+<p>Note that the list is no longer maintained by the Mozilla project.</p>
+
 </section><section id="VARIABLE"><h1>VARIABLE</h1>
 
 <p>The module defines a variable: <code>$Web::DomainName::IDNEnabled::TLDs</code>. It is a hash reference. Keys of the hash are IDN-enabled TLDs in lowercase and is encoded in Punycode if necessary. Values for existing keys are always true.</p>
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p>IDN-enabled TLDs <code class="url">&lt;<a href="http://www.mozilla.org/projects/security/tld-idn-policy-list.html">http://www.mozilla.org/projects/security/tld-idn-policy-list.html</a>&gt;</code>.</p>
+<p>IDN-enabled TLDs — Mozilla <code class="url">&lt;<a href="https://www.mozilla.org/en-US/about/governance/policies/security-group/tld-idn/">https://www.mozilla.org/en-US/about/governance/policies/security-group/tld-idn/</a>&gt;</code>.</p>
 
-<p><code class="url">&lt;<a href="http://mxr.mozilla.org/mozilla-central/source/modules/libpref/src/init/all.js">http://mxr.mozilla.org/mozilla-central/source/modules/libpref/src/init/all.js</a>&gt;</code>. (Search for "network.IDN.whitelist.".)</p>
+<p><code class="url">&lt;<a href="https://github.com/mozilla/gecko-dev/blob/master/modules/libpref/init/all.js">https://github.com/mozilla/gecko-dev/blob/master/modules/libpref/init/all.js</a>&gt;</code>. (Search for <code>network.IDN.whitelist.</code>.)</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
-<p>Wakaba &lt;w@suika.fam.cx&gt;.</p>
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>The <code>Web::DomainName::IDNEnabled</code> module contains data extracted from files maintained by the Mozilla project.</p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2011-2012 Wakaba &lt;w@suika.fam.cx&gt;.</p>
+<p>Copyright 2011-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
