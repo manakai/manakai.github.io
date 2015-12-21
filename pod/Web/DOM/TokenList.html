@@ -16,7 +16,7 @@
 
 
 
-<hgroup><h1><code>Web::DOM::TokenList</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/DOMTokenList"><code>DOMTokenList</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::TokenList</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/DOMTokenList"><code>DOMTokenList</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::TokenList</code> class implements the DOM <code>DOMTokenList</code> interface.</p>
 
@@ -70,6 +70,14 @@ $token2,
 <dd>
 <p>Remove the specified tokens from the list. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
+</dd><dt id="$tokens->replace_($token,_$new_token)"><code>$tokens-&gt;<strong id="member-replace">replace</strong> ($token,
+$new_token)</code></dt>
+
+<dd>
+<p>Replace the token,
+if any,
+by a new token. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+
 </dd><dt id="$bool_=_$tokens->toggle_($token)"><code>$bool = $tokens-&gt;<strong id="member-toggle">toggle</strong> ($token)</code></dt>
 
 <dt id="$bool_=_$tokens->toggle_($token,_$bool)"><code>$bool = $tokens-&gt;<strong>toggle</strong> ($token,
@@ -102,12 +110,12 @@ e.g.
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Living Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/">http://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>&gt;</code>.</p>
 
 </dd><dt id="DOMPERL">DOMPERL</dt>
 
 <dd>
-<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai's%20DOM%20Perl%20Binding">http://wiki.suikawiki.org/n/manakai's%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -121,7 +129,7 @@ e.g.
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2013-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
