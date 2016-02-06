@@ -20,7 +20,13 @@
 
 <p>The <code>Web::DOM::TokenList</code> class implements the DOM <code>DOMTokenList</code> interface.</p>
 
-<p>The <code>DOMTokenList</code> object is used by the <code>class_list</code> method of the elements and the <code>rel_list</code> method of the HTML hyperlink elements.</p>
+<p>The <code>DOMTokenList</code> object is used by,
+e.g.,
+the <code>class_list</code> method of the elements,
+the <code>rel_list</code> method of the HTML hyperlink elements,
+and HTML <code>sandbox</code>,
+<code>dropzone</code>,
+and <code>headers</code> attributes.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -94,9 +100,16 @@ The method returns the new status. <cite class="ref">[<a href="#DOM">DOM</a>]</c
 </dd><dt id="$string_=_''_._$tokens"><code>$string = '' .
 $tokens</code></dt>
 
+<dt id="$string_=_$tokens->value"><code>$string = $tokens-&gt;<strong id="member-value">value</strong></code></dt>
+
 <dd>
 <p>Return the serialized representation of the tokens,
 joined by the space character. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+</dd><dt id="$tokens->value_($string)"><code>$tokens-&gt;<strong>value</strong> ($string)</code></dt>
+
+<dd>
+<p>Replace the tokens in the list by the tokens specified as the space-separeted list. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 </dd>
 </dl>
 
@@ -115,7 +128,7 @@ e.g.
 </dd><dt id="DOMPERL">DOMPERL</dt>
 
 <dd>
-<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://wiki.suikawiki.org/n/manakai's%20DOM%20Perl%20Binding">http://wiki.suikawiki.org/n/manakai's%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/manakai's%20DOM%20Perl%20Binding">https://wiki.suikawiki.org/n/manakai's%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -129,7 +142,7 @@ e.g.
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2013-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2013-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
