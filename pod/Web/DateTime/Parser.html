@@ -138,6 +138,16 @@
 
 <p>This method is suitable for microdata <code>http://schema.org/Date</code> item values and date item values in data-vocabulary.org microdata vocabulary.</p>
 
+</dd><dt id="$dt_=_$parser->parse_ymd_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_ymd_string">parse_ymd_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the argument as an YMD string in the Gregorian calendar [DATETIME] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+</dd><dt id="$dt_=_$parser->parse_julian_ymd_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_julian_ymd_string">parse_julian_ymd_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the argument as an YMD string in the Julian calendar [DATETIME] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
 </dd><dt id="$dt_=_$parser->parse_date_string_with_optional_time_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_date_string_with_optional_time">parse_date_string_with_optional_time</strong> ($string)</code></dt>
 
 <dd>
@@ -166,6 +176,11 @@
 
 <dd>
 <p>Parse the argument as an XML Schema <code>xs:gYear</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+
+</dd><dt id="$dt_=_$parser->parse_manakai_year_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_manakai_year_string">parse_manakai_year_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the argument as a year string in manakai Date and Time specification [DATETIME] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_month_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_month_string">parse_month_string</strong> ($string)</code></dt>
 
@@ -286,17 +301,17 @@
 <dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="https://www.whatwg.org/specs/web-apps/current-work/">https://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
 
 </dd><dt id="XSDT">XSDT</dt>
 
 <dd>
-<p>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes <code class="url">&lt;<a href="http://www.w3.org/TR/xmlschema11-2/">http://www.w3.org/TR/xmlschema11-2/</a>&gt;</code>.</p>
+<p>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes <code class="url">&lt;<a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a>&gt;</code>.</p>
 
 </dd><dt id="RFC3339">RFC3339</dt>
 
 <dd>
-<p>Date and Time on the Internet: Timestamps <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc3339">http://tools.ietf.org/html/rfc3339</a>&gt;</code>.</p>
+<p>Date and Time on the Internet: Timestamps <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc3339">https://tools.ietf.org/html/rfc3339</a>&gt;</code>.</p>
 
 </dd><dt id="SCHEMAORG">SCHEMAORG</dt>
 
@@ -316,24 +331,24 @@
 </dd><dt id="HTTP">HTTP</dt>
 
 <dd>
-<p>RFC 1945, Hypertext Transfer Protocol -- HTTP/1.0 <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc1945">http://tools.ietf.org/html/rfc1945</a>&gt;</code>.</p>
+<p>RFC 1945, Hypertext Transfer Protocol -- HTTP/1.0 <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc1945">https://tools.ietf.org/html/rfc1945</a>&gt;</code>.</p>
 
 <p>RFC 7231, Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>&gt;</code>.</p>
 
 </dd><dt id="COOKIES">COOKIES</dt>
 
 <dd>
-<p>RFC 6265, HTTP State Management Mechanism <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc6265">http://tools.ietf.org/html/rfc6265</a>&gt;</code>.</p>
+<p>RFC 6265, HTTP State Management Mechanism <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc6265">https://tools.ietf.org/html/rfc6265</a>&gt;</code>.</p>
 
 </dd><dt id="W3CDTF">W3CDTF</dt>
 
 <dd>
-<p>Date and Time Formats <code class="url">&lt;<a href="http://www.w3.org/TR/1998/NOTE-datetime-19980827">http://www.w3.org/TR/1998/NOTE-datetime-19980827</a>&gt;</code>.</p>
+<p>Date and Time Formats <code class="url">&lt;<a href="https://www.w3.org/TR/1998/NOTE-datetime-19980827">https://www.w3.org/TR/1998/NOTE-datetime-19980827</a>&gt;</code>.</p>
 
 </dd><dt id="RFC822">RFC822</dt>
 
 <dd>
-<p>RFC 822, STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES <code class="url">&lt;<a href="http://tools.ietf.org/html/rfc822">http://tools.ietf.org/html/rfc822</a>&gt;</code>.</p>
+<p>RFC 822, STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc822">https://tools.ietf.org/html/rfc822</a>&gt;</code>.</p>
 
 </dd><dt id="RSS2">RSS2</dt>
 
@@ -351,6 +366,11 @@
 <p>ECMA-262 6th Edition Draft ECMAScript Language Specification <code class="url">&lt;<a href="https://people.mozilla.org/~jorendorff/es6-draft.html">https://people.mozilla.org/~jorendorff/es6-draft.html</a>&gt;</code>.</p>
 
 <p>JavaScript and Dates, What a Mess! <code class="url">&lt;<a href="http://blog.dygraphs.com/2012/03/javascript-and-dates-what-mess.html">http://blog.dygraphs.com/2012/03/javascript-and-dates-what-mess.html</a>&gt;</code>, <code class="url">&lt;<a href="http://dygraphs.com/date-formats.html">http://dygraphs.com/date-formats.html</a>&gt;</code>.</p>
+
+</dd><dt id="DATETIME">DATETIME</dt>
+
+<dd>
+<p>Dates and times <code class="url">&lt;<a href="https://manakai.github.io/spec-datetime/">https://manakai.github.io/spec-datetime/</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -360,7 +380,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2008-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2008-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

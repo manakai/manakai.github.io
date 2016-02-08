@@ -38,6 +38,25 @@
 <dd>
 <p>Create a new instance of <code>Web::DateTime</code> from the specified number, representing a Unix time (i.e. number of seconds from January 1, 1970, 00:00:00 UTC). The number can contain fractional part and can be negative.</p>
 
+</dd><dt id="$dt_=_Web::DateTime->new_from_jd_($number)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_jd">new_from_jd</strong> ($number)</code></dt>
+
+<dd>
+<p>Create a new instance of <code>Web::DateTime</code> from the specified number, representing a Julian Day (i.e. Julian Date, JD, <code class="url">&lt;<a href="https://en.wikipedia.org/wiki/Julian_day">https://en.wikipedia.org/wiki/Julian_day</a>&gt;</code>). The number can contain fractional part and can be negative.</p>
+
+</dd><dt id="$dt_=_Web::DateTime->new_from_mjd_($number)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_mjd">new_from_mjd</strong> ($number)</code></dt>
+
+<dd>
+<p>Create a new instance of <code>Web::DateTime</code> from the specified number, representing a Modified Julian Day (MJD, <code class="url">&lt;<a href="https://en.wikipedia.org/wiki/Julian_day">https://en.wikipedia.org/wiki/Julian_day</a>&gt;</code>). The number can contain fractional part and can be negative.</p>
+
+</dd><dt id="$dt_=_Web::DateTime->new_from_components_($year,_$month,_$day,_$hour,_$minute,_$second)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_components">new_from_components</strong> ($year, $month, $day, $hour, $minute, $second)</code></dt>
+
+<dd>
+<p>Create a new instance of <code>Web::DateTime</code> from the specified set of date/time components.</p>
+
+<p>The arguments are interpreted as the year, month, day, hour, minute, and second components of the date/time in the proleptic Gregorian calendar. Every argument can be omitted; their defaults are 1970, 1, 1, 0, 0, and 0. The month component is an integer, where <code>1</code> represents January. They can be out of range (e.g. month can be 33, day can be -1, and so on), but the returned object might or might not be useful.</p>
+
+<p>No time zone offset is set to the object.</p>
+
 </dd><dt id="$dt_=_Web::DateTime->new_from_object_($obj)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_object">new_from_object</strong> ($obj)</code></dt>
 
 <dd>
@@ -76,7 +95,16 @@
 <dt id="$number_=_$dt->second"><code>$number = $dt-&gt;<strong id="member-second">second</strong></code></dt>
 
 <dd>
-<p>Return the number in the year, month, day, hour, minute, or second component of the object, respectively. If a time zone is associated with the object, the return value is in that time zone.</p>
+<p>Return the number in the year, month, day, hour, minute, or second component of the object, in the Gregorian calendar, respectively. If a time zone is associated with the object, the return value is in that time zone.</p>
+
+</dd><dt id="$number_=_$dt->julian_year"><code>$number = $dt-&gt;<strong id="member-julian_year">julian_year</strong></code></dt>
+
+<dt id="$number_=_$dt->julian_month"><code>$number = $dt-&gt;<strong id="member-julian_month">julian_month</strong></code></dt>
+
+<dt id="$number_=_$dt->julian_day"><code>$number = $dt-&gt;<strong id="member-julian_day">julian_day</strong></code></dt>
+
+<dd>
+<p>Return the number in the year, month, or day component of the object, in the Julian calendar, respectively. If a time zone is associated with the object, the return value is in that time zone.</p>
 
 </dd><dt id="$number_=_$dt->utc_year"><code>$number = $dt-&gt;<strong id="member-utc_year">utc_year</strong></code></dt>
 
@@ -153,6 +181,21 @@
 <dd>
 <p>Return the number of the date and time represented by the object, as used for, e.g., <code>&lt;input type=datetime&gt;</code> (i.e. number of milliseconds from the beginning of January 1, 1970 UTC) [HTML]. Note that the number might not be an integer.</p>
 
+</dd><dt id="$number_=_$dt->to_jd"><code>$number = $dt-&gt;<strong id="member-to_jd">to_jd</strong></code></dt>
+
+<dd>
+<p>Return the number representing the Julian Day of the date and time (i.e. Julian Date, JD, <code class="url">&lt;<a href="https://en.wikipedia.org/wiki/Julian_day">https://en.wikipedia.org/wiki/Julian_day</a>&gt;</code>) represented by the object. Note that the number might not be an integer.</p>
+
+</dd><dt id="$number_=_$dt->to_mjd"><code>$number = $dt-&gt;<strong id="member-to_mjd">to_mjd</strong></code></dt>
+
+<dd>
+<p>Return the Modified Julian Day (MJD, <code class="url">&lt;<a href="https://en.wikipedia.org/wiki/Julian_day">https://en.wikipedia.org/wiki/Julian_day</a>&gt;</code>) of the date and time represented by the object. Note that the number might not be an integer.</p>
+
+</dd><dt id="$number_=_$dt->to_rd"><code>$number = $dt-&gt;<strong id="member-to_rd">to_rd</strong></code></dt>
+
+<dd>
+<p>Return the Rata Die (RD, <code class="url">&lt;<a href="https://en.wikipedia.org/wiki/Rata_Die">https://en.wikipedia.org/wiki/Rata_Die</a>&gt;</code>) of the date and time represented by the object. Note that the number might not be an integer.</p>
+
 </dd><dt id="$number_=_$dt->to_html_month_number"><code>$number = $dt-&gt;<strong id="member-to_html_month_number">to_html_month_number</strong></code></dt>
 
 <dd>
@@ -227,6 +270,16 @@
 
 <p>This method is suitable for values for HTML <code>&lt;input type=date&gt;</code>, <code>time</code> elements, <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes, and microdata <code>http://schema.org/Date</code> item values.</p>
 
+</dd><dt id="$string_=_$dt->to_ymd_string"><code>$string = $dt-&gt;<strong id="member-to_ymd_string">to_ymd_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date value represented by the object as a YMD string of the Gregorian calendar [DATETIME]. Note that time and time zone are ignored.</p>
+
+</dd><dt id="$string_=_$dt->to_julian_ymd_string"><code>$string = $dt-&gt;<strong id="member-to_julian_ymd_string">to_julian_ymd_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date value represented by the object as a YMD string of the Julian calendar [DATETIME]. Note that time and time zone are ignored.</p>
+
 </dd><dt id="$string_=_$dt->to_date_string_with_optional_time"><code>$string = $dt-&gt;<strong id="member-to_date_string_with_optional_time">to_date_string_with_optional_time</strong></code></dt>
 
 <dd>
@@ -240,6 +293,11 @@
 <p>Serialize the year value represented by the object for HTML. Note that month, day, time, and time zone are ignored.</p>
 
 <p>This method is suitable for values for HTML <code>time</code> elements.</p>
+
+</dd><dt id="$string_=_$dt->to_manakai_year_string"><code>$string = $dt-&gt;<strong id="member-to_manakai_year_string">to_manakai_year_string</strong></code></dt>
+
+<dd>
+<p>Serialize the year value represented by the object as specified by the manakai Date and Time specification [DATETIME]. Note that month, day, time, and time zone are ignored.</p>
 
 </dd><dt id="$string_=_$dt->to_month_string"><code>$string = $dt-&gt;<strong id="member-to_month_string">to_month_string</strong></code></dt>
 
@@ -309,7 +367,7 @@
 <dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/">http://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="https://www.whatwg.org/specs/web-apps/current-work/">https://www.whatwg.org/specs/web-apps/current-work/</a>&gt;</code>.</p>
 
 </dd><dt id="POSIX.1">POSIX.1</dt>
 
@@ -332,6 +390,11 @@
 
 <dd>
 <p>Really Simple Syndication Best Practices Profile <code class="url">&lt;<a href="http://www.rssboard.org/rss-profile">http://www.rssboard.org/rss-profile</a>&gt;</code>.</p>
+
+</dd><dt id="DATETIME">DATETIME</dt>
+
+<dd>
+<p>Dates and times <code class="url">&lt;<a href="https://manakai.github.io/spec-datetime/">https://manakai.github.io/spec-datetime/</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -355,7 +418,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2008-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2008-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
