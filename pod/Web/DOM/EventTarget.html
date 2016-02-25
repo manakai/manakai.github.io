@@ -28,9 +28,10 @@ such as <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a
 <p>Following methods are available:</p>
 
 <dl>
-<dt id="$et->add_event_listener_($type,_$code,_$is_capture)"><code>$et-&gt;<strong id="member-add_event_listener">add_event_listener</strong> ($type,
+<dt id="$et->add_event_listener_($type,_$code,_{capture_=>_$boolean,_passive_=>_$boolean})"><code>$et-&gt;<strong id="member-add_event_listener">add_event_listener</strong> ($type,
 $code,
-$is_capture)</code></dt>
+{capture =&gt; $boolean,
+passive =&gt; $boolean})</code></dt>
 
 <dd>
 <p>Register a callback function as event listener for the event target.
@@ -39,8 +40,8 @@ e.g.
 <code>click</code> or <code>resize</code>.
 The second argument is a code reference,
 which is invoked when an event is dispatched.
-The optional third argument specifies whether the code listens the capturing phase (true) or the bubbling phase (false,
-default). <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+The optional third argument can specify whether the code listens the capturing phase (true) or the bubbling phase (false,
+default) and whether the listner is passive or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
 
 <p>When an event of the specified type is dispatched,
 the code of the second argument is invoked with two arguments: <var>$self</var> and <var>$event</var>.
@@ -65,9 +66,10 @@ The method returns whether the event's default action has not been cancelled. <c
 <p>Note that the event is dispatched synchronously,
 such that any event listener callback is invoked synchronously.</p>
 
-</dd><dt id="$et->remove_event_listener_($type,_$code,_$is_capture)"><code>$et-&gt;<strong id="member-remove_event_listener">remove_event_listener</strong> ($type,
+</dd><dt id="$et->remove_event_listener_($type,_$code,_{capture_=>_$boolean,_passive_=>_$boolean})"><code>$et-&gt;<strong id="member-remove_event_listener">remove_event_listener</strong> ($type,
 $code,
-$is_capture)</code></dt>
+{capture =&gt; $boolean,
+passive =&gt; $boolean})</code></dt>
 
 <dd>
 <p>Unregister a callback function as event listener,
@@ -81,12 +83,12 @@ if it is registered. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 <dt id="DOM">DOM</dt>
 
 <dd>
-<p>DOM Standard <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#interface-eventtarget">http://dom.spec.whatwg.org/#interface-eventtarget</a>&gt;</code>.</p>
+<p>DOM Standard <code class="url">&lt;<a href="https://dom.spec.whatwg.org/#interface-eventtarget">https://dom.spec.whatwg.org/#interface-eventtarget</a>&gt;</code>.</p>
 
 </dd><dt id="DOMPERL">DOMPERL</dt>
 
 <dd>
-<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
+<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="https://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">https://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -101,7 +103,7 @@ if it is registered. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2013-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2013-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

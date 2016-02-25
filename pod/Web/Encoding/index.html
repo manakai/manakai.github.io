@@ -26,64 +26,78 @@ This module is work in progress; its interface might or might not be changed lat
 <p>Following functions are exported by <code>use</code>ing the <code>Web::Encoding</code> module:</p>
 
 <dl>
-<dt id="$name_=_encoding_label_to_name_$label"><code>$name = encoding_label_to_name $label</code></dt>
+<dt id="$key_=_encoding_label_to_name_$label"><code>$key = encoding_label_to_name $label</code></dt>
 
 <dd>
 <p>Find the encoding identified by the specified label.
 As does Encoding Standard's "get an encoding" steps,
 this function ignores leading and trailing spaces,
-and compares labels case-insensitively.
-The function returns the encoding name,
+and compares labels ASCII case-insensitively.
+The function returns the encoding key (not a name),
 if found,
 or <code>undef</code>.</p>
 
-</dd><dt id="$name_=_fixup_html_meta_encoding_name_$name"><code>$name = fixup_html_meta_encoding_name $name</code></dt>
+</dd><dt id="$key_=_fixup_html_meta_encoding_name_$key"><code>$key = fixup_html_meta_encoding_name $key</code></dt>
 
 <dd>
-<p>Replace encoding name for the purpose of HTML character encoding declaration,
+<p>Replace a encoding key for the purpose of HTML character encoding declaration,
 as in "prescan a byte stream to determine its encoding" and "change the encoding" algorithms.
-The argument must be an encoding name (not a label).
+The argument must be an encoding key (not a name or label).
+The function returns an encoding key.</p>
+
+</dd><dt id="$key_=_get_output_encoding_key_$key"><code>$key = get_output_encoding_key $key</code></dt>
+
+<dd>
+<p>Return the result of applying the steps to get an output encoding.
+The argument must be an encoding key (not a name or label).
+The function returns an encoding key.</p>
+
+</dd><dt id="$name_=_encoding_name_to_compat_name_$key"><code>$name = encoding_name_to_compat_name $key</code></dt>
+
+<dd>
+<p>Replace an encoding key to its official name as used in e.g.
+<code>characterSet</code> or <code>inputEncoding</code> attributes of the <code>Document</code> interface.
+The argument must be an encoding key (not a name or label).
 The function returns an encoding name.</p>
 
-</dd><dt id="$label_=_encoding_name_to_compat_name_$name"><code>$label = encoding_name_to_compat_name $name</code></dt>
-
-<dd>
-<p>Replace an encoding name to its compatibility name as used in <code>characterSet</code> or <code>inputEncoding</code> attributes of the <code>Document</code> interface.
-The argument must be an encoding name (not a label).
-The function returns an encoding label or the string <code>replacement</code>.</p>
-
-</dd><dt id="$boolean_=_is_ascii_compat_encoding_name_$name"><code>$boolean = is_ascii_compat_encoding_name $name</code></dt>
+</dd><dt id="$boolean_=_is_ascii_compat_encoding_name_$key"><code>$boolean = is_ascii_compat_encoding_name $key</code></dt>
 
 <dd>
 <p>Return whether the specified encoding is an ASCII-compatible character encoding or not.
-The argument must be an encoding name in the Encoding Standard,
-otherwise the result might be wrong.</p>
+The argument must be an encoding key (not a name or label).</p>
 
 </dd><dt id="$boolean_=_is_encoding_label_$label"><code>$boolean = is_encoding_label $label</code></dt>
 
 <dd>
 <p>Return whether the specified label identifies an encoding or not.
-It compares labels case-insensitively.
+It compares labels ASCII case-insensitively.
 Unlike the <code>encoding_label_to_name</code> function,
 however,
 this function does not ignore spaces.</p>
 
-</dd><dt id="$name_=_locale_default_encoding_name_$tag"><code>$name = locale_default_encoding_name $tag</code></dt>
+</dd><dt id="$key_=_locale_default_encoding_name_$tag"><code>$key = locale_default_encoding_name $tag</code></dt>
 
 <dd>
-<p>Return the default character encoding name for the specified locale language tag.
+<p>Return the encoding key (not a name or label) of the default character encoding for a locale.
 If no default is known for the specified locale,
-<code>undef</code> is returned.
-The input must be either BCP 47 language tag or <code>*</code>.
+<code>undef</code> is returned.</p>
+
+<p>The argument,
+which identifies the locale,
+must be either a BCP 47 language tag or a string <code>*</code>.
 The language tag must be the primary language tag only,
 <code>zh-TW</code>,
 or <code>zh-CN</code>,
 otherwise no data is available.
 The tags are ASCII case-insensitive.
 If <code>*</code> is specified,
-the global default encoding name that can be used when locale is not known or the locale has no default is returned.</p>
+the global default encoding that can be used when the locale is not known or the locale has no default is returned.</p>
 </dd>
 </dl>
+
+<p>For the purpose of this module,
+the <b>key</b> of the encoding is a short string uniquly identifying the encoding.
+It is a lowercased variant of the encoding name defined in the Encoding Standard.</p>
 
 <p>Note that the encoding name in the Encoding Standard is not compatible with Perl <a href="http://search.cpan.org/dist/Encode/Encode.pm" class="podlinkpod">Encode</a> module's encoding names.</p>
 
@@ -101,7 +115,7 @@ the global default encoding name that can be used when locale is not known or th
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2011-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2011-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
