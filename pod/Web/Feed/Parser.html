@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Feed::Parser</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-markup" rel="up">perl-web-markup</a></li>
+        <li><a href="" rel="bookmark">Web::Feed::Parser</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-markup/tree/master/lib/Web/Feed/Parser.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Feed::Parser</code></h1><h2>Atom and RSS feed parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::Feed::Parser;
+  my $parser = Web::Feed::Parser-&gt;new;
+  $parsed = $parser-&gt;parse_document ($document);</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Feed::Parser</code> module is an implementation of the feed parser. It accept a DOM document, which is expected to contain a RSS or Atom feed, as the input, and returns a data structure that represents feed properties and entries extracted from the input document.</p>
+
+<p>The module supports following formats: RSS 0.9x, RSS 1.0, RSS 2.0, Atom 0.3, and Atom 1.0; and following modules or extensions: Dublin Core, GData, Hatena module, Podcast (iTunes namespace), Media RSS, and RSS 1.0 Content module.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<dl>
+<dt id="$parser_=_Web::Feed::Parser"><code>$parser = Web::Feed::Parser</code></dt>
+
+<dd>
+<p>Create a feed parser object.</p>
+
+</dd><dt id="$parsed_=_$parser->parse_document_($document)"><code>$parsed = $parser-&gt;<strong id="member-parse_document">parse_document</strong> ($document)</code></dt>
+
+<dd>
+<p>Parse the input document and return the result object, if the document contains a feed, or the <code>undef</code> value otherwise.</p>
+</dd>
+</dl>
+
+</section><section id="DOCUMENT"><h1>DOCUMENT</h1>
+
+<p>The input document must be an object implementing the DOM <code>Document</code> interface using the DOM Perl Binding <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/DOM%20Perl%20Binding">https://wiki.suikawiki.org/n/DOM%20Perl%20Binding</a>&gt;</code>, such as the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> module <code class="url">&lt;<a href="https://manakai.github.io/pod/Web/DOM/Document">https://manakai.github.io/pod/Web/DOM/Document</a>&gt;</code>.</p>
+
+</section><section id="PARSED_FEED_DATA_STRUCTURE"><h1>PARSED FEED DATA STRUCTURE</h1>
+
+<p>A feed, after parsing, is represented as a Perl hash reference <var>$feed</var>, which has zero or more of folloging key/value pairs:</p>
+
+<dl>
+<dt id="$array_of_persons_=_$feed->{authors}"><code>$array_of_persons = $feed-&gt;<strong id="member-{authors}">{authors}</strong></code></dt>
+
+<dd>
+<p>An array reference of zero or more person data structures, representing the authors of the feed. There is always an <code>authors</code> member in the feed data strucuture. If no feed author is found in the input document, the array is empty.</p>
+
+</dd><dt id="$text_=_$feed->{desc}"><code>$text = $feed-&gt;<strong id="member-{desc}">{desc}</strong></code></dt>
+
+<dd>
+<p>The description of the feed, if any. The value, if any, is a string or a <code>Node</code> object.</p>
+
+</dd><dt id="$array_of_entries_=_$feed->{entries}"><code>$array_of_entries = $feed-&gt;<strong id="member-{entries}">{entries}</strong></code></dt>
+
+<dd>
+<p>An array reference of zero or more entry data structures. There is always an <code>entries</code> member in the feed data structure. If no entry is found in the input document, the array is empty.</p>
+
+</dd><dt id="$url_=_$feed->{feed_url}"><code>$url = $feed-&gt;<strong id="member-{feed_url}">{feed_url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the feed itself, if any. Note that the URL might or might not be the URL that can be used to fetch the feed in fact.</p>
+
+</dd><dt id="$image_=_$feed->{icon}"><code>$image = $feed-&gt;<strong id="member-{icon}">{icon}</strong></code></dt>
+
+<dd>
+<p>The image data structure of the icon of the feed, if any.</p>
+
+</dd><dt id="$image_=_$feed->{logo}"><code>$image = $feed-&gt;<strong id="member-{logo}">{logo}</strong></code></dt>
+
+<dd>
+<p>The image data structure of the logo of the feed, if any.</p>
+
+</dd><dt id="$url_=_$feed->{next_feed_url}"><code>$url = $feed-&gt;<strong id="member-{next_feed_url}">{next_feed_url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the "next page" feed of the feed, if any.</p>
+
+</dd><dt id="$url_=_$feed->{page_url}"><code>$url = $feed-&gt;<strong id="member-{page_url}">{page_url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the Web page associated with the feed, if any.</p>
+
+</dd><dt id="$url_=_$feed->{previous_feed_url}"><code>$url = $feed-&gt;<strong id="member-{previous_feed_url}">{previous_feed_url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the "previous page" feed of the feed, if any.</p>
+
+</dd><dt id="$text_=_$feed->{subtitle}"><code>$text = $feed-&gt;<strong id="member-{subtitle}">{subtitle}</strong></code></dt>
+
+<dd>
+<p>The subtitle of the feed, if any. The value, if any, is a string or a <code>Node</code> object.</p>
+
+</dd><dt id="$text_=_$feed->{title}"><code>$text = $feed-&gt;<strong id="member-{title}">{title}</strong></code></dt>
+
+<dd>
+<p>The title of the feed, if any. The value, if any, is a string or a <code>Node</code> object.</p>
+
+</dd><dt id="$timestamp_=_$feed->{updated}"><code>$timestamp = $feed-&gt;<strong id="member-{updated}">{updated}</strong></code></dt>
+
+<dd>
+<p>The modified time of the feed, if any. The value, if any, is a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the time.</p>
+</dd>
+</dl>
+
+<p>An entry is represented as a Perl hash reference <var>$entry</var>, which has zero or more of folloging key/value pairs:</p>
+
+<dl>
+<dt id="$array_of_persons_=_$entry->{authors}"><code>$array_of_persons = $entry-&gt;<strong>{authors}</strong></code></dt>
+
+<dd>
+<p>An array reference of zero or more person data structures, representing the authors of the entry. There is always an <code>authors</code> member in the entry data strucuture. If no explicit entry author is found in the input, the array is empty. If the array is empty but the feed author array is not empty, then its content should be considered as the authors of the entry.</p>
+
+</dd><dt id="$text_=_$entry->{content}"><code>$text = $entry-&gt;<strong id="member-{content}">{content}</strong></code></dt>
+
+<dd>
+<p>The main content of the entry, if any. The value, if any, is a string or a <code>Node</code> object.</p>
+
+</dd><dt id="$number_=_$entry->{duration}"><code>$number = $entry-&gt;<strong id="member-{duration}">{duration}</strong></code></dt>
+
+<dd>
+<p>The duration of the entry, typically used in Podcasts, if any. The value, if any, is the number of seconds.</p>
+
+</dd><dt id="$array_of_enclosures_=_$entry->{enclosures}"><code>$array_of_enclosures = $entry-&gt;<strong id="member-{enclosures}">{enclosures}</strong></code></dt>
+
+<dd>
+<p>An array reference of zero or more enclosures or attachments. If no attachment is found in the input document, the array is empty.</p>
+
+<p>Any member of the array is a Perl hash reference, with one or more of following key/value pairs:</p>
+
+<dl>
+<dt><a name="$integer_=_$enclosure->{length}">$integer = $enclosure-&gt;{length}</a></dt>
+
+<dd>
+<p>The data size of the enclosure, in bytes, if any. It might or might not be equal to the size of the resource pointed by the URL.</p>
+
+</dd><dt><a name="$mime_=_$enclosure->{type}">$mime = $enclosure-&gt;{type}</a></dt>
+
+<dd>
+<p>The MIME type of the enclosure, if any. The value, if any, is a string extracted from the input document, which might or might not be a valid MIME type and can contain parameters. It might or might not be equal to the MIME type of the resource pointed by the URL.</p>
+
+</dd><dt><a name="$url_=_$enclosure->{url}">$url = $enclosure-&gt;{url}</a></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the enclosure. This key/value pair is always set.</p>
+</dd>
+</dl>
+
+</dd><dt id="$url_=_$entry->{page_url}"><code>$url = $entry-&gt;<strong>{page_url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the Web page associated with the entry, if any.</p>
+
+</dd><dt id="$timestamp_=_$entry->{published}"><code>$timestamp = $entry-&gt;<strong id="member-{published}">{published}</strong></code></dt>
+
+<dd>
+<p>The published time of the entry, if any. The value, if any, is a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the time.</p>
+
+<p>If the value of this member is not specified, it should be falled back to <code>$entry-&gt;{updated}</code>. If that is also missing, it should then be falled back to <code>$feed-&gt;{updated}</code>.</p>
+
+</dd><dt id="$image_=_$entry->{thumbnail}"><code>$image = $entry-&gt;<strong id="member-{thumbnail}">{thumbnail}</strong></code></dt>
+
+<dd>
+<p>The image data structure of the thumbnail of the entry, if any.</p>
+
+</dd><dt id="$text_=_$entry->{summary}"><code>$text = $entry-&gt;<strong id="member-{summary}">{summary}</strong></code></dt>
+
+<dd>
+<p>The summary of the entry, if any. The value, if any, is a string or a <code>Node</code> object.</p>
+
+</dd><dt id="$text_=_$entry->{title}"><code>$text = $entry-&gt;<strong>{title}</strong></code></dt>
+
+<dd>
+<p>The title of the entry, if any. The value, if any, is a string or a <code>Node</code> object.</p>
+
+</dd><dt id="$timestamp_=_$entry->{updated}"><code>$timestamp = $entry-&gt;<strong>{updated}</strong></code></dt>
+
+<dd>
+<p>The modified time of the entry, if any. The value, if any, is a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the time.</p>
+</dd>
+</dl>
+
+<p>A person is represented as a Perl hash reference <var>$person</var>, which has zero or more of folloging key/value pairs:</p>
+
+<dl>
+<dt id="$string_=_$person->{email}"><code>$string = $person-&gt;<strong id="member-{email}">{email}</strong></code></dt>
+
+<dd>
+<p>The email address of the person, if any. Note that the value might or might not be a valid email address.</p>
+
+</dd><dt id="$image_=_$person->{icon}"><code>$image = $person-&gt;<strong>{icon}</strong></code></dt>
+
+<dd>
+<p>The image data structure of the icon of the person, if any.</p>
+
+</dd><dt id="$string_=_$person->{name}"><code>$string = $person-&gt;<strong id="member-{name}">{name}</strong></code></dt>
+
+<dd>
+<p>The name of the person, if any.</p>
+
+</dd><dt id="$url_=_$person->{url}"><code>$url = $person-&gt;<strong id="member-{url}">{url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the Web page of the person, if any.</p>
+</dd>
+</dl>
+
+<p>An image is represented as a Perl hash reference <var>$image</var>, which has one or more of folloging key/value pairs:</p>
+
+<dl>
+<dt id="$number_=_$image->{height}"><code>$number = $image-&gt;<strong id="member-{height}">{height}</strong></code></dt>
+
+<dd>
+<p>The expected height of the image, if any. The value, if any, is a number.</p>
+
+</dd><dt id="$url_=_$image->{url}"><code>$url = $image-&gt;<strong>{url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the image. This key/value pair is always set.</p>
+
+</dd><dt id="$number_=_$image->{width}"><code>$number = $image-&gt;<strong id="member-{width}">{width}</strong></code></dt>
+
+<dd>
+<p>The expected width of the image, if any. The value, if any, is a number.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>Feed Parsing <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Feed%20Parsing">https://wiki.suikawiki.org/n/Feed%20Parsing</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>
