@@ -445,6 +445,7 @@ sub text2html ($$%) {
   $n++ if $html_path =~ m{/index.html$};
   my $root_url = join '/', (('..') x (1 + $n));
   my $doc = new Web::DOM::Document;
+  $doc->manakai_is_html (1);
   my $pre = $doc->create_element ('pre');
   $pre->text_content ($text);
   node2html $pre, $root_url => $html_path, %args;
@@ -540,6 +541,7 @@ for my $repo (@repo) {
 {
   my $root_url = q{..};
   my $doc = new Web::DOM::Document;
+  $doc->manakai_is_html (1);
   my $ul = $doc->create_element ('ul');
   $ul->id ('modules');
   for my $repo_short (sort { $a cmp $b } keys %$modules) {
