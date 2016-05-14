@@ -28,10 +28,11 @@ such as <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a
 <p>Following methods are available:</p>
 
 <dl>
-<dt id="$et->add_event_listener_($type,_$code,_{capture_=>_$boolean,_passive_=>_$boolean})"><code>$et-&gt;<strong id="member-add_event_listener">add_event_listener</strong> ($type,
+<dt id="$et->add_event_listener_($type,_$code,_{capture_=>_$boolean,_passive_=>_$boolean,_once_=>_$boolean})"><code>$et-&gt;<strong id="member-add_event_listener">add_event_listener</strong> ($type,
 $code,
 {capture =&gt; $boolean,
-passive =&gt; $boolean})</code></dt>
+passive =&gt; $boolean,
+once =&gt; $boolean})</code></dt>
 
 <dd>
 <p>Register a callback function as event listener for the event target.
@@ -39,9 +40,10 @@ The first argument identifies the type of the event to listen,
 e.g.
 <code>click</code> or <code>resize</code>.
 The second argument is a code reference,
-which is invoked when an event is dispatched.
-The optional third argument can specify whether the code listens the capturing phase (true) or the bubbling phase (false,
-default) and whether the listner is passive or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+which is invoked when an event is dispatched. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+
+<p>The optional third argument can specify following options as a hash reference: <code>capture</code> represents whether the code should be invoked in the capturing phase; <code>passive</code> rerepsents whether the event listener is passive (i.e.
+<code>prevent_default</code> is not allowed) or not; <code>once</code> represents whether the event listener should be automatically removed just after it is invoked for the first time.</p>
 
 <p>When an event of the specified type is dispatched,
 the code of the second argument is invoked with two arguments: <var>$self</var> and <var>$event</var>.

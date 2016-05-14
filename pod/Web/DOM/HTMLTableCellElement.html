@@ -27,7 +27,14 @@ The class is used by the HTML <code>td</code> and <code>th</code> elements.</p>
 the following methods are available:</p>
 
 <dl>
-<dt id="$index_=_$el->cell_index"><code>$index = $el-&gt;<strong id="member-cell_index">cell_index</strong></code></dt>
+<dt id="$string_=_$el->abbr"><code>$string = $el-&gt;<strong id="member-abbr">abbr</strong></code></dt>
+
+<dt id="$el->abbr_($string)"><code>$el-&gt;<strong>abbr</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>abbr</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$index_=_$el->cell_index"><code>$index = $el-&gt;<strong id="member-cell_index">cell_index</strong></code></dt>
 
 <dd>
 <p>Return the index of the cell in the list of the cells anchored in the table row. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
@@ -55,6 +62,13 @@ or set the <code>headers</code> attribute to the specified string value. <cite c
 
 <dd>
 <p>Return or set the <code>rowspan</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->scope"><code>$string = $el-&gt;<strong id="member-scope">scope</strong></code></dt>
+
+<dt id="$el->scope_($string)"><code>$el-&gt;<strong>scope</strong> ($string)</code></dt>
+
+<dd>
+<p>Return or set the <code>scope</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 </dd>
 </dl>
 
@@ -68,9 +82,6 @@ the following obsolete methods are available: <code>align</code>,
 <code>nowrap</code>,
 <code>valign</code>,
 and <code>width</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
-
-<p>The <code>td</code> element also implements the <a href="../../../pod/Web/DOM/HTMLTableDataCellElement" class="podlinkpod">Web::DOM::HTMLTableDataCellElement</a> interface.
-The <code>th</code> element also implements the <a href="../../../pod/Web/DOM/HTMLTableHeaderCellElement" class="podlinkpod">Web::DOM::HTMLTableHeaderCellElement</a> interface.</p>
 
 </section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
 

@@ -34,7 +34,8 @@
 <p>The <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> module provides the <code>new</code> method returning a new document object, which corresponds to the <code>new Document ()</code> constructor in JavaScript Web browser environment.</p>
 
 <pre>
-<code>  my $doc = new Web::DOM::Document;</code></pre>
+<code>  my $doc = new Web::DOM::Document; # XML document by default
+  $doc-&gt;manakai_is_html (1); # Change to HTML document</code></pre>
 
 <p>Using the document object, the application can create various DOM object, using standard DOM methods:</p>
 
@@ -357,7 +358,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
