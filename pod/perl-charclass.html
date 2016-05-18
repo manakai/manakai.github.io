@@ -2,15 +2,159 @@
       <link rel="stylesheet" href="../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>perl-charclass</title><link rel="license" href="../contact#license"></head><body><h1><a href=".." rel="top">The manakai project</a></h1>
+      <title>perl-charclass</title><link rel="license" href="#LICENSE"></head><body><h1><a href=".." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../docs" rel="up up">Documents</a></li>
         <li><a href="../pod/#modules" rel="up">Perl modules</a></li>
         <li><a href="" rel="bookmark">perl-charclass</a></li>
       </ul>
-    <ul class="pod-source"><li><a href="https://github.com/wakaba/perl-charclass/tree/master/">Source</a></li></ul></nav><article><pre>
-</pre></article><footer>
+    <ul class="pod-source"><li><a href="https://github.com/wakaba/perl-charclass/tree/master/README.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>CharClass</code></h1><h2>A Perl Regular Expression Character Class Library</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Char::Class::XML qw/InXML_NameStartChar10 InXMLNameChar10/;
+  
+  if ($name !~ /\A&lt;strong&gt;\p{InXML_NameStartChar10}&lt;/strong&gt;&lt;strong&gt;\p{InXMLNameChar10}&lt;/strong&gt;*\z/) {
+    die "$0: $name: This is not an XML 1.0 Name";
+  }</code></pre>
+
+</section><section id="MODULES"><h1>MODULES</h1>
+
+<p>Modules defining character classes:</p>
+
+<dl>
+<dt><a href="../pod/Char/Class/Alphabet" class="podlinkpod">Char::Class::Alphabet</a></dt>
+
+<dd>
+<p>Character classes for alphabetical letters.</p>
+
+</dd><dt><a href="../pod/Char/Class/Han" class="podlinkpod">Char::Class::Han</a></dt>
+
+<dd>
+<p>Han character (CJK ideograph) classes.</p>
+
+</dd><dt><a href="../pod/Char/Class/Hiragana" class="podlinkpod">Char::Class::Hiragana</a></dt>
+
+<dd>
+<p>Hiragana classes.</p>
+
+</dd><dt><a href="../pod/Char/Class/IDNBlacklist" class="podlinkpod">Char::Class::IDNBlacklist</a></dt>
+
+<dd>
+<p>Characters in IDN blacklist, as maintainted by the Mozilla project for display of IDNs in their product.</p>
+
+</dd><dt><a href="../pod/Char/Class/JaInput" class="podlinkpod">Char::Class::JaInput</a></dt>
+
+<dd>
+<p>Character classes defined in JIS input method standards.</p>
+
+</dd><dt><a href="../pod/Char/Class/ISOIECTR10176" class="podlinkpod">Char::Class::ISOIECTR10176</a></dt>
+
+<dd>
+<p>ISO/IEC TR 10176 character repertoires.</p>
+
+</dd><dt><a href="../pod/Char/Class/JISX0221" class="podlinkpod">Char::Class::JISX0221</a></dt>
+
+<dd>
+<p>JIS X 0221 character collections.</p>
+
+</dd><dt><a href="../pod/Char/Class/JISX4051" class="podlinkpod">Char::Class::JISX4051</a></dt>
+
+<dd>
+<p>JIS X 4051 character classes.</p>
+
+</dd><dt><a href="../pod/Char/Class/JISX4052" class="podlinkpod">Char::Class::JISX4052</a></dt>
+
+<dd>
+<p>JIS X 4052 character classes.</p>
+
+</dd><dt><a href="../pod/Char/Class/Katakana" class="podlinkpod">Char::Class::Katakana</a></dt>
+
+<dd>
+<p>Katakana classes.</p>
+
+</dd><dt><a href="../pod/Char/Class/Kana" class="podlinkpod">Char::Class::Kana</a></dt>
+
+<dd>
+<p>Kana (hiragana, katakana, and additions) classes.</p>
+
+</dd><dt><a href="../pod/Char/Class/RFC1815" class="podlinkpod">Char::Class::RFC1815</a></dt>
+
+<dd>
+<p>RFC 1815 character sets.</p>
+
+</dd><dt><a href="../pod/Char/Class/UCS" class="podlinkpod">Char::Class::UCS</a></dt>
+
+<dd>
+<p>UCS (ISO/IEC 10646) character collections.</p>
+
+</dd><dt><a href="../pod/Char/Class/XML" class="podlinkpod">Char::Class::XML</a></dt>
+
+<dd>
+<p>XML-related character classes such as <code>InXML_NameStartChar10</code> (XML 1.0 name start characters) and <code>InXMLNameChar</code> (XML 1.1 name characters).</p>
+</dd>
+</dl>
+
+<p>A module for normalization:</p>
+
+<dl>
+<dt><a href="../pod/Char/Normalize/FullwidthHalfwidth" class="podlinkpod">Char::Normalize::FullwidthHalfwidth</a></dt>
+
+<dd>
+<p>Normalization of ideographic space, fullwidth alphanumeric characters, and halfwidth Kakatana.</p>
+</dd>
+</dl>
+
+<p>Modules for Unicode character properties:</p>
+
+<dl>
+<dt><a href="../pod/Char/Prop/Unicode/Age" class="podlinkpod">Char::Prop::Unicode::Age</a></dt>
+
+<dd>
+<p>Unicode "Age" property.</p>
+
+</dd><dt><a href="../pod/Char/Prop/Unicode/BidiClass" class="podlinkpod">Char::Prop::Unicode::BidiClass</a></dt>
+
+<dd>
+<p>Unicode "BidiClass" property.</p>
+
+</dd><dt><a href="../pod/Char/Prop/Unicode/5_1_0/BidiClass" class="podlinkpod">Char::Prop::Unicode::5_1_0::BidiClass</a></dt>
+
+<dd>
+<p>Unicode 5.1.0 "BidiClass" property.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>All Perl modules in this repository are written in pure Perl.</p>
+
+<p>They require Perl 5.8 or later.</p>
+
+</section><section id="DISTRIBUTION"><h1>DISTRIBUTION</h1>
+
+<p>The latest version of the modules is available at <code class="url">&lt;<a href="https://github.com/wakaba/perl-charclass">https://github.com/wakaba/perl-charclass</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2003-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library and the library generated by it is free software; you can redistribute them and/or modify them under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
     <li><a href=".." rel="top">Top</a>

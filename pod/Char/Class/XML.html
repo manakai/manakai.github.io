@@ -20,68 +20,31 @@
 
 <p>Char::Class::XML - Regular Expression Character Classes - <code>XML</code></p>
 
-</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
-
-<p>Character classes for XML,
-the Extensible Markup Language</p>
-
 </section><section id="COLLECTION_NAMES"><h1>COLLECTION NAMES</h1>
 
 <dl>
 <dt id="InXMLBaseChar"><code>InXMLBaseChar</code></dt>
 
-<dd>
-<p><code>BaseChar</code> defined in XML 1.0 spec (#85,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-BaseChar">http://www.w3.org/TR/REC-xml#NT-BaseChar</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLChar"><code>InXMLChar</code></dt>
+<dt id="InXMLChar"><code>InXMLChar</code></dt>
 
 <dd>
 <p>An alias for InXMLChar11.</p>
 
 </dd><dt id="InXMLChar10"><code>InXMLChar10</code></dt>
 
-<dd>
-<p><code>Char</code> defined in XML 1.0 spec (#2,
-&lt;http://www.w3.org/TR/REC-xml#N</p>
+<dt id="InXMLChar11"><code>InXMLChar11</code></dt>
 
-</dd><dt id="InXMLChar11"><code>InXMLChar11</code></dt>
+<dt id="InXMLCombiningChar"><code>InXMLCombiningChar</code></dt>
 
-<dd>
-<p><code>Char</code> defined in XML 1.1 spec (#2,
-<code class="url">&lt;<a href="http://www.w3.org/TR/xml11#NT-Char">http://www.w3.org/TR/xml11#NT-Char</a>&gt;</code>)</p>
+<dt id="InXMLDigit"><code>InXMLDigit</code></dt>
 
-</dd><dt id="InXMLCombiningChar"><code>InXMLCombiningChar</code></dt>
+<dt id="InXMLExtender"><code>InXMLExtender</code></dt>
 
-<dd>
-<p><code>CombiningChar</code> defined in XML 1.0 spec (#87,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-CombiningChar">http://www.w3.org/TR/REC-xml#NT-CombiningChar</a>&gt;</code>)</p>
+<dt id="InXMLIdeographic"><code>InXMLIdeographic</code></dt>
 
-</dd><dt id="InXMLDigit"><code>InXMLDigit</code></dt>
+<dt id="InXMLLetter"><code>InXMLLetter</code></dt>
 
-<dd>
-<p><code>Digit</code> defined in XML 1.0 spec (#88,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-Digit">http://www.w3.org/TR/REC-xml#NT-Digit</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLExtender"><code>InXMLExtender</code></dt>
-
-<dd>
-<p><code>Extender</code> defined in XML 1.0 spec (#89,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-Extender">http://www.w3.org/TR/REC-xml#NT-Extender</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLIdeographic"><code>InXMLIdeographic</code></dt>
-
-<dd>
-<p><code>Ideographic</code> defined in XML 1.0 spec (#86,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-Ideographic">http://www.w3.org/TR/REC-xml#NT-Ideographic</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLLetter"><code>InXMLLetter</code></dt>
-
-<dd>
-<p><code>Letter</code> (::= <code>BaseChar</code> / <code>Ideographic</code>) defined in XML 1.0 spec (#84,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-Letter">http://www.w3.org/TR/REC-xml#NT-Letter</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLNCNameChar"><code>InXMLNCNameChar</code></dt>
+<dt id="InXMLNCNameChar"><code>InXMLNCNameChar</code></dt>
 
 <dd>
 <p>An alias for InXMLNCNameChar10_5.</p>
@@ -93,22 +56,11 @@ the Extensible Markup Language</p>
 
 </dd><dt id="InXMLNCNameChar10_1"><code>InXMLNCNameChar10_1</code></dt>
 
-<dd>
-<p>Characters are elements of <code>NCNameChar</code> defined in original Namespace in XML spec (#5,
-<code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-names-20060816/#NT-NCNameChar">http://www.w3.org/TR/2006/REC-xml-names-20060816/#NT-NCNameChar</a>&gt;</code>)</p>
+<dt id="InXMLNCNameChar10_5"><code>InXMLNCNameChar10_5</code></dt>
 
-</dd><dt id="InXMLNCNameChar10_5"><code>InXMLNCNameChar10_5</code></dt>
+<dt id="InXMLNCNameChar11"><code>InXMLNCNameChar11</code></dt>
 
-<dd>
-<p>Characters are elements of <code>NCNameChar</code> defined in Namespace in XML spec (#5,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml-names#NT-NCNameChar">http://www.w3.org/TR/REC-xml-names#NT-NCNameChar</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLNCNameChar11"><code>InXMLNCNameChar11</code></dt>
-
-<dd>
-<p><code>NCNameChar</code> defined in XML Namespace 1.1 spec</p>
-
-</dd><dt id="InXMLNCNameStartChar"><code>InXMLNCNameStartChar</code></dt>
+<dt id="InXMLNCNameStartChar"><code>InXMLNCNameStartChar</code></dt>
 
 <dd>
 <p>An alias for InXMLNCNameStartChar10_5.</p>
@@ -120,16 +72,9 @@ the Extensible Markup Language</p>
 
 </dd><dt id="InXMLNCNameStartChar10_5"><code>InXMLNCNameStartChar10_5</code></dt>
 
-<dd>
-<p>Characters can be the first char of <code>NCName</code> defined in Namespace in XML spec (#4,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml-names#NT-NCName">http://www.w3.org/TR/REC-xml-names#NT-NCName</a>&gt;</code>)</p>
+<dt id="InXMLNCNameStartChar11"><code>InXMLNCNameStartChar11</code></dt>
 
-</dd><dt id="InXMLNCNameStartChar11"><code>InXMLNCNameStartChar11</code></dt>
-
-<dd>
-<p><code>NCNameStartChar</code> defined in XML Namespace 1.1 spec</p>
-
-</dd><dt id="InXMLNameChar"><code>InXMLNameChar</code></dt>
+<dt id="InXMLNameChar"><code>InXMLNameChar</code></dt>
 
 <dd>
 <p>An alias for InXMLNameChar10_5.</p>
@@ -141,23 +86,11 @@ the Extensible Markup Language</p>
 
 </dd><dt id="InXMLNameChar10_1"><code>InXMLNameChar10_1</code></dt>
 
-<dd>
-<p>Characters are elements of <code>NameChar</code> defined in original XML 1.0 spec (#4,
-<code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-20060816/#NT-NameChar">http://www.w3.org/TR/2006/REC-xml-20060816/#NT-NameChar</a>&gt;</code>)</p>
+<dt id="InXMLNameChar10_5"><code>InXMLNameChar10_5</code></dt>
 
-</dd><dt id="InXMLNameChar10_5"><code>InXMLNameChar10_5</code></dt>
+<dt id="InXMLNameChar11"><code>InXMLNameChar11</code></dt>
 
-<dd>
-<p>Characters are elements of <code>NameChar</code> defined in XML 1.0 spec (#4,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-NameChar">http://www.w3.org/TR/REC-xml#NT-NameChar</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLNameChar11"><code>InXMLNameChar11</code></dt>
-
-<dd>
-<p><code>NameChar</code> defined in XML 1.1 spec (#4a,
-<code class="url">&lt;<a href="http://www.w3.org/TR/xml11#NT-NameChar">http://www.w3.org/TR/xml11#NT-NameChar</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLNameStartChar"><code>InXMLNameStartChar</code></dt>
+<dt id="InXMLNameStartChar"><code>InXMLNameStartChar</code></dt>
 
 <dd>
 <p>An alias for InXMLNameStartChar10_5.</p>
@@ -169,46 +102,22 @@ the Extensible Markup Language</p>
 
 </dd><dt id="InXMLNameStartChar10_5"><code>InXMLNameStartChar10_5</code></dt>
 
-<dd>
-<p>Characters can be the first char of <code>Name</code> defined in XML 1.0 spec (#5,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-Name">http://www.w3.org/TR/REC-xml#NT-Name</a>&gt;</code>)</p>
+<dt id="InXMLNameStartChar11"><code>InXMLNameStartChar11</code></dt>
 
-</dd><dt id="InXMLNameStartChar11"><code>InXMLNameStartChar11</code></dt>
+<dt id="InXMLPubidChar"><code>InXMLPubidChar</code></dt>
 
-<dd>
-<p><code>NameStartChar</code> defined in XML 1.1 spec (#4,
-<code class="url">&lt;<a href="http://www.w3.org/TR/xml11#NT-NameStartChar">http://www.w3.org/TR/xml11#NT-NameStartChar</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLPubidChar"><code>InXMLPubidChar</code></dt>
-
-<dd>
-<p><code>PubidChar</code> defined in XML 1.0 spec (#13,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-PubidChar">http://www.w3.org/TR/REC-xml#NT-PubidChar</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLRestrictedChar"><code>InXMLRestrictedChar</code></dt>
+<dt id="InXMLRestrictedChar"><code>InXMLRestrictedChar</code></dt>
 
 <dd>
 <p>An alias for InXMLRestrictedChar11.</p>
 
 </dd><dt id="InXMLRestrictedChar11"><code>InXMLRestrictedChar11</code></dt>
 
-<dd>
-<p><code>RestrictedChar</code> defined in XML 1.1 spec (#2a,
-<code class="url">&lt;<a href="http://www.w3.org/TR/xml11#NT-RestrictedChar">http://www.w3.org/TR/xml11#NT-RestrictedChar</a>&gt;</code>)</p>
+<dt id="InXMLS"><code>InXMLS</code></dt>
 
-</dd><dt id="InXMLS"><code>InXMLS</code></dt>
+<dt id="InXMLVersionNum"><code>InXMLVersionNum</code></dt>
 
-<dd>
-<p>Characters are elements of <code>S</code> defined in XML 1.0 spec (#3,
-<code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml#NT-S">http://www.w3.org/TR/REC-xml#NT-S</a>&gt;</code>)</p>
-
-</dd><dt id="InXMLVersionNum"><code>InXMLVersionNum</code></dt>
-
-<dd>
-<p>Characters are elements of <code>VersionNum</code> defined in First and Second Editions of XML 1.0 spec (#26,
-<code class="url">&lt;<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-VersionNum">http://www.w3.org/TR/2000/REC-xml-20001006#NT-VersionNum</a>&gt;</code>)</p>
-
-</dd><dt id="InXML_NCNameStartChar"><code>InXML_NCNameStartChar</code></dt>
+<dt id="InXML_NCNameStartChar"><code>InXML_NCNameStartChar</code></dt>
 
 <dd>
 <p>An alias for InXMLNCNameStartChar10_5.</p>
@@ -220,11 +129,7 @@ the Extensible Markup Language</p>
 
 </dd><dt id="InXML_NCNameStartChar10_1"><code>InXML_NCNameStartChar10_1</code></dt>
 
-<dd>
-<p>Characters can be the first char of <code>NCName</code> defined in original Namespace in XML spec (#4,
-<code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-names-20060816/#NT-NCName">http://www.w3.org/TR/2006/REC-xml-names-20060816/#NT-NCName</a>&gt;</code>)</p>
-
-</dd><dt id="InXML_NameStartChar"><code>InXML_NameStartChar</code></dt>
+<dt id="InXML_NameStartChar"><code>InXML_NameStartChar</code></dt>
 
 <dd>
 <p>An alias for InXMLNameStartChar10_5.</p>
@@ -236,122 +141,35 @@ the Extensible Markup Language</p>
 
 </dd><dt id="InXML_NameStartChar10_1"><code>InXML_NameStartChar10_1</code></dt>
 
-<dd>
-<p>Characters can be the first char of <code>Name</code> defined in original XML 1.0 spec (#5,
-<code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-20060816/#NT-Name">http://www.w3.org/TR/2006/REC-xml-20060816/#NT-Name</a>&gt;</code>)</p>
-
-</dd><dt id="InXML_UnrestrictedChar"><code>InXML_UnrestrictedChar</code></dt>
+<dt id="InXML_UnrestrictedChar"><code>InXML_UnrestrictedChar</code></dt>
 
 <dd>
 <p>An alias for InXML_UnrestrictedChar11.</p>
 
 </dd><dt id="InXML_UnrestrictedChar10"><code>InXML_UnrestrictedChar10</code></dt>
 
-<dd>
-<p>An alias for InXMLChar10.</p>
+<dt id="InXML_UnrestrictedChar11"><code>InXML_UnrestrictedChar11</code></dt>
 
-</dd><dt id="InXML_UnrestrictedChar11"><code>InXML_UnrestrictedChar11</code></dt>
+<dt id="InXML_deprecated_noncharacter"><code>InXML_deprecated_noncharacter</code></dt>
 
-<dd>
-<p><code>Char11</code> - <code>RestrictedChar11</code></p>
+<dt id="InXML_unicode_xml_not_suitable"><code>InXML_unicode_xml_not_suitable</code></dt>
 
-</dd><dt id="InXML_deprecated_noncharacter"><code>InXML_deprecated_noncharacter</code></dt>
-
-<dd>
-<p>Additional deprecated characters in XML 1.0 SE errata (E46,
-<code class="url">&lt;<a href="http://www.w3.org/XML/xml-V10-2e-errata#E46">http://www.w3.org/XML/xml-V10-2e-errata#E46</a>&gt;</code>) and TE <code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml/#charsets">http://www.w3.org/TR/REC-xml/#charsets</a>&gt;</code> ("noncharacter" in Unicode)</p>
-
-</dd><dt id="InXML_unicode_xml_not_suitable"><code>InXML_unicode_xml_not_suitable</code></dt>
-
-<dd>
-<p>Characters not suitable for use with markup (Table 3.1 of <code class="url">&lt;<a href="http://www.w3.org/TR/unicode-xml/#Charlist">http://www.w3.org/TR/unicode-xml/#Charlist</a>&gt;</code>)</p>
-
-</dd><dt id="InXML_unicode_xml_suitable_format_character"><code>InXML_unicode_xml_suitable_format_character</code></dt>
-
-<dd>
-<p>Some characters that affect text format but are suitable for use with markup (Table 4.1 of <code class="url">&lt;<a href="http://www.w3.org/TR/unicode-xml/#Charlist">http://www.w3.org/TR/unicode-xml/#Charlist</a>&gt;</code>)</p>
-</dd>
+<dt id="InXML_unicode_xml_suitable_format_character"><code>InXML_unicode_xml_suitable_format_character</code></dt>
 </dl>
 
 </section><section id="EXAMPLE"><h1>EXAMPLE</h1>
 
 <pre>
-<code> use Char::Class::XML qw(InXMLNCNameChar10_1);
- if ($s =~ /\p{InXMLNCNameChar10_1}/) {
+<code> use Char::Class::XML qw(InXML_NCNameStartChar10_1);
+ if ($s =~ /\p{InXML_NCNameStartChar10_1}/) {
    print "Match!\n";
  }</code></pre>
 
-</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
-
-<dl>
-<dt id="XML_1.0">XML 1.0</dt>
-
-<dd>
-<p>"Extensible Markup Language (XML) 1.0", W3C Recommendation, <code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml">http://www.w3.org/TR/REC-xml</a>&gt;</code>.</p>
-
-<p>First Edition, 1998-02-10, <code class="url">&lt;<a href="http://www.w3.org/TR/1998/REC-xml-19980210">http://www.w3.org/TR/1998/REC-xml-19980210</a>&gt;</code>.</p>
-
-<p>"XML 1.0 Specification Errata", Errata for First Edition, <code class="url">&lt;<a href="http://www.w3.org/XML/xml-19980210-errata">http://www.w3.org/XML/xml-19980210-errata</a>&gt;</code>.</p>
-
-<p>Second Edition, 2000-10-06, <code class="url">&lt;<a href="http://www.w3.org/TR/2000/WD-xml-2e-20000814">http://www.w3.org/TR/2000/WD-xml-2e-20000814</a>&gt;</code>.</p>
-
-<p>"XML 1.0 Second Edition Specification Errata", Errata for Second Edition, <code class="url">&lt;<a href="http://www.w3.org/XML/xml-V10-2e-errata">http://www.w3.org/XML/xml-V10-2e-errata</a>&gt;</code>.</p>
-
-<p>Third Edition, 2004-02-04, <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-xml-20040204">http://www.w3.org/TR/2004/REC-xml-20040204</a>&gt;</code>.</p>
-
-<p>"XML 1.0 Third Edition Specification Errata", <code class="url">&lt;<a href="http://www.w3.org/XML/xml-V10-3e-errata">http://www.w3.org/XML/xml-V10-3e-errata</a>&gt;</code>.</p>
-
-<p>Fourth Edition, 2006-08-16, <code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-20060816/">http://www.w3.org/TR/2006/REC-xml-20060816/</a>&gt;</code>.</p>
-
-<p>Fifth Edition, 2008-11-26, <code class="url">&lt;<a href="http://www.w3.org/TR/2008/REC-xml-20081126/">http://www.w3.org/TR/2008/REC-xml-20081126/</a>&gt;</code>.</p>
-
-</dd><dt id="XML_Namespace_1.0">XML Namespace 1.0</dt>
-
-<dd>
-<p>"Namespaces in XML 1.0", W3C Recommendation, <code class="url">&lt;<a href="http://www.w3.org/TR/REC-xml-names">http://www.w3.org/TR/REC-xml-names</a>&gt;</code>.</p>
-
-<p>First Edition, 1999-01-14, <code class="url">&lt;<a href="http://www.w3.org/TR/1999/REC-xml-names-19990114">http://www.w3.org/TR/1999/REC-xml-names-19990114</a>&gt;</code>.</p>
-
-<p>"Namespaces in XML Errata", <code class="url">&lt;<a href="http://www.w3.org/XML/xml-names-19990114-errata">http://www.w3.org/XML/xml-names-19990114-errata</a>&gt;</code>.</p>
-
-<p>Second Edition, 2006-08-16, <code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-names-20060816/">http://www.w3.org/TR/2006/REC-xml-names-20060816/</a>&gt;</code>.</p>
-
-<p>Third Edition, 2009-12-08, <code class="url">&lt;<a href="http://www.w3.org/TR/2009/REC-xml-names-20091208/">http://www.w3.org/TR/2009/REC-xml-names-20091208/</a>&gt;</code>.</p>
-
-</dd><dt id="XML_1.1">XML 1.1</dt>
-
-<dd>
-<p>"Extensible Markup Language (XML) 1.1", W3C Recommendation, <code class="url">&lt;<a href="http://www.w3.org/TR/xml11">http://www.w3.org/TR/xml11</a>&gt;</code>.</p>
-
-<p>First Edition, 2004-02-04. Edited 2004-04-15, <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-xml11-20040204/">http://www.w3.org/TR/2004/REC-xml11-20040204/</a>&gt;</code>.</p>
-
-<p>"XML 1.1 First Edition Specification Errata", <code class="url">&lt;<a href="http://www.w3.org/XML/xml-V11-1e-errata">http://www.w3.org/XML/xml-V11-1e-errata</a>&gt;</code>.</p>
-
-<p>Second Edition, 2006-08-16, <code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml11-20060816/">http://www.w3.org/TR/2006/REC-xml11-20060816/</a>&gt;</code>.</p>
-
-</dd><dt id="XML_Namespace_1.1">XML Namespace 1.1</dt>
-
-<dd>
-<p>"Namespaces in XML 1.1", W3C Recommendation, <code class="url">&lt;<a href="http://www.w3.org/TR/xml-names11">http://www.w3.org/TR/xml-names11</a>&gt;</code>.</p>
-
-<p>First Edition, 2004-04-02, <code class="url">&lt;<a href="http://www.w3.org/TR/2004/REC-xml-names11-20040204">http://www.w3.org/TR/2004/REC-xml-names11-20040204</a>&gt;</code>.</p>
-
-<p>"Namespaces in XML 1.1 Errata", <code class="url">&lt;<a href="http://www.w3.org/XML/2004/xml-names11-errata">http://www.w3.org/XML/2004/xml-names11-errata</a>&gt;</code>.</p>
-
-<p>Second Edition, 2006-08-16, <code class="url">&lt;<a href="http://www.w3.org/TR/2006/REC-xml-names11-20060816/">http://www.w3.org/TR/2006/REC-xml-names11-20060816/</a>&gt;</code>.</p>
-
-</dd><dt id="Misc.">Misc.</dt>
-
-<dd>
-<p>"Unicode in XML and other Markup Languages", Unicode Technical Report #20, W3C Note, <code class="url">&lt;<a href="http://www.w3.org/TR/unicode-xml/">http://www.w3.org/TR/unicode-xml/</a>&gt;</code>. This version of this module refers 2003-06-13 version of the W3C Note <code class="url">&lt;<a href="http://www.w3.org/TR/2003/NOTE-unicode-xml-20030613/">http://www.w3.org/TR/2003/NOTE-unicode-xml-20030613/</a>&gt;</code>.</p>
-</dd>
-</dl>
-
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;</p>
+<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
-<p>This library and the library generated by it is free software; you can redistribute them and/or modify them under the same terms as Perl itself.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
 
 
