@@ -2,24 +2,24 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::DOM::HTMLTemplateElement</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+      <title>Web::DOM::HTMLSlotElement</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
         <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
         <li><a href="../../../pod/perl-web-dom" rel="up">perl-web-dom</a></li>
-        <li><a href="" rel="bookmark">Web::DOM::HTMLTemplateElement</a></li>
+        <li><a href="" rel="bookmark">Web::DOM::HTMLSlotElement</a></li>
       </ul>
-    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/HTMLTemplateElement.pod">Source</a></li></ul></nav><article>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-dom/tree/master/lib/Web/DOM/HTMLSlotElement.pod">Source</a></li></ul></nav><article>
 
 
 
 
 
-<hgroup><h1><code>Web::DOM::HTMLTemplateElement</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/HTMLTemplateElement"><code>HTMLTemplateElement</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::HTMLSlotElement</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/HTMLSlotElement"><code>HTMLSlotElement</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::DOM::HTMLTemplateElement</code> class implements the DOM <code>HTMLTemplateElement</code> interface.
-The class is used by the HTML <code>template</code> element.</p>
+<p>The <code>Web::DOM::HTMLSlotElement</code> class implements the DOM <code>HTMLSlotElement</code> interface.
+The class is used by the HTML <code>slot</code> element.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -27,10 +27,12 @@ The class is used by the HTML <code>template</code> element.</p>
 the following method is available:</p>
 
 <dl>
-<dt id="$df_=_$el->content"><code>$df = $el-&gt;<strong id="member-content">content</strong></code></dt>
+<dt id="$string_=_$el->name"><code>$string = $el-&gt;<strong id="member-name">name</strong></code></dt>
+
+<dt id="$el->name_($string)"><code>$el-&gt;<strong>name</strong> ($string)</code></dt>
 
 <dd>
-<p>Return the <a href="../../../pod/Web/DOM/DocumentFragment" class="podlinkpod">Web::DOM::DocumentFragment</a> representing the template content of the element. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Return or set the <code>name</code> content attribute of the element. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 </dd>
 </dl>
 
@@ -40,7 +42,7 @@ the following method is available:</p>
 <dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Standard <code class="url">&lt;<a href="https://www.whatwg.org/specs/web-apps/current-work/#the-template-element">https://www.whatwg.org/specs/web-apps/current-work/#the-template-element</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="https://html.spec.whatwg.org/#the-slot-element">https://html.spec.whatwg.org/#the-slot-element</a>&gt;</code>.</p>
 </dd>
 </dl>
 
