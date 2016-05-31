@@ -232,6 +232,13 @@
 
 <p>This method is suitable for values for HTML <code>&lt;input type=datetime&gt;</code>, <code>time</code> elements, and <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""&gt;</code> attributes.</p>
 
+</dd><dt id="$string_=_$dt->to_generalized_time_string"><code>$string = $dt-&gt;<strong id="member-to_generalized_time_string">to_generalized_time_string</strong></code></dt>
+
+<dd>
+<p>Serialize the date and time value represented by the object as a PKIX GeneralizedTime string [PKIX]. Any fraction part of seconds is discarded.</p>
+
+<p>This method is suitable for various timestamp fields in Certificates, CRLs, and OCSP objects, used with TLS.</p>
+
 </dd><dt id="$string_=_$dt->to_http_date_string"><code>$string = $dt-&gt;<strong id="member-to_http_date_string">to_http_date_string</strong></code></dt>
 
 <dd>
@@ -390,6 +397,11 @@
 
 <dd>
 <p>Really Simple Syndication Best Practices Profile <code class="url">&lt;<a href="http://www.rssboard.org/rss-profile">http://www.rssboard.org/rss-profile</a>&gt;</code>.</p>
+
+</dd><dt id="PKIX">PKIX</dt>
+
+<dd>
+<p>RFC 5280, Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5280">https://tools.ietf.org/html/rfc5280</a>&gt;</code>.</p>
 
 </dd><dt id="DATETIME">DATETIME</dt>
 
