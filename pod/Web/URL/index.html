@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::URL</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-url" rel="up">perl-web-url</a></li>
+        <li><a href="" rel="bookmark">Web::URL</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-url/tree/master/lib/Web/URL.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::URL</code></h1><h2>URL record API</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::URL;
+  my $url = Web::URL-&gt;parse_string ($input_string, $base_url_record);
+  warn $url-&gt;stringify;</code></pre>
+
+</section><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<p>The <code>Web::URL</code> object represents a URL record.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$url_=_Web::URL->parse_string_($input_string,_$base_url_record)"><code>$url = Web::URL-&gt;<strong id="member-parse_string">parse_string</strong> ($input_string, $base_url_record)</code></dt>
+
+<dd>
+<p>Parse a string and return a URL record object (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a>) for it.</p>
+
+<p>The first argument is the string to be parsed as a URL string.</p>
+
+<p>The second argument is a URL record, which is used as the base URL. If <code>undef</code> is specified, <code>about:blank</code> is used as the base URL.</p>
+
+<p>If the parsing failed, the method returns <code>undef</code>.</p>
+
+</dd><dt id="$string_=_$url->scheme"><code>$string = $url-&gt;<strong id="member-scheme">scheme</strong></code></dt>
+
+<dd>
+<p>Return the scheme component of the URL, canonicalized (i.e. in lowercase).</p>
+
+</dd><dt id="$string_=_$url->username"><code>$string = $url-&gt;<strong id="member-username">username</strong></code></dt>
+
+<dd>
+<p>Return the username component of the URL. If the URL has no explicit username component, the empty string is returned.</p>
+
+</dd><dt id="$string_=_$url->password"><code>$string = $url-&gt;<strong id="member-password">password</strong></code></dt>
+
+<dd>
+<p>Return the password component of the URL, if any, or <code>undef</code>.</p>
+
+</dd><dt id="$string_=_$url->host"><code>$string = $url-&gt;<strong id="member-host">host</strong></code></dt>
+
+<dd>
+<p>Return the host component of the URL, canonicalized, if any, or <code>undef</code>.</p>
+
+</dd><dt id="$string_=_$url->port"><code>$string = $url-&gt;<strong id="member-port">port</strong></code></dt>
+
+<dd>
+<p>Return the port component of the URL, if any, or <code>undef</code>.</p>
+
+</dd><dt id="$string_=_$url->hostport"><code>$string = $url-&gt;<strong id="member-hostport">hostport</strong></code></dt>
+
+<dd>
+<p>Serialize the host and port components of the URL, if any, or <code>undef</code>.</p>
+
+</dd><dt id="$string_=_$url->pathquery"><code>$string = $url-&gt;<strong id="member-pathquery">pathquery</strong></code></dt>
+
+<dd>
+<p>Serialize the path and query components of the URL.</p>
+
+</dd><dt id="$url->set_query_params_($params,_append_=>_$boolean)"><code>$url-&gt;<strong id="member-set_query_params">set_query_params</strong> ($params, append =&gt; $boolean)</code></dt>
+
+<dd>
+<p>Set the query parameters, in the <code>application/x-www-form-urlencoded</code> syntax with UTF-8.</p>
+
+<p>If the <code>append</code> flag is set to a true value, any existing query component of the URL is preserved and the parameters are appended with separator <code>&amp;</code>.</p>
+
+<p>If the <code>append</code> flag is set to a false value, any existing query component of the URL is discarded.</p>
+
+<p>This method mutates the URL record object.</p>
+
+</dd><dt id="$origin_=_$url->get_origin"><code>$origin = $url-&gt;<strong id="member-get_origin">get_origin</strong></code></dt>
+
+<dd>
+<p>Get a new origin object (<a href="../../../pod/Web/Origin" class="podlinkpod">Web::Origin</a>) representing the origin of the URL.</p>
+
+</dd><dt id="$string_=_$url->stringify"><code>$string = $url-&gt;<strong id="member-stringify">stringify</strong></code></dt>
+
+<dd>
+<p>Serialize the URL record as a string.</p>
+
+</dd><dt id="$string_=_$url->stringify_without_fragment"><code>$string = $url-&gt;<strong id="member-stringify_without_fragment">stringify_without_fragment</strong></code></dt>
+
+<dd>
+<p>Serialize the URL record as a string, excluding any fragment component.</p>
+
+</dd><dt id="$url2_=_$url->clone"><code>$url2 = $url-&gt;<strong id="member-clone">clone</strong></code></dt>
+
+<dd>
+<p>Create another URL record object which has the same components as the URL record.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>URL Standard <code class="url">&lt;<a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

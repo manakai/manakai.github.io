@@ -18,10 +18,27 @@ same manner Web browsers do.
 
 * Perl modules
 
-- Web::URL::Canonicalize (lib/Web/URL/Canonicalize.pm)
+- Web::URL (lib/Web/URL.pm)
+- Web::URL::Encoding (lib/Web/URL/Encoding.pm)
+- Web::URL::Parser (lib/Web/URL/Parser.pm)
+- Web::URL::Scheme (lib/Web/URL/Scheme.pm)
+- Web::Origin (lib/Web/Origin.pm)
 - Web::DomainName::Canonicalize (lib/Web/DomainName/Canonicalize.pm)
-- Web::DomainName::IDNEnabled (lib/Web/DomainName/IDNEnabled.pm)
 - Web::IPAddr::Canonicalize (lib/IPAddr/Canonicalize.pm)
+
+Deprecated API:
+
+- Web::URL::Canonicalize (lib/Web/URL/Canonicalize.pm)
+- Web::DomainName::IDNEnabled (lib/Web/DomainName/IDNEnabled.pm)
+
+* Dependency
+
+Perl 5.8 or later is required.  Latest version of Perl, which supports
+latest version of the Unicode Standard, which can affect
+canonicalization of domain names, should be used.
+
+The |Web::Encoding| module, which is in a submodule of the Git
+repository, is required.
 
 * Spec
 
