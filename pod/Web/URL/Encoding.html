@@ -20,6 +20,7 @@
 
 <pre>
 <code>  use Web::URL::Encoding;
+  warn percent_encode_c $text;
   warn serialize_form_urlencoded {
     $name =&gt; $value,
     $name =&gt; [$value1, $value2],
@@ -34,12 +35,17 @@
 <p>The following functions are exported by default:</p>
 
 <dl>
-<dt id="$bytes_=_percent_encode_c_$string"><code>$bytes = percent_encode_c $string</code></dt>
+<dt id="$bytes_=_percent_encode_c_$text"><code>$bytes = percent_encode_c $text</code></dt>
 
 <dd>
 <p>Percent-encode the string, encoded in UTF-8. Anything other than <code>[A-Za-z0-9_.-]</code> are percent-encoded.</p>
 
-</dd><dt id="$string_=_serialize_form_urlencoded_$params"><code>$string = serialize_form_urlencoded $params</code></dt>
+</dd><dt id="$bytes_=_oauth1_percent_encode_c_$text"><code>$bytes = oauth1_percent_encode_c $text</code></dt>
+
+<dd>
+<p>Percent-encode the string, encoded in UTF-8, for OAuth 1.0.</p>
+
+</dd><dt id="$bytes_=_serialize_form_urlencoded_$params"><code>$bytes = serialize_form_urlencoded $params</code></dt>
 
 <dd>
 <p>Serialize a hash reference as an <code>application/x-www-form-urlencoded</code> bytes.</p>
@@ -52,13 +58,19 @@
 </dd>
 </dl>
 
-</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
 <p>URL Standard <code class="url">&lt;<a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>&gt;</code>.</p>
 
+<p>RFC 5849, The OAuth 1.0 Protocol <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5849">https://tools.ietf.org/html/rfc5849</a>&gt;</code>.</p>
+
+<p>Encoding Standard <code class="url">&lt;<a href="https://encoding.spec.whatwg.org/">https://encoding.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>When a text is encoded in UTF-8, UTF-8 encoder of the Encoding Standard MUST be used.</p>
+
 </section><section id="HISTORY"><h1>HISTORY</h1>
 
-<p>The module partially derived from <a href="../../../pod/URL/PercentEncode" class="podlinkpod">URL::PercentEncode</a> <code class="url">&lt;<a href="https://github.com/wakaba/perl-web-utils/blob/master/lib/URL/PercentEncode.pod">https://github.com/wakaba/perl-web-utils/blob/master/lib/URL/PercentEncode.pod</a>&gt;</code> and <a href="../../../pod/Web/UserAgent/Functions" class="podlinkpod">Web::UserAgent::Functions</a> <code class="url">&lt;<a href="https://github.com/wakaba/perl-web-useragent-functions">https://github.com/wakaba/perl-web-useragent-functions</a>&gt;</code>.</p>
+<p>The module partially derived from <a href="../../../pod/URL/PercentEncode" class="podlinkpod">URL::PercentEncode</a> <code class="url">&lt;<a href="https://github.com/wakaba/perl-web-utils/blob/master/lib/URL/PercentEncode.pod">https://github.com/wakaba/perl-web-utils/blob/master/lib/URL/PercentEncode.pod</a>&gt;</code> and <a href="../../../pod/Web/UserAgent/Functions" class="podlinkpod">Web::UserAgent::Functions</a> and <a href="../../../pod/Web/UserAgent/OAuth" class="podlinkpod">Web::UserAgent::OAuth</a> from <code class="url">&lt;<a href="https://github.com/wakaba/perl-web-useragent-functions">https://github.com/wakaba/perl-web-useragent-functions</a>&gt;</code>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 

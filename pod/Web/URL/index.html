@@ -78,6 +78,11 @@
 <dd>
 <p>Serialize the path and query components of the URL.</p>
 
+</dd><dt id="$string_=_$url->query"><code>$string = $url-&gt;<strong id="member-query">query</strong></code></dt>
+
+<dd>
+<p>Return the query component of the URL, if any, or <code>undef</code>.</p>
+
 </dd><dt id="$url->set_query_params_($params,_append_=>_$boolean)"><code>$url-&gt;<strong id="member-set_query_params">set_query_params</strong> ($params, append =&gt; $boolean)</code></dt>
 
 <dd>
@@ -103,6 +108,20 @@
 
 <dd>
 <p>Serialize the URL record as a string, excluding any fragment component.</p>
+
+</dd><dt id="$string_=_$url->originpathquery"><code>$string = $url-&gt;<strong id="member-originpathquery">originpathquery</strong></code></dt>
+
+<dd>
+<p>Serialize the URL record as a string, excluding any <code>userinfo</code> and fragment components.</p>
+
+<p>This method can be used to obtain a value for HTTP request-target or <code>Referer:</code> and <code>document.referrer</code>.</p>
+
+</dd><dt id="$string_=_$url->originpath"><code>$string = $url-&gt;<strong id="member-originpath">originpath</strong></code></dt>
+
+<dd>
+<p>Serialize the URL record as a string, excluding any <code>userinfo</code>, query, and fragment components.</p>
+
+<p>This method can be used to obtain a value for OAuth 1.0 signature generation.</p>
 
 </dd><dt id="$url2_=_$url->clone"><code>$url2 = $url-&gt;<strong id="member-clone">clone</strong></code></dt>
 
