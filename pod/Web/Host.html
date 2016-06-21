@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Host</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../pod/perl-web-url" rel="up">perl-web-url</a></li>
+        <li><a href="" rel="bookmark">Web::Host</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-url/tree/master/lib/Web/Host.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Host</code></h1><h2>Host names for the Web</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::Host;
+  $host = Web::Host-&gt;parse_string ("MyDomain.test");
+  warn $host-&gt;is_domain;
+  warn $host-&gt;is_ip;
+  warn $host-&gt;stringify;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Host</code> object represents a host, i.e. a domain, an IPv4 address, or an IPv6 address.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>Following methods are available:</p>
+
+<dl>
+<dt id="$host_=_Web::Host->parse_string_($string)"><code>$host = Web::Host-&gt;<strong id="member-parse_string">parse_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the string and return a <code>Web::Host</code> object for the host. The argument must be a domain, an IPv4 address, or an IPv6 address enclosed by <code>[</code> and <code>]</code>. It does not have to be canonicalized. It can be an IDN. If the argument is not a valid host, an <code>undef</code> value is returned instead.</p>
+
+</dd><dt id="$host_=_Web::Host->new_from_packed_addr_($bytes)"><code>$host = Web::Host-&gt;<strong id="member-new_from_packed_addr">new_from_packed_addr</strong> ($bytes)</code></dt>
+
+<dd>
+<p>Create a <code>Web::Host</code> object for the "packed" IP address. The argument must be a byte string of length 4 or 16. See also <code>packed_addr</code>.</p>
+
+</dd><dt id="$boolean_=_$host->is_domain"><code>$boolean = $host-&gt;<strong id="member-is_domain">is_domain</strong></code></dt>
+
+<dd>
+<p>Return whether the host is a domain or not.</p>
+
+</dd><dt id="$boolean_=_$host->is_ip"><code>$boolean = $host-&gt;<strong id="member-is_ip">is_ip</strong></code></dt>
+
+<dd>
+<p>Return whether the host is an IP address or not.</p>
+
+</dd><dt id="$boolean_=_$host->is_ipv4"><code>$boolean = $host-&gt;<strong id="member-is_ipv4">is_ipv4</strong></code></dt>
+
+<dd>
+<p>Return whether the host is an IPv4 address or not.</p>
+
+</dd><dt id="$boolean_=_$host->is_ipv6"><code>$boolean = $host-&gt;<strong id="member-is_ipv6">is_ipv6</strong></code></dt>
+
+<dd>
+<p>Return whether the host is an IPv6 address or not.</p>
+
+</dd><dt id="$host1->equals_($host2)"><code>$host1-&gt;<strong id="member-equals">equals</strong> ($host2)</code></dt>
+
+<dd>
+<p>Return whether two hosts are equal or not. They are equal if and only if their serializations are equal, by definition.</p>
+
+</dd><dt id="$string_=_$host->stringify"><code>$string = $host-&gt;<strong id="member-stringify">stringify</strong></code></dt>
+
+<dd>
+<p>Serialize the host, using the host serializer of the URL Standard. The result is canonicalized. Any IDN is converted into its Punycode form. IPv6 addresses are enclosed in <code>[</code> and <code>]</code>.</p>
+
+</dd><dt id="$bytes_=_$host->packed_addr"><code>$bytes = $host-&gt;<strong id="member-packed_addr">packed_addr</strong></code></dt>
+
+<dd>
+<p>Return the "packed" representation of the IP address, i.e. bytes of length 4 (if IPv4 address) or 16 (if IPv6 address) representing the address in network byte order (big endian). If the host is a domain, <code>undef</code> is returned instead.</p>
+
+</dd><dt id="$string_=_$host->text_addr"><code>$string = $host-&gt;<strong id="member-text_addr">text_addr</strong></code></dt>
+
+<dd>
+<p>Return the textual representation of the IP address, serialized using the IPv4 or IPv6 serializer of the URL Standard. The result is canonicalized. IPv6 addresses are <var>not</var> enclosed by <code>[</code> and <code>]</code>. If the host is a domain, <code>undef</code> is returned instead.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>URL Standard <code class="url">&lt;<a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../.." rel="top">Top</a>
+    </li><li><a href="../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

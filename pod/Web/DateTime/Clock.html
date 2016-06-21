@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::DateTime::Clock</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-datetime" rel="up">perl-web-datetime</a></li>
+        <li><a href="" rel="bookmark">Web::DateTime::Clock</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-datetime/tree/master/lib/Web/DateTime/Clock.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::DateTime::Clock</code></h1><h2>Clocks</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre>
+<code>  use Web::DateTime::Clock;
+  
+  $clock = Web::DateTime::Clock-&gt;realtime_clock;
+  warn $clock-&gt;();
+  
+  $clock = Web::DateTime::Clock-&gt;monotonic_clock;
+  warn $clock-&gt;();</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::DateTime::Clock</code> module defines clocks.</p>
+
+</section><section id="CLOCKS"><h1>CLOCKS</h1>
+
+<p>A clock is a Perl subroutine that returns a number representing the number of seconds from some epoch. It can have fractional part.</p>
+
+<p>In addition to the clocks provided by this module, applications can define their own clocks, as long as they conform to the definition above. For example, a test script can use a constant subroutine as a clock.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$clock_=_Web::DateTime::Clock->realtime_clock"><code>$clock = Web::DateTime::Clock-&gt;<strong id="member-realtime_clock">realtime_clock</strong></code></dt>
+
+<dd>
+<p>Return a walltime clock, i.e. a clock that returns the "real" time. The number represents the number of seconds from the Epoch, possibly with fractional part. This is the so-called "unix time".</p>
+
+</dd><dt id="$clock_=_Web::DateTime::Clock->monotonic_clock"><code>$clock = Web::DateTime::Clock-&gt;<strong id="member-monotonic_clock">monotonic_clock</strong></code></dt>
+
+<dd>
+<p>Return a monotonic clock, i.e. a clock whose value is monotonically increasing. The number represents the number of seconds from a clock-dependent epoch, possibly with fractional part.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>High Resolution Time Level 2 <code class="url">&lt;<a href="https://w3c.github.io/hr-time/">https://w3c.github.io/hr-time/</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>
