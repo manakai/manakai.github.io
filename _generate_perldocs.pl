@@ -17,6 +17,7 @@ my @repo = qw(wakaba/perl-charclass
               manakai/perl-web-url manakai/perl-web-datetime
               manakai/perl-web-resource manakai/perl-web-langtag
               manakai/perl-web-js wakaba/testdataparser
+              manakai/perl-web-driver-client
               manakai/webhacc-cli);
 for my $name (@repo) {
   (system ('git', 'clone', "git://github.com/$name", $repos_path->child ($name)) == 0) or ($DEBUG or die $?);
