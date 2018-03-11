@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::WSClient</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::WSClient</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/WSClient.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::WSClient</code></h1><h2>A WebSocket client</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  use Web::Transport::WSClient;
+  Web::Transport::WSClient-&gt;new (
+    url =&gt; Web::URL-&gt;parse_url (q&lt;wss://server.test/p1&gt;),
+    cb =&gt; sub {
+      my ($client, $data, $is_text) = @_;
+      if (defined $is_text) { # text or binary
+        if (defined $data) { # frame data
+          $current_data .= $data;
+        } else { # end of frame
+          if ($is_text) { # text
+            warn "Received |$current_data| (text)";
+          } else { # binary
+            warn "Received |$current_data| (binary)";
+          }
+          if ($current_data eq 'end') {
+            $client-&gt;close;
+          } else {
+            $client-&gt;send_binary ("\x01");
+          }
+          $current_data = '';
+        }
+      } else { # handshake done
+        $client-&gt;send_text ('Hello!');
+        $current_data = '';
+      }
+    },
+  )-&gt;then (sub {
+    my $res = $_[0];
+    if ($res-&gt;ws_closed_cleanly) {
+      warn "Done!";
+    } else {
+      warn $res-&gt;ws_code, "\t", $res-&gt;ws_reason;
+    }
+  });</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::WSClient</code> module is a WebSocket client.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$promise_=_Web::Transport::WSClient->new_(KEY_=>_VALUE,_...)"><code>$promise = Web::Transport::WSClient-&gt;<strong id="member-new">new</strong> (KEY =&gt; VALUE, ...)</code></dt>
+
+<dd>
+<p>Connect to a WebSocket server. The URL of the server, as well as various connection parameters, has to be specified as named arguments.</p>
+
+<p>It returns a promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a> object), which is resolved with a response object (<a href="../../../pod/Web/Transport/Response" class="podlinkpod">Web::Transport::Response</a> object) when the connection is closed. (If the connection has failed, the promise is resolved with a response object representing the failure. If any argument to the method is incorrect, the promise is rejected.)</p>
+
+<p>Following key/value pairs, including required <code>url</code> and <code>cb</code> options, are available as named arguments:</p>
+
+<dl>
+<dt><a name="url_=>_$url">url =&gt; $url</a></dt>
+
+<dd>
+<p>Specify the URL (a <a href="http://search.cpan.org/perldoc?Web%3A%3AURL" class="podlinkpod">Web::URL</a> object) of the WebSocket server. Its scheme must be <code>wss</code> or <code>ws</code>.</p>
+
+<p>This option is required.</p>
+
+</dd><dt><a name="headers_=>_{$string_=>_$string,_...}">headers =&gt; {$string =&gt; $string, ...}</a></dt>
+
+<dd>
+</dd><dt><a name="cookies_=>_{$string_=>_$string,_...}">cookies =&gt; {$string =&gt; $string, ...}</a></dt>
+
+<dd>
+</dd><dt><a name="params_=>_{$string_=>_$string,_...}">params =&gt; {$string =&gt; $string, ...}</a></dt>
+
+<dd>
+</dd><dt><a name="basic_auth_=>_[$userid,_$password]">basic_auth =&gt; [$userid, $password]</a></dt>
+
+<dd>
+</dd><dt><a name="bearer_=>_$string">bearer =&gt; $string</a></dt>
+
+<dd>
+</dd><dt><a name="oauth1_=>_[$string,_$string,_$string,_$string]">oauth1 =&gt; [$string, $string, $string, $string]</a></dt>
+
+<dd>
+</dd><dt><a name="oauth1_container_=>_'authorization'_|_'query'">oauth1_container =&gt; 'authorization' | 'query'</a></dt>
+
+<dd>
+</dd><dt><a name="superreload_=>_$boolean">superreload =&gt; $boolean</a></dt>
+
+<dd>
+<p>See <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>.</p>
+
+</dd><dt><a name="proxy_manager_=>_$pm">proxy_manager =&gt; $pm</a></dt>
+
+<dd>
+<p>Specify the proxy manager used to establish the connection. By default, a proxy manager which takes standard environment variables into account (i.e. <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is set as the proxy manager.</p>
+
+</dd><dt><a name="resolver_=>_$resolver">resolver =&gt; $resolver</a></dt>
+
+<dd>
+<p>Specify the name resolver used to establish the connection. By default, a resolver using system's name resolution API (<a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by DNS caching (<a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3ACachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is set as the resolver.</p>
+
+<p>Please note that this clock cannot alter the value used in OpenSSL.</p>
+
+</dd><dt><a name="protocol_clock_=>_$clock">protocol_clock =&gt; $clock</a></dt>
+
+<dd>
+<p>Specify the clock object used for various protocol-level date-time operations (e.g. obtaining timestamps used in authentications). A clock of <code>Web::DateTime::Clock-&gt;realtime_clock</code> is used by default.</p>
+
+</dd><dt><a name="tls_options_=>_{...}">tls_options =&gt; {...}</a></dt>
+
+<dd>
+<p>XXX</p>
+
+</dd><dt><a name="debug_=>_$mode">debug =&gt; $mode</a></dt>
+
+<dd>
+<p>Specify the debug mode. The default value is the <code>WEBUA_DEBUG</code> environment variable's value. See <code>WEBUA_DEBUG</code> section in <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport" class="podlinkpod">Web::Transport</a> for available mode values.</p>
+
+</dd><dt><a name="cb_=>_$code">cb =&gt; $code</a></dt>
+
+<dd>
+<p>Specify the callback subroutine. The value must be a code reference. This option must be specified.</p>
+
+<p>When a WebSocket connection has successfully established, <i>$code</i> is invoked with three arguments: the client object, <code>undef</code>, and <code>undef</code>.</p>
+
+<p>Whenever a WebSocket text or binary message has received, <i>$code</i> is invoked zero or more times with partial data <i>$data</i>, and then is invoked with <code>undef</code>. It is invoked with three arguments: the client object, <i>$data</i> or <code>undef</code>, and <i>$is_binary</i>. The concatenation of <i>$data</i>, in order, represents the received message's data. If the message's data is binary, <i>$is_binary</i> is true. Otherwise, <i>$is_binary</i> is false.</p>
+
+<p>If the connection is failed while receiving a message, the final invocation with <code>undef</code> argument might not happen.</p>
+</dd>
+</dl>
+
+</dd><dt id="$client->send_text_($text)"><code>$client-&gt;<strong id="member-send_text">send_text</strong> ($text)</code></dt>
+
+<dd>
+<p>Send a text message. The argument must be a character string.</p>
+
+</dd><dt id="$client->send_binary_($bytes)"><code>$client-&gt;<strong id="member-send_binary">send_binary</strong> ($bytes)</code></dt>
+
+<dd>
+<p>Send a binary message. The argument must be a byte string.</p>
+
+</dd><dt id="$promise_=_$client->close"><code>$promise = $client-&gt;<strong id="member-close">close</strong></code></dt>
+
+<dd>
+<p>Close any connection. It returns a promise, which is to be resolved once the connection has been closed.</p>
+</dd>
+</dl>
+
+</section><section id="ENVIRONMENT_VARIABLES"><h1>ENVIRONMENT VARIABLES</h1>
+
+<p>This module supports <code>WEBUA_DEBUG</code>. See <a href="../../../pod/Web/Transport" class="podlinkpod">Web::Transport</a>.</p>
+
+<p>When the default <code>resolver</code> is used, proxy environment variables <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code> are taken into account. See <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>Web Transport Processing <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Web%20Transport%20Processing">https://wiki.suikawiki.org/n/Web%20Transport%20Processing</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

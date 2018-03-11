@@ -18,12 +18,12 @@
 
 <hgroup><h1><code>Web::Origin</code></h1><h2>Origin API</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::Origin;
+<pre><code>  use Web::Origin;
   $origin = Web::Origin-&gt;new_tuple ($host, $domain, $port);
   $origin = Web::Origin-&gt;new_opaque;
   warn $origin-&gt;is_opaque;
   warn $origin-&gt;to_ascii;
+  warn $origin-&gt;to_unicode;
   warn $origin-&gt;same_origin_as ($origin2);</code></pre>
 
 </section><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
@@ -75,6 +75,11 @@
 
 <dd>
 <p>Return the ASCII serialization of the origin.</p>
+
+</dd><dt id="$string_=_$origin->to_unicode"><code>$string = $origin-&gt;<strong id="member-to_unicode">to_unicode</strong></code></dt>
+
+<dd>
+<p>Return the Unicode serialization of the origin.</p>
 </dd>
 </dl>
 

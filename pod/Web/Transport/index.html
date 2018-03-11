@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport.pod">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport</code></h1><h2>Transport layer protocols for the Web</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>These modules contain implementations of various protocols forming the Web platform's transport layer.</p>
+
+<p>Following protocols are supported by these modules and underlying platform (partially or fully; see documentation of relevant modules): TCP (for IPv4 and IPv6),
+UNIX domain sockets,
+TLS (including SNI,
+OCSP stapling),
+HTTP (including Cookies,
+<code>application/x-www-form-urlencoded</code>,
+<code>multipart/form-data</code>,
+Basic authentication,
+OAuth 1.0,
+OAuth 2.0 Bearer,
+<code>CONNECT</code>),
+SOCKS4,
+SOCKS5,
+DNS,
+MIME types,
+MIME sniffing.</p>
+
+</section><section id="MODULES"><h1>MODULES</h1>
+
+<p>There are following modules that expose public APIs:</p>
+
+<dl>
+<dt><a href="../../../pod/Web/Transport/ConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a></dt>
+
+<dd>
+<p>A connection-oriented HTTP client.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a></dt>
+
+<dd>
+<p>A WebSocket client.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/PSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a></dt>
+
+<dd>
+<p>A PSGI interface of HTTP server.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/PlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a></dt>
+
+<dd>
+<p>A name resolver using system's resolver.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/CachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a></dt>
+
+<dd>
+<p>A DNS cache.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a></dt>
+
+<dd>
+<p>An environment variable based proxy manager.</p>
+
+</dd><dt><a href="../../../pod/Web/MIME/Type/Parser" class="podlinkpod">Web::MIME::Type::Parser</a></dt>
+
+<dd>
+<p>MIME type parser.</p>
+
+</dd><dt><a href="../../../pod/Web/MIME/Sniffing" class="podlinkpod">Web::MIME::Sniffing</a></dt>
+
+<dd>
+<p>MIME type sniffing.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/AWS" class="podlinkpod">Web::Transport::AWS</a></dt>
+
+<dd>
+<p>AWS API signature calculation.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/Base64" class="podlinkpod">Web::Transport::Base64</a></dt>
+
+<dd>
+<p>A Base64 API.</p>
+
+</dd><dt><a href="../../../pod/Web/Transport/DataURL/Parser" class="podlinkpod">Web::Transport::DataURL::Parser</a></dt>
+
+<dd>
+<p>A <code>data:</code> URL processor.</p>
+</dd>
+</dl>
+
+</section><section id="REQUEST_OPTIONS"><h1>REQUEST OPTIONS</h1>
+
+<p>For the <code>request</code> method of <a href="../../../pod/Web/Transport/ConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a> objects and the <code>new</code> class method of <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>,
+following key/value pairs can be used to specify the parameters of the request to send:</p>
+
+<dl>
+<dt id="url_=>_$url"><code>url =&gt; $url</code></dt>
+
+<dd>
+<p>Specify the request URL.
+If specified,
+the value must be a <a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a> object.</p>
+
+<p>The scheme of the URL must be one of <code>http</code>,
+<code>https</code>,
+or <code>ftp</code> for <a href="../../../pod/Web/Transport/ConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a>,
+or <code>ws</code> or <code>wss</code> for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+<p>Any username,
+password,
+or fragment of the URL is ignored.</p>
+
+<p>Either <code>url</code> or <code>path</code> option must be specified.</p>
+
+</dd><dt id="path_=>_[$seg1,_$seg2,_...]"><code>path =&gt; [$seg1,
+$seg2,
+...]</code></dt>
+
+<dd>
+<p>Specify the path segments of the request URL.
+If specified,
+the value must be an array reference of zero or more character strings.
+They are encoded in UTF-8 and then concatenated with <code>/</code>.</p>
+
+<p>If a "prefix" is defined by the context,
+the path segments given by this option is appended to the prefix.</p>
+
+<p>When the <code>url</code> option is specified,
+this option is ignored.</p>
+
+<p>This option is not available for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+</dd><dt id="method_=>_$string"><code>method =&gt; $string</code></dt>
+
+<dd>
+<p>Specify the HTTP request method.
+Note that HTTP request methods are case-sensitive.
+If not specified,
+<code>GET</code> is used.</p>
+
+<p>This option is not available for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+</dd><dt id="headers_=>_{$string_=>_$string,_...}"><code>headers =&gt; {$string =&gt; $string,
+...}</code></dt>
+
+<dd>
+<p>Specify HTTP headers.
+The value must be a hash reference,
+whose keys are header names and values are corresponding header values.
+If a value is an array reference,
+the array's items are used as the header values (i.e.
+multiple headers with same name are generated).
+Header names are case-insensitive.</p>
+
+</dd><dt id="cookies_=>_{$string_=>_$string,_...}"><code>cookies =&gt; {$string =&gt; $string,
+...}</code></dt>
+
+<dd>
+<p>Specify cookies,
+to be included in the <code>Cookie:</code> header.
+The value must be a hash reference of zero or more key/value pairs,
+where keys are cookie names and values are corresponding cookie values.
+Any key whose value is <code>undef</code> is ignored.</p>
+
+<p>Names and values must be strings of zero or more characters.
+They are encoded in UTF-8 and percent-encoded before included in the header value.
+If this behavior is inappropriate,
+use <code>headers</code> option instead.</p>
+
+<p>This option also adds <code>Cache-Control: no-store</code> and <code>Pragma: no-store</code> headers.</p>
+
+</dd><dt id="params_=>_{$string_=>_$string,_...}"><code>params =&gt; {$string =&gt; $string,
+...}</code></dt>
+
+<dd>
+<p>Parameters to be included in the request.</p>
+
+<p>The value must be a hash reference of zero or more key/value pairs,
+where keys are parameter names and values are corresponding parameter values.</p>
+
+<p>Parameter names and values must be strings of zero or more characters.
+Parameter values can be either a string or an array reference of zero or more strings,
+representing parameter values sharing same parameter name.
+Any parameter whose value is <code>undef</code> is ignored.</p>
+
+<p>They are encoded in the <code>application/x-www-form-urlencoded</code> format (or <code>multipart/form-data</code>,
+if <code>files</code> option is also specified) in UTF-8.
+If the <code>method</code> is <code>POST</code> and there is no conflicting options,
+they are put into the request body.
+Otherwise,
+they are appended to the request URL.</p>
+
+</dd><dt id="files_=>_{$string_=>_$file,_...}"><code>files =&gt; {$string =&gt; $file,
+...}</code></dt>
+
+<dd>
+<p>Files to be included in the request.</p>
+
+<p>The value must be a hash reference of zero or more key/value pairs,
+where keys are parameter names and values are corresponding files.</p>
+
+<p>Parameter names must be strings of zero or more characters.</p>
+
+<p>Files can be either a hash reference or an array reference of zero or more hash references,
+representing files sharing same parameter name.
+Any pair whose value is <code>undef</code> is ignored.</p>
+
+<p>A file hash reference must contain a <code>body_ref</code> key,
+whose value must be a reference to a scalar containing zero or more bytes,
+i.e.
+the file content.</p>
+
+<p>A file hash reference can also contain <code>mime_type</code> key,
+whose value is a MIME type string (<code>Content-Type:</code> header value) and <code>mime_filename</code> key,
+whose value is a file name string (<code>Content-Disposition:</code> header's <code>filename</code> parameter value).
+Their defaults,
+used when the key is omitted or the value is <code>undef</code>,
+are <code>application/octet-stream</code> and the empty string,
+respectively.</p>
+
+<p>They are encoded in the <code>multipart/form-data</code> format in UTF-8.</p>
+
+<p>This option is not available for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+</dd><dt id="basic_auth_=>_[$userid,_$password]"><code>basic_auth =&gt; [$userid,
+$password]</code></dt>
+
+<dd>
+<p>Specifies the credentials of the <code>Basic</code> authentication.
+The value must be an array reference of two strings,
+which are used as user ID and password.</p>
+
+</dd><dt id="bearer_=>_$string"><code>bearer =&gt; $string</code></dt>
+
+<dd>
+<p>Specifies the credentials of the <code>Bearer</code> authentication.</p>
+
+</dd><dt id="oauth1_=>_[$string,_$string,_$string,_$string]"><code>oauth1 =&gt; [$string,
+$string,
+$string,
+$string]</code></dt>
+
+<dd>
+<p>If a non-<code>undef</code> value is specified,
+the request is to be signed using OAuth 1.0 <code>HMAC-SHA1</code> signature method.</p>
+
+<p>The value must be an array reference of strings,
+which are consumer key,
+consumer secret,
+access token,
+and access token secret.
+They must be specified even though they can be empty strings.</p>
+
+<p>This option also adds <code>Cache-Control: no-store</code> and <code>Pragma: no-store</code> headers.</p>
+
+</dd><dt id="oauth1_container_=>_'authorization'_|_'query'_|_'body'"><code>oauth1_container =&gt; 'authorization' | 'query' | 'body'</code></dt>
+
+<dd>
+<p>Where to add OAuth 1.0 request parameters.
+This option is ignored unless the <code>oauth1</code> option is also specified.</p>
+
+<p>The value <code>authorization</code> designates the HTTP <code>Authorization:</code> header.</p>
+
+<p>The value <code>query</code> designates the URL query component.</p>
+
+<p>The value <code>body</code> designates the request body.</p>
+
+<p>If this option is not specified,
+or <code>undef</code> is specified,
+parameters are added to the HTTP <code>Authorization:</code> header,
+unless there is another <code>Authorization:</code> header,
+in which case they are added to the same slot as <code>params</code>.</p>
+
+</dd><dt id="oauth_verifier_=>_$string"><code>oauth_verifier =&gt; $string</code></dt>
+
+<dd>
+<p>The OAuth 1.0 <code>oauth_verifier</code> request parameter value.
+If a non-<code>undef</code> value is specified and the <code>oauth1</code> option is also specified,
+this value is taken into account as a request parameter.
+Otherwise this option is ignored.</p>
+
+<p>This option is not available for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+</dd><dt id="oauth_callback_=>_$string"><code>oauth_callback =&gt; $string</code></dt>
+
+<dd>
+<p>The OAuth 1.0 <code>oauth_callback</code> request parameter value.
+If a non-<code>undef</code> value is specified and the <code>oauth1</code> option is also specified,
+this value is taken into account as a request parameter.
+Otherwise this option is ignored.</p>
+
+<p>This option is not available for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+</dd><dt id="aws4_=>_[$access_key_id,_$secret_access_key,_$region,_$service]"><code>aws4 =&gt; [$access_key_id,
+$secret_access_key,
+$region,
+$service]</code></dt>
+
+<dd>
+<p>If specified,
+signature of the request is attached using AWS Signature Version 4 and the <a href="../../../pod/Authorization%3A" class="podlinkpod">Authorization:</a> header.</p>
+
+<p>The value must be an array reference of four values.
+The zeroth item must be the access key ID.
+The first item must be the secret access key.
+The second item must be the AWS region,
+such as <code>us-east-1</code>.
+The third item must be the AWS service,
+such as <code>s3</code>.</p>
+
+</dd><dt id="aws4_signed_headers_=>_{$name1_=>_1,_$name2_=>_1,_...}"><code>aws4_signed_headers =&gt; {$name1 =&gt; 1,
+$name2 =&gt; 1,
+...}</code></dt>
+
+<dd>
+<p>Specifies additionally signed headers.
+This option is ignored unless <code>aws4</code> option is also specified.</p>
+
+<p>If specified,
+the value must be a hash reference,
+whose keys are header names (ASCII case-insensitive) and values are true values.</p>
+
+</dd><dt id="superreload_=>_$boolean"><code>superreload =&gt; $boolean</code></dt>
+
+<dd>
+<p>If true,
+<code>Cache-Control: no-cache</code> and <code>Pragma: no-store</code> headers are added.</p>
+
+</dd><dt id="body_=>_$bytes"><code>body =&gt; $bytes</code></dt>
+
+<dd>
+<p>The request body.
+If a non-<code>undef</code> value is specified,
+it must be a string of zero or more bytes.</p>
+
+<p>This option is not available for <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+</dd>
+</dl>
+
+<section id="Relevant_specifications"><h1>Relevant specifications</h1>
+
+<p>Fetch Standard <code class="url">&lt;<a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>URL Standard <code class="url">&lt;<a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>Encoding Standard <code class="url">&lt;<a href="https://encoding.spec.whatwg.org/">https://encoding.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>When a text is encoded in UTF-8,
+the UTF-8 encode steps of the Encoding Standard MUST be used.</p>
+
+<p>RFC 6265,
+HTTP State Management Mechanism <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc6265">https://tools.ietf.org/html/rfc6265</a>&gt;</code>.</p>
+
+<p>RFC 5849,
+The OAuth 1.0 Protocol <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5849">https://tools.ietf.org/html/rfc5849</a>&gt;</code>.</p>
+
+<p>HTML Standard <code class="url">&lt;<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>Signature Calculations for the Authorization Header: Transferring Payload in a Single Chunk (AWS Signature Version 4) - Amazon Simple Storage Service <code class="url">&lt;<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html">https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html</a>&gt;</code>.</p>
+
+</section></section><section id="PROXY_MANAGERS"><h1>PROXY MANAGERS</h1>
+
+<p>XXX</p>
+
+<p>There are following proxy managers in this repository: <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a> and <a href="../../../pod/Web/Transport/ConstProxyManager" class="podlinkpod">Web::Transport::ConstProxyManager</a>.</p>
+
+</section><section id="PROXY_CONFIGURATIONS"><h1>PROXY CONFIGURATIONS</h1>
+
+<p>A <b>proxy configuration list</b> is ...</p>
+
+<p>XXX</p>
+
+<p>host =&gt; ...</p>
+
+<p>XXX</p>
+
+<p>For a proxy configuration returned by a proxy manager,
+the value must be a <a href="../../../pod/Web/Host" class="podlinkpod">Web::Host</a> object.
+For a proxy configuration used as part of an input to the <a href="../../../pod/Web/Transport/ConstProxyManager" class="podlinkpod">Web::Transport::ConstProxyManager</a>'s constructor,
+the value may be a string which is a valid host string.</p>
+
+<p>debug =&gt; $mode</p>
+
+<p>Specify the debug mode.
+The default value is the <code>WEBUA_DEBUG</code> environment variable's value.
+See <code>WEBUA_DEBUG</code> section for available mode values.</p>
+
+<p>This option is only applicable to <code>http</code> and <code>https</code> protocols.</p>
+
+</section><section id="RESOLVERS"><h1>RESOLVERS</h1>
+
+<p>XXX</p>
+
+<p>There are following resolvers in this repository: <a href="../../../pod/Web/Transport/PlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>,
+<a href="../../../pod/Web/Transport/CachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>.</p>
+
+</section><section id="ENVIRONMENT_VARIABLE"><h1>ENVIRONMENT VARIABLE</h1>
+
+<p>The <code>WEBUA_DEBUG</code> and <code>WEBSERVER_DEBUG</code> environment variables can be used to enable the debug mode of client and server modules,
+respectively.
+If a true value is specified,
+debug output,
+such as some of network input and output,
+are printed to the standard error output.
+If its value is greater than <code>1</code>,
+more verbose messages are printed.</p>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>These module requires Perl 5.10 or later.
+They require several core modules such as <a href="../../../pod/Digest/SHA" class="podlinkpod">Digest::SHA</a>.</p>
+
+<p>They require <a href="../../../pod/AnyEvent" class="podlinkpod">AnyEvent</a> and <a href="../../../pod/Net/SSLeay" class="podlinkpod">Net::SSLeay</a>.
+The <a href="../../../pod/Net/SSLeay" class="podlinkpod">Net::SSLeay</a> module requires OpenSSL or equivalent (e.g.
+LibreSSL).
+For Web compatibility and security,
+OpenSSL version must be latest enough.</p>
+
+<p>They also require following modules (which are submodules of this Git repository):</p>
+
+<ul>
+<li><a href="../../../pod/Promise" class="podlinkpod">Promise</a> <code class="url">&lt;<a href="https://github.com/wakaba/perl-promise">https://github.com/wakaba/perl-promise</a>&gt;</code></li>
+
+<li><a name="modules_from_perl-web-url_repository_<https://github.com/manakai/perl-web-url>,_e.g._Web::URL_Web::Host,_and_Web::Origin">modules from perl-web-url repository &lt;https://github.com/manakai/perl-web-url&gt;,
+e.g.
+</a><a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a> <a href="../../../pod/Web/Host" class="podlinkpod">Web::Host</a>,
+and <a href="../../../pod/Web/Origin" class="podlinkpod">Web::Origin</a></li>
+
+<li><a name="modules_from_perl-web-encodings_package_<https://github.com/manakai/perl-web-encodings>,_e.g._Web::Encoding">modules from perl-web-encodings package &lt;https://github.com/manakai/perl-web-encodings&gt;,
+e.g.
+</a><a href="../../../pod/Web/Encoding" class="podlinkpod">Web::Encoding</a></li>
+
+<li><a name="modules_from_perl-web-datetime_package_<https://github.com/manakai/perl-web-datetime>,_e.g._Web::DateTime::Parser">modules from perl-web-datetime package &lt;https://github.com/manakai/perl-web-datetime&gt;,
+e.g.
+</a><a href="../../../pod/Web/DateTime/Parser" class="podlinkpod">Web::DateTime::Parser</a></li>
+</ul>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="ACKNOWLEDGEMENTS"><h1>ACKNOWLEDGEMENTS</h1>
+
+<p>Some of modules derived from various earlier effort on these areas.
+See documentations of modules and comments in source codes for more information.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2009-2013 Hatena <code class="url">&lt;<a href="https://www.hatena.ne.jp/">https://www.hatena.ne.jp/</a>&gt;</code>.</p>
+
+<p>Copyright 2014-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

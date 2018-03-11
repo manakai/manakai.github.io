@@ -42,8 +42,7 @@ any possible value MUST be supported.</p>
 <p>If a supported property only accepts a keyword from the limited set,
 supported values MUST be flagged by:</p>
 
-<pre>
-<code>  $resolver-&gt;{prop_value}-&gt;{$prop_name}-&gt;{$value} = 1</code></pre>
+<pre><code>  $resolver-&gt;{prop_value}-&gt;{$prop_name}-&gt;{$value} = 1</code></pre>
 
 <p>... where $prop_name is CSS property name in lowercase and $value is the supported keyword. The initial value of the property MUST be supported.</p>
 
@@ -91,8 +90,7 @@ supported values MUST be flagged by:</p>
 
 <p>Whether keywords 'available', 'min-content', 'max-content', and 'fit-content' are supported or not are controlled by:</p>
 
-<pre>
-<code>  $resolver-&gt;{prop_value}-&gt;{$key}-&gt;{$keyword} == 1</code></pre>
+<pre><code>  $resolver-&gt;{prop_value}-&gt;{$key}-&gt;{$keyword} == 1</code></pre>
 
 <p>... where $key is <code>width</code> (for 'width', 'min-width', and 'max-width' properties) or <code>height</code> (for 'height', 'min-height', and 'max-height' properties) and $keyword is the keyword, in lowercase, respectively.</p>
 

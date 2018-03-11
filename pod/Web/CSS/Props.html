@@ -90,8 +90,7 @@ and 'border-left-width' values and return the result.</p>
 or 'outline' property value,
 follow these steps:</p>
 
-<pre>
-<code>  1. If one of &lt;line-width&gt;, &lt;line-style&gt;, and &lt;color&gt; values is
+<pre><code>  1. If one of &lt;line-width&gt;, &lt;line-style&gt;, and &lt;color&gt; values is
      missing, it can't be serialized.  Return null and abort these
      steps.
 
@@ -113,8 +112,7 @@ follow these steps:</p>
 
 <p>To serialzie four edge values /top/, /right/, /bottom/, and /left/, follow these steps:</p>
 
-<pre>
-<code>  1. If one of four values is missing, it is not serializable.  Return
+<pre><code>  1. If one of four values is missing, it is not serializable.  Return
      null and abort these steps.
 
   2. Otheriwse, if one of four values is CSS-wide keyword or function:
@@ -144,8 +142,7 @@ follow these steps:</p>
 
 <p>The 'background-position-x' property is defined as follows:</p>
 
-<pre>
-<code>  Name:           background-position-x
+<pre><code>  Name:           background-position-x
   Value:          &lt;length&gt; | &lt;percentage&gt; | left | center | right
   Initial:        0%
   Applies to:     Same as 'background-position'
@@ -157,8 +154,7 @@ follow these steps:</p>
 
 <p>The 'background-position-y' property is defined as follows:</p>
 
-<pre>
-<code>  Name:           background-position-y
+<pre><code>  Name:           background-position-y
   Value:          &lt;length&gt; | &lt;percentage&gt; | top | center | bottom
   Initial:        0%
   Applies to:     Same as 'background-position'
@@ -170,8 +166,7 @@ follow these steps:</p>
 
 <p>The 'background-position' property is redefined as a shorthand of 'background-position-x' and 'background-position-y' properties, where the horizontal and vertical values are corresponding to them, respectively. To serialize the 'background-position' property value, follow these steps:</p>
 
-<pre>
-<code>  1. If 'background-position-x' or 'background-position-y' property
+<pre><code>  1. If 'background-position-x' or 'background-position-y' property
      value is missing, it is not serializable.  Return null.
 
   2. Otherwise, if one of serializations of 'background-position-x'
@@ -222,8 +217,7 @@ follow these steps:</p>
 
 <p>To serialize the 'overflow' property value, follow these steps:</p>
 
-<pre>
-<code>  1. If 'overflow-x' or 'overflow-y' is missing, it is not
+<pre><code>  1. If 'overflow-x' or 'overflow-y' is missing, it is not
      serializable.  Return null and abort these steps.
 
   2. Otherwise, if serialization of 'overflow-x' is equal to
@@ -314,8 +308,7 @@ follow these steps:</p>
 
 <p>The '-x-system-font' property is defined as follows:</p>
 
-<pre>
-<code>  Name:           -x-system-font
+<pre><code>  Name:           -x-system-font
   Value:          none | caption | icon | menu | message-box |
                   small-caption | status-bar
   Initial:        none
@@ -352,8 +345,7 @@ follow these steps:</p>
 
 <p>The '-webkit-border-horizontal-spacing' and '-webkit-border-vertical-spacing' properties are defined as follows:</p>
 
-<pre>
-<code>  Value:          &lt;length&gt;
+<pre><code>  Value:          &lt;length&gt;
   Initial:        0px
   Applies to:     Same as 'border-spacing'
   Inherited:      Same as 'border-spacing'
@@ -364,8 +356,7 @@ follow these steps:</p>
 
 <p>The 'border-spacing' property is redefined as the shorthand of these two properties. To serialize the 'border-spacing' property values, run following steps:</p>
 
-<pre>
-<code>  1. If one of '-webkit-border-horizontal-spacing' and
+<pre><code>  1. If one of '-webkit-border-horizontal-spacing' and
      '-webkit-border-vertical-spacing' is missing, it is not
      serializable.  Return null.
 

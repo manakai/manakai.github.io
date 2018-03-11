@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::Response</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::Response</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/Response.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::Response</code></h1><h2>Responses</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  if ($res-&gt;is_network_error) {
+    warn $res-&gt;network_error_message;
+  } else {
+    warn $res-&gt;status, "\t", $res-&gt;status_text;
+  }</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::Response</code> object represents a response, to be returned by <a href="../../../pod/Web/Transport/Connection" class="podlinkpod">Web::Transport::Connection</a> and <a href="../../../pod/Web/Transport/WSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>The following methods are available:</p>
+
+<dl>
+<dt id="$boolean_=_$res->is_network_error"><code>$boolean = $res-&gt;<strong id="member-is_network_error">is_network_error</strong></code></dt>
+
+<dd>
+<p>Whether the response represents a network error or not. A network error is a fatal error of the connection, including failures to establish a connection, non-recoverable parsing errors of an HTTP message, and unexpected termination of connection.</p>
+
+</dd><dt id="$string_=_$res->network_error_message"><code>$string = $res-&gt;<strong id="member-network_error_message">network_error_message</strong></code></dt>
+
+<dd>
+<p>A human-readable short description of the network error, if any.</p>
+
+</dd><dt id="$integer_=_$res->status"><code>$integer = $res-&gt;<strong id="member-status">status</strong></code></dt>
+
+<dd>
+<p>If the response represents an HTTP response, the status code of the response.</p>
+
+<p>If the response represents a WebSocket connection close event, the WebSocket connection close code.</p>
+
+</dd><dt id="$integer_=_$res->ws_code"><code>$integer = $res-&gt;<strong id="member-ws_code">ws_code</strong></code></dt>
+
+<dd>
+<p>The WebSocket connection close code. Unlike <code>$res-&gt;status</code>, this method can be used when the response does not represent a WebSocket connection close event (e.g. network error).</p>
+
+</dd><dt id="$string_=_$res->status_text"><code>$string = $res-&gt;<strong id="member-status_text">status_text</strong></code></dt>
+
+<dd>
+<p>If the response represents an HTTP response, the reason phrase of the response (bytes).</p>
+
+<p>If the response represents a WebSocket connection close event, the WebSocket connection close reason (text).</p>
+
+</dd><dt id="$text_=_$res->ws_reason"><code>$text = $res-&gt;<strong id="member-ws_reason">ws_reason</strong></code></dt>
+
+<dd>
+<p>The WebSocket connection close reason. Unlike <code>$res-&gt;status_text</code>, this method can be used when the response does not represent a WebSocket connection close event (e.g. network error).</p>
+
+</dd><dt id="$boolean_=_$res->ws_closed_cleanly"><code>$boolean = $res-&gt;<strong id="member-ws_closed_cleanly">ws_closed_cleanly</strong></code></dt>
+
+<dd>
+<p>Whether the WebSocket connection has been closed cleanly or not. This method can be used when the response does not represent a WebSocket connection close event (e.g. network error).</p>
+
+</dd><dt id="$bytes_=_$res->body_bytes"><code>$bytes = $res-&gt;<strong id="member-body_bytes">body_bytes</strong></code></dt>
+
+<dd>
+<p>The response body, if any.</p>
+
+</dd><dt id="$boolean_=_$res->incomplete"><code>$boolean = $res-&gt;<strong id="member-incomplete">incomplete</strong></code></dt>
+
+<dd>
+<p>Whether it is an incomplete message or not.</p>
+
+</dd><dt id="$text_=_''_._$res"><code>$text = '' . $res</code></dt>
+
+<dt id="$text_=_$res->stringify"><code>$text = $res-&gt;<strong id="member-stringify">stringify</strong></code></dt>
+
+<dd>
+<p>A human-readable short string describing the response.</p>
+
+<p>The stringify operation of the response object is overloaded such that throwing the response as (uncaught) exception would print the string.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

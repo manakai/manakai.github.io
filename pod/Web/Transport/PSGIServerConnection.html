@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::PSGIServerConnection</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::PSGIServerConnection</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/PSGIServerConnection.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::PSGIServerConnection</code></h1><h2>PSGI interface for HTTP server connection</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  $psgi_app = sub { ... };
+  tcp_server $host, $port, sub {
+    my $con = Web::Transport::PSGIServerConnection
+        -&gt;new_from_app_and_ae_tcp_server_args ($psgi_app, [@_]);
+    $con-&gt;completed-&gt;then (sub {
+      warn "Client disconnected and PSGI application done";
+    });
+  };</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::PSGIServerConnection</code> module is an implementation of HTTP server and PSGI. It wraps an HTTP server's TCP connection socket and processes any incoming request by a PSGI application.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$con_=_Web::Transport::PSGIServerConnection->new_from_app_and_ae_tcp_server_args_($app,_[...],_NAME_=>_VALUE,_...)"><code>$con = Web::Transport::PSGIServerConnection-&gt;<strong id="member-new_from_app_and_ae_tcp_server_args">new_from_app_and_ae_tcp_server_args</strong> ($app, [...], NAME =&gt; VALUE, ...)</code></dt>
+
+<dd>
+<p>Create an object.</p>
+
+<p>The first argument must be a PSGI application, i.e. a code reference. See the PSGI specification for the requirements on the code reference.</p>
+
+<p>The second argument must be an array reference of the arguments received by the <code>AnyEvent::Socket::tcp_server</code>'s callback. That is, the filehandle of the socket, the remote host, and the remote port (if TCP). The socket can be of a TCP or UNIX socket domain.</p>
+
+<p>Additionally, options can be specified as key/value pairs.</p>
+
+<p>The <code>parent_id</code> option, if any, specifies the short string that identifies the "parent" context in which the connection appears, which will be used in debug outputs.</p>
+
+<p>The <code>state</code> option, if any, specifies the "server state" object which is shared among the PSGI application invocations on a same server session. (The definition of the "server session" is server application dependent.) The object is accessible as the <code>manakai.server.state</code> field value of the PSGI environment hash reference given to the PSGI applications. This object can be used to store objects whose lifetimes are longer than a request-response processing, such as connections to the database server. See the manakai PSGI extensions specification for more information.</p>
+
+</dd><dt id="$con->onexception_($code)"><code>$con-&gt;<strong id="member-onexception">onexception</strong> ($code)</code></dt>
+
+<dt id="$code_=_$con->onexception"><code>$code = $con-&gt;<strong>onexception</strong></code></dt>
+
+<dd>
+<p>Get or set the callback code reference that is invoked when an error is detected while interacting with the PSGI application such that the server returns an error response to the client.</p>
+
+<p>The callback has to be set as soon as the object has been created and it should not be changed later.</p>
+
+<p>The callback can return a promise, to delay the resolution of the <code>complated</code> promise until the promise is resolved or rejected.</p>
+
+</dd><dt id="$con->max_request_body_length_($integer)"><code>$con-&gt;<strong id="member-max_request_body_length">max_request_body_length</strong> ($integer)</code></dt>
+
+<dt id="$integer_=_$con->max_request_body_length"><code>$integer = $con-&gt;<strong>max_request_body_length</strong></code></dt>
+
+<dd>
+<p>Get or set the maximum length of the request body to be accepted by the server, in bytes. If <code>undef</code>, no limit is set.</p>
+
+<p>Note that the server loads the whole request body on memory, as the server has to notify the request body's length of the PSGI application at the time of invocation.</p>
+
+</dd><dt id="$promise_=_$con->completed"><code>$promise = $con-&gt;<strong id="member-completed">completed</strong></code></dt>
+
+<dd>
+<p>Return a promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a>) which will be resolved once the connection between the server and the client has been closed and the PSGI application has been completed.</p>
+
+<p>An invocation of PSGI application is considered as completed when either a complete response is returned by the PSGI application or the PSGI application invoked the <code>$writer-&gt;close</code> method, and the <code>psgix.exit_guard</code> condvar's callback is invoked.</p>
+
+</dd><dt id="$con->close_after_current_response_(timeout_=>_$seconds)"><code>$con-&gt;<strong id="member-close_after_current_response">close_after_current_response</strong> (timeout =&gt; $seconds)</code></dt>
+
+<dd>
+<p>Schedule to close the connection as soon as possible.</p>
+
+<p>If the connection is not used at the moment, it is immediately closed. Otherwise, the connection is closed after the response to the currently processed request is sent.</p>
+
+<p>The <code>timeout</code> option can be specified as a key/value pair. The option specifies the seconds of the timeout, whose default is <code>10</code> (seconds). If this option is set to an number greater than zero and the current response is not closed before that seconds have elapsed since the invocation of this method, the connection is aborted. The PSGI application is expected to return the whole response before this timeout.</p>
+
+<p>Please note that even when the connection is aborted because of the timeout, the <code>completed</code> promise is not resolved or rejected until the <code>psgix.exit_guard</code> condvar is fullfilled and any reference to the PSGI writer is destroyed. As the PSGI does not provide any way to abort the PSGI application, invocation of this method does not terminate any running PSGI application.</p>
+
+<p>This method can be used to gracefully terminate the server.</p>
+
+</dd><dt id="$string_=_$con->id"><code>$string = $con-&gt;<strong id="member-id">id</strong></code></dt>
+
+<dd>
+<p>A short string assigned to the server connection, which can be used for debugging purposes. It is composed from the <code>parent_id</code> option to the constructor, if any.</p>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/AnyEvent/Socket" class="podlinkpod">AnyEvent::Socket</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<p>Web Transport Processing <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Web%20Transport%20Processing">https://wiki.suikawiki.org/n/Web%20Transport%20Processing</a>&gt;</code>.</p>
+
+<p>RFC 3875, The Common Gateway Interface (CGI) Version 1.1 <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc3875">https://tools.ietf.org/html/rfc3875</a>&gt;</code>.</p>
+
+<p>PSGI <code class="url">&lt;<a href="https://github.com/plack/psgi-specs/blob/master/PSGI.pod">https://github.com/plack/psgi-specs/blob/master/PSGI.pod</a>&gt;</code>.</p>
+
+<p>PSGI::Extensions <code class="url">&lt;<a href="https://github.com/plack/psgi-specs/blob/master/PSGI/Extensions.pod">https://github.com/plack/psgi-specs/blob/master/PSGI/Extensions.pod</a>&gt;</code>.</p>
+
+<p><code>psgix.exit_guard</code> <code class="url">&lt;<a href="https://github.com/kazeburo/Twiggy-Prefork#psgi-extensions">https://github.com/kazeburo/Twiggy-Prefork#psgi-extensions</a>&gt;</code>.</p>
+
+<p>manakai PSGI extensions <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/manakai%20PSGI%20extensions">https://wiki.suikawiki.org/n/manakai%20PSGI%20extensions</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

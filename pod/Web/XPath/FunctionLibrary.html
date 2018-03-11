@@ -180,8 +180,7 @@ and the calculation of the sum MUST be done by adding the numbers to positive ze
 <p>For the purpose of the <code>id()</code> function,
 the element whose unique ID is <var>i</var> MUST be obtained by the following steps:</p>
 
-<pre>
-<code>  1. If I&lt;i&gt; is the empty string, return null and abort these steps.
+<pre><code>  1. If I&lt;i&gt; is the empty string, return null and abort these steps.
 
   2. Otherwise, evaluate C&lt;/descendant-or-self::*[dom:id () = $i][1]&gt;
      where C&lt;dom:id()&gt; is a function that returns the unique

@@ -86,8 +86,7 @@ or <code>undef</code>. <cite class="ref">[<a href="#DOMXPATH">DOMXPATH</a>]</cit
 In addition,
 they are accessible as methods of <code>XPathResult</code> objects.</p>
 
-<pre>
-<code>  ANY_TYPE NUMBER_TYPE STRING_TYPE BOOLEAN_TYPE
+<pre><code>  ANY_TYPE NUMBER_TYPE STRING_TYPE BOOLEAN_TYPE
   UNORDERED_NODE_ITERATOR_TYPE ORDERED_NODE_ITERATOR_TYPE
   UNORDERED_NODE_SNAPSHOT_TYPE ORDERED_NODE_SNAPSHOT_TYPE
   ANY_UNORDERED_NODE_TYPE FIRST_ORDERED_NODE_TYPE</code></pre>
@@ -106,8 +105,7 @@ they are accessible as methods of <code>XPathResult</code> objects.</p>
 
 <p>The IDL definition MUST be modified as follows:</p>
 
-<pre>
-<code>  partial interface XPathResult {
+<pre><code>  partial interface XPathResult {
     readonly attribute (Node or Attr)? singleNodeValue;
   };</code></pre>
 

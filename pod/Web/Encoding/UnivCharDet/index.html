@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::Encoding::UnivCharDet</code></h1><h2>Universal Detector implementation in Perl</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::Encoding::UnivCharDet;
+<pre><code>  use Web::Encoding::UnivCharDet;
   
   $det = Web::Encoding::UnivCharDet-&gt;new;
   $charset = $det-&gt;detect_byte_string;</code></pre>
@@ -43,8 +42,7 @@
 <dd>
 <p>Return the detected encoding name of the given byte string. If it can't detect the encoding, the method returns <code>undef</code>. Otherwise it returns a encoding name, which is one of followings:</p>
 
-<pre>
-<code>  utf-8 utf-16be utf-16le iso-2022-cn big5 x-euc-tw gb18030 hz-gb-2312
+<pre><code>  utf-8 utf-16be utf-16le iso-2022-cn big5 x-euc-tw gb18030 hz-gb-2312
   iso-2022-jp shift_jis euc-jp iso-2022-kr euc-kr iso-8859-5 koi8-r
   windows-1251 x-mac-cyrillic ibm866 ibm855 iso-8859-7 windows-1253
   iso-8859-8 windows-1255 windows-1252</code></pre>

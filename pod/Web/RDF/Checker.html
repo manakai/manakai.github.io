@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::RDF::Checker</code></h1><h2>RDF syntax checker</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::RDF::Checker;
+<pre><code>  use Web::RDF::Checker;
   $checker = Web::RDF::Checker-&gt;new;
   $checker-&gt;onerror (sub { ... });
   $checker-&gt;check_parsed_term ($term);</code></pre>
@@ -111,8 +110,7 @@
 
 <p>An RDF term can be constructed by applying the following steps to a parsed term data structure /value/:</p>
 
-<pre>
-<code>  1. If /value/ has non-|undef| |url|, return URL |url| and abort
+<pre><code>  1. If /value/ has non-|undef| |url|, return URL |url| and abort
      these steps.
 
   2. If /value/ has non-|undef| |bnodeid|, return blank node whose ID
