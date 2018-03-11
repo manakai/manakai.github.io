@@ -239,7 +239,7 @@ sub pod2html ($$%) {
   my $source_doc = new Web::DOM::Document;
   my $parser = new Web::HTML::Parser;
   $parser->onerror (sub { });
-  $parser->parse_byte_string (undef, $html => $source_doc);
+  $parser->parse_char_string ($html => $source_doc);
 
   my $doc = new Web::DOM::Document;
   $doc->manakai_is_html (1);
