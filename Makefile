@@ -1,3 +1,5 @@
+CURL = curl
+
 all: generate-docs
 
 deps:
@@ -14,8 +16,12 @@ generate-docs: deps
 updatenightly: generate-docs
 	git add pod
 	git add --update pod
+	$(CURL) -sSLf https://raw.githubusercontent.com/wakaba/ciconfig/master/ciconfig | RUN_GIT=1 REMOVE_UNUSED=1 perl
 
-test:
+test: test-deps test-main
+
+test-deps:
+test-main:
 	ls pod/index.html > /dev/null && \
 	ls pod/Web/DOM/Document.html > /dev/null && \
 	ls pod/webhacc.html > /dev/null
