@@ -39,8 +39,7 @@ it also supports <code>init_custom_event</code> method. <cite class="ref">[<a hr
 <p>The <code>new</code> method of the <a href="../../../pod/Web/DOM/CustomEvent" class="podlinkpod">Web::DOM::CustomEvent</a> class accepts the <code>detail</code> name/value pair in its second arguments,
 in addition to the name/value pairs for <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> objects in general.</p>
 
-<pre>
-<code>  use Web::DOM::CustomEvent;
+<pre><code>  use Web::DOM::CustomEvent;
   $ev = new Web::DOM::CustomEvent 'myevent', {detail =&gt; 12, bubbles =&gt; 1};</code></pre>
 
 <p>Any value can be specified as the <code>detail</code> value, but please be aware not to create circular reference to the event object through the <code>detail</code> value.</p>

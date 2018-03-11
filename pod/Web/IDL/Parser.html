@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::IDL::Parser</code></h1><h2>A Web IDL parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::IDL::Parser;
+<pre><code>  use Web::IDL::Parser;
   $parser = Web::IDL::Parser-&gt;new;
   $parser-&gt;parse_char_string ($idl_fragment);
   warn Dumper $parser-&gt;parsed_struct;</code></pre>
@@ -76,7 +75,7 @@
 </dd><dt id="definition_name">definition_name</dt>
 
 <dd>
-<p>Type of the definition: <code>interface</code>, <code>class</code>, <code>dictionary</code>, <code>enum</code>, or <code>callback</code>.</p>
+<p>Type of the definition: <code>interface</code>, <code>namespace</code>, <code>dictionary</code>, <code>enum</code>, or <code>callback</code>.</p>
 
 <p>Note that the <code>definition_name</code> for a <code>callback interface</code> is <code>interface</code>.</p>
 
@@ -89,6 +88,11 @@
 
 <dd>
 <p>Whether the definition is an interface and it has the <code>callback</code> keyword or not. Note that for a non-interface callback, this value is false.</p>
+
+</dd><dt id="mixin">mixin</dt>
+
+<dd>
+<p>Whether the definition is an interface mixin definition or not.</p>
 
 </dd><dt id="name">name</dt>
 
@@ -135,7 +139,7 @@
 </dd><dt id="member_type">member_type</dt>
 
 <dd>
-<p>The type of the member: <code>attribute</code>, <code>operation</code>, <code>const</code>, <code>serializer</code>, <code>iterable</code>, <code>legacyiterable</code>, <code>maplike</code>, <code>setlike</code>, or <code>dictionary_member</code>.</p>
+<p>The type of the member: <code>attribute</code>, <code>operation</code>, <code>const</code>, <code>iterable</code>, <code>legacyiterable</code>, <code>maplike</code>, <code>setlike</code>, or <code>dictionary_member</code>.</p>
 
 </dd><dt id="name">name</dt>
 
@@ -144,7 +148,7 @@
 
 </dd><dt id="readonly,_inherit,_static">readonly, inherit, static</dt>
 
-<dt id="getter,_setter,_deleter,_stringifier,_serializer">getter, setter, deleter, stringifier, serializer</dt>
+<dt id="getter,_setter,_deleter,_stringifier">getter, setter, deleter, stringifier</dt>
 
 <dt id="required">required</dt>
 
@@ -180,16 +184,6 @@
 
 <dd>
 <p>If specified, the value is an empty sequence.</p>
-
-</dd><dt id="value_map">value_map</dt>
-
-<dd>
-<p>The serialization pattern (map) of the member, if applicable.</p>
-
-</dd><dt id="value_list">value_list</dt>
-
-<dd>
-<p>The serialization pattern (list) of the member, if applicable.</p>
 
 </dd><dt id="arguments">arguments</dt>
 
@@ -264,21 +258,6 @@
 
 <p>In addition, the type key/value pairs whose target is the argument are also available if applicable.</p>
 
-<p>A serialization pattern (either map or list) is a hash reference with following key/value pairss:</p>
-
-<dl>
-<dt id="value_names">value_names</dt>
-
-<dd>
-<p>The array reference containing the values in the pattern.</p>
-
-</dd><dt id="inherit,_attribute,_getter">inherit, attribute, getter</dt>
-
-<dd>
-<p>Whether the keyword is specified for the serialization pattern or not.</p>
-</dd>
-</dl>
-
 <p>An extended attribute is a hash reference with following key/value pairs:</p>
 
 <dl>
@@ -329,8 +308,7 @@
 
 <p>For example, a Web IDL type <code> T[]?[] </code> is represented as:</p>
 
-<pre>
-<code>  {
+<pre><code>  {
     "type_name": "T",
     "type_array": {
       "type_nullable": 1,
@@ -352,21 +330,17 @@
 
 <p>Hash references might also contain key/value pairs <code>id</code>, <code>spec</code>, and <code>obsolete</code>, corresponding to non-standard directives <code>[*id="..."*]</code>, <code>[*spec=...*]</code>, and <code>[*obsolete*]</code>. These directives are only used for internal processing of <code class="url">&lt;<a href="https://github.com/manakai/data-web-defs">https://github.com/manakai/data-web-defs</a>&gt;</code> and are not (and should not) be used elsewhere.</p>
 
-</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
 
 <dl>
 <dt id="WEBIDL">WEBIDL</dt>
 
 <dd>
-<p>Web IDL <code class="url">&lt;<a href="http://heycam.github.io/webidl/">http://heycam.github.io/webidl/</a>&gt;</code>.</p>
-
-<p>Web IDL "class" <code class="url">&lt;<a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=23225">https://www.w3.org/Bugs/Public/show_bug.cgi?id=23225</a>&gt;</code>, <code class="url">&lt;<a href="http://dom.spec.whatwg.org/#elements">http://dom.spec.whatwg.org/#elements</a>&gt;</code>.</p>
+<p>Web IDL <code class="url">&lt;<a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>&gt;</code>.</p>
 </dd>
 </dl>
 
-<p>This implementation also supports <code>Promise</code> type (without following <code>&lt;T&gt;</code> part) for backward compatibility. It is interpreted as <code>Promise&lt;any&gt;</code>. This will be removed in due course.</p>
-
-<p>In this implementation, extended attributes MUST be in one of six forms shown in the Web IDL specification.</p>
+<p>In this implementation, extended attributes MUST be in one of various forms shown in the Web IDL specification.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
@@ -374,7 +348,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2014-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2014-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

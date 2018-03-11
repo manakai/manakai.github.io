@@ -16,19 +16,10 @@
 
 
 
-<hgroup><h1><code>Web::HTML::Serializer</code></h1><h2>HTML DOM Serializer</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+<hgroup><h1><code>Web::HTML::Serializer</code></h1><h2>Serialization of HTML DOM</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  require Web::HTML::Serializer;
-  
-  ## Serialize an HTML document
-  my $htmlref = Web::HTML::Serializer-&gt;get_inner_html ($doc);
-  
-  ## Serialize an HTML element
-  my $htmlref = Web::HTML::Serializer-&gt;get_inner_html ($el);
-  
-  ## Serialize an HTML document fragment
-  my $htmlref = Web::HTML::Serializer-&gt;get_inner_html ($df);</code></pre>
+<pre><code>  warn $element-&gt;inner_html;
+  warn $document-&gt;inner_html;</code></pre>
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
@@ -38,19 +29,16 @@
 
 <p>For example, the DOM tree:</p>
 
-<pre>
-<code>  +- Element |p|
+<pre><code>  +- Element |p|
        +- Element |ul|</code></pre>
 
 <p>... cannot be represented in HTML serialization. The serialization algorithm will generate an invalid HTML fragment:</p>
 
-<pre>
-<code>  &lt;p&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/p&gt;</code></pre>
+<pre><code>  &lt;p&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/p&gt;</code></pre>
 
 <p>... which represents another DOM tree:</p>
 
-<pre>
-<code>  +- Element |p|
+<pre><code>  +- Element |p|
   +- Element |ul|
   (with "invalid &lt;/p&gt;" error)</code></pre>
 
@@ -59,6 +47,8 @@
 <p><b>NOTE</b>: Usually you don't have to call this module directly, since <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> and <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> modules implement the <code>inner_html</code> attribute for DOM <code>Document</code> and <code>Element</code> nodes.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
 
 <dl>
 <dt id="$serializer_=_Web::HTML::Serializer->new"><code>$serializer = Web::HTML::Serializer-&gt;<strong id="member-new">new</strong></code></dt>
@@ -88,7 +78,7 @@
 <dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Standard <code class="url">&lt;<a href="http://www.whatwg.org/specs/web-apps/current-work/complete.html#html-fragment-serialization-algorithm">http://www.whatwg.org/specs/web-apps/current-work/complete.html#html-fragment-serialization-algorithm</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="https://html.spec.whatwg.org/#html-fragment-serialization-algorithm">https://html.spec.whatwg.org/#html-fragment-serialization-algorithm</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -104,7 +94,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2014 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

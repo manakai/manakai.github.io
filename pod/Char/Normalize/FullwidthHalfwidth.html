@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Char::Normalize::FullwidthHalfwidth</code></h1><h2>Fullwidth/halfwidth character normalization</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Char::Normalize::FullwidthHalfwidth qw/normalize_width/;
+<pre><code>  use Char::Normalize::FullwidthHalfwidth qw/normalize_width/;
   
   $s = &lt;&gt;;
   normalize_width (\$s);
@@ -33,15 +32,13 @@
 
 <p>This module provides functions <code>normalize_width</code> and <code>combine_voiced_sound_marks</code>. They can be imported to a package by specifying their names as arguments to the <code>use</code> statement:</p>
 
-<pre>
-<code>  use Char::Normalize::FullwidthHalfwidth qw/normalize_width/;</code></pre>
+<pre><code>  use Char::Normalize::FullwidthHalfwidth qw/normalize_width/;</code></pre>
 
 <p>Note that the <code>use</code> statement does not export anything unless the function names were explicitly specified.</p>
 
 <p>Alternatively, you can invoke the functions in their fully-qualified forms:</p>
 
-<pre>
-<code>  require Char::Normalize::FullwidthHalfwidth;
+<pre><code>  require Char::Normalize::FullwidthHalfwidth;
   Char::Normalize::FullwidthHalfwidth::normalize_width (\$scalarref);</code></pre>
 
 <dl>

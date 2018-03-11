@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Driver::Client::Session</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-driver-client" rel="up">perl-web-driver-client</a></li>
+        <li><a href="" rel="bookmark">Web::Driver::Client::Session</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-driver-client/tree/master/lib/Web/Driver/Client/Session.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<dl>
+<dt id="$promise_=_$session->go_($url)"><code>$promise = $session-&gt;<strong id="member-go">go</strong> ($url)</code></dt>
+
+<dd>
+<p>Navigate to the browsing context to a URL (the Go command).</p>
+
+<p>The first argument must be a URL object (<a href="../../../../pod/Web/URL" class="podlinkpod">Web::URL</a>).</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the WebDriver command returns (or to be rejected with an error).</p>
+
+</dd><dt id="$session->url->then_(sub_{_$url_=_shift_})"><code>$session-&gt;url-&gt;<strong id="member-then">then</strong> (sub { $url = shift })</code></dt>
+
+<dd>
+<p>Get the current document URL of the browsing context (the Get Current URL command).</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a URL object (<a href="../../../../pod/Web/URL" class="podlinkpod">Web::URL</a>) when the URL is obtained (or to be rejected with an error).</p>
+
+</dd><dt id="$session->get_cookie_($name)->then_(sub_{_$cookies_=_shift_})"><code>$session-&gt;get_cookie ($name)-&gt;<strong>then</strong> (sub { $cookies = shift })</code></dt>
+
+<dd>
+<p>Get cookies by name.</p>
+
+<p>The first argument must be a character string of the cookie name.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with an array reference of zero or more hash references representing cookies (or to be rejected with an error).
+A cookie has following name/value pairs:</p>
+
+<dl>
+<dt><a name="name_=>_$string">name =&gt; $string</a></dt>
+
+<dd>
+<p>The cookie name.</p>
+
+</dd><dt><a name="value_=>_$string">value =&gt; $string</a></dt>
+
+<dd>
+<p>The cookie value.</p>
+
+</dd><dt><a name="domain_=>_$string">domain =&gt; $string</a></dt>
+
+<dd>
+<p>The cookie's domain.</p>
+
+</dd><dt><a name="path_=>_$string">path =&gt; $string</a></dt>
+
+<dd>
+<p>The cookie's path.</p>
+
+</dd><dt><a name="secure_=>_$boolean">secure =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether the cookie has the <code>Secure</code> attribute or not.</p>
+
+</dd><dt><a name="httponly_=>_$boolean">httponly =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether the cookie has the <code>HttpOnly</code> attribute or not.</p>
+</dd>
+</dl>
+
+</dd><dt id="$promise_=_$session->set_cookie_($name,_$value,_$optname_=>_$optvalue,_...)"><code>$promise = $session-&gt;<strong id="member-set_cookie">set_cookie</strong> ($name,
+$value,
+$optname =&gt; $optvalue,
+...)</code></dt>
+
+<dd>
+<p>Set a cookie.</p>
+
+<p>The first argument must be a character string of the cookie name.</p>
+
+<p>The second argument must be a character string of the cookie value.</p>
+
+<p>The remaining arguments are zero or more name/value pairs specifying following options:</p>
+
+<dl>
+<dt><a name="domain_=>_$string">domain =&gt; $string</a></dt>
+
+<dd>
+<p>A character string of the <code>Domain</code> attribute value.</p>
+
+</dd><dt><a name="path_=>_$string">path =&gt; $string</a></dt>
+
+<dd>
+<p>A character string of the <code>Path</code> attribute value.</p>
+
+</dd><dt><a name="secure_=>_$boolean">secure =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether the cookie has the <code>Secure</code> attribute or not.</p>
+
+</dd><dt><a name="httponly_=>_$boolean">httponly =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether the cookie has the <code>HttpOnly</code> attribute or not.
+Note that some WebDriver server implementations do not support this option.</p>
+
+</dd><dt><a name="max_age_=>_$delta_seconds">max_age =&gt; $delta_seconds</a></dt>
+
+<dd>
+<p>The number of seconds specified in the <code>Max-Age</code> attribute value.</p>
+</dd>
+</dl>
+
+<p>Note that <code>$name</code>,
+<code>$value</code>,
+and <code>domain</code> and <code>path</code> values must be valid values.
+Unsafe user input should not be specified.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved after the cookie has been set (or to be rejected with an error).</p>
+
+</dd><dt id="$session->execute_($script,_[$arg1,_$arg2,_...],_$name_=>_$value,_...)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;execute ($script,
+[$arg1,
+$arg2,
+...],
+$name =&gt; $value,
+...)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
+
+<dd>
+<p>Run a script (the Execute Script comment).</p>
+
+<p>The first argument must be a character string of the JavaScript classic script code.</p>
+
+<p>The script may return a JavaScript <code>Promise</code>,
+in which case the response is returned after the resolution or rejection of that promise.
+(If the WebDriver server does not support this feature,
+this module falls back to the Execute Async Script command transparently.)</p>
+
+<p>The second argument is an array reference of zero or more arguments to the script.
+They can be accessed via the <code>arguments</code> object in the script.
+This argument can be omitted.
+The default is an empty argument list.</p>
+
+<p>The remaining arguments can be zero or more name/value pairs from following options:</p>
+
+<dl>
+<dt><a name="timeout_=>_$seconds">timeout =&gt; $seconds</a></dt>
+
+<dd>
+<p>Timeout in seconds.
+The default value is 30s.
+Note that some WebDriver server ignores this option.</p>
+</dd>
+</dl>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the (non-error) response (<a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a>) object (or to be rejected with an error).
+The return value of the script (or the returned promise's resolved value),
+if any,
+can be accessed by <code>$res-&gt;json-&gt;{value}</code>.</p>
+
+</dd><dt id="$session->inner_html_(selector_=>_$selector)->then_(sub_{_$html_=_shift_})"><code>$session-&gt;inner_html (selector =&gt; $selector)-&gt;<strong>then</strong> (sub { $html = shift })</code></dt>
+
+<dd>
+<p>Get the serialization (i.e.
+<code>innerHTML</code>).</p>
+
+<p>Zero or more options can be specified as name/value pair arguments.</p>
+
+<p>If the <code>selector</code> option is specified,
+the content of the element selected by the value is serialized.
+The value must be a character string of the group of selectors.
+Otherwise,
+the document element (including it self) is serialized.</p>
+
+<p>it returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the character string of the serialization,
+if <code>selector</code> selects an element or no <code>selector</code> option is specified,
+or with <code>undef</code> if <code>selector</code> selects no element (or to be rejected with an error).</p>
+
+</dd><dt id="$session->text_content_(selector_=>_$selector)->then_(sub_{_$text_=_shift_})"><code>$session-&gt;text_content (selector =&gt; $selector)-&gt;<strong>then</strong> (sub { $text = shift })</code></dt>
+
+<dd>
+<p>Get the text content (i.e.
+<code>textContent</code>).</p>
+
+<p>Zero or more options can be specified as name/value pair arguments.</p>
+
+<p>If the <code>selector</code> option is specified,
+the element selected by the value is used.
+The value must be a character string of the group of selectors.
+Otherwise,
+the document element is used.</p>
+
+<p>it returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the character string of the text content,
+if <code>selector</code> selects an element or no <code>selector</code> option is specified,
+or with <code>undef</code> if <code>selector</code> selects no element (or to be rejected with an error).</p>
+
+</dd><dt id="$session->screenshot_($name_=>_$value,_...)->then_(sub_{_$bytes_=_shift_})"><code>$session-&gt;screenshot ($name =&gt; $value,
+...)-&gt;<strong>then</strong> (sub { $bytes = shift })</code></dt>
+
+<dd>
+<p>Take a screenshot (the Take Screenshot and Take Element Screenshot commands).</p>
+
+<p>Zero or more options can be specified as name/value pair arguments.</p>
+
+<p>If the <code>selector</code> option is specified,
+an element screenshot of the element selected by the value is taken.
+The value must be a character string of the group of selectors.
+Otherwise,
+a window screenshot is taken.
+If the WebDriver server does not support Take Element Screenshot command,
+this option is ignored.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the byte string of the screenshot image data (or to be rejected with an error).</p>
+
+</dd><dt id="$promise_=_$session->switch_to_frame_by_selector_($selector)"><code>$promise = $session-&gt;<strong id="member-switch_to_frame_by_selector">switch_to_frame_by_selector</strong> ($selector)</code></dt>
+
+<dd>
+<p>Select a browsing context (the Switch To Frame command).</p>
+
+<p>The first argument must be a character string of the group of selectors used to select an <code>iframe</code> element.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when a browsing context is selected (or to be rejected with an error).</p>
+
+</dd><dt id="$session->http_get_($path_segments)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;http_get ($path_segments)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
+
+<dd>
+<p>Send a command using the session with the HTTP <code>GET</code> method.</p>
+
+<p>The first argument must be an array reference of path segments.
+Segments <code>session</code> and the session ID is prepended before these segments to construct the request URL.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
+
+</dd><dt id="$session->http_post_($path_segments,_$params)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;http_post ($path_segments,
+$params)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
+
+<dd>
+<p>Send a command using the session with the HTTP <code>POST</code> method.</p>
+
+<p>The first argument must be an array reference of path segments.
+Segments <code>session</code> and the session ID is prepended before these segments to construct the request URL.</p>
+
+<p>The second argument must be a hash reference that can be used to create the payload body's JSON data.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
+
+</dd><dt id="$session->http_delete_($path_segments)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;http_delete ($path_segments)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
+
+<dd>
+<p>Send a command using the session with the HTTP <code>DELETE</code> method.</p>
+
+<p>The first argument must be an array reference of path segments.
+Segments <code>session</code> and the session ID is prepended before these segments to construct the request URL.</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
+
+</dd><dt id="$promise_=_$session->close"><code>$promise = $session-&gt;<strong id="member-close">close</strong></code></dt>
+
+<dd>
+<p>Delete the session from the WebDriver server (the Delete Session command).</p>
+
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the server returns (or to be rejected with an error).</p>
+
+<p>This method must be explicitly invoked when the session is no longer used.</p>
+</dd>
+</dl>
+
+<section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../../pod/Web/Driver/Connection" class="podlinkpod">Web::Driver::Connection</a>.</p>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<p>WebDriver <code class="url">&lt;<a href="https://w3c.github.io/webdriver/webdriver-spec.html">https://w3c.github.io/webdriver/webdriver-spec.html</a>&gt;</code>.</p>
+
+<p><code>JsonWireProtocol</code></p><p>selenium - A description of the protocol used by WebDriver to communicate with remote instances - Browser automation framework <code class="url">&lt;<a href="https://web.archive.org/web/20160205035909/https://code.google.com/p/selenium/wiki/JsonWireProtocol">https://web.archive.org/web/20160205035909/https://code.google.com/p/selenium/wiki/JsonWireProtocol</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;</p>
+
+</section><section id="ACKNOWLEDGEMENTS"><h1>ACKNOWLEDGEMENTS</h1>
+
+<p>Thanks to nobuoka.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../../.." rel="top">Top</a>
+    </li><li><a href="../../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

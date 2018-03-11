@@ -93,8 +93,10 @@ fired by the browser or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></
 
 </dd><dt id="$boolean_=_$ev->manakai_propagation_stopped"><code>$boolean = $ev-&gt;<strong id="member-manakai_propagation_stopped">manakai_propagation_stopped</strong></code></dt>
 
+<dt id="$boolean_=_$ev->cancel_bubble"><code>$boolean = $ev-&gt;<strong id="member-cancel_bubble">cancel_bubble</strong></code></dt>
+
 <dd>
-<p>Return whether the <code>stop_propagation</code> method has been invoked or not. <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
+<p>Return whether the <code>stop_propagation</code> method has been invoked or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
 
 </dd><dt id="$ev->stop_immediate_propagation"><code>$ev-&gt;<strong id="member-stop_immediate_propagation">stop_immediate_propagation</strong></code></dt>
 
@@ -102,6 +104,8 @@ fired by the browser or not. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></
 <p>Stop the propagation of the event immediately. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$ev->stop_propagation"><code>$ev-&gt;<strong id="member-stop_propagation">stop_propagation</strong></code></dt>
+
+<dt id="$ev->cancel_bubble_(1)"><code>$ev-&gt;<strong>cancel_bubble</strong> (1)</code></dt>
 
 <dd>
 <p>Stop the propagation of the event. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
@@ -131,8 +135,7 @@ it also supports <code>init_event</code> method. <cite class="ref">[<a href="#DO
 <p>Constants are exported from the <a href="../../../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> module by default.
 Following constants are used by the <code>event_phase</code> method [DOM]:</p>
 
-<pre>
-<code>  NONE, CAPTURING_PHASE, AT_TARGET, BUBBLING_PHASE</code></pre>
+<pre><code>  NONE, CAPTURING_PHASE, AT_TARGET, BUBBLING_PHASE</code></pre>
 
 </section><section id="SUBCLASSES"><h1>SUBCLASSES</h1>
 
@@ -177,7 +180,7 @@ Following constants are used by the <code>event_phase</code> method [DOM]:</p>
 <p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
 
 <dl>
-<dt id="Around_line_106:">Around line 106:</dt>
+<dt id="Around_line_110:">Around line 110:</dt>
 
 <dd>
 <p>Deleting unknown formatting code K&lt;&gt;</p>

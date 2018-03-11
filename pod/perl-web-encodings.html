@@ -2,24 +2,202 @@
       <link rel="stylesheet" href="../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>perl-web-encodings</title><link rel="license" href="../contact#license"></head><body><h1><a href=".." rel="top">The manakai project</a></h1>
+      <title>perl-web-encodings</title><link rel="license" href="#LICENSE"></head><body><h1><a href=".." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../docs" rel="up up">Documents</a></li>
         <li><a href="../pod/#modules" rel="up">Perl modules</a></li>
         <li><a href="" rel="bookmark">perl-web-encodings</a></li>
       </ul>
-    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-encodings/tree/master/README">Source</a></li></ul></nav><article><pre>
-Web::Encodings
-~~~~~~~~~~~~~~
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-encodings/tree/master/README.pod">Source</a></li></ul></nav><article>
 
-This is a placeholder for future Encoding Standard (Web Encodings)
-implementation in Perl.
 
-Also, this repository contains a Perl port of universalchardet:
-Web::Encoding::UnivCharDet.  See lib/Web/Encoding/UnivCharDet.pod for
-more information.
-</pre></article><footer>
+
+
+
+<hgroup><h1><code>Web::Encoding</code></h1><h2>Web Encodings APIs</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  use Web::Encoding;
+  $bytes = encode_web_utf8 $chars;
+  $chars = decode_web_utf8 $bytes;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Encoding</code> module provides a set of functions to handle Web-compatible character encodings.</p>
+
+<p>Also, there are following modules in the <code>perl-web-encodings</code> repository:</p>
+
+<dl>
+<dt><a href="../pod/Web/Encoding/UnivCharDet" class="podlinkpod">Web::Encoding::UnivCharDet</a></dt>
+
+<dd>
+<p>The universalchardet (or universal detector) implementation in Perl, which can be used to implement HTML parsers.</p>
+
+</dd><dt><a href="../pod/Web/Encoding/Normalization" class="podlinkpod">Web::Encoding::Normalization</a></dt>
+
+<dd>
+<p>Implementation of Unicode's string normalization algorithms, i.e. NFC, NFD, NFKC, and NFKD.</p>
+
+</dd><dt><a href="../pod/Web/Encoding/Preload" class="podlinkpod">Web::Encoding::Preload</a></dt>
+
+<dd>
+<p>Preloading encoding modules and data files.</p>
+</dd>
+</dl>
+
+</section><section id="FUNCTIONS"><h1>FUNCTIONS</h1>
+
+<p>Functions described in these subsections are exported by default.</p>
+
+<section id="Encoding_labels_and_properties_of_encodings"><h1>Encoding labels and properties of encodings</h1>
+
+<p>There are following functions to handle encoding labels and to obtain properties of encodings:</p>
+
+<dl>
+<dt id="$key_=_encoding_label_to_name_$label"><code>$key = encoding_label_to_name $label</code></dt>
+
+<dd>
+<p>Find the encoding identified by the specified label. As does the "get an encoding" steps [ENCODING], this function ignores leading and trailing spaces, and compares labels ASCII case-insensitively. The function returns the encoding key (not a name), if found, or <code>undef</code>.</p>
+
+</dd><dt id="$key_=_fixup_html_meta_encoding_name_$key"><code>$key = fixup_html_meta_encoding_name $key</code></dt>
+
+<dd>
+<p>Replace a encoding key for the purpose of HTML character encoding declaration, as in "prescan a byte stream to determine its encoding" and "change the encoding" algorithms [HTML]. The argument must be an encoding key (not a name or label). The function returns an encoding key.</p>
+
+</dd><dt id="$key_=_get_output_encoding_key_$key"><code>$key = get_output_encoding_key $key</code></dt>
+
+<dd>
+<p>Return the result of applying the steps to "get an output encoding" [ENCODING]. The argument must be an encoding key (not a name or label). The function returns an encoding key.</p>
+
+</dd><dt id="$name_=_encoding_name_to_compat_name_$key"><code>$name = encoding_name_to_compat_name $key</code></dt>
+
+<dd>
+<p>Replace an encoding key to its official name as used in e.g. <code>characterSet</code> or <code>inputEncoding</code> attributes of the <code>Document</code> interface [ENCODING] [DOM]. The argument must be an encoding key (not a name or label). The function returns an encoding name.</p>
+
+</dd><dt id="$boolean_=_is_ascii_compat_encoding_name_$key"><code>$boolean = is_ascii_compat_encoding_name $key</code></dt>
+
+<dd>
+<p>Return whether the specified encoding is an ASCII-compatible character encoding [ENCODING] or not. The argument must be an encoding key (not a name or label).</p>
+
+</dd><dt id="$boolean_=_is_encoding_label_$label"><code>$boolean = is_encoding_label $label</code></dt>
+
+<dd>
+<p>Return whether the specified label identifies an encoding [ENCODING] or not. It compares labels ASCII case-insensitively. Unlike the <code>encoding_label_to_name</code> function, however, this function does not ignore spaces.</p>
+
+</dd><dt id="$key_=_locale_default_encoding_name_$tag"><code>$key = locale_default_encoding_name $tag</code></dt>
+
+<dd>
+<p>Return the encoding key (not a name or label) of the default character encoding for a locale [HTML]. If no default is known for the specified locale, <code>undef</code> is returned.</p>
+
+<p>The argument, which identifies the locale, must be either a BCP 47 language tag or a string <code>*</code>. The language tag must be the primary language tag only, <code>zh-TW</code>, or <code>zh-CN</code>, otherwise no data is available. The tags are ASCII case-insensitive. If <code>*</code> is specified, the global default encoding that can be used when the locale is not known or the locale has no default is returned.</p>
+</dd>
+</dl>
+
+<p>For the purpose of this module, the <b>key</b> of the encoding is a short string uniquly identifying the encoding. It is a lowercased variant of the encoding name [ENCODING].</p>
+
+<p>Note that the encoding names in the Encoding Standard are not compatible with Perl <a href="http://search.cpan.org/dist/Encode/Encode.pm" class="podlinkpod">Encode</a> module's encoding names.</p>
+
+</section><section id="Encoders_and_decoders"><h1>Encoders and decoders</h1>
+
+<p>There are following functions for encoding and decoding:</p>
+
+<dl>
+<dt id="$bytes_=_encode_web_utf8_$chars"><code>$bytes = encode_web_utf8 $chars</code></dt>
+
+<dd>
+<p>Encode the character string in UTF-8 and return the encoded bytes.</p>
+
+<p>This function can be used to implement the "UTF-8 encode" operation [ENCODING].</p>
+
+</dd><dt id="$chars_=_decode_web_utf8_$bytes"><code>$chars = decode_web_utf8 $bytes</code></dt>
+
+<dd>
+<p>Decode the bytes as UTF-8 and return the decoded character string. Any bad byte is replaced by U+FFFD characters without failure.</p>
+
+<p>This function can be used to implement the "UTF-8 decode" operation [ENCODING].</p>
+
+</dd><dt id="$chars_=_decode_web_utf8_no_bom_$bytes"><code>$chars = decode_web_utf8_no_bom $bytes</code></dt>
+
+<dd>
+<p>Decode the bytes as UTF-8, not recognizing BOM, and returns the decoded character string. Any bad byte is replaced by U+FFFD characters without failure.</p>
+
+<p>This function can be used to implement the "UTF-8 decode without BOM" operation [ENCODING].</p>
+
+</dd><dt id="$bytes_=_encode_web_charset_$key,_$chars"><code>$bytes = encode_web_charset $key, $chars</code></dt>
+
+<dd>
+<p>Encode the character string and return the encoded bytes.</p>
+
+<p>The first argument must be the key of the encoding used to encode the string.</p>
+
+<p>Any character not representable in the encoding is converted to an HTML decimal character reference for the character.</p>
+
+<p>This function can be used to implement the "encode" operation with error mode <code>html</code> [ENCODING].</p>
+
+</dd><dt id="$chars_=_decode_web_charset_$key,_$bytes"><code>$chars = decode_web_charset $key, $bytes</code></dt>
+
+<dd>
+<p>Decode the bytes and return the decoded character string.</p>
+
+<p>The first argument must be the key of the encoding used to decode the bytes.</p>
+
+<p>Any bad byte is replaced by U+FFFD characters without failure.</p>
+
+<p>This function is equivalent to the following code using <a href="../pod/Web/Encoding/Decoder" class="podlinkpod">Web::Encoding::Decoder</a>:</p>
+
+<pre><code>  $decoder = Web::Encoding::Decoder-&gt;new_from_encoding_key ($key);
+  $decoder-&gt;ignore_bom (1);
+  return $decoder-&gt;bytes ($bytes) . $decoder-&gt;eof;</code></pre>
+</dd>
+</dl>
+
+<p>In addition to UTF-8, following legacy encodings are supported: IBM866 ISO-8859-2 ISO-8859-3 ISO-8859-4 ISO-8859-5 ISO-8859-6 ISO-8859-7 ISO-8859-8 ISO-8859-8-I ISO-8859-10 ISO-8859-13 ISO-8859-14 ISO-8859-15 ISO-8859-16 KOI8-R KOI8-U macintosh windows-874 windows-1250 windows-1251 windows-1252 windows-1253 windows-1254 windows-1255 windows-1256 windows-1257 windows-1258 x-mac-cyrillic gb18030 GBK Big5 EUC-JP ISO-2022-JP Shift_JIS EUC-KR x-user-defined UTF-16BE UTF-16LE replacement</p>
+
+</section></section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<dl>
+<dt id="ENCODING">ENCODING</dt>
+
+<dd>
+<p>Encoding Standard <code class="url">&lt;<a href="https://encoding.spec.whatwg.org/">https://encoding.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>UTF-16 encoder <code class="url">&lt;<a href="https://github.com/whatwg/encoding/commit/8360f775c8df145f649047c7d59c5ff733ade112">https://github.com/whatwg/encoding/commit/8360f775c8df145f649047c7d59c5ff733ade112</a>&gt;</code>.</p>
+
+</dd><dt id="HTML">HTML</dt>
+
+<dd>
+<p>HTML Standard <code class="url">&lt;<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="DOM">DOM</dt>
+
+<dd>
+<p>DOM Standard <code class="url">&lt;<a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>&gt;</code>.</p>
+
+</dd><dt id="ENCVALID">ENCVALID</dt>
+
+<dd>
+<p>Encoding Validation <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Encoding%20Validation">https://wiki.suikawiki.org/n/Encoding%20Validation</a>&gt;</code>.</p>
+</dd>
+</dl>
+
+</section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
+
+<p>The module requires Perl 5.8 or later.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2011-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
     <li><a href=".." rel="top">Top</a>
