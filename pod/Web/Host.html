@@ -18,12 +18,12 @@
 
 <hgroup><h1><code>Web::Host</code></h1><h2>Host names for the Web</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::Host;
+<pre><code>  use Web::Host;
   $host = Web::Host-&gt;parse_string ("MyDomain.test");
   warn $host-&gt;is_domain;
   warn $host-&gt;is_ip;
-  warn $host-&gt;stringify;</code></pre>
+  warn $host-&gt;to_ascii;
+  warn $host-&gt;to_unicode;</code></pre>
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
@@ -38,6 +38,11 @@
 
 <dd>
 <p>Parse the string and return a <code>Web::Host</code> object for the host. The argument must be a domain, an IPv4 address, or an IPv6 address enclosed by <code>[</code> and <code>]</code>. It does not have to be canonicalized. It can be an IDN. If the argument is not a valid host, an <code>undef</code> value is returned instead.</p>
+
+</dd><dt id="($host,_$port)_=_Web::Host->parse_hostport_string_($string)"><code>($host, $port) = Web::Host-&gt;<strong id="member-parse_hostport_string">parse_hostport_string</strong> ($string)</code></dt>
+
+<dd>
+<p>Parse the string as a host optionally followed by <code>:</code> and port number and return a pair of a <code>Web::Host</code> object for the host and an integer for the port. If the argument is not a valid host and port string, an <code>undef</code> and <code>undef</code> pair is returned instead.</p>
 
 </dd><dt id="$host_=_Web::Host->new_from_packed_addr_($bytes)"><code>$host = Web::Host-&gt;<strong id="member-new_from_packed_addr">new_from_packed_addr</strong> ($bytes)</code></dt>
 
@@ -71,8 +76,35 @@
 
 </dd><dt id="$string_=_$host->stringify"><code>$string = $host-&gt;<strong id="member-stringify">stringify</strong></code></dt>
 
+<dt id="$string_=_$host->to_ascii"><code>$string = $host-&gt;<strong id="member-to_ascii">to_ascii</strong></code></dt>
+
+<dt id="$string_=_$host->TO_JSON"><code>$string = $host-&gt;<strong id="member-TO_JSON">TO_JSON</strong></code></dt>
+
 <dd>
 <p>Serialize the host, using the host serializer of the URL Standard. The result is canonicalized. Any IDN is converted into its Punycode form. IPv6 addresses are enclosed in <code>[</code> and <code>]</code>.</p>
+
+<p>Note that JavaScript code <code>URL.domainToASCII ($domain)</code> (where <var>$domain</var> is a Unicode string) is equivalent to the following code:</p>
+
+<pre><code>  my $host = Web::Host-&gt;parse_string ($domain);
+  if ($host-&gt;is_domain) {
+    return $host-&gt;to_ascii;
+  } else {
+    return '';
+  }</code></pre>
+
+</dd><dt id="$string_=_$host->to_unicode"><code>$string = $host-&gt;<strong id="member-to_unicode">to_unicode</strong></code></dt>
+
+<dd>
+<p>Serialize the host, but decode Punycode-encoded labels in the host whenever possible.</p>
+
+<p>Note that JavaScript code <code>URL.domainToUnicode ($domain)</code> (where <var>$domain</var> is a Unicode string) is equivalent to the following code:</p>
+
+<pre><code>  my $host = Web::Host-&gt;parse_string ($domain);
+  if ($host-&gt;is_domain) {
+    return $host-&gt;to_unicode;
+  } else {
+    return '';
+  }</code></pre>
 
 </dd><dt id="$bytes_=_$host->packed_addr"><code>$bytes = $host-&gt;<strong id="member-packed_addr">packed_addr</strong></code></dt>
 
@@ -86,9 +118,11 @@
 </dd>
 </dl>
 
-</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
 <p>URL Standard <code class="url">&lt;<a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>&gt;</code>.</p>
+
+<p>UTS #46: Unicode IDNA Compatibility Processing <code class="url">&lt;<a href="https://www.unicode.org/reports/tr46/">https://www.unicode.org/reports/tr46/</a>&gt;</code>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
@@ -96,7 +130,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

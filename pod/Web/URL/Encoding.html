@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::URL::Encoding</code></h1><h2>URL percent encoding and application/x-www-form-urlencoded</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::URL::Encoding;
+<pre><code>  use Web::URL::Encoding;
   warn percent_encode_c $text;
   warn serialize_form_urlencoded {
     $name =&gt; $value,
@@ -40,10 +39,25 @@
 <dd>
 <p>Percent-encode the string, encoded in UTF-8. Anything other than <code>[A-Za-z0-9_.-]</code> are percent-encoded.</p>
 
+</dd><dt id="$text_=_percent_decode_c_$bytes"><code>$text = percent_decode_c $bytes</code></dt>
+
+<dd>
+<p>Percent-decode the bytes and then decode as a UTF-8 string.</p>
+
+</dd><dt id="$bytes_=_percent_decode_b_$bytes"><code>$bytes = percent_decode_b $bytes</code></dt>
+
+<dd>
+<p>Percent-decode the bytes and return the result bytes.</p>
+
 </dd><dt id="$bytes_=_oauth1_percent_encode_c_$text"><code>$bytes = oauth1_percent_encode_c $text</code></dt>
 
 <dd>
 <p>Percent-encode the string, encoded in UTF-8, for OAuth 1.0.</p>
+
+</dd><dt id="$bytes_=_oauth1_percent_encode_b_$text"><code>$bytes = oauth1_percent_encode_b $text</code></dt>
+
+<dd>
+<p>Percent-encode the bytes, for OAuth 1.0.</p>
 
 </dd><dt id="$bytes_=_serialize_form_urlencoded_$params"><code>$bytes = serialize_form_urlencoded $params</code></dt>
 
@@ -64,9 +78,13 @@
 
 <p>RFC 5849, The OAuth 1.0 Protocol <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5849">https://tools.ietf.org/html/rfc5849</a>&gt;</code>.</p>
 
+<p>When a text is encoded in UTF-8, "UTF-8 encode" steps of the Encoding Standard MUST be used.</p>
+
 <p>Encoding Standard <code class="url">&lt;<a href="https://encoding.spec.whatwg.org/">https://encoding.spec.whatwg.org/</a>&gt;</code>.</p>
 
-<p>When a text is encoded in UTF-8, UTF-8 encoder of the Encoding Standard MUST be used.</p>
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p>SuikaWiki:percent-encoding <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/percent-encoding">https://wiki.suikawiki.org/n/percent-encoding</a>&gt;</code>.</p>
 
 </section><section id="HISTORY"><h1>HISTORY</h1>
 

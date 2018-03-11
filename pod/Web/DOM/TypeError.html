@@ -16,38 +16,47 @@
 
 
 
-<hgroup><h1><code>Web::DOM::TypeError</code></h1><h2>The WebIDL <code>TypeError</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::TypeError</code></h1><h2><code>TypeError</code> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::DOM::TypeError</code> class implements the WebIDL <code>TypeError</code> object.</p>
+<p>A <code>Web::DOM::TypeError</code> object is intended to be equivalent to JavaScript <code>TypeError</code>.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>The <code>Web::DOM::TypeError</code> class inherits from <code>Web::DOM::Error</code>. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM%3AError" class="podlinkpod">Web::DOM:Error</a>,
+following method is available:</p>
 
-<p>In addition,
-the <code>Web::DOM::TypeError</code> constructor can be used to create a new instance of the <code>Web::DOM::TypeError</code> object.
-If the argument is specified,
-it is used as the <code>message</code> for the object. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+<dl>
+<dt id="$error_=_Web::DOM::TypeError->new_($message)"><code>$error = Web::DOM::TypeError-&gt;<strong id="member-new">new</strong> ($message)</code></dt>
 
-</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+<dd>
+<p>Create and return a new type error object.</p>
+
+<p>If a character string is specified as an argument,
+the error's <code>message</code> is set to the argument.
+Otherwise,
+the <code>message</code> is set to the empty string.</p>
+</dd>
+</dl>
+
+<p>An instance of the <code>Web::DOM::TypeError</code> class is implementing the Perl Error Object Interface Level 1 (see <a href="../../../pod/Web/DOM/Error#ERROR_OBJECT_API" class="podlinkpod">"ERROR OBJECT API" in Web::DOM::Error</a>).</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
 
 <dl>
 <dt id="WEBIDL">WEBIDL</dt>
 
 <dd>
-<p>WebIDL <code class="url">&lt;<a href="http://dev.w3.org/2006/webapi/WebIDL/#dfn-predefined-exception">http://dev.w3.org/2006/webapi/WebIDL/#dfn-predefined-exception</a>&gt;</code>.</p>
-
-</dd><dt id="ECMASCRIPT">ECMASCRIPT</dt>
-
-<dd>
-<p>ECMAScript Language Specification <code class="url">&lt;<a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.11.6.5">http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.11.6.5</a>&gt;</code>.</p>
-
-</dd><dt id="DOMPERL">DOMPERL</dt>
-
-<dd>
-<p>manakai's DOM Perl Binding <code class="url">&lt;<a href="http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding$2233#anchor-54">http://suika.fam.cx/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding$2233#anchor-54</a>&gt;</code>.</p>
+<p>WebIDL <code class="url">&lt;<a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>&gt;</code>.</p>
 </dd>
 </dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="../../../pod/Web/DOM/TypeError" class="podlinkpod">Web::DOM::TypeError</a>.</p>
+
+<p>ECMAScript <code>TypeError</code> <code class="url">&lt;<a href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror</a>&gt;</code>.</p>
+
+<p>Web IDL <code>TypeError</code> <code class="url">&lt;<a href="https://heycam.github.io/webidl/#exceptiondef-typeerror">https://heycam.github.io/webidl/#exceptiondef-typeerror</a>&gt;</code>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
@@ -55,7 +64,7 @@ it is used as the <code>message</code> for the object. <cite class="ref">[<a hre
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2012 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2012-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

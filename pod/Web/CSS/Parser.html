@@ -107,25 +107,32 @@ as specified in the <code>charset</code> parameter in the <code>Content-Type:</c
 If no <code>charset</code> metadata is available,
 this option has to be left unspecified (or <code>undef</code>).</p>
 
-</dd><dt><a name="parent_encoding_name_=>_$name">parent_encoding_name =&gt; $name</a></dt>
+</dd><dt><a name="parent_encoding_name_=>_$encoding_label">parent_encoding_name =&gt; $encoding_label</a></dt>
 
 <dd>
-<p>The encoding name or alias,
+<p>An encoding label,
 provided by the context in which the reference to the style sheet appears.
 If the style sheet is referenced by a <code>link</code> element or <code>xml-stylseheet</code> processing instruction,
 its <code>charset</code> attribute value should be specified here.
-Otherwise,
-the character encoding of the document referencing the style sheet directly or indirectly should be specified here.
-See the CSS specification [CSSSYNTAX] for details.
 If no such contextual character encoding metadata is available,
+this option has to be left undefined (or <code>undef</code>).</p>
+
+</dd><dt><a name="embed_encoding_key_=>_$encoding_key">embed_encoding_key =&gt; $encoding_key</a></dt>
+
+<dd>
+<p>The encoding key (see <a href="http://search.cpan.org/perldoc?Web%3A%3AEncoding" class="podlinkpod">Web::Encoding</a>),
+determined by the context in which the reference to the style sheet appears.
+If the style sheet is referenced by an HTML <code>link</code> element,
+it is the document's encoding.
+Otherwise,
+if the style sheet is referenced by a CSS <code>@import</code> rule,
+it is the style sheet's encoding.
+Otherwise,
 this option has to be left undefined (or <code>undef</code>).</p>
 </dd>
 </dl>
 
-<p>If the style sheet is provided by a non-HTTP data source and you know the encoding name a priori,
-it should be specified as <code>transport_encoding_name</code>.</p>
-
-<p>The encoding name acutally used to parse the CSS style sheet is available as <code>$ss-&gt;{input_encoding}</code>.
+<p>The encoding key acutally used to parse the style sheet is available as <code>$ss-&gt;{input_encoding}</code>.
 (If the style sheet is created from a character string by one of following methods,
 this field is left unspecified.)</p>
 
@@ -217,7 +224,7 @@ The argument MUST be a <a href="../../../pod/Web/DOM/Element" class="podlinkpod"
 <dt id="CSSSYNTAX">CSSSYNTAX</dt>
 
 <dd>
-<p>CSS Syntax <code class="url">&lt;<a href="http://dev.w3.org/csswg/css-syntax/">http://dev.w3.org/csswg/css-syntax/</a>&gt;</code>.</p>
+<p>CSS Syntax Module <code class="url">&lt;<a href="https://drafts.csswg.org/css-syntax/">https://drafts.csswg.org/css-syntax/</a>&gt;</code>.</p>
 
 <p>An invalid declaration MUST NOT be included in the style rule.</p>
 
@@ -270,7 +277,7 @@ the parser MUST replace it by 'initial'.</p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2007-2013 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2007-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

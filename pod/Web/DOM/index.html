@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::DOM</code></h1><h2>A Perl DOM implementation</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::DOM::Document;
+<pre><code>  use Web::DOM::Document;
   
   my $doc = new Web::DOM::Document;
   my $el = $doc-&gt;create_element ('a');
@@ -34,14 +33,12 @@
 
 <p>The <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> module provides the <code>new</code> method returning a new document object, which corresponds to the <code>new Document ()</code> constructor in JavaScript Web browser environment.</p>
 
-<pre>
-<code>  my $doc = new Web::DOM::Document; # XML document by default
+<pre><code>  my $doc = new Web::DOM::Document; # XML document by default
   $doc-&gt;manakai_is_html (1); # Change to HTML document</code></pre>
 
 <p>Using the document object, the application can create various DOM object, using standard DOM methods:</p>
 
-<pre>
-<code>  my $el = $doc-&gt;create_element ('p'); # HTML element
+<pre><code>  my $el = $doc-&gt;create_element ('p'); # HTML element
   my $el = $doc-&gt;create_element_ns ($nsurl, $qname);
   $el-&gt;set_attribute (class =&gt; 'hoge fuga');
   my $text = $doc-&gt;create_text_node ('text');
@@ -51,15 +48,13 @@
 
 <p>Alternatively, you can instantiate the document object from an HTML or XML string, using the <code>DOMParser</code> interface:</p>
 
-<pre>
-<code>  my $parser = new Web::DOM::Parser;
+<pre><code>  my $parser = new Web::DOM::Parser;
   my $doc = $parser-&gt;parse_from_string ($string, 'text/html');
   my $doc = $parser-&gt;parse_from_string ($string, 'application/xhtml+xml');</code></pre>
 
 <p>Your favorite query methods are also available:</p>
 
-<pre>
-<code>  $el = $doc-&gt;get_element_by_id ('site-logo');
+<pre><code>  $el = $doc-&gt;get_element_by_id ('site-logo');
   $el = $doc-&gt;query_selector ('article &gt; p:first-child');
   $el = $doc-&gt;evaluate ('//div[child::p]', $doc)-&gt;iterate_next;
   $col = $doc-&gt;get_elements_by_tag_name ('p');
@@ -106,8 +101,7 @@
 
 <p>Attributes, methods, and constants of a DOM interface can be accessible as methods of the object implementing the interface. For example, the <code>innerHTML</code> attribute of the <code>Element</code> interface is accessible as the <code>inner_html</code> method of the element objects. If a method corresponding to the attribute is invoked with no argument, it acts as the getter of the attribute. If the method is invoked with an argument, it acts as the setter of the attribute.</p>
 
-<pre>
-<code>  $string_returned_by_getter = $el-&gt;inner_html;
+<pre><code>  $string_returned_by_getter = $el-&gt;inner_html;
   $el-&gt;inner_html ($string_received_by_setter);
   
   $string_returned_by_method = $el-&gt;get_attribute ($string);
@@ -116,8 +110,7 @@
 
 <p>Some objects accept array operations:</p>
 
-<pre>
-<code>  @children = @{$el-&gt;child_nodes};
+<pre><code>  @children = @{$el-&gt;child_nodes};
   $length = @{$el-&gt;child_nodes};
   
   $first_child = $el-&gt;child_nodes-&gt;[0];
@@ -256,15 +249,13 @@
 
 <p>How CSS style sheets are parsed and how CSSOM tree structure looks like depend on how much of CSS features are supported by the user agent. Since the web-dom module set by itself is not a rendering engine, most CSS features are considered as "not supported", therefore by default parsing discards most of CSS declarations. If you'd like to construct a CSS-based application on the top of the web-dom module set, you should turn on features you are supporting, through <a href="../../../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> module in the web-css package. The <a href="../../../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> object for a document's CSS parser can be accessed like this:</p>
 
-<pre>
-<code>  use Web::CSS::Parser;
+<pre><code>  use Web::CSS::Parser;
   my $parser = Web::CSS::Parser-&gt;get_parser_for_document ($doc);
   $resolver = $parser-&gt;media_resolver;</code></pre>
 
 <p>... where $doc is the document node with which the CSS style sheet in question will be associated. Then, you can set the "supported" flag of features you are supporting, like this:</p>
 
-<pre>
-<code>  $resolver-&gt;{prop}-&gt;{display} = 1;
+<pre><code>  $resolver-&gt;{prop}-&gt;{display} = 1;
   $resolver-&gt;{prop_value}-&gt;{display}-&gt;{block} = 1;</code></pre>
 
 <p>For more information on usage of the resolver, see <a href="../../../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> in the web-css package.</p>

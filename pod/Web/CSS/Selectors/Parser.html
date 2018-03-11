@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::CSS::Selectors::Parser</code></h1><h2>A Selectors parser</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::CSS::Selectors::Parser;
+<pre><code>  use Web::CSS::Selectors::Parser;
   my $parser = Web::CSS::Selectors::Parser-&gt;new;
   $parsed_selectors = $parser-&gt;parse_char_string ($selectors);</code></pre>
 
@@ -148,8 +147,7 @@
 <dd>
 <p>The "element selector" simple selector data structure takes the following form:</p>
 
-<pre>
-<code>  [ELEMENT_SELECTOR, $nsurl, $local_name, $prefix, $wc_prefix, $wc_type]</code></pre>
+<pre><code>  [ELEMENT_SELECTOR, $nsurl, $local_name, $prefix, $wc_prefix, $wc_type]</code></pre>
 
 <p>The item with index 1 is the namespace URL of the selector. If it is <code>undef</code>, any namespace (including the null namespace) matches. If it is the empty string, only the null namespace matches. Otherwise, the specified namespace URL is compared literally with the target element's (non-null) namespace URL.</p>
 
@@ -163,8 +161,7 @@
 
 <p>A sequence of simple selectors always contains a simple selector whose type is <code>ELEMENT_SELECTOR</code> as its first component. There are following patterns of "element selector" simple selector:</p>
 
-<pre>
-<code>  [ELEMENT_SELECTOR, undef, 'a'  , ''   , 0, 0]   a
+<pre><code>  [ELEMENT_SELECTOR, undef, 'a'  , ''   , 0, 0]   a
   [ELEMENT_SELECTOR, undef, undef, ''   , 0, 1]   *
   [ELEMENT_SELECTOR, ''   , 'a'  , undef, 0, 0]  |a
   [ELEMENT_SELECTOR, ''   , undef, undef, 0, 1]  |*
@@ -270,8 +267,7 @@
 
 <p>The constants mentioned in this section can be exported by <code>use</code>ing the module:</p>
 
-<pre>
-<code>  use Web::CSS::Selectors::Parser;</code></pre>
+<pre><code>  use Web::CSS::Selectors::Parser;</code></pre>
 
 </section></section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 

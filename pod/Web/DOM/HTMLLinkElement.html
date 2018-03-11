@@ -16,44 +16,69 @@
 
 
 
-<hgroup><h1><code>Web::DOM::HTMLLinkElement</code></h1><h2>The DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/HTMLLinkElement"><code>HTMLLinkElement</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<hgroup><h1><code>Web::DOM::HTMLLinkElement</code></h1><h2>DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/HTMLLinkElement"><code>HTMLLinkElement</code></a> object</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
 <p>The <code>Web::DOM::HTMLLinkElement</code> class implements the DOM <code>HTMLLinkElement</code> interface.
 The class is used by the HTML <code>link</code> element.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>In addition to the methods available for classes <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> and <a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>,
+<p>In addition to the methods for classes <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a>,
+<a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a>,
+<a href="../../../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a>,
+<a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>,
+and <a href="../../../pod/Web/DOM/HTMLElement" class="podlinkpod">Web::DOM::HTMLElement</a>,
 the following methods are available:</p>
 
 <dl>
-<dt id="$string_=_$el->crossorigin"><code>$string = $el-&gt;<strong id="member-crossorigin">crossorigin</strong></code></dt>
+<dt id="$string_=_$el->as"><code>$string = $el-&gt;<strong id="member-as">as</strong></code></dt>
+
+<dt id="$el->as_($string)"><code>$el-&gt;<strong>as</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set the <code>as</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->crossorigin"><code>$string = $el-&gt;<strong id="member-crossorigin">crossorigin</strong></code></dt>
 
 <dt id="$el->crossorigin_($string)"><code>$el-&gt;<strong>crossorigin</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>crossorigin</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>crossorigin</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->href"><code>$string = $el-&gt;<strong id="member-href">href</strong></code></dt>
 
 <dt id="$el->href_($string)"><code>$el-&gt;<strong>href</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>href</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>href</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->hreflang"><code>$string = $el-&gt;<strong id="member-hreflang">hreflang</strong></code></dt>
 
 <dt id="$el->hreflang_($string)"><code>$el-&gt;<strong>hreflang</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>hreflang</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>hreflang</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->integrity"><code>$string = $el-&gt;<strong id="member-integrity">integrity</strong></code></dt>
+
+<dt id="$el->integrity_($string)"><code>$el-&gt;<strong>integrity</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set the <code>integrity</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->media"><code>$string = $el-&gt;<strong id="member-media">media</strong></code></dt>
 
 <dt id="$el->media_($string)"><code>$el-&gt;<strong>media</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>media</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>media</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->nonce"><code>$string = $el-&gt;<strong id="member-nonce">nonce</strong></code></dt>
+
+<dt id="$el->nonce_($string)"><code>$el-&gt;<strong>nonce</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set the <code>nonce</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->rel"><code>$string = $el-&gt;<strong id="member-rel">rel</strong></code></dt>
 
@@ -62,27 +87,50 @@ the following methods are available:</p>
 <dt id="$el->rel_list_($string)"><code>$el-&gt;<strong id="member-rel_list">rel_list</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>rel</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>rel</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$tokens_=_$el->rel_list"><code>$tokens = $el-&gt;<strong>rel_list</strong></code></dt>
 
 <dd>
 <p>Return the <a href="../../../pod/Web/DOM/TokenList" class="podlinkpod">Web::DOM::TokenList</a> object for the <code>rel</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
-</dd><dt id="$tokens_=_$el->sizes"><code>$tokens = $el-&gt;<strong id="member-sizes">sizes</strong></code></dt>
+</dd><dt id="$string_=_$el->scope"><code>$string = $el-&gt;<strong id="member-scope">scope</strong></code></dt>
 
-<dt id="$el->sizes_($string)"><code>$el-&gt;<strong>sizes</strong> ($string)</code></dt>
+<dt id="$el->scope_($string)"><code>$el-&gt;<strong>scope</strong> ($string)</code></dt>
 
 <dd>
-<p>Return the <a href="../../../pod/Web/DOM/TokenList" class="podlinkpod">Web::DOM::TokenList</a> object for the <code>sizes</code> attribute,
-or set the <code>sizes</code> attribute to the specified string value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>scope</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$el->sizes_($string)"><code>$el-&gt;<strong id="member-sizes">sizes</strong> ($string)</code></dt>
+
+<dd>
+<p>Set the <code>sizes</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$tokens_=_$el->sizes"><code>$tokens = $el-&gt;<strong>sizes</strong></code></dt>
+
+<dd>
+<p>Return the <a href="../../../pod/Web/DOM/TokenList" class="podlinkpod">Web::DOM::TokenList</a> object for the <code>sizes</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </dd><dt id="$string_=_$el->type"><code>$string = $el-&gt;<strong id="member-type">type</strong></code></dt>
 
 <dt id="$el->type_($string)"><code>$el-&gt;<strong>type</strong> ($string)</code></dt>
 
 <dd>
-<p>Return or set the <code>type</code> attribute. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+<p>Get or set the <code>type</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->updateviacache"><code>$string = $el-&gt;<strong id="member-updateviacache">updateviacache</strong></code></dt>
+
+<dt id="$el->updateviacache_($string)"><code>$el-&gt;<strong>updateviacache</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set the <code>updateviacache</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
+
+</dd><dt id="$string_=_$el->workertype"><code>$string = $el-&gt;<strong id="member-workertype">workertype</strong></code></dt>
+
+<dt id="$el->workertype_($string)"><code>$el-&gt;<strong>workertype</strong> ($string)</code></dt>
+
+<dd>
+<p>Get or set the <code>workertype</code> attribute value. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 </dd>
 </dl>
 
@@ -97,7 +145,7 @@ and <code>target</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 <dt id="HTML">HTML</dt>
 
 <dd>
-<p>HTML Standard <code class="url">&lt;<a href="https://www.whatwg.org/specs/web-apps/current-work/#the-link-element">https://www.whatwg.org/specs/web-apps/current-work/#the-link-element</a>&gt;</code>.</p>
+<p>HTML Standard <code class="url">&lt;<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -111,7 +159,7 @@ and <code>target</code>. <cite class="ref">[<a href="#HTML">HTML</a>]</cite></p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2013-2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2013-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

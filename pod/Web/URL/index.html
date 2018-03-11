@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::URL</code></h1><h2>URL record API</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::URL;
+<pre><code>  use Web::URL;
   my $url = Web::URL-&gt;parse_string ($input_string, $base_url_record);
   warn $url-&gt;stringify;</code></pre>
 
@@ -48,6 +47,11 @@
 <dd>
 <p>Return the scheme component of the URL, canonicalized (i.e. in lowercase).</p>
 
+</dd><dt id="$boolean_=_$url->is_http_s"><code>$boolean = $url-&gt;<strong id="member-is_http_s">is_http_s</strong></code></dt>
+
+<dd>
+<p>Return whether the URL's scheme is an HTTP(S) scheme or not, i.e. whether either <code>http</code> or <code>https</code> or not.</p>
+
 </dd><dt id="$string_=_$url->username"><code>$string = $url-&gt;<strong id="member-username">username</strong></code></dt>
 
 <dd>
@@ -56,7 +60,7 @@
 </dd><dt id="$string_=_$url->password"><code>$string = $url-&gt;<strong id="member-password">password</strong></code></dt>
 
 <dd>
-<p>Return the password component of the URL, if any, or <code>undef</code>.</p>
+<p>Return the password component of the URL. If the URL has no explicit password component, the empty string is returned.</p>
 
 </dd><dt id="$host_=_$url->host"><code>$host = $url-&gt;<strong id="member-host">host</strong></code></dt>
 
@@ -73,6 +77,11 @@
 <dd>
 <p>Serialize the host and port components of the URL, if any, or <code>undef</code>.</p>
 
+</dd><dt id="$string_=_$url->path"><code>$string = $url-&gt;<strong id="member-path">path</strong></code></dt>
+
+<dd>
+<p>Serialize the path component of the URL.</p>
+
 </dd><dt id="$string_=_$url->pathquery"><code>$string = $url-&gt;<strong id="member-pathquery">pathquery</strong></code></dt>
 
 <dd>
@@ -81,7 +90,7 @@
 </dd><dt id="$string_=_$url->query"><code>$string = $url-&gt;<strong id="member-query">query</strong></code></dt>
 
 <dd>
-<p>Return the query component of the URL, if any, or <code>undef</code>.</p>
+<p>Return the query component of the URL, if any, or <code>undef</code>. It does not contain any <code>?</code> prefix.</p>
 
 </dd><dt id="$url->set_query_params_($params,_append_=>_$boolean)"><code>$url-&gt;<strong id="member-set_query_params">set_query_params</strong> ($params, append =&gt; $boolean)</code></dt>
 
@@ -94,12 +103,19 @@
 
 <p>This method mutates the URL record object.</p>
 
+</dd><dt id="$string_=_$url->fragment"><code>$string = $url-&gt;<strong id="member-fragment">fragment</strong></code></dt>
+
+<dd>
+<p>Return the fragment component of the URL, if any, or <code>undef</code>. It does not contain any <code>#</code> prefix.</p>
+
 </dd><dt id="$origin_=_$url->get_origin"><code>$origin = $url-&gt;<strong id="member-get_origin">get_origin</strong></code></dt>
 
 <dd>
 <p>Get a new origin object (<a href="../../../pod/Web/Origin" class="podlinkpod">Web::Origin</a>) representing the origin of the URL.</p>
 
 </dd><dt id="$string_=_$url->stringify"><code>$string = $url-&gt;<strong id="member-stringify">stringify</strong></code></dt>
+
+<dt id="$string_=_$url->TO_JSON"><code>$string = $url-&gt;<strong id="member-TO_JSON">TO_JSON</strong></code></dt>
 
 <dd>
 <p>Serialize the URL record as a string.</p>
@@ -134,13 +150,15 @@
 
 <p>URL Standard <code class="url">&lt;<a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>&gt;</code>.</p>
 
+<p>However, the URL parsing does not support URL Standard yet; the old spec implemented by the current version of the URL parser module is available at <code class="url">&lt;<a href="https://github.com/wakaba/tests-web-url/blob/master/spec.txt">https://github.com/wakaba/tests-web-url/blob/master/spec.txt</a>&gt;</code>.</p>
+
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
 <p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

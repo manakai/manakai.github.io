@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::ConnectionClient</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::ConnectionClient</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/ConnectionClient.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::ConnectionClient</code></h1><h2>A connection-oriented HTTP client</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  use Web::Transport::ConnectionClient;
+  $client = Web::Transport::ConnectionClient-&gt;new_from_host (q&lt;server.test&gt;);
+  
+  ## First request
+  $client-&gt;request (
+    url =&gt; Web::URL-&gt;parse_url (q&lt;https://server.test/p1&gt;), ...
+  )-&gt;then (sub {
+    my $res = $_[0];
+    warn $res-&gt;body_bytes;
+    
+    ## Second request
+    return $client-&gt;request (
+      url =&gt; Web::URL-&gt;parse_url (q&lt;https://server.test/p2&gt;), ...
+    );
+  })-&gt;then (sub {
+    return $client-&gt;close;
+  });</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::ConnectionClient</code> module is a connection-oriented HTTP client. It represents an HTTP connection between this client and an HTTP server and provides API to send requests and receive responses.</p>
+
+<p>It establishes an HTTP connection to the server when a request is sent. The connection is persisted until it is requested to close the connection by the application (via e.g. the <code>close</code> method) or the server has closed the connection such that subsequent requests can reuse the connection. When a new request is asked to be sent nevertheless the connection has been closed by the server, another connection is established. In this way a <code>Web::Transport::ConnectionClient</code> object can be used until it is explicitly closed by <code>close</code> or <code>abort</code>.</p>
+
+<p>It can only be used to send requests to a specific origin. It does not support HTTP redirects by design.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$client_=_Web::Transport::ConnectionClient->new_from_host_($string)"><code>$client = Web::Transport::ConnectionClient-&gt;<strong id="member-new_from_host">new_from_host</strong> ($string)</code></dt>
+
+<dd>
+<p>Create a new client object, which is associated with a origin (<code>https</code>, <var>$string</var>, <code>undef</code>). That is, a client for the specified host using HTTPS with port <code>443</code> is created.</p>
+
+<p>The argument must be a string, which is either a domain, an IPv4 address, or an IPv6 address enclosed by <code>[</code> and <code>]</code>. They don't have to be in their canonicalized form. IDNs are also allowed.</p>
+
+</dd><dt id="$client_=_Web::Transport::ConnectionClient->new_from_url_($url)"><code>$client = Web::Transport::ConnectionClient-&gt;<strong id="member-new_from_url">new_from_url</strong> ($url)</code></dt>
+
+<dd>
+<p>Create a new client object, which is associated with a URL's origin and path.</p>
+
+<p>The argument must be a URL record object (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a>). It's origin must be a tuple origin (typically an <code>http:</code> or <code>https:</code> URL).</p>
+
+<p>The path of the URL is used as the "prefix" of the URL path used for the requests (See <a href="../../../pod/Web/Transport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>' <code>path</code>).</p>
+
+<p>Note that anything other than the origin and path of the URL is ignored.</p>
+
+<p>Example:</p>
+
+<pre><code>  $client = Web::Transport::ConnectionClient-&gt;new_from_url
+      (Web::URL-&gt;parse_url (q&lt;https://server.test&gt;));
+  $client-&gt;request (path =&gt; []); # https://server.test/
+  $client-&gt;request (path =&gt; ['a', 'b']); # https://server.test/a/b
+  $client-&gt;request (url =&gt; Web::URL-&gt;parse_string (q&lt;https://server.test/x&gt;));</code></pre>
+
+<p>Example:</p>
+
+<pre><code>  $client = Web::Transport::ConnectionClient-&gt;new_from_url
+      (Web::URL-&gt;parse_url (q&lt;https://server.test/z&gt;));
+  $client-&gt;request (path =&gt; []); # https://server.test/z/
+  $client-&gt;request (path =&gt; ['a', 'b']); # https://server.test/z/a/b
+  $client-&gt;request (url =&gt; Web::URL-&gt;parse_string (q&lt;https://server.test/x&gt;));</code></pre>
+
+</dd><dt id="$promise_=_$client->request_(url_=>_...,_...)"><code>$promise = $client-&gt;<strong id="member-request">request</strong> (url =&gt; ..., ...)</code></dt>
+
+<dd>
+<p>Send a request and return a promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a>), which is to be resolved with the result.</p>
+
+<p>The arguments are name/value pairs, as described in <a href="../../../pod/Web/Transport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>. At minimum, the <code>url</code> argument must be specified. It is a URL record object (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a>). It must have same origin as the client's origin (i.e. the origin of the argument to the <code>new_from_url</code> method).</p>
+
+<p>The promise is resolved with a response (<a href="../../../pod/Web/Transport/Response" class="podlinkpod">Web::Transport::Response</a> object).</p>
+
+<p>This method creates an HTTP connection, if there is no existing connection, or the existing connection has terminated for some reason. Otherwise the existing connection is used to send the new request. If the connection is in use, the new request is delayed until any current and enqueued request has been processed unless HTTP/2 is available.</p>
+
+</dd><dt id="$promise_=_$client->close"><code>$promise = $client-&gt;<strong id="member-close">close</strong></code></dt>
+
+<dd>
+<p>Close any existing connection. This method must be explicitly invoked whenever the client has sent some request.</p>
+
+<p>If the connection is in use, it is closed only after any current and enqueued request are processed.</p>
+
+<p>This method returns a promise, which is resolved once any connection has been closed.</p>
+
+</dd><dt id="$promise_=_$client->abort_(message_=>_$string)"><code>$promise = $client-&gt;<strong id="member-abort">abort</strong> (message =&gt; $string)</code></dt>
+
+<dd>
+<p>Close any existing connection, aborting any currently processing or queued requests and responses. The client object is neuted.</p>
+
+<p>An optional name/value pair whose name is <code>message</code> can be a character string which should contain the reason of the aborting. This message is only used for the aid of the debugging and is never sent to the remote server.</p>
+
+<p>This method returns a promise, which is resolved once any connection has been closed.</p>
+
+</dd><dt id="$client->proxy_manager_($pm)"><code>$client-&gt;<strong id="member-proxy_manager">proxy_manager</strong> ($pm)</code></dt>
+
+<dt id="$pm_=_$client->proxy_manager"><code>$pm = $client-&gt;<strong>proxy_manager</strong></code></dt>
+
+<dd>
+<p>Get or set the proxy manager used to establish connections. Initially, a proxy manager which takes standard environment variables into account (i.e. <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is set as the proxy manager.</p>
+
+<p>This option must be set before the first invocation of the <code>request</code> method.</p>
+
+</dd><dt id="$client->resolver_($resolver)"><code>$client-&gt;<strong id="member-resolver">resolver</strong> ($resolver)</code></dt>
+
+<dt id="$resolver_=_$client->resolver"><code>$resolver = $client-&gt;<strong>resolver</strong></code></dt>
+
+<dd>
+<p>Get or set the name resolver used to establish connections. Initially, a resolver using system's name resolution API (<a href="../../../pod/Web/Transport/PlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by DNS caching (<a href="../../../pod/Web/Transport/CachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is set as the resolver.</p>
+
+<p>This option must be set before the first invocation of the <code>request</code> method.</p>
+
+</dd><dt id="$client->protocol_clock_($clock)"><code>$client-&gt;<strong id="member-protocol_clock">protocol_clock</strong> ($clock)</code></dt>
+
+<dt id="$clock_=_$client->protocol_clock"><code>$clock = $client-&gt;<strong>protocol_clock</strong></code></dt>
+
+<dd>
+<p>Get or set the clock object used for various protocol-level date-time operations (e.g. obtaining timestamps used in authentications). Initially, a clock of <code>Web::DateTime::Clock-&gt;realtime_clock</code> is set.</p>
+
+<p>Please note that this clock cannot alter the value used in OpenSSL.</p>
+
+<p>This option must be set before the first invocation of the <code>request</code> method.</p>
+
+</dd><dt id="$client->tls_options_({...})"><code>$client-&gt;<strong id="member-tls_options">tls_options</strong> ({...})</code></dt>
+
+<dt id="$hashref_=_$client->tls_options"><code>$hashref = $client-&gt;<strong>tls_options</strong></code></dt>
+
+<dd>
+<p>XXX</p>
+
+<p>This option must be set before the first invocation of the <code>request</code> method.</p>
+
+</dd><dt id="$client->max_size_($integer)"><code>$client-&gt;<strong id="member-max_size">max_size</strong> ($integer)</code></dt>
+
+<dt id="$integer_=_$client->max_size"><code>$integer = $client-&gt;<strong>max_size</strong></code></dt>
+
+<dd>
+<p>Get or set the maximum size of the (uncompressed) body of the response, in bytes. The initial value is -1, i.e. no limit is set.</p>
+
+<p>If a non-negative number is specified and the response body is greater than the value, the connection is aborted as soon as possible.</p>
+
+<p>This option must be set before the first invocation of the <code>request</code> method.</p>
+
+</dd><dt id="$client->debug_($mode)"><code>$client-&gt;<strong id="member-debug">debug</strong> ($mode)</code></dt>
+
+<dt id="$mode_=_$client->debug"><code>$mode = $client-&gt;<strong>debug</strong></code></dt>
+
+<dd>
+<p>Get or set the debug mode. The initial value is the <code>WEBUA_DEBUG</code> environment variable's value. See <code>WEBUA_DEBUG</code> section in <a href="../../../pod/Web/Transport" class="podlinkpod">Web::Transport</a> for available mode values.</p>
+
+</dd><dt id="$client->last_resort_timeout_($seconds)"><code>$client-&gt;<strong id="member-last_resort_timeout">last_resort_timeout</strong> ($seconds)</code></dt>
+
+<dt id="$seconds_=_$client->last_resort_timeout"><code>$seconds = $client-&gt;<strong>last_resort_timeout</strong></code></dt>
+
+<dd>
+<p>Get or set the last-resort timeout value, in seconds. In most applications, this value does not have to be changed. It is used to avoid the application blocked by a server which returns infinite response body. If your application has specific realtimeness requirement, use your own timer to abort the request, rather than reusing this timer.</p>
+
+<p>This option must be set before the first invocation of the <code>request</code> method.</p>
+
+</dd><dt id="$origin_=_$client->origin"><code>$origin = $client-&gt;<strong id="member-origin">origin</strong></code></dt>
+
+<dd>
+<p>Return the origin (<a href="../../../pod/Web/Origin" class="podlinkpod">Web::Origin</a>) of the connection.</p>
+</dd>
+</dl>
+
+</section><section id="ENVIRONMENT_VARIABLES"><h1>ENVIRONMENT VARIABLES</h1>
+
+<p>This module supports <code>WEBUA_DEBUG</code>. See <a href="../../../pod/Web/Transport" class="podlinkpod">Web::Transport</a>.</p>
+
+<p>When the default <code>resolver</code> is used, proxy environment variables <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code> are taken into account. See <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>Web Transport Processing <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Web%20Transport%20Processing">https://wiki.suikawiki.org/n/Web%20Transport%20Processing</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

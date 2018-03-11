@@ -18,8 +18,7 @@
 
 <hgroup><h1><code>Web::HTML::Dumper</code></h1><h2>Dump DOM tree by the parser test format</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
 
-<pre>
-<code>  use Web::HTML::Dumper qw(dumptree);
+<pre><code>  use Web::HTML::Dumper qw(dumptree);
   
   warn dumptree $doc;</code></pre>
 
@@ -70,13 +69,11 @@
 
 <p>An application can define a custom namespace designator by setting the key-value pair to the <code>%$Web::HTML::Dumper::NamespaceMapping</code> hash:</p>
 
-<pre>
-<code>  $Web::HTML::Dumper::NamespaceMapping-&gt;{$url} = $prefix;</code></pre>
+<pre><code>  $Web::HTML::Dumper::NamespaceMapping-&gt;{$url} = $prefix;</code></pre>
 
 <p>For example, if the application does:</p>
 
-<pre>
-<code>  $Web::HTML::Dumper::NamespaceMapping
+<pre><code>  $Web::HTML::Dumper::NamespaceMapping
       -&gt;{q&lt;urn:x-suika-fam-cx:markup:suikawiki:0:9:&gt;}
       = 'sw';</code></pre>
 
