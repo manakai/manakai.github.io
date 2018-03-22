@@ -405,6 +405,28 @@ See <code>WEBUA_DEBUG</code> section for available mode values.</p>
 <p>There are following resolvers in this repository: <a href="../../../pod/Web/Transport/PlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>,
 <a href="../../../pod/Web/Transport/CachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>.</p>
 
+</section><section id="UNDERLYING_PLATFORM_INFORMATION_OBJECT"><h1>UNDERLYING PLATFORM INFORMATION OBJECT</h1>
+
+<p>An <b>underlying platform information object</b> represents the underlying platform on which the application is running,
+used to retrive platform-dependent configurations.</p>
+
+<p>It is expected to have following methods:</p>
+
+<dl>
+<dt id="$string_=_$info->user_agent"><code>$string = $info-&gt;<strong id="member-user_agent">user_agent</strong></code></dt>
+
+<dd>
+<p>Return the default <code>User-Agent</code> value.</p>
+
+</dd><dt id="$string_=_$info->accept_language"><code>$string = $info-&gt;<strong id="member-accept_language">accept_language</strong></code></dt>
+
+<dd>
+<p>Return the appropriate value for the HTTP <code>Accept-Language</code> header.</p>
+</dd>
+</dl>
+
+<p>There are following module in this repository: <a href="../../../pod/Web/Transport/PlatformInfo" class="podlinkpod">Web::Transport::PlatformInfo</a>.</p>
+
 </section><section id="ENVIRONMENT_VARIABLE"><h1>ENVIRONMENT VARIABLE</h1>
 
 <p>The <code>WEBUA_DEBUG</code> and <code>WEBSERVER_DEBUG</code> environment variables can be used to enable the debug mode of client and server modules,
