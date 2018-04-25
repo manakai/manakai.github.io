@@ -132,7 +132,7 @@
 
 <p>Any character not representable in the encoding is converted to an HTML decimal character reference for the character.</p>
 
-<p>This function can be used to implement the "encode" operation with error mode <code>html</code> [ENCODING].</p>
+<p>This function can be used to implement the "encode" operation with error mode <code>html</code> [ENCODING] [ENCODING16].</p>
 
 </dd><dt id="$chars_=_decode_web_charset_$key,_$bytes"><code>$chars = decode_web_charset $key, $bytes</code></dt>
 
@@ -148,6 +148,11 @@
 <pre><code>  $decoder = Web::Encoding::Decoder-&gt;new_from_encoding_key ($key);
   $decoder-&gt;ignore_bom (1);
   return $decoder-&gt;bytes ($bytes) . $decoder-&gt;eof;</code></pre>
+
+</dd><dt id="[$name,_$name,_...]_=_encoding_names"><code>[$name, $name, ...] = encoding_names</code></dt>
+
+<dd>
+<p>Return the list of the encoding keys (i.e. the lowercase variants of the encoding names), as an array reference.</p>
 </dd>
 </dl>
 
@@ -161,6 +166,9 @@
 <dd>
 <p>Encoding Standard <code class="url">&lt;<a href="https://encoding.spec.whatwg.org/">https://encoding.spec.whatwg.org/</a>&gt;</code>.</p>
 
+</dd><dt id="ENCODING16">ENCODING16</dt>
+
+<dd>
 <p>UTF-16 encoder <code class="url">&lt;<a href="https://github.com/whatwg/encoding/commit/8360f775c8df145f649047c7d59c5ff733ade112">https://github.com/whatwg/encoding/commit/8360f775c8df145f649047c7d59c5ff733ade112</a>&gt;</code>.</p>
 
 </dd><dt id="HTML">HTML</dt>
@@ -190,7 +198,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2011-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2011-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
