@@ -29,6 +29,10 @@
 
 <p>The <code>Web::RDF::XML::Parser</code> module is an implementation of RDF/XML. Using this module, RDF triples embedded within RDF/XML document or document fragment can be extracted.</p>
 
+<p>The RDF/XML format is no longer widely used. Though this module is still maintained as part of the manakai project, use of it is not recommended.</p>
+
+<p>This module is <b>unsuitable</b> for processing RSS 1.0 documents. Use <a href="../../../../pod/Web/Feed/Parser" class="podlinkpod">Web::Feed::Parser</a> instead.</p>
+
 </section><section id="METHODS"><h1>METHODS</h1>
 
 <p>Following methods are available:</p>
@@ -133,14 +137,14 @@
 </dd><dt id="XMLBASE">XMLBASE</dt>
 
 <dd>
-<p>XML Base <code class="url">&lt;<a href="http://www.w3.org/TR/xmlbase/">http://www.w3.org/TR/xmlbase/</a>&gt;</code>.</p>
+<p>XML Base <code class="url">&lt;<a href="https://www.w3.org/TR/xmlbase/">https://www.w3.org/TR/xmlbase/</a>&gt;</code>.</p>
 
-<p>XML Base Specification Errata <code class="url">&lt;<a href="http://www.w3.org/2009/01/xmlbase-errata">http://www.w3.org/2009/01/xmlbase-errata</a>&gt;</code>.</p>
+<p>XML Base Specification Errata <code class="url">&lt;<a href="https://www.w3.org/2009/01/xmlbase-errata">https://www.w3.org/2009/01/xmlbase-errata</a>&gt;</code>.</p>
 
 </dd><dt id="VALLANGS">VALLANGS</dt>
 
 <dd>
-<p>Handling of unknown namespaces in conformance checking <code class="url">&lt;<a href="http://suika.suikawiki.org/www/markup/xml/validation-langs">http://suika.suikawiki.org/www/markup/xml/validation-langs</a>&gt;</code>.</p>
+<p>DOM Tree Validation <code class="url">&lt;<a href="https://rawgit.com/manakai/spec-dom/409d6f6c0685e96c5b0d2c7aeb894ed567f0d651/validation-langs.html#rdf/xml-integration">https://rawgit.com/manakai/spec-dom/409d6f6c0685e96c5b0d2c7aeb894ed567f0d651/validation-langs.html#rdf/xml-integration</a>&gt;</code>.</p>
 </dd>
 </dl>
 
@@ -150,7 +154,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2013-2015 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2013-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
