@@ -49,7 +49,7 @@
 
 </section><section id="PARSED_DATA_STRUCTURE"><h1>PARSED DATA STRUCTURE</h1>
 
-<p>A GPX document, after parsing, is represented as a Perl hash reference <var>$parsed</var>, which has zero or more of folloging key/value pairs:</p>
+<p>A GPX document, after parsing, is represented as a Perl hash reference <var>$parsed</var>, which has zero or more of following key/value pairs:</p>
 
 <dl>
 <dt id="$person_=_$parsed->{author}"><code>$person = $parsed-&gt;<strong id="member-{author}">{author}</strong></code></dt>
@@ -77,6 +77,11 @@
 <dd>
 <p>A licenes data structure, representing the license of the GPX document, if any.</p>
 
+</dd><dt id="($link,_...)_=_@{$parsed->{links}}"><code>($link, ...) = @{$parsed-&gt;<strong id="member-{links}}">{links}}</strong></code></dt>
+
+<dd>
+<p>Zero or more links associated with the GPX document.</p>
+
 </dd><dt id="$number_=_$parsed->{max_lat}"><code>$number = $parsed-&gt;<strong id="member-{max_lat}">{max_lat}</strong></code></dt>
 
 <dd>
@@ -97,39 +102,39 @@
 <dd>
 <p>The minimum longitude of the target area of the GPX document, if any.</p>
 
-</dd><dt id="$url_=_$parsed->{page_url}"><code>$url = $parsed-&gt;<strong id="member-{page_url}">{page_url}</strong></code></dt>
+</dd><dt id="($route,_...)_=_@{$parsed->{routes}}"><code>($route, ...) = @{$parsed-&gt;<strong id="member-{routes}}">{routes}}</strong></code></dt>
 
 <dd>
-<p>The canonicalized absolute URL of the Web page associated with the GPX document, if any.</p>
-
-</dd><dt id="$arrayref_of_routes_=_$parsed->{routes}"><code>$arrayref_of_routes = $parsed-&gt;<strong id="member-{routes}">{routes}</strong></code></dt>
-
-<dd>
-<p>The array reference of zero or more route data structures, representing routes in the GPX document. There is always a <code>routes</code> member in the data strucuture.</p>
+<p>Zero or more route data structures, representing routes in the GPX document. There is always a <code>routes</code> member in the data strucuture.</p>
 
 </dd><dt id="$timestamp_=_$parsed->{timestamp}"><code>$timestamp = $parsed-&gt;<strong id="member-{timestamp}">{timestamp}</strong></code></dt>
 
 <dd>
 <p>The timestamp of the GPX document, if any. The value, if any, is a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the time.</p>
 
-</dd><dt id="$arrayref_of_tracks_=_$parsed->{tracks}"><code>$arrayref_of_tracks = $parsed-&gt;<strong id="member-{tracks}">{tracks}</strong></code></dt>
+</dd><dt id="$tz_=_$parsed->{time_zone_offset}"><code>$tz = $parsed-&gt;<strong id="member-{time_zone_offset}">{time_zone_offset}</strong></code></dt>
 
 <dd>
-<p>The array reference of zero or more track data structures, representing tracks in the GPX document. There is always a <code>tracks</code> member in the data strucuture.</p>
+<p>The time-zone offset of the GPX document, if any. The value, if any, is a <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object representing the time-zone offset.</p>
+
+</dd><dt id="($track,_...)_=_@{$parsed->{tracks}}"><code>($track, ...) = @{$parsed-&gt;<strong id="member-{tracks}}">{tracks}}</strong></code></dt>
+
+<dd>
+<p>Zero or more track data structures, representing tracks in the GPX document. There is always a <code>tracks</code> member in the data strucuture.</p>
 
 </dd><dt id="$timestamp_=_$parsed->{updated}"><code>$timestamp = $parsed-&gt;<strong id="member-{updated}">{updated}</strong></code></dt>
 
 <dd>
 <p>The modified time of the GPX document, if any. The value, if any, is a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the time.</p>
 
-</dd><dt id="$arrayref_of_points_=_$parsed->{waypoints}"><code>$arrayref_of_points = $parsed-&gt;<strong id="member-{waypoints}">{waypoints}</strong></code></dt>
+</dd><dt id="($point,_...)_=_@{$parsed->{waypoints}}"><code>($point, ...) = @{$parsed-&gt;<strong id="member-{waypoints}}">{waypoints}}</strong></code></dt>
 
 <dd>
-<p>The array reference of zero or more point data structures, representing waypoints in the GPX document. There is always a <code>waypoints</code> member in the data strucuture.</p>
+<p>Zero or more point data structures, representing waypoints in the GPX document. There is always a <code>waypoints</code> member in the data strucuture.</p>
 </dd>
 </dl>
 
-<p>A point is represented as a Perl hash reference <var>$point</var>, which has zero or more of folloging key/value pairs:</p>
+<p>A point is represented as a Perl hash reference <var>$point</var>, which has zero or more of following key/value pairs:</p>
 
 <dl>
 <dt id="$number_=_$point->{accuracy}"><code>$number = $point-&gt;<strong id="member-{accuracy}">{accuracy}</strong></code></dt>
@@ -207,6 +212,11 @@
 <dd>
 <p>The longitude of the point, if any.</p>
 
+</dd><dt id="($link,_...)_=_@{$point->{links}}"><code>($link, ...) = @{$point-&gt;<strong>{links}}</strong></code></dt>
+
+<dd>
+<p>Zero or more links associated with the point.</p>
+
 </dd><dt id="$number_=_$point->{magnetic_variation}"><code>$number = $point-&gt;<strong id="member-{magnetic_variation}">{magnetic_variation}</strong></code></dt>
 
 <dd>
@@ -217,11 +227,6 @@
 <dd>
 <p>The name of the point, if any.</p>
 
-</dd><dt id="$url_=_$point->{page_url}"><code>$url = $point-&gt;<strong>{page_url}</strong></code></dt>
-
-<dd>
-<p>The canonicalized absolute URL of the Web page associated with the point, if any.</p>
-
 </dd><dt id="$number_=_$point->{pdop}"><code>$number = $point-&gt;<strong id="member-{pdop}">{pdop}</strong></code></dt>
 
 <dd>
@@ -231,6 +236,11 @@
 
 <dd>
 <p>The power value for the point, if any.</p>
+
+</dd><dt id="$string_=_$point->{road_type}"><code>$string = $point-&gt;<strong id="member-{road_type}">{road_type}</strong></code></dt>
+
+<dd>
+<p>The road type of the point, if any. Note that the value might not be a valid road type string.</p>
 
 </dd><dt id="$integer_=_$point->{satelite_count}"><code>$integer = $point-&gt;<strong id="member-{satelite_count}">{satelite_count}</strong></code></dt>
 
@@ -279,7 +289,7 @@
 </dd>
 </dl>
 
-<p>A route is represented as a Perl hash reference <var>$route</var>, which has zero or more of folloging key/value pairs:</p>
+<p>A route is represented as a Perl hash reference <var>$route</var>, which has zero or more of following key/value pairs:</p>
 
 <dl>
 <dt id="$string_=_$route->{comment}"><code>$string = $route-&gt;<strong>{comment}</strong></code></dt>
@@ -292,6 +302,11 @@
 <dd>
 <p>The desc of the route, if any.</p>
 
+</dd><dt id="($links,_...)_=_@{$route->{links}}"><code>($links, ...) = @{$route-&gt;<strong>{links}}</strong></code></dt>
+
+<dd>
+<p>The links associated with the route.</p>
+
 </dd><dt id="$string_=_$route->{name}"><code>$string = $route-&gt;<strong>{name}</strong></code></dt>
 
 <dd>
@@ -302,15 +317,10 @@
 <dd>
 <p>The number of the route, if any.</p>
 
-</dd><dt id="$url_=_$route->{page_url}"><code>$url = $route-&gt;<strong>{page_url}</strong></code></dt>
+</dd><dt id="($point,_...)_=_@{$route->{points}}"><code>($point, ...) = @{$route-&gt;<strong id="member-{points}}">{points}}</strong></code></dt>
 
 <dd>
-<p>The canonicalized absolute URL of the Web page associated with the route, if any.</p>
-
-</dd><dt id="$arrayref_of_points_=_$route->{points}"><code>$arrayref_of_points = $route-&gt;<strong id="member-{points}">{points}</strong></code></dt>
-
-<dd>
-<p>The array reference of zero or more point data structures, representing the points in the route. There is always a <code>points</code> member in the data strucuture.</p>
+<p>Zero or more point data structures, representing the points in the route. There is always a <code>points</code> member in the data strucuture.</p>
 
 </dd><dt id="$string_=_$route->{source}"><code>$string = $route-&gt;<strong>{source}</strong></code></dt>
 
@@ -324,7 +334,7 @@
 </dd>
 </dl>
 
-<p>A track is represented as a Perl hash reference <var>$track</var>, which has zero or more of folloging key/value pairs:</p>
+<p>A track is represented as a Perl hash reference <var>$track</var>, which has zero or more of following key/value pairs:</p>
 
 <dl>
 <dt id="$string_=_$track->{comment}"><code>$string = $track-&gt;<strong>{comment}</strong></code></dt>
@@ -337,6 +347,11 @@
 <dd>
 <p>The desc of the route, if any.</p>
 
+</dd><dt id="($link,_...)_=_@{$track->{links}}"><code>($link, ...) = @{$track-&gt;<strong>{links}}</strong></code></dt>
+
+<dd>
+<p>Zero or more links associated with the track.</p>
+
 </dd><dt id="$string_=_$track->{name}"><code>$string = $track-&gt;<strong>{name}</strong></code></dt>
 
 <dd>
@@ -347,15 +362,10 @@
 <dd>
 <p>The number of the route, if any.</p>
 
-</dd><dt id="$url_=_$track->{page_url}"><code>$url = $track-&gt;<strong>{page_url}</strong></code></dt>
+</dd><dt id="($segment,_...)_=_@{$track->{segments}]"><code>($segment, ...) = @{$track-&gt;<strong id="member-{segments}]">{segments}]</strong></code></dt>
 
 <dd>
-<p>The canonicalized absolute URL of the Web page associated with the route, if any.</p>
-
-</dd><dt id="$arrayref_of_segments_=_$track->{segments}"><code>$arrayref_of_segments = $track-&gt;<strong id="member-{segments}">{segments}</strong></code></dt>
-
-<dd>
-<p>The array reference of zero or more track segment data structures, representing the segments in the track. There is always a <code>segments</code> member in the data strucuture.</p>
+<p>Zero or more track segment data structures, representing the segments in the track. There is always a <code>segments</code> member in the data strucuture.</p>
 
 </dd><dt id="$string_=_$track->{source}"><code>$string = $track-&gt;<strong>{source}</strong></code></dt>
 
@@ -369,17 +379,17 @@
 </dd>
 </dl>
 
-<p>A track segment is represented as a Perl hash reference <var>$segment</var>, which has zero or more of folloging key/value pair:</p>
+<p>A track segment is represented as a Perl hash reference <var>$segment</var>, which has zero or more of following key/value pair:</p>
 
 <dl>
-<dt id="$arrayref_of_points_=_$segment->{points}"><code>$arrayref_of_points = $segment-&gt;<strong>{points}</strong></code></dt>
+<dt id="($point,_...)_=_@{$segment->{points}}"><code>($point, ...) = @{$segment-&gt;<strong>{points}}</strong></code></dt>
 
 <dd>
-<p>The array reference of zero or more point data structures, representing the points in the route. There is always a <code>points</code> member in the data strucuture.</p>
+<p>Zero or more point data structures, representing the points in the route. There is always a <code>points</code> member in the data strucuture.</p>
 </dd>
 </dl>
 
-<p>A person is represented as a Perl hash reference <var>$person</var>, which has zero or more of folloging key/value pairs:</p>
+<p>A person is represented as a Perl hash reference <var>$person</var>, which has zero or more of following key/value pairs:</p>
 
 <dl>
 <dt id="$string_=_$person->{email}"><code>$string = $person-&gt;<strong id="member-{email}">{email}</strong></code></dt>
@@ -392,14 +402,34 @@
 <dd>
 <p>The name of the person, if any.</p>
 
-</dd><dt id="$url_=_$person->{page_url}"><code>$url = $person-&gt;<strong>{page_url}</strong></code></dt>
+</dd><dt id="$url_=_$person->{url}"><code>$url = $person-&gt;<strong id="member-{url}">{url}</strong></code></dt>
 
 <dd>
 <p>The canonicalized absolute URL of the Web page of the person, if any.</p>
 </dd>
 </dl>
 
-<p>A license is represented as a Perl hash reference <var>$licenes</var>, which has zero or more of folloging key/value pairs:</p>
+<p>A link is represented as a Perl hash reference <var>$link</var>, which has one or more of following key/value pairs:</p>
+
+<dl>
+<dt id="$string_=_$person->{text}"><code>$string = $person-&gt;<strong id="member-{text}">{text}</strong></code></dt>
+
+<dd>
+<p>The link label text of the link, if any.</p>
+
+</dd><dt id="$string_=_$person->{mime_type}"><code>$string = $person-&gt;<strong id="member-{mime_type}">{mime_type}</strong></code></dt>
+
+<dd>
+<p>The advisory MIME type string of the link, if any.</p>
+
+</dd><dt id="$url_=_$person->{url}"><code>$url = $person-&gt;<strong>{url}</strong></code></dt>
+
+<dd>
+<p>The canonicalized absolute URL of the link destination.</p>
+</dd>
+</dl>
+
+<p>A license is represented as a Perl hash reference <var>$licenes</var>, which has zero or more of following key/value pairs:</p>
 
 <dl>
 <dt id="$string_=_$license->{holder}"><code>$string = $license-&gt;<strong id="member-{holder}">{holder}</strong></code></dt>
@@ -407,7 +437,7 @@
 <dd>
 <p>The license holder, if any.</p>
 
-</dd><dt id="$url_=_$license->{page_url}"><code>$url = $license-&gt;<strong>{page_url}</strong></code></dt>
+</dd><dt id="$url_=_$license->{url}"><code>$url = $license-&gt;<strong>{url}</strong></code></dt>
 
 <dd>
 <p>The canonicalized absolute URL of the Web page of the license, if any.</p>
@@ -429,7 +459,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
