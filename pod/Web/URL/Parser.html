@@ -43,6 +43,54 @@ a URL record object (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL<
 <code>https_proxy</code>,
 or <code>ftp_proxy</code> environment variable value,
 decoded by platform-locale-dependent character encoding.</p>
+
+</dd><dt id="$result_=_$parser->split_by_urls_($string,_NAME_=>_VALUE,_...)"><code>$result = $parser-&gt;<strong id="member-split_by_urls">split_by_urls</strong> ($string,
+NAME =&gt; VALUE,
+...)</code></dt>
+
+<dd>
+<p>Extract URLs in a free-form text for autolinking.</p>
+
+<p>The first argument must be the text string to be parsed.</p>
+
+<p>The second and later arguments are interpretd as name/value pairs of options.
+If the <code>lax</code> option is specified to a true value,
+parsing is performed in the <var>lax</var> mode.
+A public Web application (e.g.
+a forum service interpreting user-posted entries) should not use the <var>lax</var> mode.
+A client application (e.g.
+an e-mail client displaying a plain-text mail message) should use the <var>lax</var> mode.</p>
+
+<p>This method only extracts <code>http:</code> and <code>https:</code> URLs.
+In the <var>lax</var> mode,
+<code>ttp:</code> and <code>ttps:</code> URL schemes are also detected and are interpreted as <code>http:</code> and <code>https:</code>,
+respectively.</p>
+
+<p>This method returns an array reference.
+It contains substrings of the input text,
+in order,
+as array references.
+An inner array is either a text array or a link array.
+A text array's 0-th item is a text string,
+representing a substring that is not a URL.
+A link array's 0-th item is a text string,
+representing a substring that is interpreted as a URL,
+and its 1-th item is a text string,
+which can be used as an input to the URL parser.</p>
+
+<pre><code>  Example.
+
+    $result = $parser-&gt;split_by_urls ("See https://example.com later!");
+    # $result = [
+    #   ["See "],
+    #   ["https://example.com", "https://example.com"],
+    #   [" later!"],
+    # ];
+
+    $result = $parser-&gt;split_by_urls ("ttps://example.com", lax =&gt; 1);
+    # $result = [
+    #   ["https://example.com", "ttps://example.com"],
+    # ];</code></pre>
 </dd>
 </dl>
 
@@ -56,7 +104,7 @@ decoded by platform-locale-dependent character encoding.</p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
