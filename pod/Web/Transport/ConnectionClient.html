@@ -61,9 +61,9 @@
 <dd>
 <p>Create a new client object, which is associated with a URL's origin and path.</p>
 
-<p>The argument must be a URL record object (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a>). It's origin must be a tuple origin (typically an <code>http:</code> or <code>https:</code> URL).</p>
+<p>The argument must be a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It's origin must be a tuple origin (typically an <code>http:</code> or <code>https:</code> URL).</p>
 
-<p>The path of the URL is used as the "prefix" of the URL path used for the requests (See <a href="../../../pod/Web/Transport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>' <code>path</code>).</p>
+<p>The path of the URL is used as the "prefix" of the URL path used for the requests (See <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>' <code>path</code>).</p>
 
 <p>Note that anything other than the origin and path of the URL is ignored.</p>
 
@@ -86,11 +86,11 @@
 </dd><dt id="$promise_=_$client->request_(url_=>_...,_...)"><code>$promise = $client-&gt;<strong id="member-request">request</strong> (url =&gt; ..., ...)</code></dt>
 
 <dd>
-<p>Send a request and return a promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a>), which is to be resolved with the result.</p>
+<p>Send a request and return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>), which is to be resolved with the result.</p>
 
-<p>The arguments are name/value pairs, as described in <a href="../../../pod/Web/Transport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>. At minimum, the <code>url</code> argument must be specified. It is a URL record object (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a>). It must have same origin as the client's origin (i.e. the origin of the argument to the <code>new_from_url</code> method).</p>
+<p>The arguments are name/value pairs, as described in <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>. At minimum, the <code>url</code> argument must be specified. It is a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It must have same origin as the client's origin (i.e. the origin of the argument to the <code>new_from_url</code> method).</p>
 
-<p>The promise is resolved with a response (<a href="../../../pod/Web/Transport/Response" class="podlinkpod">Web::Transport::Response</a> object).</p>
+<p>The promise is resolved with a response (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AResponse" class="podlinkpod">Web::Transport::Response</a> object).</p>
 
 <p>This method creates an HTTP connection, if there is no existing connection, or the existing connection has terminated for some reason. Otherwise the existing connection is used to send the new request. If the connection is in use, the new request is delayed until any current and enqueued request has been processed unless HTTP/2 is available.</p>
 
@@ -117,7 +117,7 @@
 <dt id="$pm_=_$client->proxy_manager"><code>$pm = $client-&gt;<strong>proxy_manager</strong></code></dt>
 
 <dd>
-<p>Get or set the proxy manager used to establish connections. Initially, a proxy manager which takes standard environment variables into account (i.e. <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is set as the proxy manager.</p>
+<p>Get or set the proxy manager used to establish connections. Initially, a proxy manager which takes standard environment variables into account (i.e. <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is set as the proxy manager.</p>
 
 <p>This option must be set before the first invocation of the <code>request</code> method.</p>
 
@@ -126,7 +126,7 @@
 <dt id="$resolver_=_$client->resolver"><code>$resolver = $client-&gt;<strong>resolver</strong></code></dt>
 
 <dd>
-<p>Get or set the name resolver used to establish connections. Initially, a resolver using system's name resolution API (<a href="../../../pod/Web/Transport/PlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by DNS caching (<a href="../../../pod/Web/Transport/CachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is set as the resolver.</p>
+<p>Get or set the name resolver used to establish connections. Initially, a resolver using system's name resolution API (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by DNS caching (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ACachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is set as the resolver.</p>
 
 <p>This option must be set before the first invocation of the <code>request</code> method.</p>
 
@@ -166,7 +166,7 @@
 <dt id="$mode_=_$client->debug"><code>$mode = $client-&gt;<strong>debug</strong></code></dt>
 
 <dd>
-<p>Get or set the debug mode. The initial value is the <code>WEBUA_DEBUG</code> environment variable's value. See <code>WEBUA_DEBUG</code> section in <a href="../../../pod/Web/Transport" class="podlinkpod">Web::Transport</a> for available mode values.</p>
+<p>Get or set the debug mode. The initial value is the <code>WEBUA_DEBUG</code> environment variable's value. See <code>WEBUA_DEBUG</code> section in <a href="https://metacpan.org/pod/Web%3A%3ATransport" class="podlinkpod">Web::Transport</a> for available mode values.</p>
 
 </dd><dt id="$client->last_resort_timeout_($seconds)"><code>$client-&gt;<strong id="member-last_resort_timeout">last_resort_timeout</strong> ($seconds)</code></dt>
 
@@ -180,15 +180,15 @@
 </dd><dt id="$origin_=_$client->origin"><code>$origin = $client-&gt;<strong id="member-origin">origin</strong></code></dt>
 
 <dd>
-<p>Return the origin (<a href="../../../pod/Web/Origin" class="podlinkpod">Web::Origin</a>) of the connection.</p>
+<p>Return the origin (<a href="https://metacpan.org/pod/Web%3A%3AOrigin" class="podlinkpod">Web::Origin</a>) of the connection.</p>
 </dd>
 </dl>
 
 </section><section id="ENVIRONMENT_VARIABLES"><h1>ENVIRONMENT VARIABLES</h1>
 
-<p>This module supports <code>WEBUA_DEBUG</code>. See <a href="../../../pod/Web/Transport" class="podlinkpod">Web::Transport</a>.</p>
+<p>This module supports <code>WEBUA_DEBUG</code>. See <a href="https://metacpan.org/pod/Web%3A%3ATransport" class="podlinkpod">Web::Transport</a>.</p>
 
-<p>When the default <code>resolver</code> is used, proxy environment variables <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code> are taken into account. See <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>.</p>
+<p>When the default <code>resolver</code> is used, proxy environment variables <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code> are taken into account. See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>.</p>
 
 </section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
 

@@ -20,8 +20,8 @@
 
 <p>The <code>Web::DOM::Implementation</code> class implements the DOM <code>DOMImplementation</code> interface.</p>
 
-<p>A <code>DOMImplementation</code> object is associated with a <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> object.
-The <code>DOMImplementation</code> object of the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> is returned by the <code>implementation</code> method.</p>
+<p>A <code>DOMImplementation</code> object is associated with a <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> object.
+The <code>DOMImplementation</code> object of the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> is returned by the <code>implementation</code> method.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -33,32 +33,32 @@ The <code>DOMImplementation</code> object of the <a href="../../../pod/Web/DOM/D
 <dd>
 <p>Create a new instance of the <code>DOMImplementation</code> object.
 This method is provided for some kind of compatibility and should not be used with newer applications.
-Now that the <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> class has the constructor,
-the constructor method of the <a href="../../../pod/Web/DOM/Implementation" class="podlinkpod">Web::DOM::Implementation</a> class is useless. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
+Now that the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> class has the constructor,
+the constructor method of the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AImplementation" class="podlinkpod">Web::DOM::Implementation</a> class is useless. <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
 
 </dd><dt id="$doc_=_$impl->create_atom_entry_document_($id,_$title,_$lang)"><code>$doc = $impl-&gt;<strong id="member-create_atom_entry_document">create_atom_entry_document</strong> ($id,
 $title,
 $lang)</code></dt>
 
 <dd>
-<p>Create a new <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> whose document element is an <code>atom:entry</code> element,
+<p>Create a new <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> whose document element is an <code>atom:entry</code> element,
 using the specified <code>atom:id</code>,
 <code>atom:title</code>,
 and <code>xml:lang</code> values. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
 
-<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+<p>See also <a href="https://metacpan.org/pod/Web%3A%3ADOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
 
 </dd><dt id="$doc_=_$impl->create_atom_feed_document_($id,_$title,_$lang)"><code>$doc = $impl-&gt;<strong id="member-create_atom_feed_document">create_atom_feed_document</strong> ($id,
 $title,
 $lang)</code></dt>
 
 <dd>
-<p>Create a new <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> whose document element is an <code>atom:feed</code> element,
+<p>Create a new <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> whose document element is an <code>atom:feed</code> element,
 using the specified <code>atom:id</code>,
 <code>atom:title</code>,
 and <code>xml:lang</code> values. <cite class="ref">[<a href="#ATOMDOM">ATOMDOM</a>]</cite></p>
 
-<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+<p>See also <a href="https://metacpan.org/pod/Web%3A%3ADOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
 
 </dd><dt id="$doc_=_$impl->create_document_($nsurl,_$qname,_$doctype)"><code>$doc = $impl-&gt;<strong id="member-create_document">create_document</strong> ($nsurl,
 $qname,
@@ -70,7 +70,7 @@ $local_name],
 $doctype)</code></dt>
 
 <dd>
-<p>Create a new <a href="../../../pod/Web/DOM/XMLDocument" class="podlinkpod">Web::DOM::XMLDocument</a>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
+<p>Create a new <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AXMLDocument" class="podlinkpod">Web::DOM::XMLDocument</a>. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 <p>If first and second arguments are specified,
 they are used as the namespace URL and the qualified name of the document element.
@@ -86,7 +86,7 @@ it is used as the document type node of the document.</p>
 </dd><dt id="$doc_=_$impl->create_html_document_($title)"><code>$doc = $impl-&gt;<strong id="member-create_html_document">create_html_document</strong> ($title)</code></dt>
 
 <dd>
-<p>Create a new HTML document (<a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>).
+<p>Create a new HTML document (<a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a>).
 If the argument is specified,
 it is used as the title of the document. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
@@ -95,7 +95,7 @@ $pubid,
 $sysid)</code></dt>
 
 <dd>
-<p>Create a new document type node (<a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>) with the specified name,
+<p>Create a new document type node (<a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocumentType" class="podlinkpod">Web::DOM::DocumentType</a>) with the specified name,
 public identifier,
 and system identifier. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMPERL">DOMPERL</a>]</cite></p>
 
@@ -134,7 +134,7 @@ This method is only provided for backward compatibility and should not be used. 
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>.</p>
+<p><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
