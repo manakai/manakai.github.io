@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::ProxyServerConnection</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::ProxyServerConnection</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/ProxyServerConnection.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::ProxyServerConnection</code></h1><h2>HTTP proxy server connection</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  tcp_server $host, $port, sub {
+    my $con = Web::Transport::ProxyServerConnection
+        -&gt;new_from_aeargs_and_opts ([@_], {...});
+    $con-&gt;completed-&gt;then (sub {
+      warn "Client disconnected and proxy done";
+    });
+  };</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::ProxyServerConnection</code> module is an implementation of HTTP proxy server. It wraps an HTTP server's TCP connection socket and forward any incoming request to upstream.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AGenericServerConnection#METHODS" class="podlinkpod">"METHODS" in Web::Transport::GenericServerConnection</a>.</p>
+
+</section><section id="REQUEST_HANDLER"><h1>REQUEST HANDLER</h1>
+
+<p>A request handler can be specified to the <code>handle_request</code> option of the hash reference specified to the constructor of the proxy server.</p>
+
+<p>A request handler, if specified, is invoked whenever the proxy server has received a request from a client and just before the request is forwarded to the upstream server.</p>
+
+<p>A request handler is a code reference. The code is expected to return a hash reference, or a promise (e.g. <a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be fulfilled with a hash reference.</p>
+
+<p>The code is invoked with an argument, that is a hash reference. The hash reference can be returned by the code if the proxy should forward the request as is.</p>
+
+<p>These hash references have following key/value pairs:</p>
+
+<dl>
+<dt id="info_=>_$info_(argument_only)"><code>info =&gt; $info (argument only)</code></dt>
+
+<dd>
+<p>The metadata of the underlying (downstream) HTTP connection. XXX</p>
+
+</dd><dt id="request_=>_$request_(argument_/_return_value)"><code>request =&gt; $request (argument / return value)</code></dt>
+
+<dd>
+<p>A request hash reference. XXX</p>
+
+<p>The argument contains the request that can be forwarded to the upstream (i.e. after any removal of connection-specific headers).</p>
+
+<p>If the returned hash reference does not contain <code>response</code> or <code>error</code>, the <code>request</code> is used to send a request to the upstream server.</p>
+
+</dd><dt id="client_options_=>_$client_options_(return_value_only)"><code>client_options =&gt; $client_options (return value only)</code></dt>
+
+<dd>
+<p>A hash reference of additional client options, as described for the <code>client</code> method of the handler API object (<a href="#HANDLER_API_OBJECT" class="podlinkpod">"HANDLER API OBJECT"</a>), used to obtain the client for making a request with the <code>request</code> argument after the completion of the request handler.</p>
+
+</dd><dt id="response_=>_$response_(return_value_only)"><code>response =&gt; $response (return value only)</code></dt>
+
+<dd>
+<p>A response hash reference. XXX</p>
+
+<p>If the returned hash reference contains <code>response</code>, it is used to send a response to the downstream client. No request is made to the upstream server.</p>
+
+</dd><dt id="error_=>_$error_(return_value_only)"><code>error =&gt; $error (return value only)</code></dt>
+
+<dd>
+<p>An exception object. It can be any Perl <code>defined</code> value, though <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AError" class="podlinkpod">Web::DOM::Error</a> or its subclass's instance is desired.</p>
+
+<p>When the proxy server has to abort something associated with the handling of the request in question, the exception is used as the error reason.</p>
+
+<p>If the returned hash reference has <code>error</code> and does not have <code>response</code>, an error response is generated from the exception. If exception's <code>name</code> is <code>Protocol error</code> or <code>Perl I/O error</code>, a <code>504</code> response is generated. Otherwise, if exception's <code>name</code> is <code>HTTP parse error</code>, a <code>502</code> response is generated. Otherwise, a <code>500</code> response is generated. No request is made to the upstream server.</p>
+
+</dd><dt id="api_=>_$api_(argument_only)"><code>api =&gt; $api (argument only)</code></dt>
+
+<dd>
+<p>The handler API object (<a href="#HANDLER_API_OBJECT" class="podlinkpod">"HANDLER API OBJECT"</a>) for this invocation of the request handler.</p>
+
+</dd><dt id="data_=>_$value_(return_value_only)"><code>data =&gt; $value (return value only)</code></dt>
+
+<dd>
+<p>Any application-specific data. This field can be used to associate request and response handler. Any Perl scalar value can be specified.</p>
+</dd>
+</dl>
+
+<p>It is important that the proxy server does not allow the upstream server being the proxy server itself. However, this is in fact a difficult problem: a domain might be resolved into the proxy server's IP address; a proxy server of the proxy server might be misconfigured as the proxy server itself; an upstream server might be forward the forwarded request to the proxy server (i.e. indirect loop); and so on. It's request handler's responsibility to reject any abuse or wrong usage of the proxy server.</p>
+
+</section><section id="RESPONSE_HANDLER"><h1>RESPONSE HANDLER</h1>
+
+<p>A response handler can be specified to the <code>handle_response</code> option of the hash reference specified to the constructor of the proxy server.</p>
+
+<p>A response handler, if specified, is invoked whenever the proxy server has received a response from an upstream server and just before the response is forwarded to the downstream client. It is not invoked when the request handler returns a response (or an error).</p>
+
+<p>A response handler is a code reference. The code is expected to return a hash reference, or a promise (e.g. <a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be fulfilled with a hash reference.</p>
+
+<p>The code is invoked with an argument, that is a hash reference. The hash reference can be returned by the code if the proxy should forward the response as is.</p>
+
+<p>These hash references have following key/value pairs:</p>
+
+<dl>
+<dt id="info_=>_$info_(argument_only)"><code>info =&gt; $info (argument only)</code></dt>
+
+<dd>
+<p>The metadata of the underlying (downstream) HTTP connection. XXX</p>
+
+</dd><dt id="response_=>_$response_(argument_/_return_value)"><code>response =&gt; $response (argument / return value)</code></dt>
+
+<dd>
+<p>A response hash reference. XXX</p>
+
+<p>If the returned hash reference contains <code>response</code>, it is used to send a response to the downstream client.</p>
+
+</dd><dt id="error_=>_$error_(return_value_only)"><code>error =&gt; $error (return value only)</code></dt>
+
+<dd>
+<p>An exception object. It can be any Perl <code>defined</code> value, though <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AError" class="podlinkpod">Web::DOM::Error</a> or its subclass's instance is desired.</p>
+
+<p>When the proxy server has to abort something associated with the handling of the response in question, the exception is used as the error reason.</p>
+
+<p>If the returned hash reference has <code>error</code> and does not have <code>response</code>, an error response is generated from the exception. If exception's <code>name</code> is <code>Protocol error</code> or <code>Perl I/O error</code>, a <code>504</code> response is generated. Otherwise, if exception's <code>name</code> is <code>HTTP parse error</code>, a <code>502</code> response is generated. Otherwise, a <code>500</code> response is generated.</p>
+
+</dd><dt id="api_=>_$api_(argument_only)"><code>api =&gt; $api (argument only)</code></dt>
+
+<dd>
+<p>The handler API object (<a href="#HANDLER_API_OBJECT" class="podlinkpod">"HANDLER API OBJECT"</a>) for this invocation of the response handler.</p>
+
+</dd><dt id="data_=>_$value_(argument_only)"><code>data =&gt; $value (argument only)</code></dt>
+
+<dd>
+<p>The application-specific data specified by the request handler, if any. The value is not defined if no data were specified.</p>
+
+<p>This can be used to associate request and response handlers. For example, to save the response data using the file name extracted from request target URL, the request handler should store the URL as data and the response handler should extract it from data.</p>
+
+</dd><dt id="closed_=>_$promise_(argument_only)"><code>closed =&gt; $promise (argument only)</code></dt>
+
+<dd>
+<p>A promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a> object) which is fulfilled once the response in question has been sent.</p>
+</dd>
+</dl>
+
+</section><section id="HANDLER_API_OBJECT"><h1>HANDLER API OBJECT</h1>
+
+<p>The <code>api</code> value of the argument to request or response handlers are a <b>handler API object</b>, which provides convinient methods for use within handlers:</p>
+
+<dl>
+<dt id="$client_=_$api->client_($url,_$client_options,_$api_options)"><code>$client = $api-&gt;<strong id="member-client">client</strong> ($url, $client_options, $api_options)</code></dt>
+
+<dd>
+<p>Return a client (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a>) that is ready to send a request.</p>
+
+<p>The first argument must be a URL (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a> object) of the target of the request.</p>
+
+<p>The second argument, if specified, must be a hash reference of additional client options (see <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS" in Web::Transport::BasicClient</a>) used to create a client. By default a set of client options appropriate for the proxy server is used, taking the <code>client</code> option of the proxy server's constructor argument into account, but this argument can be used to override them.</p>
+
+<p>The third argument, if specified, must be a hash reference of additional options used to choose a client. The <code>key</code> option, if specified, sets the short identifier for the client. When the <code>client</code> method is invoked twice with same orign, client options, and <code>key</code>, the same client is returned if possible. When the method is invoked with different <code>key</code>, different client is returned. When the proxy itself fetches a resource, it uses the client whose key is the empty string, which is the default key. The proxy discards the empty string keyed client after the process of the relevant request/response pairs. If the handlers want to avoid the client discarded, they should use their own keys.</p>
+
+<p>This is effectively equivalent to invoking the <code>new_from_url</code> method of the <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> module but this method first looks into the connection pool of the proxy server with appropriate client options. Therefore, if a request or response handler wants to fetch a resource as part of response construction, this method should be used exclusively rather than other HTTP client APIs.</p>
+
+</dd><dt id="$out_headers_=_$api->filter_headers_($in_headers,_$name_=>_$value,_...)"><code>$out_headers = $api-&gt;<strong id="member-filter_headers">filter_headers</strong> ($in_headers, $name =&gt; $value, ...)</code></dt>
+
+<dd>
+<p>Remove specified kinds of headers. The first argument must be a canonical headers array reference. The remaining arguments must be zero or more key/value pairs of kinds:</p>
+
+<dl>
+<dt><a name="conditional_=>_$boolean">conditional =&gt; $boolean</a></dt>
+
+<dd>
+<p>Headers in the "conditional" category, such as <code>If-Modified-Since</code>.</p>
+
+</dd><dt><a name="proxy_removed_=>_$boolean">proxy_removed =&gt; $boolean</a></dt>
+
+<dd>
+<p>Headers removed by proxies upon forwarding, such as <code>Transfer-Encoding</code>, including headers specified in any |Connection:| header.</p>
+
+</dd><dt><a name="names_=>_{$name_=>_$boolean,_...}">names =&gt; {$name =&gt; $boolean, ...}</a></dt>
+
+<dd>
+<p>Headers with specified names. The value must be a hash reference, whose keys are header names in lowercase and values are boolean true values.</p>
+</dd>
+</dl>
+
+<p>It returns a new canonical headers array reference.</p>
+
+</dd><dt id="$api->note_($message,_level_=>_$debug)"><code>$api-&gt;<strong id="member-note">note</strong> ($message, level =&gt; $debug)</code></dt>
+
+<dd>
+<p>Provide an informative or debug message for application's user or developer. The first argument must be a short character string. The remaining arguments must be zero or more key/value pairs of options.</p>
+
+<p>The <code>level</code> option is the verbosity level of the message; the message is reported to the standard error output only when the debug level (server's <code>debug</code> option's value) is greater than or equal to the <code>level</code> value; the default is zero, i.e. always reported.</p>
+</dd>
+</dl>
+
+</section><section id="FEATURES_NOT_SUPPORTED_BY_THIS_MODULE"><h1>FEATURES NOT SUPPORTED BY THIS MODULE</h1>
+
+<p>The module does not support HTTP proxy authentication. It can be implemented within a request handler.</p>
+
+<p>The module does not support HTTP caches. It can be implemented by consulting with the cache for any cached response within a request handler and caching the received response within a response handler.</p>
+
+<p>The module intentionally does not add HTTP <code>Via:</code>, <code>Forwarded:</code>, and <code>X-Forwarded-*:</code> headers to forwarded requests and responses. It can be added within request and response handlers.</p>
+
+<p>This module does not support HTTP <code>TRACE</code> method.</p>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="https://metacpan.org/pod/AnyEvent%3A%3ASocket" class="podlinkpod">AnyEvent::Socket</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

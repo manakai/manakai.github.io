@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::PKI::Certificate</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::PKI::Certificate</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/PKI/Certificate.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::PKI::Certificate</code></h1><h2>A certificate</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::PKI::Certificate</code> module represents an X.509 certificate for PKIX.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$int_=_$cert->version"><code>$int = $cert-&gt;<strong id="member-version">version</strong></code></dt>
+
+<dd>
+<p>Return the version of the certificate.
+For a valid certificate,
+it is either <code>0</code> (v1),
+<code>1</code> (v2),
+or <code>2</code> (v3).</p>
+
+</dd><dt id="$bigint_=_$cert->serial_number"><code>$bigint = $cert-&gt;<strong id="member-serial_number">serial_number</strong></code></dt>
+
+<dd>
+<p>Return the serial number of the certificate,
+as a <code>Math::BigInt</code> object.</p>
+
+</dd><dt id="$dt?_=_$cert->not_before"><code>$dt?
+= $cert-&gt;<strong id="member-not_before">not_before</strong></code></dt>
+
+<dd>
+<p>Return the not before value of the validity of the certificate.
+If there is no valid not before value,
+<code>undef</code> is returned.
+Otherwise,
+a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> object representing the timestamp is returned.</p>
+
+</dd><dt id="$dt?_=_$cert->not_after"><code>$dt?
+= $cert-&gt;<strong id="member-not_after">not_after</strong></code></dt>
+
+<dd>
+<p>Return the not after value of the validity of the certificate.
+If there is no valid not after value,
+<code>undef</code> is returned.
+Otherwise,
+a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> object representing the timestamp is returned.</p>
+
+</dd><dt id="$name_=_$cert->issuer"><code>$name = $cert-&gt;<strong id="member-issuer">issuer</strong></code></dt>
+
+<dd>
+<p>Return the issuer of the certificate,
+as a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3AName" class="podlinkpod">Web::Transport::PKI::Name</a> object.</p>
+
+</dd><dt id="$name_=_$cert->subject"><code>$name = $cert-&gt;<strong id="member-subject">subject</strong></code></dt>
+
+<dd>
+<p>Return the subject of the certificate,
+as a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3AName" class="podlinkpod">Web::Transport::PKI::Name</a> object.</p>
+
+</dd><dt id="[$value1,_$value2,_...]_=_$cert->san_hosts"><code>[$value1,
+$value2,
+...] = $cert-&gt;<strong id="member-san_hosts">san_hosts</strong></code></dt>
+
+<dd>
+<p>Return an array reference of the hosts in the subject alternative names extension of the certificate.</p>
+
+<p>A <code>dNSName</code> value (a domain or a wildcard domain) is represented by a character string in the array.</p>
+
+<p>A <code>iPAddress</code> value (an IPv4 or IPv6 address) is represented by a <a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a> object.</p>
+
+</dd><dt id="$boolean?_=_$cert->ca"><code>$boolean?
+= $cert-&gt;<strong id="member-ca">ca</strong></code></dt>
+
+<dd>
+<p>Return the cA of the basic constraints extension of the certificate.
+If the basic constraints extension is not found,
+<code>undef</code> is returned.
+Otherwise,
+the value of the cA is returned.</p>
+
+</dd><dt id="$integer?_=_$cert->path_len_constraint"><code>$integer?
+= $cert-&gt;<strong id="member-path_len_constraint">path_len_constraint</strong></code></dt>
+
+<dd>
+<p>Return the pathLenConstraint of the basic constraints extension of the certificate.
+If the basic constraints extension is not found,
+<code>undef</code> is returned.
+Otherwise,
+the value of the pathLenConstraint is returned.</p>
+
+</dd><dt id="$boolean?_=_$cert->key_usage_($field)"><code>$boolean?
+= $cert-&gt;<strong id="member-key_usage">key_usage</strong> ($field)</code></dt>
+
+<dd>
+<p>Return whether the <var>$field</var> bit is set in the key usage extension of the certificate.
+If the key usage extension is not found,
+<code>undef</code> is returned.
+Otherwise,
+the value of the field is returned.</p>
+
+<p>The first argument must be the field name,
+i.e.
+one of the following values: <code>digitalSignature</code>,
+<code>nonRepudiation</code>,
+<code>contentCommitment</code>,
+<code>keyEncipherment</code>,
+<code>dataEncipherment</code>,
+<code>keyAgreement</code>,
+<code>keyCertSign</code>,
+<code>cRLSign</code>,
+<code>encipherOnly</code>,
+and <code>decipherOnly</code>.</p>
+
+</dd><dt id="$boolean_=_$cert->extended_key_usage_($field)"><code>$boolean = $cert-&gt;<strong id="member-extended_key_usage">extended_key_usage</strong> ($field)</code></dt>
+
+<dd>
+<p>Return whether the <var>$field</var> is set in the extended key usage extension of the certificate.</p>
+
+<p>The first argument must be an object identifier (OID),
+or its short name or long name known to the implementaion,
+such as <code>serverAuth</code> and <code>clientAuth</code>.</p>
+
+</dd><dt id="[$string1,_$string2,_...]_=_$cert->crl_distribution_urls"><code>[$string1,
+$string2,
+...] = $cert-&gt;<strong id="member-crl_distribution_urls">crl_distribution_urls</strong></code></dt>
+
+<dd>
+<p>Return the CRL distribution point URLs of the certifciate.
+It returns an array references of character strings represeting the URLs.</p>
+
+</dd><dt id="$string?_=_$cert->aia_ocsp_url"><code>$string?
+= $cert-&gt;<strong id="member-aia_ocsp_url">aia_ocsp_url</strong></code></dt>
+
+<dd>
+<p>Return the OCSP URL of the Authority Information Access extension of the certificate,
+if any,
+or <code>undef</code>.
+If specified,
+it returns a character string representing the URL.</p>
+
+</dd><dt id="$string?_=_$cert->aia_ca_issuers_url"><code>$string?
+= $cert-&gt;<strong id="member-aia_ca_issuers_url">aia_ca_issuers_url</strong></code></dt>
+
+<dd>
+<p>Return the CA issuers URL of the Authority Information Access extension of the certificate,
+if any,
+or <code>undef</code>.
+If specified,
+it returns a character string representing the URL.</p>
+
+</dd><dt id="[$string1,_$string2,_...]_=_$cert->policy_oids"><code>[$string1,
+$string2,
+...] = $cert-&gt;<strong id="member-policy_oids">policy_oids</strong></code></dt>
+
+<dd>
+<p>Return the policy identifiers of the certifciation policy extension of the certificate,
+as an array reference of OIDs in the dotted notation.</p>
+
+</dd><dt id="$string?_=_$cert->cps_url"><code>$string?
+= $cert-&gt;<strong id="member-cps_url">cps_url</strong></code></dt>
+
+<dd>
+<p>Return the CPS URL specified as a policy qualifer of a certifciation policy of the certificate,
+if any,
+or <code>undef</code>.
+If specifeid,
+it returns a character string representing the URL.</p>
+
+</dd><dt id="$string?_=_$cert->policy_user_notice_text"><code>$string?
+= $cert-&gt;<strong id="member-policy_user_notice_text">policy_user_notice_text</strong></code></dt>
+
+<dd>
+<p>Return the display text of the user notice of a policy qualifier of a certification policy of the certifcate as a character string,
+if any,
+or <code>undef</code>.</p>
+
+</dd><dt id="$boolean_=_$cert->must_staple"><code>$boolean = $cert-&gt;<strong id="member-must_staple">must_staple</strong></code></dt>
+
+<dd>
+<p>Return whether there is the must-staple flag in the TLS feature extension of the certificate or not.</p>
+
+</dd><dt id="$string_=_$cert->to_pem"><code>$string = $cert-&gt;<strong id="member-to_pem">to_pem</strong></code></dt>
+
+<dd>
+<p>Return the <code>.pem</code> serialization of the certificate.</p>
+
+</dd><dt id="$text_=_$cert->debug_info"><code>$text = $cert-&gt;<strong id="member-debug_info">debug_info</strong></code></dt>
+
+<dd>
+<p>Return a short string that summarises the certificate,
+which should be useful for developments.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
+
+<p>RFC 5280,
+Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc5280">https://tools.ietf.org/html/rfc5280</a>&gt;</code>.</p>
+
+<p>RFC 7468,
+Textual Encodings of PKIX,
+PKCS,
+and CMS Structures <code class="url">&lt;<a href="https://tools.ietf.org/html/rfc7468">https://tools.ietf.org/html/rfc7468</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../../.." rel="top">Top</a>
+    </li><li><a href="../../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

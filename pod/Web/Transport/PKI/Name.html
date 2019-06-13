@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::PKI::Name</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::PKI::Name</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/PKI/Name.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::PKI::Name</code></h1><h2>A directory name</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::PKI::Name</code> module represents a name in directories.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$name_=_Web::Transport::PKI::Name->create_($input)"><code>$name = Web::Transport::PKI::Name-&gt;<strong id="member-create">create</strong> ($input)</code></dt>
+
+<dd>
+<p>Create a new <code>Web::Transport::PKI::Name</code> object.</p>
+
+<p>If the argument is an <code>undef</code> value,
+an empty name is returned.</p>
+
+<p>If the argument is a <code>Web::Transport::PKI::Name</code> object,
+the argument itself is returned unchanged.</p>
+
+<p>If the argument is a hash reference,
+a name with the content of the hash is returned.
+Any key is interprted as an object identifier (OID) in the dotted notation (e.g.
+<code>2.5.4.6</code>),
+the short name of an object (e.g.
+<code>CN</code>),
+or the long name of an object (e.g <code>commonName</code>).
+If an invalid or unknown key is specified,
+an exception is thrown.
+For portability,
+only limited set of names (such as <code>CN</code>,
+<code>C</code>,
+and <code>O</code>) should be used and any other object should be represented in the dotted notaion.
+If the value is an <code>undef</code> value,
+the key/value pair is ignored.
+Otherwise,
+the value is interpreted as the text value for the corresponding key.
+It is encoded as a <code>PrintableString</code>,
+if possible,
+or as a <code>UTF8String</code> otherwise.
+The key/value pairs in the hash are encoded as distinct <code>RelativeDistinguishedName</code>s in order determined by the implementation.</p>
+
+</dd><dt id="$text_=_$name->debug_info"><code>$text = $name-&gt;<strong id="member-debug_info">debug_info</strong></code></dt>
+
+<dd>
+<p>Return a short string that summarises the name,
+which should be useful for developments.</p>
+</dd>
+</dl>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../../.." rel="top">Top</a>
+    </li><li><a href="../../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

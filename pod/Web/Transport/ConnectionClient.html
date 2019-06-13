@@ -16,33 +16,23 @@
 
 
 
-<hgroup><h1><code>Web::Transport::ConnectionClient</code></h1><h2>A connection-oriented HTTP client</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+<hgroup><h1><code>Web::Transport::ConnectionClient</code></h1><h2>A connection-oriented HTTP client</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<pre><code>  use Web::Transport::ConnectionClient;
-  $client = Web::Transport::ConnectionClient-&gt;new_from_host (q&lt;server.test&gt;);
-  
-  ## First request
-  $client-&gt;request (
-    url =&gt; Web::URL-&gt;parse_url (q&lt;https://server.test/p1&gt;), ...
-  )-&gt;then (sub {
-    my $res = $_[0];
-    warn $res-&gt;body_bytes;
-    
-    ## Second request
-    return $client-&gt;request (
-      url =&gt; Web::URL-&gt;parse_url (q&lt;https://server.test/p2&gt;), ...
-    );
-  })-&gt;then (sub {
-    return $client-&gt;close;
-  });</code></pre>
+<p>This module is <b>DEPRECATED</b>.
+Use <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> instead.</p>
 
-</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+<p>The <code>Web::Transport::ConnectionClient</code> module is a connection-oriented HTTP client.
+It represents an HTTP connection between this client and an HTTP server and provides API to send requests and receive responses.</p>
 
-<p>The <code>Web::Transport::ConnectionClient</code> module is a connection-oriented HTTP client. It represents an HTTP connection between this client and an HTTP server and provides API to send requests and receive responses.</p>
+<p>It establishes an HTTP connection to the server when a request is sent.
+The connection is persisted until it is requested to close the connection by the application (via e.g.
+the <code>close</code> method) or the server has closed the connection such that subsequent requests can reuse the connection.
+When a new request is asked to be sent nevertheless the connection has been closed by the server,
+another connection is established.
+In this way a <code>Web::Transport::ConnectionClient</code> object can be used until it is explicitly closed by <code>close</code> or <code>abort</code>.</p>
 
-<p>It establishes an HTTP connection to the server when a request is sent. The connection is persisted until it is requested to close the connection by the application (via e.g. the <code>close</code> method) or the server has closed the connection such that subsequent requests can reuse the connection. When a new request is asked to be sent nevertheless the connection has been closed by the server, another connection is established. In this way a <code>Web::Transport::ConnectionClient</code> object can be used until it is explicitly closed by <code>close</code> or <code>abort</code>.</p>
-
-<p>It can only be used to send requests to a specific origin. It does not support HTTP redirects by design.</p>
+<p>It can only be used to send requests to a specific origin.
+It does not support HTTP redirects by design.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -52,16 +42,28 @@
 <dt id="$client_=_Web::Transport::ConnectionClient->new_from_host_($string)"><code>$client = Web::Transport::ConnectionClient-&gt;<strong id="member-new_from_host">new_from_host</strong> ($string)</code></dt>
 
 <dd>
-<p>Create a new client object, which is associated with a origin (<code>https</code>, <var>$string</var>, <code>undef</code>). That is, a client for the specified host using HTTPS with port <code>443</code> is created.</p>
+<p>Create a new client object,
+which is associated with a origin (<code>https</code>,
+<var>$string</var>,
+<code>undef</code>).
+That is,
+a client for the specified host using HTTPS with port <code>443</code> is created.</p>
 
-<p>The argument must be a string, which is either a domain, an IPv4 address, or an IPv6 address enclosed by <code>[</code> and <code>]</code>. They don't have to be in their canonicalized form. IDNs are also allowed.</p>
+<p>The argument must be a string,
+which is either a domain,
+an IPv4 address,
+or an IPv6 address enclosed by <code>[</code> and <code>]</code>.
+They don't have to be in their canonicalized form.
+IDNs are also allowed.</p>
 
 </dd><dt id="$client_=_Web::Transport::ConnectionClient->new_from_url_($url)"><code>$client = Web::Transport::ConnectionClient-&gt;<strong id="member-new_from_url">new_from_url</strong> ($url)</code></dt>
 
 <dd>
-<p>Create a new client object, which is associated with a URL's origin and path.</p>
+<p>Create a new client object,
+which is associated with a URL's origin and path.</p>
 
-<p>The argument must be a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It's origin must be a tuple origin (typically an <code>http:</code> or <code>https:</code> URL).</p>
+<p>The argument must be a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>).
+It's origin must be a tuple origin (typically an <code>http:</code> or <code>https:</code> URL).</p>
 
 <p>The path of the URL is used as the "prefix" of the URL path used for the requests (See <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>' <code>path</code>).</p>
 
@@ -88,7 +90,7 @@
 <dd>
 <p>Send a request and return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>), which is to be resolved with the result.</p>
 
-<p>The arguments are name/value pairs, as described in <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>. At minimum, the <code>url</code> argument must be specified. It is a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It must have same origin as the client's origin (i.e. the origin of the argument to the <code>new_from_url</code> method).</p>
+<p>The arguments are name/value pairs, as described in <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>. At minimum, the <code>url</code> argument must be specified. It is a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It must have same origin as the client's origin (i.e. the origin of the argument to the <code>new_from_url</code> method). Options <code>stream</code>, <code>body_stream</code>, and <code>body_length</code> are not supported.</p>
 
 <p>The promise is resolved with a response (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AResponse" class="podlinkpod">Web::Transport::Response</a> object).</p>
 

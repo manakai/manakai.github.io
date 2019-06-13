@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::GenericServerConnection</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::GenericServerConnection</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/GenericServerConnection.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::GenericServerConnection</code></h1><h2>Common API for HTTP server connection</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::GenericServerConnection</code> class is a superclass of HTTP server connection implementations.
+There are these subclasses:</p>
+
+<dl>
+<dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a></dt>
+
+<dd>
+<p>A PSGI Web application server API</p>
+
+</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a></dt>
+
+<dd>
+<p>An HTTP proxy server API</p>
+</dd>
+</dl>
+
+<p>This module itself cannot be used by applications directly.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$con_=_$class->new_from_aeargs_and_opts_($aeargs,_$opts)"><code>$con = $class-&gt;<strong id="member-new_from_aeargs_and_opts">new_from_aeargs_and_opts</strong> ($aeargs,
+$opts)</code></dt>
+
+<dd>
+<p>Create and return a server connection object,
+wrapping server's socket.</p>
+
+<p>The class can be either <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a> or <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a>.</p>
+
+<p>The first argument must be an array reference of the arguments received by the <code>AnyEvent::Socket::tcp_server</code>'s callback.
+That is,
+the filehandle of the socket,
+the remote host,
+and the remote port (if TCP).
+The socket can be a TCP or Unix domain server accepted socket filehandle object.</p>
+
+<p>The second argument must be a hash reference of one or more key/value pairs specifying the server's behavior:</p>
+
+<dl>
+<dt><a name="tls_=>_{$name_=>_$value,_...}">tls =&gt; {$name =&gt; $value,
+...}</a></dt>
+
+<dd>
+<p>A hash reference with key/value pairs XXX,
+if TLS should be used over the connection (i.e.
+it is an HTTPS server).
+If not specified,
+TLS is not used (i.e.
+it is a plain HTTP server).</p>
+
+</dd><dt><a name="psgi_app_=>_$code_(PSGI_server_only,_required)">psgi_app =&gt; $code (PSGI server only,
+required)</a></dt>
+
+<dd>
+<p>A PSGI application,
+i.e.
+a code reference.
+See the PSGI specification for the requirements on the code reference.</p>
+
+</dd><dt><a name="handle_request_=>_$code_(proxy_server_only)">handle_request =&gt; $code (proxy server only)</a></dt>
+
+<dd>
+<p>A request handler code reference.
+See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection#REQUEST_HANDLER" class="podlinkpod">"REQUEST HANDLER" in Web::Transport::ProxyServerConnection</a>.</p>
+
+</dd><dt><a name="handle_response_=>_$code_(proxy_server_only)">handle_response =&gt; $code (proxy server only)</a></dt>
+
+<dd>
+<p>A response handler code reference.
+See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection#RESPONSE_HANDLER" class="podlinkpod">"RESPONSE HANDLER" in Web::Transport::ProxyServerConnection</a>.</p>
+
+</dd><dt><a name="max_request_body_length_=>_$integer_(PSGI_server_only)">max_request_body_length =&gt; $integer (PSGI server only)</a></dt>
+
+<dd>
+<p>The maximum length of the request body to be accepted by the server,
+in bytes.
+If <code>undef</code> is explicitly specified,
+no limit is set.
+If this option is not given,
+a default finite value is set.</p>
+
+<p>Note that the PSGI server loads the whole request body on memory,
+even when the PSGI application does not want to read the request body,
+as the server has to notify the request body's length of the application upon its invocation.</p>
+
+</dd><dt><a name="state_=>_$object_(PSGI_server_only)">state =&gt; $object (PSGI server only)</a></dt>
+
+<dd>
+<p>The "server state" object which is shared among the PSGI application invocations on a same server session.
+(The definition of the "server session" is server application dependent.) The object is accessible as the <code>manakai.server.state</code> field value of the PSGI environment hash reference given to the PSGI applications.
+This object can be used to store objects whose lifetimes are longer than a request-response processing,
+such as connections to the database server.
+See the manakai PSGI extensions specification for more information.</p>
+
+</dd><dt><a name="server_header_=>_$header_value">server_header =&gt; $header_value</a></dt>
+
+<dd>
+<p>The name of the server,
+used as the <code>Server:</code> header value of the response generated by the server.
+If no value is specified,
+the default value is used.</p>
+
+</dd><dt><a name="client_=>_{$name_=>_$value,_...}_(proxy_server_only)">client =&gt; {$name =&gt; $value,
+...} (proxy server only)</a></dt>
+
+<dd>
+<p>The client options for the connections to the upstream server.</p>
+
+<p>Client options are same as those for the <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> (see <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS" in Web::Transport::BasicClient</a>),
+with following exceptions: The <code>debug</code> option's default value is <i>$opts</i>' <code>debug</code> option's value.
+The <code>last_resort_timeout</code> option's default value is <code>-1</code>.
+The <code>parent_id</code> option is not available and is set to appropriate value by the proxy.</p>
+
+</dd><dt><a name="debug_=>_$mode">debug =&gt; $mode</a></dt>
+
+<dd>
+<p>The debug mode.
+If not defined,
+the <code>WEBSERVER_DEBUG</code> environment variable's value is used.
+See <code>WEBSERVER_DEBUG</code> section in <a href="https://metacpan.org/pod/Web%3A%3ATransport#ENVIRONMENT_VARIABLES" class="podlinkpod">"ENVIRONMENT VARIABLES" in Web::Transport</a> for available mode values.</p>
+
+</dd><dt><a name="parent_id_=>_$string">parent_id =&gt; $string</a></dt>
+
+<dd>
+<p>A short string that identifies the "parent" context in which the connection appears,
+which will be used in debug outputs.</p>
+</dd>
+</dl>
+
+</dd><dt id="$con->onexception_($code)"><code>$con-&gt;<strong id="member-onexception">onexception</strong> ($code)</code></dt>
+
+<dt id="$code_=_$con->onexception"><code>$code = $con-&gt;<strong>onexception</strong></code></dt>
+
+<dd>
+<p>Get or set the callback code reference that is invoked when an error is detected while interacting with the PSGI application or the proxy handlers such that the server returns an error response to the client (or abnormally close the HTTP connection).</p>
+
+<p>The callback has to be set as soon as the object has been created and it should not be changed later.</p>
+
+<p>The callback can return a promise,
+to delay the resolution of the <code>complated</code> promise until the promise is resolved or rejected.</p>
+
+</dd><dt id="$promise_=_$con->completed"><code>$promise = $con-&gt;<strong id="member-completed">completed</strong></code></dt>
+
+<dd>
+<p>Return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) which will be resolved once the connection between the server and the client has been closed and the PSGI application or the upstream connection has been completed.</p>
+
+<p>An invocation of PSGI application is considered as completed when either a complete response is returned by the PSGI application or the PSGI application invoked the <code>$writer-&gt;close</code> method,
+and the <code>psgix.exit_guard</code> condvar's callback is invoked.</p>
+
+</dd><dt id="$con->close_after_current_response_(timeout_=>_$seconds)"><code>$con-&gt;<strong id="member-close_after_current_response">close_after_current_response</strong> (timeout =&gt; $seconds)</code></dt>
+
+<dd>
+<p>Schedule to close the connection as soon as possible.</p>
+
+<p>If the connection is not used at the moment,
+it is immediately closed.
+Otherwise,
+the connection is closed after the response to the currently processed request is sent.</p>
+
+<p>The <code>timeout</code> option can be specified as a key/value pair.
+The option specifies the seconds of the timeout,
+whose default is <code>10</code> (seconds).
+If this option is set to an number greater than zero and the current response is not closed before that seconds have elapsed since the invocation of this method,
+the connection is aborted.
+The PSGI application is expected to return the whole response before this timeout.</p>
+
+<p>Please note that even when the connection is aborted because of the timeout,
+the <code>completed</code> promise is not resolved or rejected until the <code>psgix.exit_guard</code> condvar is fullfilled and any reference to the PSGI writer is destroyed.
+As the PSGI does not provide any way to abort the PSGI application,
+invocation of this method does not terminate any running PSGI application.</p>
+
+<p>This method can be used to gracefully terminate the server.</p>
+
+</dd><dt id="$string_=_$con->id"><code>$string = $con-&gt;<strong id="member-id">id</strong></code></dt>
+
+<dd>
+<p>A short string assigned to the server connection,
+which can be used for debugging purposes.
+It is composed from the <code>parent_id</code> option to the constructor,
+if any.</p>
+</dd>
+</dl>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>Web Transport Processing <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Web%20Transport%20Processing">https://wiki.suikawiki.org/n/Web%20Transport%20Processing</a>&gt;</code>.</p>
+
+<p>PSGI <code class="url">&lt;<a href="https://github.com/plack/psgi-specs/blob/master/PSGI.pod">https://github.com/plack/psgi-specs/blob/master/PSGI.pod</a>&gt;</code>.</p>
+
+<p><code>psgix.exit_guard</code> <code class="url">&lt;<a href="https://github.com/kazeburo/Twiggy-Prefork#psgi-extensions">https://github.com/kazeburo/Twiggy-Prefork#psgi-extensions</a>&gt;</code>.</p>
+
+<p>manakai PSGI extensions <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/manakai%20PSGI%20extensions">https://wiki.suikawiki.org/n/manakai%20PSGI%20extensions</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

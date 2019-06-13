@@ -41,10 +41,10 @@ MIME sniffing.</p>
 <p>There are following modules that expose public APIs:</p>
 
 <dl>
-<dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a></dt>
+<dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a></dt>
 
 <dd>
-<p>A connection-oriented HTTP client.</p>
+<p>A basic HTTP client.</p>
 
 </dd><dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a></dt>
 
@@ -55,6 +55,11 @@ MIME sniffing.</p>
 
 <dd>
 <p>A PSGI interface of HTTP server.</p>
+
+</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a></dt>
+
+<dd>
+<p>A HTTP proxy server.</p>
 
 </dd><dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a></dt>
 
@@ -98,9 +103,11 @@ MIME sniffing.</p>
 </dd>
 </dl>
 
+<p>The module <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a> is deprecated.</p>
+
 </section><section id="REQUEST_OPTIONS"><h1>REQUEST OPTIONS</h1>
 
-<p>For the <code>request</code> method of <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a> objects and the <code>new</code> class method of <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>,
+<p>For the <code>request</code> method of a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> object,
 following key/value pairs can be used to specify the parameters of the request to send:</p>
 
 <dl>
@@ -113,8 +120,9 @@ the value must be a <a href="https://metacpan.org/pod/Web%3A%3AURL" class="podli
 
 <p>The scheme of the URL must be one of <code>http</code>,
 <code>https</code>,
-or <code>ftp</code> for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a>,
-or <code>ws</code> or <code>wss</code> for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+<code>ftp</code>,
+<code>ws</code>,
+or <code>wss</code>.</p>
 
 <p>Any username,
 password,
@@ -138,8 +146,6 @@ the path segments given by this option is appended to the prefix.</p>
 <p>When the <code>url</code> option is specified,
 this option is ignored.</p>
 
-<p>This option is not available for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
-
 </dd><dt id="method_=>_$string"><code>method =&gt; $string</code></dt>
 
 <dd>
@@ -148,19 +154,15 @@ Note that HTTP request methods are case-sensitive.
 If not specified,
 <code>GET</code> is used.</p>
 
-<p>This option is not available for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
-
-</dd><dt id="headers_=>_{$string_=>_$string,_...}"><code>headers =&gt; {$string =&gt; $string,
+</dd><dt id="headers_=>_{$name_=>_$value,_...}"><code>headers =&gt; {$name =&gt; $value,
 ...}</code></dt>
+
+<dt id="headers_=>_[[$name_=>_$value],_...]"><code>headers =&gt; [[$name =&gt; $value],
+...]</code></dt>
 
 <dd>
 <p>Specify HTTP headers.
-The value must be a hash reference,
-whose keys are header names and values are corresponding header values.
-If a value is an array reference,
-the array's items are used as the header values (i.e.
-multiple headers with same name are generated).
-Header names are case-insensitive.</p>
+The value must be a headers value (see <a href="#HEADERS" class="podlinkpod">"HEADERS"</a>).</p>
 
 </dd><dt id="cookies_=>_{$string_=>_$string,_...}"><code>cookies =&gt; {$string =&gt; $string,
 ...}</code></dt>
@@ -230,8 +232,6 @@ respectively.</p>
 
 <p>They are encoded in the <code>multipart/form-data</code> format in UTF-8.</p>
 
-<p>This option is not available for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
-
 </dd><dt id="basic_auth_=>_[$userid,_$password]"><code>basic_auth =&gt; [$userid,
 $password]</code></dt>
 
@@ -289,8 +289,6 @@ If a non-<code>undef</code> value is specified and the <code>oauth1</code> optio
 this value is taken into account as a request parameter.
 Otherwise this option is ignored.</p>
 
-<p>This option is not available for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
-
 </dd><dt id="oauth_callback_=>_$string"><code>oauth_callback =&gt; $string</code></dt>
 
 <dd>
@@ -298,8 +296,6 @@ Otherwise this option is ignored.</p>
 If a non-<code>undef</code> value is specified and the <code>oauth1</code> option is also specified,
 this value is taken into account as a request parameter.
 Otherwise this option is ignored.</p>
-
-<p>This option is not available for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
 
 </dd><dt id="aws4_=>_[$access_key_id,_$secret_access_key,_$region,_$service]"><code>aws4 =&gt; [$access_key_id,
 $secret_access_key,
@@ -330,6 +326,17 @@ This option is ignored unless <code>aws4</code> option is also specified.</p>
 the value must be a hash reference,
 whose keys are header names (ASCII case-insensitive) and values are true values.</p>
 
+</dd><dt id="ws_protocols_=>_[$name1,_$name2,_...]"><code>ws_protocols =&gt; [$name1,
+$name2,
+...]</code></dt>
+
+<dd>
+<p>Specifies WebSocket protocol names.
+The value must be an array reference of zero or more byte strings.
+Only applicable to WebSocket requests.
+To establish a WebSocket connection with WebSocket protocol names as a WebSocket client,
+this option must be used (rather than directly specifying the <code>Sec-WebSocket-Proto:</code> header value) as the protocol names are directly handled by the client module as part of the protocol handshake.</p>
+
 </dd><dt id="superreload_=>_$boolean"><code>superreload =&gt; $boolean</code></dt>
 
 <dd>
@@ -343,9 +350,47 @@ whose keys are header names (ASCII case-insensitive) and values are true values.
 If a non-<code>undef</code> value is specified,
 it must be a string of zero or more bytes.</p>
 
-<p>This option is not available for <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
+<p>This option is not allowed when <code>body_stream</code> is specified.</p>
+
+</dd><dt id="body_stream_=>_$readable_stream"><code>body_stream =&gt; $readable_stream</code></dt>
+
+<dd>
+<p>The request body.
+If a non-<code>undef</code> value is specified,
+it must be a <a href="https://metacpan.org/pod/ReadableStream" class="podlinkpod">ReadableStream</a> with type <code>bytes</code> (i.e.
+a readable byte stream) which is not locked.</p>
+
+<p>If this option has non-<code>undef</code> value,
+the <code>length</code> option must also be specified.
+This option is not allowed when <code>body</code> is specified.</p>
+
+</dd><dt id="length_=>_$byte_length"><code>length =&gt; $byte_length</code></dt>
+
+<dd>
+<p>The byte length of the request body.
+If a non-<code>undef</code> value is specified,
+it must be equal to the number of bytes contained by the <code>body_stream</code> readable byte stream.</p>
+
+<p>If this option has non-<code>undef</code> value,
+the <code>body_stream</code> option must also be specified.
+This option is not allowed when <code>body</code> is specified.</p>
+
+</dd><dt id="stream_=>_$boolean"><code>stream =&gt; $boolean</code></dt>
+
+<dd>
+<p>Whether the result of the operation should contain a <a href="https://metacpan.org/pod/ReadableStream" class="podlinkpod">ReadableStream</a> object (true) or a byte string (false) for the response body.
+See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> for more information.</p>
+
+</dd><dt id="forwarding_=>_$boolean_(for_proxy)"><code>forwarding =&gt; $boolean (for proxy)</code></dt>
+
+<dd>
+<p>Whether this client is a component of a proxy,
+forwarding a request to the upstream.
+This option is only applicable to the <code>request</code> hash reference of the argument (or return value) to the <code>handle_request</code> callback of <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a>.</p>
 </dd>
 </dl>
+
+<p>Different subsets of these options are also supported by relevant methods of deprecated modules <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConnectionClient" class="podlinkpod">Web::Transport::ConnectionClient</a> and <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AWSClient" class="podlinkpod">Web::Transport::WSClient</a>.</p>
 
 <section id="Relevant_specifications"><h1>Relevant specifications</h1>
 
@@ -368,11 +413,54 @@ The OAuth 1.0 Protocol <code class="url">&lt;<a href="https://tools.ietf.org/htm
 
 <p>Signature Calculations for the Authorization Header: Transferring Payload in a Single Chunk (AWS Signature Version 4) - Amazon Simple Storage Service <code class="url">&lt;<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html">https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html</a>&gt;</code>.</p>
 
-</section></section><section id="PROXY_MANAGERS"><h1>PROXY MANAGERS</h1>
+</section></section><section id="HEADERS"><h1>HEADERS</h1>
 
-<p>XXX</p>
+<p>A <b>headers value</b> is either a headers hash reference or a headers array reference.</p>
 
-<p>There are following proxy managers in this repository: <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a> and <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConstProxyManager" class="podlinkpod">Web::Transport::ConstProxyManager</a>.</p>
+<p>A <b>headers hash reference</b> is a reference to a hash whose keys are header names and its values are corresponding header values.
+If a value is an array reference,
+that array's items are used as the header values (i.e.
+multiple headers with same name are generated).</p>
+
+<p>A <b>headers array reference</b> is a reference to an array which contain zero or more array references which contains header name (index 0) and header value (index 1).
+A <b>canonical headers array reference</b> is a headers array reference whose items contain third item (index 2),
+which is the ASCII lowercased variant of the header name.</p>
+
+<p>Header names and values must be byte strings.
+Header names and values cannot contain 0x0D or 0x0A bytes.
+Header names are case-insensitive.
+Header names cannot be empty and cannot contain certain bytes (e.g.
+0x3A).</p>
+
+</section><section id="PROXY_MANAGERS"><h1>PROXY MANAGERS</h1>
+
+<p>A <b>proxy manager</b> is used to retrieve proxy configurations used for fetching.
+It is an object with the <code>get_proxies_for_url</code> method.</p>
+
+<p>The <code>get_proxies_for_url</code> method is expected to return the list of the proxies for the specified URL.
+It has a required argument,
+which must be a URL record (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>),
+for which a proxy configuration is requested.</p>
+
+<p>Additionally,
+following named argument chould be specified:</p>
+
+<dl>
+<dt id="signal_=>_$signal"><code>signal =&gt; $signal</code></dt>
+
+<dd>
+<p>The abort signal (<a href="https://metacpan.org/pod/AbortSignal" class="podlinkpod">AbortSignal</a>) for the operation.
+If the abort controller (<a href="https://metacpan.org/pod/AbortController" class="podlinkpod">AbortController</a>) associated with the signal is aborted,
+the operation is expected to be aborted and the method's promise is rejected with an object whose <code>name</code> is <code>AbortError</code> whenever possible.</p>
+</dd>
+</dl>
+
+<p>The method is expected to return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>),
+which is to be resolved with a proxy configuration list (see <a href="#PROXY_CONFIGURATIONS" class="podlinkpod">"PROXY CONFIGURATIONS"</a>),
+or to be rejected with an error.</p>
+
+<p>There are following proxy managers in this repository: <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a> and <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AConstProxyManager" class="podlinkpod">Web::Transport::ConstProxyManager</a>.
+Any other object can be used as well.</p>
 
 </section><section id="PROXY_CONFIGURATIONS"><h1>PROXY CONFIGURATIONS</h1>
 
@@ -401,8 +489,64 @@ See <code>WEBUA_DEBUG</code> section for available mode values.</p>
 
 <p>XXX</p>
 
+<p>The <code>resolve</code> method is expected to return a promise.
+XXX If aborted,
+or the resolver is unable to resolve (note that this is <b>different</b> from the resolver is ready but the result is "not found"),
+the promise is expected to be rejected with the exception describing the failure.</p>
+
 <p>There are following resolvers in this repository: <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>,
 <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ACachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>.</p>
+
+</section><section id="CERTIFICATE_MANAGER"><h1>CERTIFICATE MANAGER</h1>
+
+<p>A <b>certificate manager</b> is an object from which TLS certifciates can be retrieved.</p>
+
+<p>It is expected to have following methods:</p>
+
+<dl>
+<dt id="$cm->prepare_($name_=>_$value,_...)->then_(sub_{_..._})"><code>$cm-&gt;prepare ($name =&gt; $value,
+...)-&gt;<strong id="member-then">then</strong> (sub { ...
+})</code></dt>
+
+<dd>
+<p>Run preparation steps for the certificate manager.
+The concrete steps are implementation specific.
+The method must return a promise,
+which is fulfilled or rejected when the certificate manager is ready to return relevant certificates.</p>
+
+<p>It receives zero or more options as name/value pair arguments.
+The <code>server</code> option has a boolean value,
+representing server (true) or client (false).
+If the <code>server</code> value is true but the certificate manager is not ready to return the server certificates (including CA certificates),
+the method must reject the promise.</p>
+
+</dd><dt id="{$name_=>_$value,_...}_=_$cm->to_anyevent_tls_args_sync"><code>{$name =&gt; $value,
+...} = $cm-&gt;<strong id="member-to_anyevent_tls_args_sync">to_anyevent_tls_args_sync</strong></code></dt>
+
+<dd>
+<p>Return a hash reference containing zero or more arguments to the <code>new</code> method of the <a href="https://metacpan.org/pod/AnyEvent%3A%3ATLS" class="podlinkpod">AnyEvent::TLS</a> class.
+It should only contain certificate-related options.</p>
+
+<p>If the certificate manager's <code>prepare</code> method has been invoked with <code>server</code> option set to true and its promise has been fulfilled,
+the hash reference must contain the server certificates and all other relevant options.
+Otherwise,
+if the certificate manager's <code>prepare</code> method has been invoked and its promise has been fulfilled,
+the hash reference must contain all relevant options.</p>
+
+</dd><dt id="{$name_=>_$value,_...}_=_$cm->to_anyevent_tls_args_for_host_sync_($host)"><code>{$name =&gt; $value,
+...} = $cm-&gt;<strong id="member-to_anyevent_tls_args_for_host_sync">to_anyevent_tls_args_for_host_sync</strong> ($host)</code></dt>
+
+<dd>
+<p>Same as <code>to_anyevent_tls_args_sync</code> but returns argument for a host-specific certificate.</p>
+
+<p>The method is invoked with an argument of type <a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a>,
+representing the domain name given in the SNI extension's field received from the client.</p>
+
+<p>The method can return <code>undef</code> if there is no host-specific certificate (such that the default certificate returned by <code>to_anyevent_tls_args_sync</code> should be used instead).</p>
+</dd>
+</dl>
+
+<p>There is following module in this repository: <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ADefaultCertificateManager" class="podlinkpod">Web::Transport::DefaultCertificateManager</a>.</p>
 
 </section><section id="UNDERLYING_PLATFORM_INFORMATION_OBJECT"><h1>UNDERLYING PLATFORM INFORMATION OBJECT</h1>
 
@@ -424,9 +568,9 @@ used to retrive platform-dependent configurations.</p>
 </dd>
 </dl>
 
-<p>There are following module in this repository: <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformInfo" class="podlinkpod">Web::Transport::PlatformInfo</a>.</p>
+<p>There is following module in this repository: <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformInfo" class="podlinkpod">Web::Transport::PlatformInfo</a>.</p>
 
-</section><section id="ENVIRONMENT_VARIABLE"><h1>ENVIRONMENT VARIABLE</h1>
+</section><section id="ENVIRONMENT_VARIABLES"><h1>ENVIRONMENT VARIABLES</h1>
 
 <p>The <code>WEBUA_DEBUG</code> and <code>WEBSERVER_DEBUG</code> environment variables can be used to enable the debug mode of client and server modules,
 respectively.
@@ -439,8 +583,8 @@ more verbose messages are printed.</p>
 
 </section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
 
-<p>These module requires Perl 5.10 or later.
-They require several core modules such as <a href="https://metacpan.org/pod/Digest%3A%3ASHA" class="podlinkpod">Digest::SHA</a>.</p>
+<p>These module requires Perl 5.14 or later.
+They require several core modules such as <a href="https://metacpan.org/pod/Digest%3A%3ASHA" class="podlinkpod">Digest::SHA</a> and <a href="https://metacpan.org/pod/Math%3A%3ABigInt" class="podlinkpod">Math::BigInt</a>.</p>
 
 <p>They require <a href="https://metacpan.org/pod/AnyEvent" class="podlinkpod">AnyEvent</a> and <a href="https://metacpan.org/pod/Net%3A%3ASSLeay" class="podlinkpod">Net::SSLeay</a>.
 The <a href="https://metacpan.org/pod/Net%3A%3ASSLeay" class="podlinkpod">Net::SSLeay</a> module requires OpenSSL or equivalent (e.g.
@@ -448,14 +592,17 @@ LibreSSL).
 For Web compatibility and security,
 OpenSSL version must be latest enough.</p>
 
-<p>They also require following modules (which are submodules of this Git repository):</p>
+<p>They require following modules (which are submodules of this Git repository):</p>
 
 <ul>
-<li><a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a> <code class="url">&lt;<a href="https://github.com/wakaba/perl-promise">https://github.com/wakaba/perl-promise</a>&gt;</code></li>
-
-<li><a name="modules_from_perl-web-url_repository_<https://github.com/manakai/perl-web-url>,_e.g._Web::URL_Web::Host,_and_Web::Origin">modules from perl-web-url repository &lt;https://github.com/manakai/perl-web-url&gt;,
+<li><a name="modules_from_perl-promise_repository_<https://github.com/wakaba/perl-promise>,_e.g._Promise_and_AbortController">modules from perl-promise repository &lt;https://github.com/wakaba/perl-promise&gt;,
 e.g.
-</a><a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a> <a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a>,
+</a><a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a> and <a href="https://metacpan.org/pod/AbortController" class="podlinkpod">AbortController</a></li>
+
+<li><a>modules from perl-web-url repository &lt;https://github.com/manakai/perl-web-url&gt;,
+e.g.
+</a><a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>,
+<a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a>,
 and <a href="https://metacpan.org/pod/Web%3A%3AOrigin" class="podlinkpod">Web::Origin</a></li>
 
 <li><a name="modules_from_perl-web-encodings_package_<https://github.com/manakai/perl-web-encodings>,_e.g._Web::Encoding">modules from perl-web-encodings package &lt;https://github.com/manakai/perl-web-encodings&gt;,
@@ -465,6 +612,23 @@ e.g.
 <li><a name="modules_from_perl-web-datetime_package_<https://github.com/manakai/perl-web-datetime>,_e.g._Web::DateTime::Parser">modules from perl-web-datetime package &lt;https://github.com/manakai/perl-web-datetime&gt;,
 e.g.
 </a><a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3AParser" class="podlinkpod">Web::DateTime::Parser</a></li>
+</ul>
+
+<p>Additionally,
+modules <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ATCPStream" class="podlinkpod">Web::Transport::TCPStream</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AUnixStream" class="podlinkpod">Web::Transport::UnixStream</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ATLSStream" class="podlinkpod">Web::Transport::TLSStream</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ASOCKS4Stream" class="podlinkpod">Web::Transport::SOCKS4Stream</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ASOCKS5Stream" class="podlinkpod">Web::Transport::SOCKS5Stream</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AH1CONNECTStream" class="podlinkpod">Web::Transport::H1CONNECTStream</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a>,
+<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a>,
+and <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a> require following modules (which are also part of submodule of this Git repository):</p>
+
+<ul>
+<li><a name="modules_from_perl-streams_package_<https://github.com/manakai/perl-streams>,_e.g._ArrayBuffer_and_ReadableStream">modules from perl-streams package &lt;https://github.com/manakai/perl-streams&gt;,
+e.g.
+</a><a href="https://metacpan.org/pod/ArrayBuffer" class="podlinkpod">ArrayBuffer</a> and <a href="https://metacpan.org/pod/ReadableStream" class="podlinkpod">ReadableStream</a></li>
 </ul>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
@@ -480,7 +644,7 @@ See documentations of modules and comments in source codes for more information.
 
 <p>Copyright 2009-2013 Hatena <code class="url">&lt;<a href="https://www.hatena.ne.jp/">https://www.hatena.ne.jp/</a>&gt;</code>.</p>
 
-<p>Copyright 2014-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2014-2019 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

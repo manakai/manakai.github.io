@@ -75,7 +75,18 @@
 </dd><dt id="$bytes_=_$res->body_bytes"><code>$bytes = $res-&gt;<strong id="member-body_bytes">body_bytes</strong></code></dt>
 
 <dd>
-<p>The response body, if any.</p>
+<p>The response body, as a string of bytes, if any.</p>
+
+<p>This method throws an exception if the response is created with a body stream.</p>
+
+</dd><dt id="$readable_=_$res->body_stream"><code>$readable = $res-&gt;<strong id="member-body_stream">body_stream</strong></code></dt>
+
+<dd>
+<p>The response body, as a <a href="https://metacpan.org/pod/ReadableStream" class="podlinkpod">ReadableStream</a>.</p>
+
+<p>This method throws an exception <b>unless</b> the response is created with a body stream.</p>
+
+<p>If application receives a response created with a body stream, it must read the stream until the end of the stream is detected or cancel the stream. Otherwise the HTTP connection cannot be used for any subsequent request or be closed gracefully.</p>
 
 </dd><dt id="$boolean_=_$res->incomplete"><code>$boolean = $res-&gt;<strong id="member-incomplete">incomplete</strong></code></dt>
 
@@ -99,7 +110,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

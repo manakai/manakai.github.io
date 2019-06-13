@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::PKI::Generator</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::PKI::Generator</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/PKI/Generator.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::PKI::Generator</code></h1><h2>Factory methods of PKIX objects</h2></hgroup><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::PKI::Generator</code> module has factory methods to create various PKIX related objects.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$gen_=_Web::Transport::PKI::Generator->new"><code>$gen = Web::Transport::PKI::Generator-&gt;<strong id="member-new">new</strong></code></dt>
+
+<dd>
+<p>Create a new instance of the generator.</p>
+
+</dd><dt id="$gen->create_rsa_key_($name_=>_$value,_...)->then_(sub_{_$rsa_=_shift_})"><code>$gen-&gt;create_rsa_key ($name =&gt; $value,
+...)-&gt;<strong id="member-then">then</strong> (sub { $rsa = shift })</code></dt>
+
+<dd>
+<p>Create a new RSA key pair,
+using OpenSSL via <a href="https://metacpan.org/pod/Net%3A%3ASSLeay" class="podlinkpod">Net::SSLeay</a>.
+The <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3ARSAKey" class="podlinkpod">Web::Transport::PKI::RSAKey</a> object representing the created key is returned.</p>
+
+<p>Following option can be specified as name/value pair:</p>
+
+<dl>
+<dt><a name="bits_=>_$int_(Default:_auto)">bits =&gt; $int (Default: auto)</a></dt>
+
+<dd>
+<p>The bit length of the created key,
+as an integer.
+In this version,
+the default is <code>2048</code>.</p>
+</dd>
+</dl>
+
+</dd><dt id="$gen->create_ec_key_($name_=>_$value,_...)->then_(sub_{_$ec_=_shift_})"><code>$gen-&gt;create_ec_key ($name =&gt; $value,
+...)-&gt;<strong>then</strong> (sub { $ec = shift })</code></dt>
+
+<dd>
+<p>Create a new EC key pair,
+using OpenSSL via <a href="https://metacpan.org/pod/Net%3A%3ASSLeay" class="podlinkpod">Net::SSLeay</a>.
+The <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3AECKey" class="podlinkpod">Web::Transport::PKI::ECKey</a> object representing the created key is returned.</p>
+
+<p>Following option can be specified as name/value pair:</p>
+
+<dl>
+<dt><a name="curve_=>_$string_(Default:_auto)">curve =&gt; $string (Default: auto)</a></dt>
+
+<dd>
+<p>The curve of the created key.
+Either <code>prime256v1</code>,
+<code>secp384r1</code>,
+or <code>secp521r1</code>.
+In this version,
+the default is <code>prime256v1</code>.</p>
+</dd>
+</dl>
+
+</dd><dt id="$gen->create_certificate_($name_=>_$value,_...)->then_(sub_{_$cert_=_shift_})"><code>$gen-&gt;create_certificate ($name =&gt; $value,
+...)-&gt;<strong>then</strong> (sub { $cert = shift })</code></dt>
+
+<dd>
+<p>Create a new X.509 certificate,
+using OpenSSL via <a href="https://metacpan.org/pod/Net%3A%3ASSLeay" class="podlinkpod">Net::SSLeay</a>.
+The <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3ACertificate" class="podlinkpod">Web::Transport::PKI::Certificate</a> object representing the created certificate is returned.</p>
+
+<p>Following options can be specified as name/value pairs:</p>
+
+<dl>
+<dt><a name="version_=>_$int?_(Default:_2)">version =&gt; $int?
+(Default: 2)</a></dt>
+
+<dd>
+<p>The version of the certifcate.
+The value must be one of <code>0</code> (v1),
+<code>1</code> (v2),
+or <code>2</code> (v3).</p>
+
+</dd><dt><a name="serial_number_=>_$bigint?_(Default:_0)">serial_number =&gt; $bigint?
+(Default: 0)</a></dt>
+
+<dd>
+<p>The serial number of the certificate.
+The value must be an integer or a <a href="https://metacpan.org/pod/Math%3A%3ABigInt" class="podlinkpod">Math::BigInt</a> object.</p>
+
+</dd><dt><a name="not_before_=>_$dt_(Required)">not_before =&gt; $dt (Required)</a></dt>
+
+<dd>
+<p>The not before of the validity of the certificate.
+The value must be a Unix time number or a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> object.
+Any fractional part of the second of the time is ignored.</p>
+
+</dd><dt><a name="not_after_=>_$dt_(Required)">not_after =&gt; $dt (Required)</a></dt>
+
+<dd>
+<p>The not after of the validity of the certificate.
+The value must be a Unix time number or a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> object.
+Any fractional part of the second of the time is ignored.</p>
+
+</dd><dt><a name="issuer_=>_$name_(Required_if_root_CA)">issuer =&gt; $name (Required if root CA)</a></dt>
+
+<dd>
+<p>The issuer of the certificate.
+The value must be a value that is valid as the argument to the <code>create</code> method of the <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3AName" class="podlinkpod">Web::Transport::PKI::Name</a> class.
+Defaulted to the <code>ca_cert</code>'s <code>subject</code>.</p>
+
+</dd><dt><a name="subject_=>_$name_(Required)">subject =&gt; $name (Required)</a></dt>
+
+<dd>
+<p>The subject of the certificate.
+The value must be a value that is valid as the argument to the <code>create</code> method of the <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3AName" class="podlinkpod">Web::Transport::PKI::Name</a> class.</p>
+
+</dd><dt><a name="san_hosts_=>_[$value1,_$value2,_...]">san_hosts =&gt; [$value1,
+$value2,
+...]</a></dt>
+
+<dd>
+<p>The subject alternative names of the certificate.
+The value,
+if specified,
+must be an array reference of hosts.</p>
+
+<p>A host can be represented in two forms: If a character string is specified,
+it is interpreted as a <code>dNSName</code>,
+i.e.
+a domain or a wildcard domain,
+serialized in ASCII (A-labels).
+If a <a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a> object is specified,
+it is interpreted as a <code>dNSName</code> or an <code>iPAddress</code> depending on its <code>is_domain</code> and <code>is_ip</code> method values.</p>
+
+</dd><dt><a name="ca_=>_$boolean">ca =&gt; $boolean</a></dt>
+
+<dd>
+<p>If true,
+certificate fields are configured for typical CA certificates.</p>
+
+</dd><dt><a name="ee_=>_$boolean">ee =&gt; $boolean</a></dt>
+
+<dd>
+<p>If true,
+certificate fields are configured for typical EE certificates.</p>
+
+</dd><dt><a name="path_len_constraint_=>_$integer?">path_len_constraint =&gt; $integer?</a></dt>
+
+<dd>
+<p>The pathLenConstraint value of the basic constraints extension of the certificate,
+if any,
+or <code>undef</code>.</p>
+
+</dd><dt><a name="crl_urls_=>_[$string1,_$string2,_...]">crl_urls =&gt; [$string1,
+$string2,
+...]</a></dt>
+
+<dd>
+<p>The CRL distribution point URLs of the certificate.
+If specified,
+the value must be an array reference of character strings representing the URLs.</p>
+
+</dd><dt><a name="aia_ocsp_url_=>_$string?">aia_ocsp_url =&gt; $string?</a></dt>
+
+<dd>
+<p>The OCSP URL of the Authority Information Access extension of the certificate as a character string,
+if any,
+or <code>undef</code>.</p>
+
+</dd><dt><a name="aia_ca_issuers_url_=>_$string?">aia_ca_issuers_url =&gt; $string?</a></dt>
+
+<dd>
+<p>The CA issuers URL of the Authority Information Access extension of the certificate as a character string,
+if any,
+or <code>undef</code>.</p>
+
+</dd><dt><a name="dv_=>_$boolean">dv =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether it is a DV certificate or not.</p>
+
+</dd><dt><a name="ov_=>_$boolean">ov =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether it is an OV certificate or not.</p>
+
+</dd><dt><a name="ev_=>_$string?">ev =&gt; $string?</a></dt>
+
+<dd>
+<p>The OID of the EV CA's certification policy in the dotted notaion,
+if it is an EV certificate.
+If the EV OID is specified,
+the certification policy identifier of EV is also added as well as the EV OID.</p>
+
+</dd><dt><a name="policy_oids_=>_[$string1,_$string2,_...]">policy_oids =&gt; [$string1,
+$string2,
+...]</a></dt>
+
+<dd>
+<p>The additional policy identifiers of the certifciation policy extension of the certificate,
+as an array reference of OIDs in the dotted notation.</p>
+
+</dd><dt><a name="cps_url_=>_$string?">cps_url =&gt; $string?</a></dt>
+
+<dd>
+<p>The CPS URL specified as a policy qualifer of a certifciation policy of the certificate as a character string,
+if any,
+or <code>undef</code>.
+If this option is specified but there is no other option specifying a certification policy OID,
+the <code>anyPolicy</code> OID is added.</p>
+
+</dd><dt><a name="policy_user_notice_text_=>_$string?">policy_user_notice_text =&gt; $string?</a></dt>
+
+<dd>
+<p>The display text of the user notice of a policy qualifier of a certification policy of the certifcate as a character string,
+if any,
+or <code>undef</code>.
+If this option is specified but there is no other option specifying a certification policy OID,
+the <code>anyPolicy</code> OID is added.</p>
+
+</dd><dt><a name="name_constraints_permitted_=>_[$item1,_$item2,_...]">name_constraints_permitted =&gt; [$item1,
+$item2,
+...]</a></dt>
+
+<dd>
+</dd><dt><a name="name_constraints_excluded_=>_[$item1,_$item2,_...]">name_constraints_excluded =&gt; [$item1,
+$item2,
+...]</a></dt>
+
+<dd>
+<p>The host ranges in the certifciate's name constraints extension's permitted or excluded subtrees,
+if any.</p>
+
+<p>A host range can be represented in three forms: If a character string is specified,
+it is interpreted as a <code>dNSName</code>,
+i.e.
+a domain or a <code>.</code> character followed by a domain,
+serialized in ASCII (A-labels).
+If a <a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a> object is specified,
+it is interpreted as a <code>dNSName</code> or an <code>iPAddress</code> depending on its <code>is_domain</code> and <code>is_ip</code> method values.
+If it is an IP address,
+the CIDR address range (subnet mask) is set to the full length of the address.
+If an array reference which has exactly two <a href="https://metacpan.org/pod/Web%3A%3AHost" class="podlinkpod">Web::Host</a> objects whose <code>is_ipv4</code> are true or whose <code>is_ipv6</code> are true,
+the zeroth item is interpreted as an <code>iPAddress</code>'s IP address and the first item is interpreted as an <code>iPAddress</code>'s CIDR address range (subnet mask).</p>
+
+</dd><dt><a name="must_staple_=>_$boolean">must_staple =&gt; $boolean</a></dt>
+
+<dd>
+<p>Whether the must-staple flag in the TLS feature extension of the certificate is set or not.</p>
+
+</dd><dt><a name="digest_=>_$string_(Default:_auto)">digest =&gt; $string (Default: auto)</a></dt>
+
+<dd>
+<p>The certificate's signature's digest algorithm.
+The value must be one of: <code>sha1</code>,
+<code>sha256</code>,
+or <code>sha384</code>.
+In this version,
+the default is <code>sha256</code>.</p>
+
+</dd><dt><a name="ca_rsa_=>_$rsa_(Required)">ca_rsa =&gt; $rsa (Required)</a></dt>
+
+<dd>
+</dd><dt><a name="ca_ec_=>_$ec_(Required)">ca_ec =&gt; $ec (Required)</a></dt>
+
+<dd>
+<p>The RSA or EC key of the CA that signs the certificate.
+The value must be a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3ARSAKey" class="podlinkpod">Web::Transport::PKI::RSAKey</a> object.
+The value can be same as <code>rsa</code> or <code>ec</code> when this is a root CA.
+Exactly one of <code>ca_rsa</code> and <code>ca_ec</code> must be specified.</p>
+
+</dd><dt><a name="ca_cert_=>_$cert_(Required_unless_root_CA)">ca_cert =&gt; $cert (Required unless root CA)</a></dt>
+
+<dd>
+<p>The certificate (a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3ACertificate" class="podlinkpod">Web::Transport::PKI::Certificate</a> object) of the CA that signs the certificate.
+This option can be omitted if this is a root CA certificate and <code>rsa</code>'s value is equal to <code>ca_rsa</code>'s value.</p>
+
+</dd><dt><a name="rsa_=>_$rsa_(Required)">rsa =&gt; $rsa (Required)</a></dt>
+
+<dd>
+</dd><dt><a name="ec_=>_$ec_(Required)">ec =&gt; $ec (Required)</a></dt>
+
+<dd>
+<p>The RSA key of the certifciate.
+The value must be a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3ARSAKey" class="podlinkpod">Web::Transport::PKI::RSAKey</a> object.
+Exactly one of <code>rsa</code> and <code>ec</code> must be specified.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+</section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
+
+<p><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3AParser" class="podlinkpod">Web::Transport::PKI::Parser</a>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../../.." rel="top">Top</a>
+    </li><li><a href="../../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>

@@ -43,12 +43,17 @@
 <dd>
 <p>Create and return a default platform information object for mobile browsers.</p>
 
+</dd><dt id="$info_=_Web::Transport::PlatformInfo->new_nonbrowser"><code>$info = Web::Transport::PlatformInfo-&gt;<strong id="member-new_nonbrowser">new_nonbrowser</strong></code></dt>
+
+<dd>
+<p>Create and return a default platform information object for "non-browser" browsers. (In general this method should not be used. The <code>new_default</code> method is more appropriate for most user agents, including non-browser user agents.)</p>
+
 </dd><dt id="$info_=_Web::Transport::PlatformInfo->new_from_device_os_navigator_($device,_$os,_$navigator)"><code>$info = Web::Transport::PlatformInfo-&gt;<strong id="member-new_from_device_os_navigator">new_from_device_os_navigator</strong> ($device, $os, $navigator)</code></dt>
 
 <dd>
 <p>Create and return a platform information object.</p>
 
-<p>The first argument is the device type, i.e. <code>desktop</code> (desktop browsers), <code>tablet</code> (tablet browsers), or <code>mobile</code> (smartphone browsers). The second argument is the OS, i.e. <code>windows</code>, <code>mac</code>, <code>ios</code>, or <code>linux</code>. The third argument is the navigator compatibility mode, i.e. <code>chrome</code>, <code>webkit</code>, or <code>gecko</code>.</p>
+<p>The first argument is the device type, i.e. <code>desktop</code> (desktop browsers), <code>tablet</code> (tablet browsers), <code>mobile</code> (smartphone browsers), or <code>nonbrowser</code> (user agents incompatible with browsers). The second argument is the OS, i.e. <code>windows</code>, <code>mac</code>, <code>ios</code>, or <code>linux</code>. The third argument is the navigator compatibility mode, i.e. <code>chrome</code>, <code>webkit</code>, or <code>gecko</code>.</p>
 
 <p>If the arguments are invalid comabinations of values, an exception is thrown.</p>
 </dd>
@@ -60,7 +65,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2018-2019 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 

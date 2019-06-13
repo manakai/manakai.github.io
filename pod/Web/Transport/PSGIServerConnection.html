@@ -21,7 +21,7 @@
 <pre><code>  $psgi_app = sub { ... };
   tcp_server $host, $port, sub {
     my $con = Web::Transport::PSGIServerConnection
-        -&gt;new_from_app_and_ae_tcp_server_args ($psgi_app, [@_]);
+        -&gt;new_from_aeargs_and_opts ([@_], {psgi_app =&gt; $psgi_app});
     $con-&gt;completed-&gt;then (sub {
       warn "Client disconnected and PSGI application done";
     });
@@ -33,70 +33,9 @@
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>There are following methods:</p>
+<p>See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AGenericServerConnection#METHODS" class="podlinkpod">"METHODS" in Web::Transport::GenericServerConnection</a>.</p>
 
-<dl>
-<dt id="$con_=_Web::Transport::PSGIServerConnection->new_from_app_and_ae_tcp_server_args_($app,_[...],_NAME_=>_VALUE,_...)"><code>$con = Web::Transport::PSGIServerConnection-&gt;<strong id="member-new_from_app_and_ae_tcp_server_args">new_from_app_and_ae_tcp_server_args</strong> ($app, [...], NAME =&gt; VALUE, ...)</code></dt>
-
-<dd>
-<p>Create an object.</p>
-
-<p>The first argument must be a PSGI application, i.e. a code reference. See the PSGI specification for the requirements on the code reference.</p>
-
-<p>The second argument must be an array reference of the arguments received by the <code>AnyEvent::Socket::tcp_server</code>'s callback. That is, the filehandle of the socket, the remote host, and the remote port (if TCP). The socket can be of a TCP or UNIX socket domain.</p>
-
-<p>Additionally, options can be specified as key/value pairs.</p>
-
-<p>The <code>parent_id</code> option, if any, specifies the short string that identifies the "parent" context in which the connection appears, which will be used in debug outputs.</p>
-
-<p>The <code>state</code> option, if any, specifies the "server state" object which is shared among the PSGI application invocations on a same server session. (The definition of the "server session" is server application dependent.) The object is accessible as the <code>manakai.server.state</code> field value of the PSGI environment hash reference given to the PSGI applications. This object can be used to store objects whose lifetimes are longer than a request-response processing, such as connections to the database server. See the manakai PSGI extensions specification for more information.</p>
-
-</dd><dt id="$con->onexception_($code)"><code>$con-&gt;<strong id="member-onexception">onexception</strong> ($code)</code></dt>
-
-<dt id="$code_=_$con->onexception"><code>$code = $con-&gt;<strong>onexception</strong></code></dt>
-
-<dd>
-<p>Get or set the callback code reference that is invoked when an error is detected while interacting with the PSGI application such that the server returns an error response to the client.</p>
-
-<p>The callback has to be set as soon as the object has been created and it should not be changed later.</p>
-
-<p>The callback can return a promise, to delay the resolution of the <code>complated</code> promise until the promise is resolved or rejected.</p>
-
-</dd><dt id="$con->max_request_body_length_($integer)"><code>$con-&gt;<strong id="member-max_request_body_length">max_request_body_length</strong> ($integer)</code></dt>
-
-<dt id="$integer_=_$con->max_request_body_length"><code>$integer = $con-&gt;<strong>max_request_body_length</strong></code></dt>
-
-<dd>
-<p>Get or set the maximum length of the request body to be accepted by the server, in bytes. If <code>undef</code>, no limit is set.</p>
-
-<p>Note that the server loads the whole request body on memory, as the server has to notify the request body's length of the PSGI application at the time of invocation.</p>
-
-</dd><dt id="$promise_=_$con->completed"><code>$promise = $con-&gt;<strong id="member-completed">completed</strong></code></dt>
-
-<dd>
-<p>Return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) which will be resolved once the connection between the server and the client has been closed and the PSGI application has been completed.</p>
-
-<p>An invocation of PSGI application is considered as completed when either a complete response is returned by the PSGI application or the PSGI application invoked the <code>$writer-&gt;close</code> method, and the <code>psgix.exit_guard</code> condvar's callback is invoked.</p>
-
-</dd><dt id="$con->close_after_current_response_(timeout_=>_$seconds)"><code>$con-&gt;<strong id="member-close_after_current_response">close_after_current_response</strong> (timeout =&gt; $seconds)</code></dt>
-
-<dd>
-<p>Schedule to close the connection as soon as possible.</p>
-
-<p>If the connection is not used at the moment, it is immediately closed. Otherwise, the connection is closed after the response to the currently processed request is sent.</p>
-
-<p>The <code>timeout</code> option can be specified as a key/value pair. The option specifies the seconds of the timeout, whose default is <code>10</code> (seconds). If this option is set to an number greater than zero and the current response is not closed before that seconds have elapsed since the invocation of this method, the connection is aborted. The PSGI application is expected to return the whole response before this timeout.</p>
-
-<p>Please note that even when the connection is aborted because of the timeout, the <code>completed</code> promise is not resolved or rejected until the <code>psgix.exit_guard</code> condvar is fullfilled and any reference to the PSGI writer is destroyed. As the PSGI does not provide any way to abort the PSGI application, invocation of this method does not terminate any running PSGI application.</p>
-
-<p>This method can be used to gracefully terminate the server.</p>
-
-</dd><dt id="$string_=_$con->id"><code>$string = $con-&gt;<strong id="member-id">id</strong></code></dt>
-
-<dd>
-<p>A short string assigned to the server connection, which can be used for debugging purposes. It is composed from the <code>parent_id</code> option to the constructor, if any.</p>
-</dd>
-</dl>
+<p>Use of the method <code>new_from_app_and_ae_tcp_server_args</code> is deprecated. Use <code>new_from_aeargs_and_opts</code> instead.</p>
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 

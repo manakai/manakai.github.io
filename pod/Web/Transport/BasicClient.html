@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::BasicClient</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::BasicClient</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/BasicClient.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::BasicClient</code></h1><h2>A basic HTTP client</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  use Web::Transport::BasicClient;
+  $client = Web::Transport::BasicClient-&gt;new_from_host (q&lt;server.test&gt;);
+  
+  ## First request
+  $client-&gt;request (
+    url =&gt; Web::URL-&gt;parse_url (q&lt;https://server.test/p1&gt;), ...
+  )-&gt;then (sub {
+    my $res = $_[0];
+    warn $res-&gt;body_bytes;
+    
+    ## Second request
+    return $client-&gt;request (
+      url =&gt; Web::URL-&gt;parse_url (q&lt;https://server.test/p2&gt;), ...
+    );
+  })-&gt;then (sub {
+    return $client-&gt;close;
+  });</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::BasicClient</code> module is a connection-oriented HTTP client. It represents an HTTP connection between this client and an HTTP server and provides API to send requests and receive responses.</p>
+
+<p>It establishes an HTTP connection to the server when a request is sent. The connection is persisted until it is requested to close the connection by the application (via e.g. the <code>close</code> method) or the server has closed the connection, such that subsequent requests can reuse the connection. When a new request is asked to be sent nevertheless the connection has been closed by the server, another connection is established. In this way a <code>Web::Transport::BasicClient</code> object can be used until it is explicitly closed by <code>close</code> or <code>abort</code>.</p>
+
+<p>It can only be used to send requests to a specific origin. It does not support HTTP redirects by design.</p>
+
+</section><section id="METHODS"><h1>METHODS</h1>
+
+<p>There are following methods:</p>
+
+<dl>
+<dt id="$client_=_Web::Transport::BasicClient->new_from_host_($string[,_$opts])"><code>$client = Web::Transport::BasicClient-&gt;<strong id="member-new_from_host">new_from_host</strong> ($string[, $opts])</code></dt>
+
+<dd>
+<p>Create a new client object, which is associated with a origin (<code>https</code>, <var>$string</var>, <code>undef</code>). That is, a client for the specified host using HTTPS with port <code>443</code> is created.</p>
+
+<p>The first argument must be a string, which is either a domain, an IPv4 address, or an IPv6 address enclosed by <code>[</code> and <code>]</code>. They don't have to be in their canonicalized form. IDNs are also allowed.</p>
+
+<p>The second argument, if any, must be a client options (see <a href="#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS"</a>).</p>
+
+</dd><dt id="$client_=_Web::Transport::BasicClient->new_from_url_($url[,_$opts])"><code>$client = Web::Transport::BasicClient-&gt;<strong id="member-new_from_url">new_from_url</strong> ($url[, $opts])</code></dt>
+
+<dd>
+<p>Create a new client object, which is associated with a URL's origin and path.</p>
+
+<p>The first argument must be a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It's origin must be a tuple origin (typically an <code>http:</code> or <code>https:</code> URL).</p>
+
+<p>The path of the URL is used as the "prefix" of the URL path used for the requests (See <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>' <code>path</code>).</p>
+
+<p>Note that anything other than the origin and path of the URL is ignored.</p>
+
+<p>The second argument, if any, must be a client options (see <a href="#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS"</a>).</p>
+
+<p>Example:</p>
+
+<pre><code>  $client = Web::Transport::BasicClient-&gt;new_from_url
+      (Web::URL-&gt;parse_url (q&lt;https://server.test&gt;));
+  $client-&gt;request (path =&gt; []); # https://server.test/
+  $client-&gt;request (path =&gt; ['a', 'b']); # https://server.test/a/b
+  $client-&gt;request (url =&gt; Web::URL-&gt;parse_string (q&lt;https://server.test/x&gt;));</code></pre>
+
+<p>Example:</p>
+
+<pre><code>  $client = Web::Transport::BasicClient-&gt;new_from_url
+      (Web::URL-&gt;parse_url (q&lt;https://server.test/z&gt;));
+  $client-&gt;request (path =&gt; []); # https://server.test/z/
+  $client-&gt;request (path =&gt; ['a', 'b']); # https://server.test/z/a/b
+  $client-&gt;request (url =&gt; Web::URL-&gt;parse_string (q&lt;https://server.test/x&gt;));</code></pre>
+
+</dd><dt id="$promise_=_$client->request_(url_=>_...,_...,_stream_=>_$boolean)"><code>$promise = $client-&gt;<strong id="member-request">request</strong> (url =&gt; ..., ..., stream =&gt; $boolean)</code></dt>
+
+<dd>
+<p>Send a request and return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>), which is to be resolved with the result.</p>
+
+<p>The arguments are name/value pairs, as described in <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>. At minimum, the <code>url</code> argument must be specified. It is a URL record object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>). It must have same origin as the client's origin (i.e. the origin of the argument to the <code>new_from_url</code> method).</p>
+
+<p>The promise is resolved with a response (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AResponse" class="podlinkpod">Web::Transport::Response</a> object). If the request has failed (i.e. a network error; which is different from an error response), the promise is <b>rejected</b> with a response representing a network error. Otherwise, if the <code>stream</code> option is set to a true value, the promise is fulfilled with a response with a body stream. Otherwise, it is fulfilled with a response with a body bytes.</p>
+
+<p>This method creates an HTTP connection, if there is no existing connection, or the existing connection has terminated for some reason. Otherwise the existing connection is used to send the new request. If the connection is in use, the new request is delayed until any current and enqueued request has been processed unless HTTP/2 is available.</p>
+
+</dd><dt id="$promise_=_$client->close"><code>$promise = $client-&gt;<strong id="member-close">close</strong></code></dt>
+
+<dd>
+<p>Close any existing connection. This method must be explicitly invoked whenever the client has sent some request.</p>
+
+<p>If the connection is in use, it is closed only after any current and enqueued request are processed.</p>
+
+<p>This method returns a promise, which is resolved once any connection has been closed.</p>
+
+</dd><dt id="$promise_=_$client->abort_($reason)"><code>$promise = $client-&gt;<strong id="member-abort">abort</strong> ($reason)</code></dt>
+
+<dd>
+<p>Close any existing connection, aborting any currently processing or queued requests and responses. The client object is neuted.</p>
+
+<p>A Perl value can be specified as an optional argument, which represents the reason of the aborting. This is only used for the aid of the debugging and is never sent to the remote server.</p>
+
+<p>This method returns a promise, which is fulfilled once the connection has been closed.</p>
+
+</dd><dt id="$origin_=_$client->origin"><code>$origin = $client-&gt;<strong id="member-origin">origin</strong></code></dt>
+
+<dd>
+<p>Return the origin (<a href="https://metacpan.org/pod/Web%3A%3AOrigin" class="podlinkpod">Web::Origin</a>) of the connection.</p>
+</dd>
+</dl>
+
+</section><section id="CLIENT_OPTIONS"><h1>CLIENT OPTIONS</h1>
+
+<p>A <b>client options</b> is a hash reference with zero or more key/value pairs:</p>
+
+<dl>
+<dt id="proxy_manager_=>_$proxy_manager"><code>proxy_manager =&gt; $proxy_manager</code></dt>
+
+<dd>
+<p>The proxy manager used to establish connections (see <a href="https://metacpan.org/pod/Web%3A%3ATransport#PROXY_MANAGERS" class="podlinkpod">"PROXY MANAGERS" in Web::Transport</a>). If not defined, a proxy manager which takes standard environment variables (i.e. <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code>) into account (i.e. <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is used.</p>
+
+</dd><dt id="resolver_=>_$resolver"><code>resolver =&gt; $resolver</code></dt>
+
+<dd>
+<p>The name resolver used to establish connections (see <a href="https://metacpan.org/pod/Web%3A%3ATransport#RESOLVERS" class="podlinkpod">"RESOLVERS" in Web::Transport</a>). If not defined, a resolver using platform's name resolution API (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by in-memory DNS cache (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ACachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is used.</p>
+
+</dd><dt id="server_connection_=>_{url_=>_$http_url_record}"><code>server_connection =&gt; {url =&gt; $http_url_record}</code></dt>
+
+<dd>
+<p>The URL of the server connection. If a non-<code>undef</code> value is specified, it must be a hash reference whose <code>url</code> is a URL record (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>) whose <code>scheme</code> is <code>http</code>. If specified, the URL is used to establish a connection instead of the request URL.</p>
+
+<pre><code>  For example, if the request URL is &lt;http://website.test/&gt;, the
+  client would try to connect to the TCP server at website.test port
+  80, with the Host: header set to the value |website.test|.  However,
+  given the server connection URL &lt;http://backend.test/&gt; is also
+  specified, the client would try to connect to the TCP server at
+  backend.test host 80, still setting the Host: header value
+  |website.test|.  This feature can be used to implement a reverse
+  proxy.</code></pre>
+
+</dd><dt id="protocol_clock_=>_$clock"><code>protocol_clock =&gt; $clock</code></dt>
+
+<dd>
+<p>The clock object used for various protocol-level date-time operations (e.g. obtaining timestamps used in authentications). If not defined, a clock of <code>Web::DateTime::Clock-&gt;realtime_clock</code> is used.</p>
+
+<p>Please note that this clock cannot alter the value used by OpenSSL.</p>
+
+</dd><dt id="tls_options_=>_{...}"><code>tls_options =&gt; {...}</code></dt>
+
+<dd>
+<p>XXX</p>
+
+</dd><dt id="max_size_=>_$integer"><code>max_size =&gt; $integer</code></dt>
+
+<dd>
+<p>The maximum size of the (uncompressed) body of the response, in bytes. If not defined, the maximum is -1, i.e. no limit is set.</p>
+
+<p>If a non-negative number is specified and the response body is greater than the value, the connection is aborted as soon as possible after receiving the specified number of bytes.</p>
+
+</dd><dt id="debug_=>_$mode"><code>debug =&gt; $mode</code></dt>
+
+<dd>
+<p>The debug mode. If not defined, the <code>WEBUA_DEBUG</code> environment variable's value is used. See <code>WEBUA_DEBUG</code> section in <a href="https://metacpan.org/pod/Web%3A%3ATransport#ENVIRONMENT_VARIABLES" class="podlinkpod">"ENVIRONMENT VARIABLES" in Web::Transport</a> for available mode values.</p>
+
+</dd><dt id="parent_id_=>_$string"><code>parent_id =&gt; $string</code></dt>
+
+<dd>
+<p>A short string that identifies the "parent" context in which the client appears, which will be used in debug outputs.</p>
+
+</dd><dt id="last_resort_timeout_=>_$seconds"><code>last_resort_timeout =&gt; $seconds</code></dt>
+
+<dd>
+<p>The last-resort timeout value, in seconds. Most applications do not have to set this value. It is used to avoid the application blocked by a server which returns infinite response body. If your application has specific realtimeness requirement, use your own timer to abort the request, rather than reusing this timer. If the value is negative, no timer is enabled. If not defined, a value large enough for most normal requests is used.</p>
+</dd>
+</dl>
+
+<p>These options are also used by <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a>'s clients.</p>
+
+</section><section id="ENVIRONMENT_VARIABLES"><h1>ENVIRONMENT VARIABLES</h1>
+
+<p>See the <code>resolver</code> and <code>debug</code> options in the <a href="#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS"</a> section.</p>
+
+</section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
+
+<p>Web Transport Processing <code class="url">&lt;<a href="https://wiki.suikawiki.org/n/Web%20Transport%20Processing">https://wiki.suikawiki.org/n/Web%20Transport%20Processing</a>&gt;</code>.</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>
