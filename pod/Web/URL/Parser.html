@@ -91,6 +91,15 @@ which can be used as an input to the URL parser.</p>
     # $result = [
     #   ["https://example.com", "ttps://example.com"],
     # ];</code></pre>
+
+</dd><dt id="$html_=_$parser->text_to_autolinked_html_($text,_NAME_=>_VALUE)"><code>$html = $parser-&gt;<strong id="member-text_to_autolinked_html">text_to_autolinked_html</strong> ($text, NAME =&gt; VALUE)</code></dt>
+
+<dd>
+<p>Autolink URLs in a text.</p>
+
+<p>Arguments and how they are handled are same as the <code>split_by_urls</code>; the first argument is the text string that is parsed, and the remaining arguments are named parameters.</p>
+
+<p>Unlike <code>split_by_urls</code>, this method returns a text string, which is an HTML fragment (that is suitable as content of an HTML <code>span</code> element). URLs are replaced by an HTML <code>a</code> element with <code>class=url-link</code>. Any HTML special character in the input text is escaped as appropriate.</p>
 </dd>
 </dl>
 
@@ -104,7 +113,7 @@ which can be used as an input to the URL parser.</p>
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016-2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2019 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
