@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+      <link rel="stylesheet" href="../../../css/pod.css">
+      <meta name="viewport" content="width=device-width">
+
+      <title>Web::Transport::FindPort</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+  <nav class="breadcrumb">
+      <ul>
+        <li><a href="../../../docs" rel="up up up">Documents</a></li>
+        <li><a href="../../../pod/#modules" rel="up up">Perl modules</a></li>
+        <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
+        <li><a href="" rel="bookmark">Web::Transport::FindPort</a></li>
+      </ul>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/FindPort.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<hgroup><h1><code>Web::Transport::FindPort</code></h1><h2>Find a listenable TCP port</h2></hgroup><section id="SYNOPSIS"><h1>SYNOPSIS</h1>
+
+<pre><code>  use Web::Transport::FindPort;
+  warn find_listenable_port;</code></pre>
+
+</section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
+
+<p>The <code>Web::Transport::FindPort</code> module provides methods to obtain a TCP port number that can be listened by a new server process.</p>
+
+<p>This module is primary intended for use within test scripts where relevant servers need to be executed using random unused ports.</p>
+
+</section><section id="FUNCTION"><h1>FUNCTION</h1>
+
+<p>A function is exported by default:</p>
+
+<dl>
+<dt id="$port_=_find_listenable_port"><code>$port = find_listenable_port</code></dt>
+
+<dt id="$port_=_Web::Transport::FindPort::find_listenable_port"><code>$port = Web::Transport::FindPort::find_listenable_port</code></dt>
+
+<dd>
+<p>Returns a listenable TCP port number. If no port is available, the method dies.</p>
+
+<p>Please note that use of this function is, strictly speaking, racy. The returned port might not be really available for listening by the server process, if the port is listened by another process after the testing of this method.</p>
+</dd>
+</dl>
+
+</section><section id="HISTORY"><h1>HISTORY</h1>
+
+<p>This module was originally released as <a href="https://metacpan.org/pod/Net%3A%3ATCP%3A%3AFindPort" class="podlinkpod">Net::TCP::FindPort</a> version 1.0 (2010-08-05).</p>
+
+</section><section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2010 Hatena <code class="url">&lt;<a href="http://www.hatena.ne.jp/">http://www.hatena.ne.jp/</a>&gt;</code></p>
+
+<p>Copyright 2020 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
+  <p>The manakai project since 2002
+  </p><ul>
+    <li><a href="../../.." rel="top">Top</a>
+    </li><li><a href="../../../contact">Contact</a>
+  </li></ul>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-39820773-4', 'manakai.github.io');
+ga('send', 'pageview');
+</script>
+  </footer></body></html>
