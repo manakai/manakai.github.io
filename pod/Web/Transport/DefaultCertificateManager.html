@@ -41,11 +41,15 @@
 
 <p>The first argument must be a hash reference, which can contain zero or more name/value pairs of the options.</p>
 
-<p>If no option is specified, the platform (OpenSSL)'s default applies.</p>
+<p>The TLS implementation accepts two options for root CA certificates: <var>CAfile</var> (which is a path to certificate bundle file) and <var>CApath</var> (which is a path to certificate collection directory).</p>
 
-<p>Options <code>ca_cert</code>, <code>ca_file</code>, <code>ca_path</code>, <code>cert</code>, <code>cert_file</code>, <code>key</code>, and <code>key_file</code> can be specified. See <a href="https://metacpan.org/pod/AnyEvent%3A%3ATLS" class="podlinkpod">AnyEvent::TLS</a> for their semantics and possible values.</p>
+<p>The <code>ca_cert</code> option value must be a bundle of root CA certificates in the PEM file format, as a string, or a <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APKI%3A%3ACertificate" class="podlinkpod">Web::Transport::PKI::Certificate</a> object. The value, if specified, is used as a on-the-fly generated <var>CAfile</var> file's content.</p>
 
-<p>As described in <a href="https://metacpan.org/pod/AnyEvent%3A%3ATLS" class="podlinkpod">AnyEvent::TLS</a>, environment variables <code>PERL_ANYEVENT_CA_FILE</code> and <code>PERL_ANYEVENT_CA_PATH</code> are also relevant.</p>
+<p>The <code>ca_file</code> option value must be a <b>path</b> to the root CA certificates in the PEM file format. The value, if specified, is used a <var>CAfile</var>.</p>
+
+<p>If none of <code>ca_cert</code> and <code>ca_file</code> is specified, the root CA certificates maintained by Mozilla is used as <var>CAfile</var>.</p>
+
+<p>Options <code>cert</code>, <code>cert_file</code>, <code>key</code>, and <code>key_file</code> can be specified. See <a href="https://metacpan.org/pod/AnyEvent%3A%3ATLS" class="podlinkpod">AnyEvent::TLS</a> for their semantics and possible values.</p>
 
 <p>The certificate manager has no host-specific certificates for SNI-based selection.</p>
 
@@ -66,7 +70,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2018 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2018-2020 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
