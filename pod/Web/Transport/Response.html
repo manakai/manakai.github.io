@@ -72,6 +72,20 @@
 <dd>
 <p>Whether the WebSocket connection has been closed cleanly or not. This method can be used when the response does not represent a WebSocket connection close event (e.g. network error).</p>
 
+</dd><dt id="$value_bytes_=_$res->header_($name_bytes)"><code>$value_bytes = $res-&gt;<strong id="member-header">header</strong> ($name_bytes)</code></dt>
+
+<dd>
+<p>Returns the header value for the header name specified in the argument, as byte strings. If there are multiple headers with that name, their values are concatenated with <code>, </code> (0x2C 0x20). If there is no such header, <code>undef</code> is returned instead.</p>
+
+<p>This method is appropriate for most headers.</p>
+
+</dd><dt id="[$value_bytes,_...]_=_$res->header_all_($name_bytes)"><code>[$value_bytes, ...] = $res-&gt;<strong id="member-header_all">header_all</strong> ($name_bytes)</code></dt>
+
+<dd>
+<p>Returns the header value for the header name specified in the argument, as an array reference of header values as byte strings, preserving the order in the headers. If there is no such header, an empty array reference is returned.</p>
+
+<p>This method is appropriate for limited kinds of headers, such as <code>Set-Cookie</code>.</p>
+
 </dd><dt id="$bytes_=_$res->body_bytes"><code>$bytes = $res-&gt;<strong id="member-body_bytes">body_bytes</strong></code></dt>
 
 <dd>
@@ -110,7 +124,7 @@
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016-2017 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2020 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
