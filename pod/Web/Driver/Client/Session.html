@@ -214,15 +214,32 @@ or with <code>undef</code> if <code>selector</code> selects no element (or to be
 
 <p>Zero or more options can be specified as name/value pair arguments.</p>
 
-<p>If the <code>selector</code> option is specified,
+<p>If the <code>element</code> option is specified,
+an element screenshot of the element is taken.
+The value must be a Web element hash reference.</p>
+
+<p>Otherwise,
+if the <code>selector</code> option is specified,
 an element screenshot of the element selected by the value is taken.
-The value must be a character string of the group of selectors.
-Otherwise,
-a window screenshot is taken.
-If the WebDriver server does not support Take Element Screenshot command,
-this option is ignored.</p>
+The value must be a character string of the group of selectors.</p>
+
+<p>Otherwise,
+a window screenshot is taken.</p>
+
+<p>If the WebDriver server does not support Take Element Screenshot command,
+<code>element</code> and <code>selector</code> options are ignored and fallbacked to the window screenshot.</p>
 
 <p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the byte string of the screenshot image data (or to be rejected with an error).</p>
+
+</dd><dt id="$promise_=_$session->set_window_dimension_($width,_$height)"><code>$promise = $session-&gt;<strong id="member-set_window_dimension">set_window_dimension</strong> ($width,
+$height)</code></dt>
+
+<dd>
+<p>Set the window's width and height.
+The first argument must be the number of pixels of the window's width.
+The second argument must be the number of pixels of the window's height.</p>
+
+<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the request is processed.</p>
 
 </dd><dt id="$promise_=_$session->switch_to_frame_by_selector_($selector)"><code>$promise = $session-&gt;<strong id="member-switch_to_frame_by_selector">switch_to_frame_by_selector</strong> ($selector)</code></dt>
 
@@ -307,7 +324,7 @@ Segments <code>session</code> and the session ID is prepended before these segme
 
 </section><section id="LICENSE"><h1>LICENSE</h1>
 
-<p>Copyright 2016-2019 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2016-2020 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>Copyright 2017 OND Inc.
 <code class="url">&lt;<a href="https://ond-inc.com/">https://ond-inc.com/</a>&gt;</code>.</p>
