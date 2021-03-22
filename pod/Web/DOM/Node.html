@@ -24,7 +24,7 @@ It is used as subclasses such as <code>Web::DOM::Element</code> and <code>Web::D
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>In addition to the methods of the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AEventTarget" class="podlinkpod">Web::DOM::EventTarget</a> class,
+<p>In addition to the methods of the <a href="../../../pod/Web/DOM/EventTarget" class="podlinkpod">Web::DOM::EventTarget</a> class,
 following methods are available:</p>
 
 <dl>
@@ -57,14 +57,14 @@ it is appended to the context object. <cite class="ref">[<a href="#MANAKAI">MANA
 <dd>
 <p>Return the base URL of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#HTML">HTML</a>]</cite> <cite class="ref">[<a href="#DOMDTDEF">DOMDTDEF</a>]</cite></p>
 
-<p>See also <a href="https://metacpan.org/pod/Web%3A%3ADOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
+<p>See also <a href="../../../pod/Web/DOM#DEPENDENCY" class="podlinkpod">"DEPENDENCY" in Web::DOM</a>.</p>
 
 </dd><dt id="$node_list_=_$node->child_nodes"><code>$node_list = $node-&gt;<strong id="member-child_nodes">child_nodes</strong></code></dt>
 
 <dd>
 <p>Return the live list,
 i.e.
-<a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANodeList" class="podlinkpod">Web::DOM::NodeList</a>,
+<a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a>,
 of the child nodes of the node. <cite class="ref">[<a href="#DOM">DOM</a>]</cite></p>
 
 </dd><dt id="$node2_=_$node->clone_node_($deep)"><code>$node2 = $node-&gt;<strong id="member-clone_node">clone_node</strong> ($deep)</code></dt>
@@ -195,7 +195,7 @@ If there is no child,
 <dt id="$node->node_value_($text)"><code>$node-&gt;<strong>node_value</strong> ($text)</code></dt>
 
 <dd>
-<p>Get or set the value of the node. For <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ACharacterData" class="podlinkpod">Web::DOM::CharacterData</a> objects, this is equivalent to the <code>data</code> method. For <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AAttr" class="podlinkpod">Web::DOM::Attr</a> objects, this is equivalent to the <code>value</code> method. For other kinds of nodes, this method has no effect. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
+<p>Get or set the value of the node. For <a href="../../../pod/Web/DOM/CharacterData" class="podlinkpod">Web::DOM::CharacterData</a> objects, this is equivalent to the <code>data</code> method. For <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a> objects, this is equivalent to the <code>value</code> method. For other kinds of nodes, this method has no effect. <cite class="ref">[<a href="#DOM">DOM</a>]</cite> <cite class="ref">[<a href="#DOMATTREXODUS">DOMATTREXODUS</a>]</cite></p>
 
 </dd><dt id="$node->normalize"><code>$node-&gt;<strong id="member-normalize">normalize</strong></code></dt>
 
@@ -265,13 +265,13 @@ If there is no child,
 
 <p>Following methods are also available: <code>attributes</code>, <code>has_attributes</code>, <code>prefix</code>, <code>namespace_uri</code>, <code>local_name</code>, and <code>manakai_local_name</code>. <cite class="ref">[<a href="#DOMNODEEXODUS">DOMNODEEXODUS</a>]</cite> <cite class="ref">[<a href="#MANAKAI">MANAKAI</a>]</cite></p>
 
-<p>Any <code>Node</code> object is an instance of one of its subclasses. For example, a <code>Node</code> object whose <code>node_type</code> is <code>ELEMENT_NODE</code> is an instance of <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AElement" class="podlinkpod">Web::DOM::Element</a>. There are following subclasses:</p>
+<p>Any <code>Node</code> object is an instance of one of its subclasses. For example, a <code>Node</code> object whose <code>node_type</code> is <code>ELEMENT_NODE</code> is an instance of <a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>. There are following subclasses:</p>
 
-<p><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AElement" class="podlinkpod">Web::DOM::Element</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocumentType" class="podlinkpod">Web::DOM::DocumentType</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocumentFragment" class="podlinkpod">Web::DOM::DocumentFragment</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ACharacterData" class="podlinkpod">Web::DOM::CharacterData</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AAttr" class="podlinkpod">Web::DOM::Attr</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AEntity" class="podlinkpod">Web::DOM::Entity</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANotation" class="podlinkpod">Web::DOM::Notation</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>, and <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AAttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a>.</p>
+<p><a href="../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a>, <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a>, <a href="../../../pod/Web/DOM/DocumentType" class="podlinkpod">Web::DOM::DocumentType</a>, <a href="../../../pod/Web/DOM/DocumentFragment" class="podlinkpod">Web::DOM::DocumentFragment</a>, <a href="../../../pod/Web/DOM/CharacterData" class="podlinkpod">Web::DOM::CharacterData</a>, <a href="../../../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a>, <a href="../../../pod/Web/DOM/Entity" class="podlinkpod">Web::DOM::Entity</a>, <a href="../../../pod/Web/DOM/Notation" class="podlinkpod">Web::DOM::Notation</a>, <a href="../../../pod/Web/DOM/ElementTypeDefinition" class="podlinkpod">Web::DOM::ElementTypeDefinition</a>, and <a href="../../../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a>.</p>
 
 </section><section id="CONSTANTS"><h1>CONSTANTS</h1>
 
-<p>Constants are exported from the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANode" class="podlinkpod">Web::DOM::Node</a> module by default. In addition, they are accessible as methods of <code>Node</code> objects.</p>
+<p>Constants are exported from the <a href="../../../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a> module by default. In addition, they are accessible as methods of <code>Node</code> objects.</p>
 
 <dl>
 <dt id="Node_type_constants">Node type constants</dt>
@@ -349,7 +349,7 @@ If there is no child,
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANodeList" class="podlinkpod">Web::DOM::NodeList</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AHTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a>, <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>.</p>
+<p><a href="../../../pod/Web/DOM/NodeList" class="podlinkpod">Web::DOM::NodeList</a>, <a href="../../../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a>, <a href="../../../pod/Web/DOM/NamedNodeMap" class="podlinkpod">Web::DOM::NamedNodeMap</a>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 

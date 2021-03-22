@@ -48,57 +48,57 @@
 </dd><dt id="$dt_=_$parser->parse_html_datetime_value_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_html_datetime_value">parse_html_datetime_value</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML <code>time</code> element datetime value [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a>, <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ATimeZone" class="podlinkpod">Web::DateTime::TimeZone</a>, or <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> object (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML <code>time</code> element datetime value [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a>, <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a>, or <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> object (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>time</code> element's <code>datetime</code> attribute or element content.</p>
 
 </dd><dt id="$dt_=_$parser->parse_global_date_and_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_global_date_and_time_string">parse_global_date_and_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML global date and time string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML global date and time string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>&lt;input type=datetime&gt;</code>.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_date_time_stamp_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_date_time_stamp_string">parse_xs_date_time_stamp_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:dateTimeStamp</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:dateTimeStamp</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_local_date_and_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_local_date_and_time_string">parse_local_date_and_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML local date and time string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML local date and time string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>&lt;input type=datetime-local&gt;</code>.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_date_time_string">parse_xs_date_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:dateTime</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:dateTime</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_schema_org_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_schema_org_date_time_string">parse_schema_org_date_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an <code>http://schema.org/DateTime</code> string [SCHEMAORG] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an <code>http://schema.org/DateTime</code> string [SCHEMAORG] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
-<p>The format might support leap seconds, but the <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> module does not support leap seconds. If a leap second is specified, a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> object representing the second just before the leap second is returned.</p>
+<p>The format might support leap seconds, but the <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> module does not support leap seconds. If a leap second is specified, a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the second just before the leap second is returned.</p>
 
 </dd><dt id="$dt_=_$parser->parse_ogp_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_ogp_date_time_string">parse_ogp_date_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an OGP DateTime string [OGP] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an OGP DateTime string [OGP] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_rfc3339_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_rfc3339_date_time_string">parse_rfc3339_date_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an RFC 3339 <code>date-time</code> string [RFC3339] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an RFC 3339 <code>date-time</code> string [RFC3339] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
-<p>The RFC 3339 format does support leap seconds, but the <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> module does not support leap seconds. If a leap second is specified, a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> object representing the second just before the leap second is returned.</p>
+<p>The RFC 3339 format does support leap seconds, but the <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> module does not support leap seconds. If a leap second is specified, a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> object representing the second just before the leap second is returned.</p>
 
 </dd><dt id="$dt_=_$parser->parse_rfc3339_xs_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_rfc3339_xs_date_time_string">parse_rfc3339_xs_date_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an RFC 3339 <code>date-time</code> string [RFC3339], applying constraints of XML Schema <code>xs:dateTime</code> datatype [XSDT], and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an RFC 3339 <code>date-time</code> string [RFC3339], applying constraints of XML Schema <code>xs:dateTime</code> datatype [XSDT], and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values in Atom 1.0 Date construct.</p>
 
@@ -119,7 +119,7 @@
 </dd><dt id="$dt_=_$parser->parse_http_date_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_http_date_string">parse_http_date_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an <code>HTTP-date</code> string [HTTP], using the parsing rules in RFC 6265 [COOKIES], and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an <code>HTTP-date</code> string [HTTP], using the parsing rules in RFC 6265 [COOKIES], and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>Leap seconds are treated as invalid second values, which is a willful violation to RFC 7231.</p>
 
@@ -128,43 +128,43 @@
 </dd><dt id="$dt_=_$parser->parse_rss2_date_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_rss2_date_time_string">parse_rss2_date_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an RFC 822 <code>date-time</code> string used in RSS 2.0 document [RFC822] [RSS2] [RSS2BP], and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an RFC 822 <code>date-time</code> string used in RSS 2.0 document [RFC822] [RSS2] [RSS2BP], and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values in RSS 2.0 elements. This method is <b>NOT</b> suitable for dates in e-mail, netnews, or HTTP headers.</p>
 
 </dd><dt id="$dt_=_$parser->parse_date_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_date_string">parse_date_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML date string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML date string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>&lt;input type=date&gt;</code>.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_date_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_date_string">parse_xs_date_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:date</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:date</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_iso8601_date_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_iso8601_date_string">parse_iso8601_date_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an ISO 8601:2004 date representation [ISO8601] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an ISO 8601:2004 date representation [ISO8601] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for microdata <code>http://schema.org/Date</code> item values and date item values in data-vocabulary.org microdata vocabulary.</p>
 
 </dd><dt id="$dt_=_$parser->parse_ymd_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_ymd_string">parse_ymd_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an YMD string in the Gregorian calendar [DATETIME] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an YMD string in the Gregorian calendar [DATETIME] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_julian_ymd_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_julian_ymd_string">parse_julian_ymd_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an YMD string in the Julian calendar [DATETIME] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an YMD string in the Julian calendar [DATETIME] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_date_string_with_optional_time_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_date_string_with_optional_time">parse_date_string_with_optional_time</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML date string with optional time [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML date string with optional time [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values in HTML <code>&lt;ins datetime=""&gt;</code> and <code>&lt;del datetime=""</code> attributes.</p>
 
@@ -176,131 +176,131 @@
 </dd><dt id="$dt_=_$parser->parse_w3c_dtf_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_w3c_dtf_string">parse_w3c_dtf_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as a so-called W3C-DTF string [W3CDTF] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as a so-called W3C-DTF string [W3CDTF] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values in Atom 0.3 Date construct and RSS 1.0 <code>dc:date</code> elements.</p>
 
 </dd><dt id="$dt_=_$parser->parse_year_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_year_string">parse_year_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as a year string in HTML and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as a year string in HTML and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_g_year_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_g_year_string">parse_xs_g_year_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:gYear</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:gYear</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_manakai_year_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_manakai_year_string">parse_manakai_year_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as a year string in manakai Date and Time specification [DATETIME] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as a year string in manakai Date and Time specification [DATETIME] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_month_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_month_string">parse_month_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML month string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML month string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>&lt;input type=month&gt;</code>.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_g_year_month_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_g_year_month_string">parse_xs_g_year_month_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:gYearMonth</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:gYearMonth</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_yearless_date_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_yearless_date_string">parse_yearless_date_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML yearless date string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year of the returned object is set to 2000. Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML yearless date string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year of the returned object is set to 2000. Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_g_month_day_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_g_month_day_string">parse_xs_g_month_day_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:gMonthDay</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year of the returned object is set to 2000. Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:gMonthDay</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year of the returned object is set to 2000. Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_g_month_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_g_month_string">parse_xs_g_month_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:gMonth</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year of the returned object is set to 2000. Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:gMonth</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year of the returned object is set to 2000. Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_g_day_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_g_day_string">parse_xs_g_day_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:gDay</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year and month of the returned object is set to 2000 and 1, respectively. Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:gDay</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Year and month of the returned object is set to 2000 and 1, respectively. Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$dt_=_$parser->parse_week_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_week_string">parse_week_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML week string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML week string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>&lt;input type=week&gt;</code>.</p>
 
 </dd><dt id="$dt_=_$parser->parse_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_time_string">parse_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML time string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML time string [HTML] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for values from HTML <code>&lt;input type=time&gt;</code>.</p>
 
 </dd><dt id="$dt_=_$parser->parse_xs_time_string_($string)"><code>$dt = $parser-&gt;<strong id="member-parse_xs_time_string">parse_xs_time_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:time</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:time</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 <p>This method is suitable for microdata <code>http://schema.org/Time</code> item value.</p>
 
 </dd><dt id="$tz_=_$parser->parse_time_zone_offset_string_($string)"><code>$tz = $parser-&gt;<strong id="member-parse_time_zone_offset_string">parse_time_zone_offset_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML time-zone offset string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ATimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML time-zone offset string [HTML] and return a <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$tz_=_$parser->parse_vcard_time_zone_offset_string_($string)"><code>$tz = $parser-&gt;<strong id="member-parse_vcard_time_zone_offset_string">parse_vcard_time_zone_offset_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as a time-zone offset string used in vCard <code>tz</code> item value [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ATimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as a time-zone offset string used in vCard <code>tz</code> item value [HTML] and return a <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$duration_=_$parser->parse_duration_string_($string)"><code>$duration = $parser-&gt;<strong id="member-parse_duration_string">parse_duration_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML duration string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML duration string [HTML] and return a <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$duration_=_$parser->parse_vevent_duration_string_($string)"><code>$duration = $parser-&gt;<strong id="member-parse_vevent_duration_string">parse_vevent_duration_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an HTML vevent duration string [HTML] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an HTML vevent duration string [HTML] and return a <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$duration_=_$parser->parse_xs_duration_string_($string)"><code>$duration = $parser-&gt;<strong id="member-parse_xs_duration_string">parse_xs_duration_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:duration</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:duration</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$duration_=_$parser->parse_xs_day_time_duration_string_($string)"><code>$duration = $parser-&gt;<strong id="member-parse_xs_day_time_duration_string">parse_xs_day_time_duration_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:dayTimeDuration</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:dayTimeDuration</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$duration_=_$parser->parse_xs_year_month_duration_string_($string)"><code>$duration = $parser-&gt;<strong id="member-parse_xs_year_month_duration_string">parse_xs_year_month_duration_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an XML Schema <code>xs:yearMonthDuration</code> string [XSDT] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an XML Schema <code>xs:yearMonthDuration</code> string [XSDT] and return a <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
 </dd><dt id="$duration_=_$parser->parse_iso8601_duration_string_($string)"><code>$duration = $parser-&gt;<strong id="member-parse_iso8601_duration_string">parse_iso8601_duration_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as an ISO 8601:2004 duration string [ISO8601] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as an ISO 8601:2004 duration string [ISO8601] and return a <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 
-<p>Strictly speaking, ISO 8601 has different semantics for durations from those of <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ADuration" class="podlinkpod">Web::DateTime::Duration</a>. The method returns a duration object which consist of numbers of months and seconds by assuming that <code>P1Y</code> is equal to <code>P12M</code>; <code>P1W</code> is equal to <code>P7D</code>, <code>P1D</code> is equal to <code>PT24H</code>, <code>PT1H</code> is equal to <code>PT60M</code>, and <code>PT1M</code> is equal to <code>PT60S</code>; and a duration in alternative format equals to number of seconds represented by it.</p>
+<p>Strictly speaking, ISO 8601 has different semantics for durations from those of <a href="../../../pod/Web/DateTime/Duration" class="podlinkpod">Web::DateTime::Duration</a>. The method returns a duration object which consist of numbers of months and seconds by assuming that <code>P1Y</code> is equal to <code>P12M</code>; <code>P1W</code> is equal to <code>P7D</code>, <code>P1D</code> is equal to <code>PT24H</code>, <code>PT1H</code> is equal to <code>PT60M</code>, and <code>PT1M</code> is equal to <code>PT60S</code>; and a duration in alternative format equals to number of seconds represented by it.</p>
 
 <p>This method is suitable for microdata <code>http://schema.org/Duration</code> item values and date item values in data-vocabulary.org microdata vocabulary.</p>
 
 </dd><dt id="$obj_=_$parser->parse_date_string_with_optional_time_and_duration_($string)"><code>$obj = $parser-&gt;<strong id="member-parse_date_string_with_optional_time_and_duration">parse_date_string_with_optional_time_and_duration</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as either a valid date string, a valid global date and time string, a pair of two valid global date and time strings, or a pair of a valid global date and time string and a valid vevent duration string, and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime" class="podlinkpod">Web::DateTime</a> or <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3AInterval" class="podlinkpod">Web::DateTime::Interval</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler. This method can be used to parse the value of the vEvent microdata's <code>rdate</code> item value [HTML].</p>
+<p>Parse the argument as either a valid date string, a valid global date and time string, a pair of two valid global date and time strings, or a pair of a valid global date and time string and a valid vevent duration string, and return a <a href="../../../pod/Web/DateTime" class="podlinkpod">Web::DateTime</a> or <a href="../../../pod/Web/DateTime/Interval" class="podlinkpod">Web::DateTime::Interval</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler. This method can be used to parse the value of the vEvent microdata's <code>rdate</code> item value [HTML].</p>
 
 </dd><dt id="$wr_=_$parser->parse_weekly_time_range_string_($string)"><code>$wr = $parser-&gt;<strong id="member-parse_weekly_time_range_string">parse_weekly_time_range_string</strong> ($string)</code></dt>
 
 <dd>
-<p>Parse the argument as a weekly time range string [SCHEMAORG] and return a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3AWeeklyTimeRange" class="podlinkpod">Web::DateTime::WeeklyTimeRange</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
+<p>Parse the argument as a weekly time range string [SCHEMAORG] and return a <a href="../../../pod/Web/DateTime/WeeklyTimeRange" class="podlinkpod">Web::DateTime::WeeklyTimeRange</a> (or <code>undef</code> if failed). Any error is reported through the <code>onerror</code> handler.</p>
 </dd>
 </dl>
 

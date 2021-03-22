@@ -28,17 +28,17 @@
 <p>Also, there are following modules in the <code>perl-web-encodings</code> repository:</p>
 
 <dl>
-<dt><a href="https://metacpan.org/pod/Web%3A%3AEncoding%3A%3AUnivCharDet" class="podlinkpod">Web::Encoding::UnivCharDet</a></dt>
+<dt><a href="../pod/Web/Encoding/UnivCharDet" class="podlinkpod">Web::Encoding::UnivCharDet</a></dt>
 
 <dd>
 <p>The universalchardet (or universal detector) implementation in Perl, which can be used to implement HTML parsers.</p>
 
-</dd><dt><a href="https://metacpan.org/pod/Web%3A%3AEncoding%3A%3ANormalization" class="podlinkpod">Web::Encoding::Normalization</a></dt>
+</dd><dt><a href="../pod/Web/Encoding/Normalization" class="podlinkpod">Web::Encoding::Normalization</a></dt>
 
 <dd>
 <p>Implementation of Unicode's string normalization algorithms, i.e. NFC, NFD, NFKC, and NFKD.</p>
 
-</dd><dt><a href="https://metacpan.org/pod/Web%3A%3AEncoding%3A%3APreload" class="podlinkpod">Web::Encoding::Preload</a></dt>
+</dd><dt><a href="../pod/Web/Encoding/Preload" class="podlinkpod">Web::Encoding::Preload</a></dt>
 
 <dd>
 <p>Preloading encoding modules and data files.</p>
@@ -95,7 +95,7 @@
 
 <p>For the purpose of this module, the <b>key</b> of the encoding is a short string uniquly identifying the encoding. It is a lowercased variant of the encoding name [ENCODING].</p>
 
-<p>Note that the encoding names in the Encoding Standard are not compatible with Perl <a href="https://metacpan.org/pod/Encode" class="podlinkpod">Encode</a> module's encoding names.</p>
+<p>Note that the encoding names in the Encoding Standard are not compatible with Perl <a href="http://search.cpan.org/dist/Encode/Encode.pm" class="podlinkpod">Encode</a> module's encoding names.</p>
 
 </section><section id="Encoders_and_decoders"><h1>Encoders and decoders</h1>
 
@@ -143,7 +143,7 @@
 
 <p>Any bad byte is replaced by U+FFFD characters without failure.</p>
 
-<p>This function is equivalent to the following code using <a href="https://metacpan.org/pod/Web%3A%3AEncoding%3A%3ADecoder" class="podlinkpod">Web::Encoding::Decoder</a>:</p>
+<p>This function is equivalent to the following code using <a href="../pod/Web/Encoding/Decoder" class="podlinkpod">Web::Encoding::Decoder</a>:</p>
 
 <pre><code>  $decoder = Web::Encoding::Decoder-&gt;new_from_encoding_key ($key);
   $decoder-&gt;ignore_bom (1);
