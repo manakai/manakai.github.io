@@ -484,9 +484,9 @@ for my $repo (@repo) {
     my $has_pod = {};
     my $lib_path = $repo_path->child ('lib');
     my $iter = $lib_path->iterator ({recurse => 1});
-    while (my $_ = $iter->()) {
-      next unless /\.(?:pm|pod)$/;
-      my $path = $_->relative ($lib_path);
+    while (my $x = $iter->()) {
+      next unless $x =~ /\.(?:pm|pod)$/;
+      my $path = $x->relative ($lib_path);
       my $name = $path->stringify;
       $name =~ s/\.(pm|pod)$//;
       $has_pod->{$name}->{$1} = $1;
@@ -513,9 +513,9 @@ for my $repo (@repo) {
     my $has_pod = {};
     my $bin_path = $repo_path->child ('bin');
     my $iter = $bin_path->iterator ({recurse => 1});
-    while (my $_ = $iter->()) {
-      next unless /\.(?:pl|pod)$/;
-      my $path = $_->relative ($bin_path);
+    while (my $x = $iter->()) {
+      next unless $x =~ /\.(?:pl|pod)$/;
+      my $path = $x->relative ($bin_path);
       my $name = $path->stringify;
       $name =~ s/\.(pl|pod)$//;
       $has_pod->{$name}->{$1} = $1;
