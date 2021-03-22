@@ -1,5 +1,7 @@
 {
-  "travisci": {},
+  "travisci": {
+    "empty": true
+  },
   "circleci": {
     "merger": 1,
     "gaa": 1
