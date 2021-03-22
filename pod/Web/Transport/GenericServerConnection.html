@@ -22,12 +22,12 @@
 There are these subclasses:</p>
 
 <dl>
-<dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a></dt>
+<dt><a href="../../../pod/Web/Transport/PSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a></dt>
 
 <dd>
 <p>A PSGI Web application server API</p>
 
-</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a></dt>
+</dd><dt><a href="../../../pod/Web/Transport/ProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a></dt>
 
 <dd>
 <p>An HTTP proxy server API</p>
@@ -48,7 +48,7 @@ $opts)</code></dt>
 <p>Create and return a server connection object,
 wrapping server's socket.</p>
 
-<p>The class can be either <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a> or <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a>.</p>
+<p>The class can be either <a href="../../../pod/Web/Transport/PSGIServerConnection" class="podlinkpod">Web::Transport::PSGIServerConnection</a> or <a href="../../../pod/Web/Transport/ProxyServerConnection" class="podlinkpod">Web::Transport::ProxyServerConnection</a>.</p>
 
 <p>The first argument must be an array reference of the arguments received by the <code>AnyEvent::Socket::tcp_server</code>'s callback.
 That is,
@@ -84,13 +84,13 @@ See the PSGI specification for the requirements on the code reference.</p>
 
 <dd>
 <p>A request handler code reference.
-See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection#REQUEST_HANDLER" class="podlinkpod">"REQUEST HANDLER" in Web::Transport::ProxyServerConnection</a>.</p>
+See <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3AProxyServerConnection#REQUEST_HANDLER" class="podlinkpod">"REQUEST HANDLER" in Web::Transport::ProxyServerConnection</a>.</p>
 
 </dd><dt><a name="handle_response_=>_$code_(proxy_server_only)">handle_response =&gt; $code (proxy server only)</a></dt>
 
 <dd>
 <p>A response handler code reference.
-See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AProxyServerConnection#RESPONSE_HANDLER" class="podlinkpod">"RESPONSE HANDLER" in Web::Transport::ProxyServerConnection</a>.</p>
+See <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3AProxyServerConnection#RESPONSE_HANDLER" class="podlinkpod">"RESPONSE HANDLER" in Web::Transport::ProxyServerConnection</a>.</p>
 
 </dd><dt><a name="max_request_body_length_=>_$integer_(PSGI_server_only)">max_request_body_length =&gt; $integer (PSGI server only)</a></dt>
 
@@ -129,7 +129,7 @@ the default value is used.</p>
 <dd>
 <p>The client options for the connections to the upstream server.</p>
 
-<p>Client options are same as those for the <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> (see <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS" in Web::Transport::BasicClient</a>),
+<p>Client options are same as those for the <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> (see <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3ABasicClient#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS" in Web::Transport::BasicClient</a>),
 with following exceptions: The <code>debug</code> option's default value is <i>$opts</i>' <code>debug</code> option's value.
 The <code>last_resort_timeout</code> option's default value is <code>-1</code>.
 The <code>parent_id</code> option is not available and is set to appropriate value by the proxy.</p>
@@ -140,7 +140,7 @@ The <code>parent_id</code> option is not available and is set to appropriate val
 <p>The debug mode.
 If not defined,
 the <code>WEBSERVER_DEBUG</code> environment variable's value is used.
-See <code>WEBSERVER_DEBUG</code> section in <a href="https://metacpan.org/pod/Web%3A%3ATransport#ENVIRONMENT_VARIABLES" class="podlinkpod">"ENVIRONMENT VARIABLES" in Web::Transport</a> for available mode values.</p>
+See <code>WEBSERVER_DEBUG</code> section in <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport#ENVIRONMENT_VARIABLES" class="podlinkpod">"ENVIRONMENT VARIABLES" in Web::Transport</a> for available mode values.</p>
 
 </dd><dt><a name="parent_id_=>_$string">parent_id =&gt; $string</a></dt>
 
@@ -165,7 +165,7 @@ to delay the resolution of the <code>complated</code> promise until the promise 
 </dd><dt id="$promise_=_$con->completed"><code>$promise = $con-&gt;<strong id="member-completed">completed</strong></code></dt>
 
 <dd>
-<p>Return a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) which will be resolved once the connection between the server and the client has been closed and the PSGI application or the upstream connection has been completed.</p>
+<p>Return a promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a>) which will be resolved once the connection between the server and the client has been closed and the PSGI application or the upstream connection has been completed.</p>
 
 <p>An invocation of PSGI application is considered as completed when either a complete response is returned by the PSGI application or the PSGI application invoked the <code>$writer-&gt;close</code> method,
 and the <code>psgix.exit_guard</code> condvar's callback is invoked.</p>

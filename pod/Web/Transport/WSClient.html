@@ -67,7 +67,7 @@
 <dd>
 <p>Connect to a WebSocket server. The URL of the server, as well as various connection parameters, has to be specified as named arguments.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a> object), which is resolved with a response object (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AResponse" class="podlinkpod">Web::Transport::Response</a> object) when the connection is closed. (If the connection has failed, the promise is resolved with a response object representing the failure. If any argument to the method is incorrect, the promise is rejected.)</p>
+<p>It returns a promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a> object), which is resolved with a response object (<a href="../../../pod/Web/Transport/Response" class="podlinkpod">Web::Transport::Response</a> object) when the connection is closed. (If the connection has failed, the promise is resolved with a response object representing the failure. If any argument to the method is incorrect, the promise is rejected.)</p>
 
 <p>Following key/value pairs, including required <code>url</code> and <code>cb</code> options, are available as named arguments:</p>
 
@@ -75,7 +75,7 @@
 <dt><a name="url_=>_$url">url =&gt; $url</a></dt>
 
 <dd>
-<p>Specify the URL (a <a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a> object) of the WebSocket server. Its scheme must be <code>wss</code> or <code>ws</code>.</p>
+<p>Specify the URL (a <a href="http://search.cpan.org/perldoc?Web%3A%3AURL" class="podlinkpod">Web::URL</a> object) of the WebSocket server. Its scheme must be <code>wss</code> or <code>ws</code>.</p>
 
 <p>This option is required.</p>
 
@@ -103,17 +103,17 @@
 </dd><dt><a name="superreload_=>_$boolean">superreload =&gt; $boolean</a></dt>
 
 <dd>
-<p>See <a href="https://metacpan.org/pod/Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>.</p>
+<p>See <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport#REQUEST_OPTIONS" class="podlinkpod">"REQUEST OPTIONS" in Web::Transport</a>.</p>
 
 </dd><dt><a name="proxy_manager_=>_$pm">proxy_manager =&gt; $pm</a></dt>
 
 <dd>
-<p>Specify the proxy manager used to establish the connection. By default, a proxy manager which takes standard environment variables into account (i.e. <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is set as the proxy manager.</p>
+<p>Specify the proxy manager used to establish the connection. By default, a proxy manager which takes standard environment variables into account (i.e. <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>) is set as the proxy manager.</p>
 
 </dd><dt><a name="resolver_=>_$resolver">resolver =&gt; $resolver</a></dt>
 
 <dd>
-<p>Specify the name resolver used to establish the connection. By default, a resolver using system's name resolution API (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by DNS caching (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ACachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is set as the resolver.</p>
+<p>Specify the name resolver used to establish the connection. By default, a resolver using system's name resolution API (<a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3APlatformResolver" class="podlinkpod">Web::Transport::PlatformResolver</a>) wrapped by DNS caching (<a href="http://search.cpan.org/perldoc?Web%3A%3ATransport%3A%3ACachedResolver" class="podlinkpod">Web::Transport::CachedResolver</a>) is set as the resolver.</p>
 
 <p>Please note that this clock cannot alter the value used in OpenSSL.</p>
 
@@ -130,7 +130,7 @@
 </dd><dt><a name="debug_=>_$mode">debug =&gt; $mode</a></dt>
 
 <dd>
-<p>Specify the debug mode. The default value is the <code>WEBUA_DEBUG</code> environment variable's value. See <code>WEBUA_DEBUG</code> section in <a href="https://metacpan.org/pod/Web%3A%3ATransport" class="podlinkpod">Web::Transport</a> for available mode values.</p>
+<p>Specify the debug mode. The default value is the <code>WEBUA_DEBUG</code> environment variable's value. See <code>WEBUA_DEBUG</code> section in <a href="http://search.cpan.org/perldoc?Web%3A%3ATransport" class="podlinkpod">Web::Transport</a> for available mode values.</p>
 
 </dd><dt><a name="cb_=>_$code">cb =&gt; $code</a></dt>
 
@@ -164,9 +164,9 @@
 
 </section><section id="ENVIRONMENT_VARIABLES"><h1>ENVIRONMENT VARIABLES</h1>
 
-<p>This module supports <code>WEBUA_DEBUG</code>. See <a href="https://metacpan.org/pod/Web%3A%3ATransport" class="podlinkpod">Web::Transport</a>.</p>
+<p>This module supports <code>WEBUA_DEBUG</code>. See <a href="../../../pod/Web/Transport" class="podlinkpod">Web::Transport</a>.</p>
 
-<p>When the default <code>resolver</code> is used, proxy environment variables <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code> are taken into account. See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>.</p>
+<p>When the default <code>resolver</code> is used, proxy environment variables <code>http_proxy</code>, <code>https_proxy</code>, <code>ftp_proxy</code>, and <code>no_proxy</code> are taken into account. See <a href="../../../pod/Web/Transport/ENVProxyManager" class="podlinkpod">Web::Transport::ENVProxyManager</a>.</p>
 
 </section><section id="SPECIFICATION"><h1>SPECIFICATION</h1>
 
