@@ -30,7 +30,7 @@
 
 </section><section id="USAGE"><h1>USAGE</h1>
 
-<p>The <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> module provides the <code>new</code> method returning a new document object, which corresponds to the <code>new Document ()</code> constructor in JavaScript Web browser environment.</p>
+<p>The <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> module provides the <code>new</code> method returning a new document object, which corresponds to the <code>new Document ()</code> constructor in JavaScript Web browser environment.</p>
 
 <pre><code>  my $doc = new Web::DOM::Document; # XML document by default
   $doc-&gt;manakai_is_html (1); # Change to HTML document</code></pre>
@@ -60,30 +60,30 @@
   $col = $doc-&gt;get_elements_by_class_name ('blog-entry');
   $col = $doc-&gt;images;</code></pre>
 
-<p>For more information, see documentation of relevant modules. For example, methods available on the document object is listed in the <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> documentation. Frequently used modules include:</p>
+<p>For more information, see documentation of relevant modules. For example, methods available on the document object is listed in the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> documentation. Frequently used modules include:</p>
 
 <dl>
-<dt><a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a></dt>
+<dt><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a></dt>
 
 <dd>
 <p>The <code>Document</code> interface.</p>
 
-</dd><dt><a href="../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a></dt>
+</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AElement" class="podlinkpod">Web::DOM::Element</a></dt>
 
 <dd>
 <p>The <code>Element</code> interface.</p>
 
-</dd><dt><a href="../pod/Web/DOM/Exception" class="podlinkpod">Web::DOM::Exception</a></dt>
+</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AException" class="podlinkpod">Web::DOM::Exception</a></dt>
 
 <dd>
 <p>The <code>DOMException</code> interface.</p>
 
-</dd><dt><a href="../pod/Web/DOM/HTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a></dt>
+</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AHTMLCollection" class="podlinkpod">Web::DOM::HTMLCollection</a></dt>
 
 <dd>
 <p>The <code>HTMLCollection</code> interface.</p>
 
-</dd><dt><a href="../pod/Web/DOM/Parser" class="podlinkpod">Web::DOM::Parser</a></dt>
+</dd><dt><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AParser" class="podlinkpod">Web::DOM::Parser</a></dt>
 
 <dd>
 <p>The <code>DOMParser</code> interface.</p>
@@ -94,7 +94,7 @@
 
 <p>The modules implement the manakai's DOM Perl Binding specification <code class="url">&lt;<a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding">http://suika.suikawiki.org/~wakaba/wiki/sw/n/manakai%27s%20DOM%20Perl%20Binding</a>&gt;</code>, which defines the mapping between WebIDL/DOM and Perl.</p>
 
-<p>As a general rule, the object implementing the DOM interface <var>I</var> is an instance of the class (or the class that is a subclass of the class) <code>Web::DOM::I</code>. However, applications should not rely on this, as the class inheritance hierarchy could be different from the interface's one, and could be changed in future revision of the module implementation. In particular, applications should not test whether the object is an instance of the interface that is defined with the <code>[NoInterfaceObject]</code> extended attribute. For example, the <code>ParentNode</code> interface is defined with the extended attribute. The <a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> class inherits the <a href="../pod/Web/DOM/ParentNode" class="podlinkpod">Web::DOM::ParentNode</a> class, as the <code>Document</code> interface implements the <code>ParentNode</code> interface according to the DOM Standard, but applications should not test <code>$node-&gt;isa ('Web::DOM::ParentNode')</code>.</p>
+<p>As a general rule, the object implementing the DOM interface <var>I</var> is an instance of the class (or the class that is a subclass of the class) <code>Web::DOM::I</code>. However, applications should not rely on this, as the class inheritance hierarchy could be different from the interface's one, and could be changed in future revision of the module implementation. In particular, applications should not test whether the object is an instance of the interface that is defined with the <code>[NoInterfaceObject]</code> extended attribute. For example, the <code>ParentNode</code> interface is defined with the extended attribute. The <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> class inherits the <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AParentNode" class="podlinkpod">Web::DOM::ParentNode</a> class, as the <code>Document</code> interface implements the <code>ParentNode</code> interface according to the DOM Standard, but applications should not test <code>$node-&gt;isa ('Web::DOM::ParentNode')</code>.</p>
 
 <p>The constructor of a DOM interface, if any, is implemented as the <code>new</code> class method. For example, the constructor of the <code>Document</code> interface can be invoked by <code>Web::DOM::Document-&gt;new</code>.</p>
 
@@ -121,17 +121,17 @@
 <p>Following classes have the constructor (i.e. the <code>new</code> method):</p>
 
 <ul>
-<li><a href="../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a></li>
 
-<li><a href="../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a> and its subclasses</li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AEvent" class="podlinkpod">Web::DOM::Event</a> and its subclasses</li>
 
-<li><a href="../pod/Web/DOM/Implementation" class="podlinkpod">Web::DOM::Implementation</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AImplementation" class="podlinkpod">Web::DOM::Implementation</a></li>
 
-<li><a href="../pod/Web/DOM/Parser" class="podlinkpod">Web::DOM::Parser</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AParser" class="podlinkpod">Web::DOM::Parser</a></li>
 
-<li><a href="../pod/Web/DOM/XMLSerializer" class="podlinkpod">Web::DOM::XMLSerializer</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AXMLSerializer" class="podlinkpod">Web::DOM::XMLSerializer</a></li>
 
-<li><a href="../pod/Web/DOM/XPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AXPathEvaluator" class="podlinkpod">Web::DOM::XPathEvaluator</a></li>
 </ul>
 
 </section><section id="CONSTANTS"><h1>CONSTANTS</h1>
@@ -139,25 +139,25 @@
 <p>Following modules export constants (by loading them using the <code>use</code> statement):</p>
 
 <ul>
-<li><a href="../pod/Web/DOM/Attr" class="podlinkpod">Web::DOM::Attr</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AAttr" class="podlinkpod">Web::DOM::Attr</a></li>
 
-<li><a href="../pod/Web/DOM/AttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AAttributeDefinition" class="podlinkpod">Web::DOM::AttributeDefinition</a></li>
 
-<li><a href="../pod/Web/DOM/Event" class="podlinkpod">Web::DOM::Event</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AEvent" class="podlinkpod">Web::DOM::Event</a></li>
 
-<li><a href="../pod/Web/DOM/Exception" class="podlinkpod">Web::DOM::Exception</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AException" class="podlinkpod">Web::DOM::Exception</a></li>
 
-<li><a href="../pod/Web/DOM/HTMLTrackElement" class="podlinkpod">Web::DOM::HTMLTrackElement</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AHTMLTrackElement" class="podlinkpod">Web::DOM::HTMLTrackElement</a></li>
 
-<li><a href="../pod/Web/DOM/KeyboardEvent" class="podlinkpod">Web::DOM::KeyboardEvent</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AKeyboardEvent" class="podlinkpod">Web::DOM::KeyboardEvent</a></li>
 
-<li><a href="../pod/Web/DOM/Node" class="podlinkpod">Web::DOM::Node</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANode" class="podlinkpod">Web::DOM::Node</a></li>
 
-<li><a href="../pod/Web/DOM/NodeFilter" class="podlinkpod">Web::DOM::NodeFilter</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ANodeFilter" class="podlinkpod">Web::DOM::NodeFilter</a></li>
 
-<li><a href="../pod/Web/DOM/XPathResult" class="podlinkpod">Web::DOM::XPathResult</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AXPathResult" class="podlinkpod">Web::DOM::XPathResult</a></li>
 
-<li><a href="../pod/Web/DOM/WheelEvent" class="podlinkpod">Web::DOM::WheelEvent</a></li>
+<li><a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AWheelEvent" class="podlinkpod">Web::DOM::WheelEvent</a></li>
 </ul>
 
 </section><section id="NOTE_ON_PRIVATE_METHODS"><h1>NOTE ON PRIVATE METHODS</h1>
@@ -234,7 +234,7 @@
 
 <p>The modules require Perl 5.10 or later.</p>
 
-<p>Following features require <a href="../pod/perl-web-markup">the perl-web-markup package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup">https://github.com/manakai/perl-web-markup</a>&gt;</code> (<a href="../pod/Web/HTML/Parser" class="podlinkpod">Web::HTML::Parser</a> and its family): <code>inner_html</code>, <code>outer_html</code>, <code>insert_adjacent_html</code>, <code>DOMParser</code>, and <code>XMLSerializer</code>; (<a href="../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a> and related modules): <code>XPathEvaluator</code> and <code>XPathExpression</code>; (<a href="../pod/Web/HTML/Microdata" class="podlinkpod">Web::HTML::Microdata</a>: <code>manakai_get_properties</code>).</p>
+<p>Following features require <a href="../pod/perl-web-markup">the perl-web-markup package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-markup">https://github.com/manakai/perl-web-markup</a>&gt;</code> (<a href="https://metacpan.org/pod/Web%3A%3AHTML%3A%3AParser" class="podlinkpod">Web::HTML::Parser</a> and its family): <code>inner_html</code>, <code>outer_html</code>, <code>insert_adjacent_html</code>, <code>DOMParser</code>, and <code>XMLSerializer</code>; (<a href="https://metacpan.org/pod/Web%3A%3AXPath%3A%3AParser" class="podlinkpod">Web::XPath::Parser</a> and related modules): <code>XPathEvaluator</code> and <code>XPathExpression</code>; (<a href="https://metacpan.org/pod/Web%3A%3AHTML%3A%3AMicrodata" class="podlinkpod">Web::HTML::Microdata</a>: <code>manakai_get_properties</code>).</p>
 
 <p>Following features require <a href="../pod/perl-web-css">the perl-web-css package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-css">https://github.com/manakai/perl-web-css</a>&gt;</code>: <code>query_selector</code>, <code>query_selector_all</code>, <code>CSSStyleSheet</code>, <code>CSSRule</code> and its subclasses, and <code>CSSStyleDeclaration</code>.</p>
 
@@ -242,11 +242,11 @@
 
 <p>Features performing URL-related operations require <a href="../pod/perl-web-url">the perl-web-url package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>, which depends on <a href="../pod/perl-web-encodings">the perl-web-encodings package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-encodings">https://github.com/manakai/perl-web-encodings</a>&gt;</code>. Such features include: <code>base_uri</code>, <code>manakai_set_url</code>, <code>manakai_entity_uri</code>, <code>manakai_entity_base_uri</code>, <code>declaration_base_uri</code>, <code>manakai_declaration_base_uri</code>, <code>action</code>, <code>cite</code>, <code>codebase</code>, <code>data</code>, <code>formaction</code>, <code>href</code>, <code>longdesc</code>, <code>object</code>, <code>ping</code>, <code>poster</code>, and <code>src</code>.</p>
 
-<p>Following features require modules in <a href="../pod/perl-web-datetime">the perl-web-datetime package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-datetime">https://github.com/manakai/perl-web-datetime</a>&gt;</code>: <code>value</code> of <a href="../pod/Web/DOM/AtomDateConstruct" class="podlinkpod">Web::DOM::AtomDateConstruct</a>, <code>create_atom_feed_document</code>, <code>create_atom_entry_element</code>, <code>updated_element</code>, and <code>published_element</code>.</p>
+<p>Following features require modules in <a href="../pod/perl-web-datetime">the perl-web-datetime package</a> <code class="url">&lt;<a href="https://github.com/manakai/perl-web-datetime">https://github.com/manakai/perl-web-datetime</a>&gt;</code>: <code>value</code> of <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AAtomDateConstruct" class="podlinkpod">Web::DOM::AtomDateConstruct</a>, <code>create_atom_feed_document</code>, <code>create_atom_entry_element</code>, <code>updated_element</code>, and <code>published_element</code>.</p>
 
 <section id="Using_CSS,_Selectors,_and_Media_Queries"><h1>Using CSS, Selectors, and Media Queries</h1>
 
-<p>How CSS style sheets are parsed and how CSSOM tree structure looks like depend on how much of CSS features are supported by the user agent. Since the web-dom module set by itself is not a rendering engine, most CSS features are considered as "not supported", therefore by default parsing discards most of CSS declarations. If you'd like to construct a CSS-based application on the top of the web-dom module set, you should turn on features you are supporting, through <a href="../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> module in the web-css package. The <a href="../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> object for a document's CSS parser can be accessed like this:</p>
+<p>How CSS style sheets are parsed and how CSSOM tree structure looks like depend on how much of CSS features are supported by the user agent. Since the web-dom module set by itself is not a rendering engine, most CSS features are considered as "not supported", therefore by default parsing discards most of CSS declarations. If you'd like to construct a CSS-based application on the top of the web-dom module set, you should turn on features you are supporting, through <a href="https://metacpan.org/pod/Web%3A%3ACSS%3A%3AMediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> module in the web-css package. The <a href="https://metacpan.org/pod/Web%3A%3ACSS%3A%3AMediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> object for a document's CSS parser can be accessed like this:</p>
 
 <pre><code>  use Web::CSS::Parser;
   my $parser = Web::CSS::Parser-&gt;get_parser_for_document ($doc);
@@ -257,7 +257,7 @@
 <pre><code>  $resolver-&gt;{prop}-&gt;{display} = 1;
   $resolver-&gt;{prop_value}-&gt;{display}-&gt;{block} = 1;</code></pre>
 
-<p>For more information on usage of the resolver, see <a href="../pod/Web/CSS/MediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> in the web-css package.</p>
+<p>For more information on usage of the resolver, see <a href="https://metacpan.org/pod/Web%3A%3ACSS%3A%3AMediaResolver" class="podlinkpod">Web::CSS::MediaResolver</a> in the web-css package.</p>
 
 </section></section><section id="DEVELOPMENT"><h1>DEVELOPMENT</h1>
 
@@ -277,7 +277,7 @@
 
 <p>DOMImplementationRegistry, DOMImplementationSource, DOMImplementationList, DOM features, DOMStringList, StringExtended, read-only nodes, EntityReference, CDATASection, replaceWholeText, isElementContentWhitespace, specified setter, hasReplacementTree setter, DOM3 configuration parameters, configuration parameters for DOM3 spec compatible DTD-based node operations, DOM3 DOMError, DOM Standard DOMError, DOMErrorHandler, UserDataHandler, DOMLocator, isId and family, internalSubset, TypeInfo and schemaTypeInfo, DOM3 LS, namespaces for DOM3 events, EventException, MutationEvent, MutationNameEvent, TextEvent, DocumentEvent-&gt;canDispatch, DocumentType-&gt;implementation, Document-&gt;createXHTMLDocument, URIReference, InternetMediaType, MANAKAI_FILTER_OPAQUE, Document-&gt;manakaiCreateSerialWalker, SerialWalker. HTMLElement-&gt;irrelevant, HTMLAnchorElement-&gt;media, HTMLAreaElement-&gt;media, HTMLCommandElement, HTMLDataGridElement, HTMLEventSourceElement, HTMLIsIndexElement, HTMLLegendElement-&gt;form, HTMLMenuElement-&gt;autosubmit, HTMLBlockquoteElement, HTMLStrictlyInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLStructuredInlineContainerExtended, HTMLSectioningElementExtended, HTMLListElementExtended, HTMLDListElementExtended, CSSStyleDeclaration-&gt;styleFloat. Overloaded operators <code>==</code>, <code>!=</code>, and <code>.=</code>, write operations through overloaded <code>@{}</code> and <code>%{}</code> operators for NodeList, NamedNodeMap, and HTMLCollection. Attr, Entity, and AttributeDefinition nodes can no longer contain Text nodes.</p>
 
-<p>By default the <code>DocumentType</code> node can no longer contain <code>ProcessingInstruction</code> nodes as children. The old behavior can be restored by setting a true value to the <code>manakai-allow-doctype-children</code> configuration parameter (See <a href="../pod/Web/DOM/Configuration" class="podlinkpod">Web::DOM::Configuration</a>).</p>
+<p>By default the <code>DocumentType</code> node can no longer contain <code>ProcessingInstruction</code> nodes as children. The old behavior can be restored by setting a true value to the <code>manakai-allow-doctype-children</code> configuration parameter (See <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AConfiguration" class="podlinkpod">Web::DOM::Configuration</a>).</p>
 
 <p>The <code>strict_error_checking</code> attribute no longer disables random exceptions as defined in DOM3 specification; its scope is formally defined in the manakai DOM Extensions specification [MANAKAI].</p>
 
