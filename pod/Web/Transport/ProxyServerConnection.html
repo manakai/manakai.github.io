@@ -32,7 +32,7 @@
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
-<p>See <a href="../../../pod/Web/Transport/GenericServerConnection#METHODS" class="podlinkpod">"METHODS" in Web::Transport::GenericServerConnection</a>.</p>
+<p>See <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3AGenericServerConnection#METHODS" class="podlinkpod">"METHODS" in Web::Transport::GenericServerConnection</a>.</p>
 
 </section><section id="REQUEST_HANDLER"><h1>REQUEST HANDLER</h1>
 
@@ -40,7 +40,7 @@
 
 <p>A request handler, if specified, is invoked whenever the proxy server has received a request from a client and just before the request is forwarded to the upstream server.</p>
 
-<p>A request handler is a code reference. The code is expected to return a hash reference, or a promise (e.g. <a href="../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be fulfilled with a hash reference.</p>
+<p>A request handler is a code reference. The code is expected to return a hash reference, or a promise (e.g. <a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be fulfilled with a hash reference.</p>
 
 <p>The code is invoked with an argument, that is a hash reference. The hash reference can be returned by the code if the proxy should forward the request as is.</p>
 
@@ -76,7 +76,7 @@
 </dd><dt id="error_=>_$error_(return_value_only)"><code>error =&gt; $error (return value only)</code></dt>
 
 <dd>
-<p>An exception object. It can be any Perl <code>defined</code> value, though <a href="../../../pod/Web/DOM/Error" class="podlinkpod">Web::DOM::Error</a> or its subclass's instance is desired.</p>
+<p>An exception object. It can be any Perl <code>defined</code> value, though <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AError" class="podlinkpod">Web::DOM::Error</a> or its subclass's instance is desired.</p>
 
 <p>When the proxy server has to abort something associated with the handling of the request in question, the exception is used as the error reason.</p>
 
@@ -102,7 +102,7 @@
 
 <p>A response handler, if specified, is invoked whenever the proxy server has received a response from an upstream server and just before the response is forwarded to the downstream client. It is not invoked when the request handler returns a response (or an error).</p>
 
-<p>A response handler is a code reference. The code is expected to return a hash reference, or a promise (e.g. <a href="../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be fulfilled with a hash reference.</p>
+<p>A response handler is a code reference. The code is expected to return a hash reference, or a promise (e.g. <a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be fulfilled with a hash reference.</p>
 
 <p>The code is invoked with an argument, that is a hash reference. The hash reference can be returned by the code if the proxy should forward the response as is.</p>
 
@@ -124,7 +124,7 @@
 </dd><dt id="error_=>_$error_(return_value_only)"><code>error =&gt; $error (return value only)</code></dt>
 
 <dd>
-<p>An exception object. It can be any Perl <code>defined</code> value, though <a href="../../../pod/Web/DOM/Error" class="podlinkpod">Web::DOM::Error</a> or its subclass's instance is desired.</p>
+<p>An exception object. It can be any Perl <code>defined</code> value, though <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AError" class="podlinkpod">Web::DOM::Error</a> or its subclass's instance is desired.</p>
 
 <p>When the proxy server has to abort something associated with the handling of the response in question, the exception is used as the error reason.</p>
 
@@ -145,7 +145,7 @@
 </dd><dt id="closed_=>_$promise_(argument_only)"><code>closed =&gt; $promise (argument only)</code></dt>
 
 <dd>
-<p>A promise (<a href="../../../pod/Promise" class="podlinkpod">Promise</a> object) which is fulfilled once the response in question has been sent.</p>
+<p>A promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a> object) which is fulfilled once the response in question has been sent.</p>
 </dd>
 </dl>
 
@@ -157,15 +157,15 @@
 <dt id="$client_=_$api->client_($url,_$client_options,_$api_options)"><code>$client = $api-&gt;<strong id="member-client">client</strong> ($url, $client_options, $api_options)</code></dt>
 
 <dd>
-<p>Return a client (<a href="../../../pod/Web/Transport/BasicClient" class="podlinkpod">Web::Transport::BasicClient</a>) that is ready to send a request.</p>
+<p>Return a client (<a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a>) that is ready to send a request.</p>
 
-<p>The first argument must be a URL (<a href="../../../pod/Web/URL" class="podlinkpod">Web::URL</a> object) of the target of the request.</p>
+<p>The first argument must be a URL (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a> object) of the target of the request.</p>
 
-<p>The second argument, if specified, must be a hash reference of additional client options (see <a href="../../../pod/Web/Transport/BasicClient#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS" in Web::Transport::BasicClient</a>) used to create a client. By default a set of client options appropriate for the proxy server is used, taking the <code>client</code> option of the proxy server's constructor argument into account, but this argument can be used to override them.</p>
+<p>The second argument, if specified, must be a hash reference of additional client options (see <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient#CLIENT_OPTIONS" class="podlinkpod">"CLIENT OPTIONS" in Web::Transport::BasicClient</a>) used to create a client. By default a set of client options appropriate for the proxy server is used, taking the <code>client</code> option of the proxy server's constructor argument into account, but this argument can be used to override them.</p>
 
 <p>The third argument, if specified, must be a hash reference of additional options used to choose a client. The <code>key</code> option, if specified, sets the short identifier for the client. When the <code>client</code> method is invoked twice with same orign, client options, and <code>key</code>, the same client is returned if possible. When the method is invoked with different <code>key</code>, different client is returned. When the proxy itself fetches a resource, it uses the client whose key is the empty string, which is the default key. The proxy discards the empty string keyed client after the process of the relevant request/response pairs. If the handlers want to avoid the client discarded, they should use their own keys.</p>
 
-<p>This is effectively equivalent to invoking the <code>new_from_url</code> method of the <a href="../../../pod/Web/Transport/BasicClient" class="podlinkpod">Web::Transport::BasicClient</a> module but this method first looks into the connection pool of the proxy server with appropriate client options. Therefore, if a request or response handler wants to fetch a resource as part of response construction, this method should be used exclusively rather than other HTTP client APIs.</p>
+<p>This is effectively equivalent to invoking the <code>new_from_url</code> method of the <a href="https://metacpan.org/pod/Web%3A%3ATransport%3A%3ABasicClient" class="podlinkpod">Web::Transport::BasicClient</a> module but this method first looks into the connection pool of the proxy server with appropriate client options. Therefore, if a request or response handler wants to fetch a resource as part of response construction, this method should be used exclusively rather than other HTTP client APIs.</p>
 
 </dd><dt id="$out_headers_=_$api->filter_headers_($in_headers,_$name_=>_$value,_...)"><code>$out_headers = $api-&gt;<strong id="member-filter_headers">filter_headers</strong> ($in_headers, $name =&gt; $value, ...)</code></dt>
 
@@ -213,7 +213,7 @@
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="../../../pod/AnyEvent/Socket" class="podlinkpod">AnyEvent::Socket</a>.</p>
+<p><a href="https://metacpan.org/pod/AnyEvent%3A%3ASocket" class="podlinkpod">AnyEvent::Socket</a>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 

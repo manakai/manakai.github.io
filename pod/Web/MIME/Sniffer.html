@@ -83,11 +83,11 @@
 <dd>
 <p>Run the sniffing alorithm.</p>
 
-<p>The first argument must be a MIME type object (<a href="../../../pod/Web/MIME/Type" class="podlinkpod">Web::MIME::Type</a>) or <code>undef</code>. If the resource in question is an HTTP response, the MIME type object created from the <b>last</b> <code>Content-Type</code> header value (see the MIME Sniffing Standard) should be specified. If parsing of the header value returns <code>undef</code>, or there is no <code>Content-Type</code> header, <code>undef</code> should be specified.</p>
+<p>The first argument must be a MIME type object (<a href="https://metacpan.org/pod/Web%3A%3AMIME%3A%3AType" class="podlinkpod">Web::MIME::Type</a>) or <code>undef</code>. If the resource in question is an HTTP response, the MIME type object created from the <b>last</b> <code>Content-Type</code> header value (see the MIME Sniffing Standard) should be specified. If parsing of the header value returns <code>undef</code>, or there is no <code>Content-Type</code> header, <code>undef</code> should be specified.</p>
 
 <p>The second arugment must be the resource header, i.e. first 1445 bytes of the response body (see the MIME Sniffing Standard for details).</p>
 
-<p>The method returns a MIME type object (<a href="../../../pod/Web/MIME/Type" class="podlinkpod">Web::MIME::Type</a>) representing the computed MIME type.</p>
+<p>The method returns a MIME type object (<a href="https://metacpan.org/pod/Web%3A%3AMIME%3A%3AType" class="podlinkpod">Web::MIME::Type</a>) representing the computed MIME type.</p>
 
 <p>Please note that when the computed MIME type is different from the supplied MIME type (i.e. the return value is different from the first argument), the computed MIME type does not have parameters included in the supplied MIME type. Parameters, especially the <code>charset</code> parameter, should be taken from the supplied MIME type, as defined by the relevant specifications.</p>
 </dd>
@@ -103,7 +103,7 @@
 
 </section><section id="HISTORY"><h1>HISTORY</h1>
 
-<p>This module derived from the <a href="../../../pod/Whatpm/ContentType" class="podlinkpod">Whatpm::ContentType</a> module in the manakai-core package <code class="url">&lt;<a href="https://github.com/wakaba/manakai">https://github.com/wakaba/manakai</a>&gt;</code>.</p>
+<p>This module derived from the <a href="https://metacpan.org/pod/Whatpm%3A%3AContentType" class="podlinkpod">Whatpm::ContentType</a> module in the manakai-core package <code class="url">&lt;<a href="https://github.com/wakaba/manakai">https://github.com/wakaba/manakai</a>&gt;</code>.</p>
 
 </section><section id="AUTHOR"><h1>AUTHOR</h1>
 
