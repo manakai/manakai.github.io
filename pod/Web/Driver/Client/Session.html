@@ -251,11 +251,18 @@ The second argument must be the number of pixels of the window's height.</p>
 </dd><dt id="$promise_=_$session->switch_to_frame_by_selector_($selector)"><code>$promise = $session-&gt;<strong id="member-switch_to_frame_by_selector">switch_to_frame_by_selector</strong> ($selector)</code></dt>
 
 <dd>
-<p>Select a browsing context (the Switch To Frame command).</p>
+<p>Select a nested browsing context of the current browsing context (the Switch To Frame command).</p>
 
 <p>The first argument must be a character string of the group of selectors used to select an <code>iframe</code> element.</p>
 
 <p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when a browsing context is selected (or to be rejected with an error).</p>
+
+</dd><dt id="$promise_=_$session->switch_to_top_frame"><code>$promise = $session-&gt;<strong id="member-switch_to_top_frame">switch_to_top_frame</strong></code></dt>
+
+<dd>
+<p>Select the current top-level browsing context (the Switch To Frame command).</p>
+
+<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the browsing context is selected (or to be rejected with an error).</p>
 
 </dd><dt id="$session->click_($element)->then_(sub_{_..._})"><code>$session-&gt;click ($element)-&gt;<strong>then</strong> (sub { ...
 })</code></dt>
