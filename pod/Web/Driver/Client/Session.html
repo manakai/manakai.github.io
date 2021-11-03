@@ -22,16 +22,16 @@
 <dd>
 <p>Navigate to the browsing context to a URL (the Go command).</p>
 
-<p>The first argument must be a URL object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>).</p>
+<p>The first argument must be a URL object (<a href="../../../../pod/Web/URL" class="podlinkpod">Web::URL</a>).</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the WebDriver command returns (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the WebDriver command returns (or to be rejected with an error).</p>
 
 </dd><dt id="$session->url->then_(sub_{_$url_=_shift_})"><code>$session-&gt;url-&gt;<strong id="member-then">then</strong> (sub { $url = shift })</code></dt>
 
 <dd>
 <p>Get the current document URL of the browsing context (the Get Current URL command).</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a URL object (<a href="https://metacpan.org/pod/Web%3A%3AURL" class="podlinkpod">Web::URL</a>) when the URL is obtained (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a URL object (<a href="../../../../pod/Web/URL" class="podlinkpod">Web::URL</a>) when the URL is obtained (or to be rejected with an error).</p>
 
 </dd><dt id="$session->get_all_cookies->then_(sub_{_$cookies_=_shift_})"><code>$session-&gt;get_all_cookies-&gt;<strong>then</strong> (sub { $cookies = shift })</code></dt>
 
@@ -44,7 +44,7 @@ or get cookies by name.</p>
 <p>For the <code>get_cookie</code> method,
 the first argument must be a character string of the cookie name.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with an array reference of zero or more hash references representing cookies (or to be rejected with an error).
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with an array reference of zero or more hash references representing cookies (or to be rejected with an error).
 Even the <code>get_cookie</code> method can return multiple values when there are multiple cookies with same names.
 A cookie has following name/value pairs:</p>
 
@@ -129,14 +129,14 @@ Note that some WebDriver server implementations do not support this option.</p>
 and <code>domain</code> and <code>path</code> values must be valid values.
 Unsafe user input should not be specified.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved after the cookie has been set (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved after the cookie has been set (or to be rejected with an error).</p>
 
 </dd><dt id="$promise_=_$session->delete_all_cookies"><code>$promise = $session-&gt;<strong id="member-delete_all_cookies">delete_all_cookies</strong></code></dt>
 
 <dd>
 <p>Delete all cookies.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved after the removal.</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved after the removal.</p>
 
 </dd><dt id="$session->execute_($script,_[$arg1,_$arg2,_...],_$name_=>_$value,_...)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;execute ($script,
 [$arg1,
@@ -172,7 +172,7 @@ Note that some WebDriver server ignores this option.</p>
 </dd>
 </dl>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the (non-error) response (<a href="https://metacpan.org/pod/Web%3A%3ADriver%3A%3AClient%3A%3AResponse" class="podlinkpod">Web::Driver::Client::Response</a>) object (or to be rejected with an error).
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the (non-error) response (<a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a>) object (or to be rejected with an error).
 The return value of the script (or the returned promise's resolved value),
 if any,
 can be accessed by <code>$res-&gt;json-&gt;{value}</code>.</p>
@@ -191,7 +191,7 @@ The value must be a character string of the group of selectors.
 Otherwise,
 the document element (including it self) is serialized.</p>
 
-<p>it returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the character string of the serialization,
+<p>it returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the character string of the serialization,
 if <code>selector</code> selects an element or no <code>selector</code> option is specified,
 or with <code>undef</code> if <code>selector</code> selects no element (or to be rejected with an error).</p>
 
@@ -209,7 +209,7 @@ The value must be a character string of the group of selectors.
 Otherwise,
 the document element is used.</p>
 
-<p>it returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the character string of the text content,
+<p>it returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the character string of the text content,
 if <code>selector</code> selects an element or no <code>selector</code> option is specified,
 or with <code>undef</code> if <code>selector</code> selects no element (or to be rejected with an error).</p>
 
@@ -236,7 +236,7 @@ a window screenshot is taken.</p>
 <p>If the WebDriver server does not support Take Element Screenshot command,
 <code>element</code> and <code>selector</code> options are ignored and fallbacked to the window screenshot.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the byte string of the screenshot image data (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with the byte string of the screenshot image data (or to be rejected with an error).</p>
 
 </dd><dt id="$promise_=_$session->set_window_dimension_($width,_$height)"><code>$promise = $session-&gt;<strong id="member-set_window_dimension">set_window_dimension</strong> ($width,
 $height)</code></dt>
@@ -246,7 +246,7 @@ $height)</code></dt>
 The first argument must be the number of pixels of the window's width.
 The second argument must be the number of pixels of the window's height.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the request is processed.</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the request is processed.</p>
 
 </dd><dt id="$promise_=_$session->switch_to_frame_by_selector_($selector)"><code>$promise = $session-&gt;<strong id="member-switch_to_frame_by_selector">switch_to_frame_by_selector</strong> ($selector)</code></dt>
 
@@ -255,14 +255,14 @@ The second argument must be the number of pixels of the window's height.</p>
 
 <p>The first argument must be a character string of the group of selectors used to select an <code>iframe</code> element.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when a browsing context is selected (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when a browsing context is selected (or to be rejected with an error).</p>
 
 </dd><dt id="$promise_=_$session->switch_to_top_frame"><code>$promise = $session-&gt;<strong id="member-switch_to_top_frame">switch_to_top_frame</strong></code></dt>
 
 <dd>
 <p>Select the current top-level browsing context (the Switch To Frame command).</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the browsing context is selected (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the browsing context is selected (or to be rejected with an error).</p>
 
 </dd><dt id="$session->click_($element)->then_(sub_{_..._})"><code>$session-&gt;click ($element)-&gt;<strong>then</strong> (sub { ...
 })</code></dt>
@@ -272,7 +272,7 @@ The second argument must be the number of pixels of the window's height.</p>
 
 <p>The first argument must be a hash reference representing a Web element.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the action is done.</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the action is done.</p>
 
 </dd><dt id="$session->http_get_($path_segments)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;http_get ($path_segments)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
 
@@ -282,7 +282,7 @@ The second argument must be the number of pixels of the window's height.</p>
 <p>The first argument must be an array reference of path segments.
 Segments <code>session</code> and the session ID is prepended before these segments to construct the request URL.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="https://metacpan.org/pod/Web%3A%3ADriver%3A%3AClient%3A%3AResponse" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
 
 </dd><dt id="$session->http_post_($path_segments,_$params)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;http_post ($path_segments,
 $params)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
@@ -295,7 +295,7 @@ Segments <code>session</code> and the session ID is prepended before these segme
 
 <p>The second argument must be a hash reference that can be used to create the payload body's JSON data.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="https://metacpan.org/pod/Web%3A%3ADriver%3A%3AClient%3A%3AResponse" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
 
 </dd><dt id="$session->http_delete_($path_segments)->then_(sub_{_$res_=_shift_})"><code>$session-&gt;http_delete ($path_segments)-&gt;<strong>then</strong> (sub { $res = shift })</code></dt>
 
@@ -305,14 +305,14 @@ Segments <code>session</code> and the session ID is prepended before these segme
 <p>The first argument must be an array reference of path segments.
 Segments <code>session</code> and the session ID is prepended before these segments to construct the request URL.</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="https://metacpan.org/pod/Web%3A%3ADriver%3A%3AClient%3A%3AResponse" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved with a <a href="../../../../pod/Web/Driver/Client/Response" class="podlinkpod">Web::Driver::Client::Response</a> object containing the response to the request (or to be rejected with an error).</p>
 
 </dd><dt id="$promise_=_$session->close"><code>$promise = $session-&gt;<strong id="member-close">close</strong></code></dt>
 
 <dd>
 <p>Delete the session from the WebDriver server (the Delete Session command).</p>
 
-<p>It returns a promise (<a href="https://metacpan.org/pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the server returns (or to be rejected with an error).</p>
+<p>It returns a promise (<a href="../../../../pod/Promise" class="podlinkpod">Promise</a>) that is to be resolved when the server returns (or to be rejected with an error).</p>
 
 <p>This method must be explicitly invoked when the session is no longer used.</p>
 </dd>
@@ -320,7 +320,7 @@ Segments <code>session</code> and the session ID is prepended before these segme
 
 <section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="https://metacpan.org/pod/Web%3A%3ADriver%3A%3AConnection" class="podlinkpod">Web::Driver::Connection</a>.</p>
+<p><a href="../../../../pod/Web/Driver/Connection" class="podlinkpod">Web::Driver::Connection</a>.</p>
 
 </section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
