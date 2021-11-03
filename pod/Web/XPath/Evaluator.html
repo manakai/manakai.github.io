@@ -37,28 +37,28 @@
 <dt id="$eval->onerror_($new_code)"><code>$eval-&gt;<strong>onerror</strong> ($new_code)</code></dt>
 
 <dd>
-<p>Get or set the error handler for the evaluator. Any error, as well as warning and information, is reported to the handler. See <a href="https://metacpan.org/pod/Whatpm%3A%3AErrors" class="podlinkpod">Whatpm::Errors</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod</a>&gt;</code> for more information.</p>
+<p>Get or set the error handler for the evaluator. Any error, as well as warning and information, is reported to the handler. See <a href="../../../pod/Whatpm/Errors" class="podlinkpod">Whatpm::Errors</a> <code class="url">&lt;<a href="https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod">https://github.com/wakaba/manakai/blob/master/lib/Whatpm/Errors.pod</a>&gt;</code> for more information.</p>
 
 </dd><dt id="$package_=_$eval->function_library"><code>$package = $eval-&gt;<strong id="member-function_library">function_library</strong></code></dt>
 
 <dt id="$eval->function_library_($package)"><code>$eval-&gt;<strong>function_library</strong> ($package)</code></dt>
 
 <dd>
-<p>Get or set the package name of the function library used to evaluate the XPath expression. It must be a Perl package name string, which identifies <a href="https://metacpan.org/pod/Web%3A%3AXPath%3A%3AFunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a>, its subclass, or equivalent. The module is <code>require</code>d if necessary. See <a href="https://metacpan.org/pod/Web%3A%3AXPath%3A%3AFunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a> for details.</p>
+<p>Get or set the package name of the function library used to evaluate the XPath expression. It must be a Perl package name string, which identifies <a href="../../../pod/Web/XPath/FunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a>, its subclass, or equivalent. The module is <code>require</code>d if necessary. See <a href="../../../pod/Web/XPath/FunctionLibrary" class="podlinkpod">Web::XPath::FunctionLibrary</a> for details.</p>
 
 </dd><dt id="$vars_=_$eval->variable_bindings"><code>$vars = $eval-&gt;<strong id="member-variable_bindings">variable_bindings</strong></code></dt>
 
 <dt id="$eval->variable_bindings_($vars)"><code>$eval-&gt;<strong>variable_bindings</strong> ($vars)</code></dt>
 
 <dd>
-<p>Get or set the <a href="https://metacpan.org/pod/Web%3A%3AXPath%3A%3AVariableBindings" class="podlinkpod">Web::XPath::VariableBindings</a> object, containing the set of variable bindings used to evaluate XPath expressions.</p>
+<p>Get or set the <a href="../../../pod/Web/XPath/VariableBindings" class="podlinkpod">Web::XPath::VariableBindings</a> object, containing the set of variable bindings used to evaluate XPath expressions.</p>
 
 </dd><dt id="$value_=_$eval->evaluate_($parsed_expr,_$context_node,_context_size_=>_$n,_context_position_=>_$n)"><code>$value = $eval-&gt;<strong id="member-evaluate">evaluate</strong> ($parsed_expr, $context_node, context_size =&gt; $n, context_position =&gt; $n)</code></dt>
 
 <dd>
 <p>Evaluate an expression.</p>
 
-<p>The first argument must be a parsed XPath 1.0 expression data structure (See <a href="https://metacpan.org/pod/Web%3A%3AXPath%3A%3AParser" class="podlinkpod">Web::XPath::Parser</a>).</p>
+<p>The first argument must be a parsed XPath 1.0 expression data structure (See <a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a>).</p>
 
 <p>The second argument must be the context node.</p>
 
@@ -131,11 +131,11 @@
 
 </section></section><section id="NODES"><h1>NODES</h1>
 
-<p>The node must be a DOM node, whose implementation conforming the manakai's DOM Perl binding specification. In addition, the implementation must also support the <code>manakaiIsHTML</code> attribute of the <code>Document</code> interface and the <code>manakaiTagName</code> attribute of the <code>Node</code> interface. <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> and related modules in the web-dom package <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code> is such a DOM implementation.</p>
+<p>The node must be a DOM node, whose implementation conforming the manakai's DOM Perl binding specification. In addition, the implementation must also support the <code>manakaiIsHTML</code> attribute of the <code>Document</code> interface and the <code>manakaiTagName</code> attribute of the <code>Node</code> interface. <a href="../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> and related modules in the web-dom package <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code> is such a DOM implementation.</p>
 
 </section><section id="SEE_ALSO"><h1>SEE ALSO</h1>
 
-<p><a href="https://metacpan.org/pod/Web%3A%3AXPath%3A%3AParser" class="podlinkpod">Web::XPath::Parser</a>.</p>
+<p><a href="../../../pod/Web/XPath/Parser" class="podlinkpod">Web::XPath::Parser</a>.</p>
 
 </section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
