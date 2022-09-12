@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="../../../css/pod.css">
       <meta name="viewport" content="width=device-width">
 
-      <title>Web::Transport::OAuth1</title><link rel="license" href="../../../contact#license"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
+      <title>Web::Transport::OAuth1</title><link rel="license" href="#LICENSE"></head><body><h1><a href="../../.." rel="top">The manakai project</a></h1>
   <nav class="breadcrumb">
       <ul>
         <li><a href="../../../docs" rel="up up up">Documents</a></li>
@@ -10,7 +10,58 @@
         <li><a href="../../../pod/perl-web-resource" rel="up">perl-web-resource</a></li>
         <li><a href="" rel="bookmark">Web::Transport::OAuth1</a></li>
       </ul>
-    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/OAuth1.pm">Source</a></li></ul></nav><article></article><footer>
+    <ul class="pod-source"><li><a href="https://github.com/manakai/perl-web-resource/tree/master/lib/Web/Transport/OAuth1.pm">Source</a></li></ul></nav><article>
+
+
+
+
+
+<p>Input parameters MUST be byte strings,
+conforming to HTTP and/or OAuth (RFC 5849) specifications.</p>
+
+<p>$result = authenticate_by_oauth1 ( request_method =&gt; $string,
+url =&gt; $url_record,
+http_authorization =&gt; $bytes,
+# or undef body_ref =&gt; \$bytes,
+# or undef container =&gt; undef,
+# 'authorization' (default) or 'query' or 'body' oauth_consumer_key =&gt; $string,
+client_shared_secret =&gt; $string,
+oauth_token =&gt; $string,
+# or undef token_shared_secret =&gt; $string,
+oauth_callback =&gt; $string,
+# or undef oauth_verifier =&gt; $string,
+# or undef );</p>
+
+<p>warn "Signature base string: " .
+$result-&gt;{signature_base_string} .
+"\n"; warn "Request URL: " .
+$url-&gt;stringify .
+"\n"; warn "Authorization: " .
+($result-&gt;{http_authorization} // '') .
+"\n"; warn "Body appended: " .
+$result-&gt;{body_appended} .
+"\n";</p>
+
+<section id="AUTHOR"><h1>AUTHOR</h1>
+
+<p>Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+</section><section id="HISTORY"><h1>HISTORY</h1>
+
+<p>This module partially derived from <a href="../../../pod/Web/UserAgent/OAuth" class="podlinkpod">Web::UserAgent::OAuth</a> and <a href="../../../pod/Web/UserAgent/Functions/OAuth" class="podlinkpod">Web::UserAgent::Functions::OAuth</a> in the repository <code class="url">&lt;<a href="https://github.com/wakaba/perl-web-useragent-functions">https://github.com/wakaba/perl-web-useragent-functions</a>&gt;</code>.</p>
+
+</section><section id="LICENSE"><h1>LICENSE</h1>
+
+<p>Copyright 2009-2013 Hatena <code class="url">&lt;<a href="https://www.hatena.ne.jp/">https://www.hatena.ne.jp/</a>&gt;</code>.</p>
+
+<p>Copyright 2013-2022 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+
+
+
+</section></article><footer>
   <p>The manakai project since 2002
   </p><ul>
     <li><a href="../../.." rel="top">Top</a>

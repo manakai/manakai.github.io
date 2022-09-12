@@ -133,7 +133,9 @@ or <code>wss</code>.</p>
 password,
 or fragment of the URL is ignored.</p>
 
-<p>Either <code>url</code> or <code>path</code> option must be specified.</p>
+<p>Exactly one of <code>url</code>,
+<code>path</code>,
+and <code>path_string</code> options must be specified.</p>
 
 </dd><dt id="path_=>_[$seg1,_$seg2,_...]"><code>path =&gt; [$seg1,
 $seg2,
@@ -148,8 +150,26 @@ They are encoded in UTF-8 and then concatenated with <code>/</code>.</p>
 <p>If a "prefix" is defined by the context,
 the path segments given by this option is appended to the prefix.</p>
 
-<p>When the <code>url</code> option is specified,
-this option is ignored.</p>
+<p>Exactly one of <code>url</code>,
+<code>path</code>,
+and <code>path_string</code> options must be specified.</p>
+
+</dd><dt id="path_string_=>_$string"><code>path_string =&gt; $string</code></dt>
+
+<dd>
+<p>Specify the path of the request URL.
+If specified,
+the value must be a character string.
+It is encoded in UTF-8.
+If the first character is not <code>/</code>,
+a leading <code>/</code> is prepended.</p>
+
+<p>If a "prefix" is defined by the context,
+the path segments given by this option is appended to the prefix.</p>
+
+<p>Exactly one of <code>url</code>,
+<code>path</code>,
+and <code>path_string</code> options must be specified.</p>
 
 </dd><dt id="method_=>_$string"><code>method =&gt; $string</code></dt>
 
@@ -229,7 +249,7 @@ the file content.</p>
 
 <p>A file hash reference can also contain <code>mime_type</code> key,
 whose value is a MIME type string (<code>Content-Type:</code> header value) and <code>mime_filename</code> key,
-whose value is a file name string (<code>Content-Disposition:</code> header's <code>filename</code> parameter value).
+whose value is a file name string (<code>Content-Disposition:</code> header's <code>filename</code> parameter value; defaulted to a string <code>file.dat</code> if missing).
 Their defaults,
 used when the key is omitted or the value is <code>undef</code>,
 are <code>application/octet-stream</code> and the empty string,
@@ -649,7 +669,7 @@ See documentations of modules and comments in source codes for more information.
 
 <p>Copyright 2009-2013 Hatena <code class="url">&lt;<a href="https://www.hatena.ne.jp/">https://www.hatena.ne.jp/</a>&gt;</code>.</p>
 
-<p>Copyright 2014-2020 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
+<p>Copyright 2014-2022 Wakaba &lt;wakaba@suikawiki.org&gt;.</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
