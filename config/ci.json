@@ -1,6 +1,11 @@
 {
-  "travisci": {
-    "empty": true
+  "meta": {
+    "name": "The manakai project Web site",
+    "url": "https://manakai.github.io/",
+    "author": "Wakaba",
+    "history": [
+      {"type": "started", "time": "2014-04"}
+    ]
   },
   "circleci": {
     "merger": 1,

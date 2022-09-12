@@ -1,8 +1,2 @@
 {
-   "before_install" : "true",
-   "git" : {
-      "submodules" : false
-   },
-   "install" : "true",
-   "script" : "true"
 }
