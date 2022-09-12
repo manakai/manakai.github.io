@@ -20,7 +20,7 @@ my @repo = qw(wakaba/perl-charclass
               manakai/perl-web-driver-client
               manakai/webhacc-cli);
 for my $name (@repo) {
-  (system ('git', 'clone', "git://github.com/$name", $repos_path->child ($name)) == 0) or ($DEBUG or die $?);
+  (system ('git', 'clone', "https://github.com/$name", $repos_path->child ($name)) == 0) or ($DEBUG or die $?);
 }
 
 unshift our @INC,
@@ -32,13 +32,13 @@ require Web::DOM::Document;
 require Web::HTML::Parser;
 
 my $ModuleDocURL = {
-  Encode => q<http://search.cpan.org/dist/Encode/Encode.pm>,
-  Exporter => q<http://search.cpan.org/dist/Exporter/lib/Exporter.pm>,
-  JE => q<http://search.cpan.org/dist/JE/lib/JE.pm>,
-  'Time::Local' => q<http://search.cpan.org/dist/Time-Local/lib/Time/Local.pm>,
-  'Time::Piece' => q<http://search.cpan.org/dist/Time-Piece/Piece.pm>,
-  DateTime => q<http://search.cpan.org/dist/DateTime/lib/DateTime.pm>,
-  'Regexp::Parser' => q<http://search.cpan.org/dist/Regexp-Parser/lib/Regexp/Parser.pm>,
+  Encode => q<https://search.cpan.org/dist/Encode/Encode.pm>,
+  Exporter => q<https://search.cpan.org/dist/Exporter/lib/Exporter.pm>,
+  JE => q<https://search.cpan.org/dist/JE/lib/JE.pm>,
+  'Time::Local' => q<https://search.cpan.org/dist/Time-Local/lib/Time/Local.pm>,
+  'Time::Piece' => q<https://search.cpan.org/dist/Time-Piece/Piece.pm>,
+  DateTime => q<https://search.cpan.org/dist/DateTime/lib/DateTime.pm>,
+  'Regexp::Parser' => q<https://search.cpan.org/dist/Regexp-Parser/lib/Regexp/Parser.pm>,
 
   'Whatpm::HTML' => q<https://manakai.github.io/pod/Web/HTML/Parser>,
   'Message::DOM::Document' => q<https://manakai.github.io/pod/Web/DOM/Document>,
@@ -55,7 +55,7 @@ sub process_inline_nodes ($$@) {
       if ($ln eq 'a') {
         my $url = $source->get_attribute ('href');
         if (defined $url and
-            $url =~ m{^http://search.cpan.org/perldoc\?([^#]+)(#.*|)$}s) {
+            $url =~ m{^https?://search.cpan.org/perldoc\?([^#]+)(#.*|)$}s) {
           my $module = $1;
           my $suffix = $2;
           $module =~ s/%3A%3A/::/g;
@@ -298,7 +298,7 @@ sub pod2html ($$%) {
             $last_section->append_child ($p);
           }
           $text =~ s{DOM\s+\|([A-Za-z0-9]+)\|\s+([Ii]nterface|[Oo]bject)}
-                    {DOM <a href="http://suika.suikawiki.org/~wakaba/wiki/sw/n/$1"><code>$1</code></a> $2}g;
+                    {DOM <a href="https://suika.suikawiki.org/~wakaba/wiki/sw/n/$1"><code>$1</code></a> $2}g;
           $text =~ s{\|([^|]+)\|}{<code>$1</code>}g;
           $source_node->inner_html ($text);
         }
