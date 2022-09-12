@@ -136,20 +136,16 @@ sub node2html ($$$%) {
 
   my $footer = $doc->create_element ('footer');
   $footer->inner_html (qq{
-  <p>The manakai project since 2002
-  <ul>
-    <li><a href="$root_url" rel=top>Top</a>
-    <li><a href="$root_url/contact">Contact</a>
-  </ul>
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-39820773-4', 'manakai.github.io');
-ga('send', 'pageview');
-</script>
+    <sw-ads normal></sw-ads>
+    <script src="https://manakai.github.io/js/global.js" async></script>
+
+    <p>The manakai project since 2002
+    <ul>
+      <li><a href="$root_url" rel=top>Top</a>
+      <li><a href="$root_url/contact">Contact</a>
+    </ul>
   });
+  $doc->body->append_child ($footer->first_element_child);
   $doc->body->append_child ($footer);
 
   $html_path->parent->mkpath;

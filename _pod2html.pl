@@ -48,6 +48,9 @@ sub main (@) {
 
         %s
 
+        <sw-ads normal></sw-ads>
+        <script src="https://manakai.github.io/js/global.js" async></script>
+
         <footer>
           <ul>
           <li><a href="%s" rel=top>Top</a>
