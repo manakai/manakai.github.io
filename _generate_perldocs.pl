@@ -144,6 +144,7 @@ sub node2html ($$$%) {
       <li><a href="$root_url" rel=top>Top</a>
       <li><a href="$root_url/contact">Contact</a>
     </ul>
+    <sw-ads-notes></sw-ads-notes>
   });
   $doc->body->append_child ($footer->first_element_child);
   $doc->body->append_child ($footer);
