@@ -56,6 +56,7 @@ sub main (@) {
           <li><a href="%s" rel=top>Top</a>
           </ul>
         </footer>
+        <sw-ads-notes></sw-ads-notes>
     },
         $title,
         $to_repo_url->($root_url, ""),
