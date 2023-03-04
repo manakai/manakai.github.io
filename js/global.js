@@ -19,7 +19,8 @@ gtag('config', 'G-XZKJBG5SSR');
         !ads.hasAttribute ('sensitive') &&
         !ads.hasAttribute ('error') &&
         !ads.hasAttribute ('empty') &&
-        !ads.hasAttribute ('ugc')) {
+        !ads.hasAttribute ('ugc') &&
+        location.origin.match (/^https?:\/\/[^\/]*suikawiki\.org/)) {
       c.innerHTML = `
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6943204637055835" data-ad-slot="7192705117" data-ad-format="auto"></ins>
       `;
