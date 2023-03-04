@@ -20,7 +20,9 @@ deps:
 	    --install-module Pod::Simple~3.28 \
 	    --create-perl-command-shortcut perl
 
-generate-docs: deps
+generate-docs: deps local/repos
+	$(PERL) _generate_perldocs.pl
+local/repos: 
 	$(PERL) _generate_perldocs.pl
 
 build: build-p2h
@@ -39,7 +41,8 @@ local/fatpacker.trace: _pod2html.pl lib/_load_pod2html.pl \
 	local/fatpack trace --to=$@ lib/_load_pod2html.pl
 ## For the other modules
 local/module-list.sh: bin/create-module-list.pl \
-    _pod2html.pl lib/_load_pod2html.pl lib/_pod2html_common.pl
+    _pod2html.pl lib/_load_pod2html.pl lib/_pod2html_common.pl \
+    local/repos
 	$(PERL) $< > $@
 local/fatpacker.packlists: local/fatpacker.trace
 	local/fatpack packlists-for `cat $<` > $@
