@@ -7,8 +7,8 @@
       {"type": "started", "time": "2014-04"}
     ]
   },
-  "circleci": {
-    "merger": 1,
-    "gaa": 1
+  "github": {
+    "merger": true,
+    "gaa": true
   }
 }
