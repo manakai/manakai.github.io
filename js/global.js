@@ -56,6 +56,10 @@ gtag('config', 'G-XZKJBG5SSR');
   }
 
   if (notes.length) {
+    notes.push ('<a href=https://wiki.suikawiki.org/n/Wiki%2F%2FAbout#header-section-%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC>Privacy policy</a>.');
+  }
+
+  if (notes.length) {
     var d = document.querySelector ('sw-ads-notes');
     if (!d) {
       d = document.createElement ('sw-ads-notes');
