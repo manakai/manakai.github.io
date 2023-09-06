@@ -25,7 +25,7 @@
 
 </section><section id="DESCRIPTION"><h1>DESCRIPTION</h1>
 
-<p>The <code>Web::DateTime</code> class represents a date and/or time with accessor and serializer methods for Web. To create an instance of the <code>Web::DateTime</code> class from various date and/or time formatted strings, use <a href="../../../pod/Web/DateTime/Parser" class="podlinkpod">Web::DateTime::Parser</a> module.</p>
+<p>The <code>Web::DateTime</code> class represents a date and/or time with accessor and serializer methods for Web. To create an instance of the <code>Web::DateTime</code> class from various date and/or time formatted strings, use <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3AParser" class="podlinkpod">Web::DateTime::Parser</a> module.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -72,9 +72,9 @@
 </dd><dt id="$dt_=_Web::DateTime->new_from_object_($obj)"><code>$dt = Web::DateTime-&gt;<strong id="member-new_from_object">new_from_object</strong> ($obj)</code></dt>
 
 <dd>
-<p>Create a new instance of <code>Web::DateTime</code> from the specified date/time object. The argument must be an instance of <a href="https://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> or <a href="https://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a>. (More classes might be supported in future.)</p>
+<p>Create a new instance of <code>Web::DateTime</code> from the specified date/time object. The argument must be an instance of <a href="https://metacpan.org/pod/DateTime" class="podlinkpod">DateTime</a> or <a href="https://metacpan.org/pod/Time%3A%3APiece" class="podlinkpod">Time::Piece</a>. (More classes might be supported in future.)</p>
 
-<p>As the <code>Web::DateTime</code> (and most Web date/time formats) can't handle leap seconds, if the <a href="https://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> object represents a leap second, the result <code>Web::DateTime</code> object represents the second just after the leap second.</p>
+<p>As the <code>Web::DateTime</code> (and most Web date/time formats) can't handle leap seconds, if the <a href="https://metacpan.org/pod/DateTime" class="podlinkpod">DateTime</a> object represents a leap second, the result <code>Web::DateTime</code> object represents the second just after the leap second.</p>
 
 </dd><dt id="true_=_$dt->is_date_time"><code>true = $dt-&gt;<strong id="member-is_date_time">is_date_time</strong></code></dt>
 
@@ -171,12 +171,12 @@
 </dd><dt id="$tz_=_$dt->time_zone"><code>$tz = $dt-&gt;<strong id="member-time_zone">time_zone</strong></code></dt>
 
 <dd>
-<p>Return the associated <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object, if any, or <code>undef</code>.</p>
+<p>Return the associated <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ATimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object, if any, or <code>undef</code>.</p>
 
 </dd><dt id="$dt->set_time_zone_($tz)"><code>$dt-&gt;<strong id="member-set_time_zone">set_time_zone</strong> ($tz)</code></dt>
 
 <dd>
-<p>Associate a <a href="../../../pod/Web/DateTime/TimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object to the object. Any existing time zone object is disassociated. If the argument is <code>undef</code>, no new time zone is associated with the object.</p>
+<p>Associate a <a href="https://metacpan.org/pod/Web%3A%3ADateTime%3A%3ATimeZone" class="podlinkpod">Web::DateTime::TimeZone</a> object to the object. Any existing time zone object is disassociated. If the argument is <code>undef</code>, no new time zone is associated with the object.</p>
 
 </dd><dt id="$number_=_$dt->to_unix_integer"><code>$number = $dt-&gt;<strong id="member-to_unix_integer">to_unix_integer</strong></code></dt>
 
@@ -354,23 +354,23 @@
 </dd><dt id="$datetime_=_$dt->to_date_time"><code>$datetime = $dt-&gt;<strong id="member-to_date_time">to_date_time</strong></code></dt>
 
 <dd>
-<p>Return a new <a href="https://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> object which represents the time represented by the object. If the object has associated time zone, the returned object is in the equivalent time zone. Otherwise, the returned object is in the <code>floating</code> time zone. Note that Web date and time formats do not support leap seconds while <a href="https://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> does support them such that operations on Web date and time values and <a href="https://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> objects might obtain different results.</p>
+<p>Return a new <a href="https://metacpan.org/pod/DateTime" class="podlinkpod">DateTime</a> object which represents the time represented by the object. If the object has associated time zone, the returned object is in the equivalent time zone. Otherwise, the returned object is in the <code>floating</code> time zone. Note that Web date and time formats do not support leap seconds while <a href="https://metacpan.org/pod/DateTime" class="podlinkpod">DateTime</a> does support them such that operations on Web date and time values and <a href="https://metacpan.org/pod/DateTime" class="podlinkpod">DateTime</a> objects might obtain different results.</p>
 
-<p>This method requires the <a href="https://search.cpan.org/dist/DateTime/lib/DateTime.pm" class="podlinkpod">DateTime</a> module.</p>
+<p>This method requires the <a href="https://metacpan.org/pod/DateTime" class="podlinkpod">DateTime</a> module.</p>
 
 </dd><dt id="$timepiece_=_$dt->to_time_piece_gm"><code>$timepiece = $dt-&gt;<strong id="member-to_time_piece_gm">to_time_piece_gm</strong></code></dt>
 
 <dd>
-<p>Return a new <a href="https://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> object which represents the time represented by the object, in UTC. If the object is not associated with any time zone, it is handled as if it were associated with UTC.</p>
+<p>Return a new <a href="https://metacpan.org/pod/Time%3A%3APiece" class="podlinkpod">Time::Piece</a> object which represents the time represented by the object, in UTC. If the object is not associated with any time zone, it is handled as if it were associated with UTC.</p>
 
-<p>This method requires the <a href="https://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> module.</p>
+<p>This method requires the <a href="https://metacpan.org/pod/Time%3A%3APiece" class="podlinkpod">Time::Piece</a> module.</p>
 
 </dd><dt id="$timepiece_=_$dt->to_time_piece_local"><code>$timepiece = $dt-&gt;<strong id="member-to_time_piece_local">to_time_piece_local</strong></code></dt>
 
 <dd>
-<p>Return a new <a href="https://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> object which represents the time represented by the object, in local time zone (i.e. Perl's <code>localtime</code>'s time zone). If the object is not associated with any time zone, it is handled as if it were associated with UTC and then converted as appropriate.</p>
+<p>Return a new <a href="https://metacpan.org/pod/Time%3A%3APiece" class="podlinkpod">Time::Piece</a> object which represents the time represented by the object, in local time zone (i.e. Perl's <code>localtime</code>'s time zone). If the object is not associated with any time zone, it is handled as if it were associated with UTC and then converted as appropriate.</p>
 
-<p>This method requires the <a href="https://search.cpan.org/dist/Time-Piece/Piece.pm" class="podlinkpod">Time::Piece</a> module.</p>
+<p>This method requires the <a href="https://metacpan.org/pod/Time%3A%3APiece" class="podlinkpod">Time::Piece</a> module.</p>
 </dd>
 </dl>
 
@@ -428,7 +428,7 @@
 
 </section><section id="ACKNOWLEDGEMENTS"><h1>ACKNOWLEDGEMENTS</h1>
 
-<p>This module contains a code derived from <a href="https://search.cpan.org/dist/Time-Local/lib/Time/Local.pm" class="podlinkpod">Time::Local</a>, whose authors are:</p>
+<p>This module contains a code derived from <a href="https://metacpan.org/pod/Time%3A%3ALocal" class="podlinkpod">Time::Local</a>, whose authors are:</p>
 
 <pre><code>  This module is based on a Perl 4 library, timelocal.pl, that was
   included with Perl 4.036, and was most likely written by Tom
@@ -445,7 +445,7 @@
 
 <p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
-<p>This program partially derived from <a href="https://search.cpan.org/dist/Time-Local/lib/Time/Local.pm" class="podlinkpod">Time::Local</a>: "Copyright (c) 1997-2003 Graham Barr, 2003-2007 David Rolsky. All rights reserved. This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself."</p>
+<p>This program partially derived from <a href="https://metacpan.org/pod/Time%3A%3ALocal" class="podlinkpod">Time::Local</a>: "Copyright (c) 1997-2003 Graham Barr, 2003-2007 David Rolsky. All rights reserved. This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself."</p>
 
 
 

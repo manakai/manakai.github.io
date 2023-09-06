@@ -31,7 +31,7 @@
 
 <p>The RDF/XML format is no longer widely used. Though this module is still maintained as part of the manakai project, use of it is not recommended.</p>
 
-<p>This module is <b>unsuitable</b> for processing RSS 1.0 documents. Use <a href="../../../../pod/Web/Feed/Parser" class="podlinkpod">Web::Feed::Parser</a> instead.</p>
+<p>This module is <b>unsuitable</b> for processing RSS 1.0 documents. Use <a href="https://metacpan.org/pod/Web%3A%3AFeed%3A%3AParser" class="podlinkpod">Web::Feed::Parser</a> instead.</p>
 
 </section><section id="METHODS"><h1>METHODS</h1>
 
@@ -46,7 +46,7 @@
 </dd><dt id="$rdf->convert_document_($doc)"><code>$rdf-&gt;<strong id="member-convert_document">convert_document</strong> ($doc)</code></dt>
 
 <dd>
-<p>Extract the triples from a document. The argument must be a DOM <code>Document</code> (e.g. a <a href="../../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> object). Extracted triples are reported through the <code>ontriple</code> callback.</p>
+<p>Extract the triples from a document. The argument must be a DOM <code>Document</code> (e.g. a <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> object). Extracted triples are reported through the <code>ontriple</code> callback.</p>
 
 </dd><dt id="$rdf->convert_rdf_element_($doc)"><code>$rdf-&gt;<strong id="member-convert_rdf_element">convert_rdf_element</strong> ($doc)</code></dt>
 
@@ -60,7 +60,7 @@
 <dd>
 <p>Get or set the callback function which is invoked for each triple extracted from the document.</p>
 
-<p>The callback is invoked with following name/value pairs as arguments: <code>subject</code>, <code>predicate</code>, <code>object</code>, and <code>node</code>. The callback is not expected to throw any exception. Values <code>subject</code>, <code>predicate</code>, <code>object</code> are parsed term data structures (see <a href="../../../../pod/Web/RDF/Checker" class="podlinkpod">Web::RDF::Checker</a>). The node from which the triple is extracted is given as <code>node</code>.</p>
+<p>The callback is invoked with following name/value pairs as arguments: <code>subject</code>, <code>predicate</code>, <code>object</code>, and <code>node</code>. The callback is not expected to throw any exception. Values <code>subject</code>, <code>predicate</code>, <code>object</code> are parsed term data structures (see <a href="https://metacpan.org/pod/Web%3A%3ARDF%3A%3AChecker" class="podlinkpod">Web::RDF::Checker</a>). The node from which the triple is extracted is given as <code>node</code>.</p>
 
 </dd><dt id="$rdf->onbnodeid_($code)"><code>$rdf-&gt;<strong id="member-onbnodeid">onbnodeid</strong> ($code)</code></dt>
 
@@ -89,7 +89,7 @@
 <dt id="$rdf->onnonrdfnode_($code)"><code>$rdf-&gt;<strong>onnonrdfnode</strong> ($code)</code></dt>
 
 <dd>
-<p>Get or set the code reference that is invoked whenever a non-RDF node is detected. Note that use of such a node in an RDF/XML fragment is non-conforming. This hook is intended for injecting validation codes (e.g. by <a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>). Note that the node can be a misplaced <code>rdf:RDF</code> element, for example.</p>
+<p>Get or set the code reference that is invoked whenever a non-RDF node is detected. Note that use of such a node in an RDF/XML fragment is non-conforming. This hook is intended for injecting validation codes (e.g. by <a href="https://metacpan.org/pod/Web%3A%3AHTML%3A%3AValidator" class="podlinkpod">Web::HTML::Validator</a>). Note that the node can be a misplaced <code>rdf:RDF</code> element, for example.</p>
 
 <p>The code is invoked with an argument, which is the node in question. The code is expected not to throw any exception. The value should not be set while the parser is running. If the value is changed, the result is undefined.</p>
 
@@ -98,7 +98,7 @@
 <dt id="$rdf->onattr_($code)"><code>$rdf-&gt;<strong>onattr</strong> ($code)</code></dt>
 
 <dd>
-<p>Get or set the code reference that is invoked whenever an attribute is encounted by the parser. This hook is intended for injecting validation codes (e.g. by <a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>).</p>
+<p>Get or set the code reference that is invoked whenever an attribute is encounted by the parser. This hook is intended for injecting validation codes (e.g. by <a href="https://metacpan.org/pod/Web%3A%3AHTML%3A%3AValidator" class="podlinkpod">Web::HTML::Validator</a>).</p>
 
 <p>The code is invoked with two arguments: the node in question and the type of the attribute, which is one of followings:</p>
 
@@ -116,15 +116,15 @@
 
 <p>This module extracts RDF triples from RDF/XML fragment using the algorithm described in the RDF/XML specification. When the input does not conform to the grammer, it try to recover from the error by most "natural" way; it might or might not report additional triples depending on how the input is non-conforming.</p>
 
-<p>In most cases the input is non-conforming, the module reports one or more errors through the <code>onerror</code> handler. To detect all the conformance errors, you have to use a conformance checker (e.g. <a href="../../../../pod/Web/HTML/Validator" class="podlinkpod">Web::HTML::Validator</a>) that invokes this module with appropriate hooks and postprocessors.</p>
+<p>In most cases the input is non-conforming, the module reports one or more errors through the <code>onerror</code> handler. To detect all the conformance errors, you have to use a conformance checker (e.g. <a href="https://metacpan.org/pod/Web%3A%3AHTML%3A%3AValidator" class="podlinkpod">Web::HTML::Validator</a>) that invokes this module with appropriate hooks and postprocessors.</p>
 
 </section><section id="DEPENDENCY"><h1>DEPENDENCY</h1>
 
 <p>Perl 5.8 or later is required.</p>
 
-<p>This module requires the <a href="../../../../pod/Web/URL/Canonicalize" class="podlinkpod">Web::URL::Canonicalize</a> module in the perl-web-url repository <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>.</p>
+<p>This module requires the <a href="https://metacpan.org/pod/Web%3A%3AURL%3A%3ACanonicalize" class="podlinkpod">Web::URL::Canonicalize</a> module in the perl-web-url repository <code class="url">&lt;<a href="https://github.com/manakai/perl-web-url">https://github.com/manakai/perl-web-url</a>&gt;</code>.</p>
 
-<p>In addition, it expects DOM objects (e.g. <a href="../../../../pod/Web/DOM/Document" class="podlinkpod">Web::DOM::Document</a> and <a href="../../../../pod/Web/DOM/Element" class="podlinkpod">Web::DOM::Element</a> from <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code>) as input, although there is no direct dependency.</p>
+<p>In addition, it expects DOM objects (e.g. <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3ADocument" class="podlinkpod">Web::DOM::Document</a> and <a href="https://metacpan.org/pod/Web%3A%3ADOM%3A%3AElement" class="podlinkpod">Web::DOM::Element</a> from <code class="url">&lt;<a href="https://github.com/manakai/perl-web-dom">https://github.com/manakai/perl-web-dom</a>&gt;</code>) as input, although there is no direct dependency.</p>
 
 </section><section id="SPECIFICATIONS"><h1>SPECIFICATIONS</h1>
 
